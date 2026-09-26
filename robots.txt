@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://oslraahat.github.io/ledgerbook-web/sitemap.xml
+Sitemap: https://ledgerbookapp.github.io/sitemap.xml

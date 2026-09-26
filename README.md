@@ -1,7 +1,7 @@
-# ledgerbook-web
+# ledgerbookapp.github.io
 
 The marketing site for [LedgerBook](https://github.com/oslraahat/ledgerbook-releases), served
-by GitHub Pages at <https://oslraahat.github.io/ledgerbook-web/>.
+by GitHub Pages at <https://ledgerbookapp.github.io/>.
 
 Four static pages, no build step, no framework, no tracker. Open `index.html` in a browser
 and it works.
