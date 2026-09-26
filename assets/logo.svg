@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  The LedgerBook mark: a ledger's spine with equal entries either side.
+
+  The app's one real difference from every other money app is double entry -- every
+  amount is written twice, once on each side, and the two must agree. That is what this
+  draws: a rule down the middle and the same weight of ink to its left and right. Read
+  quickly it is a broken equals sign, which says the same thing again.
+
+  Two bars a side rather than three or four. Four is a ledger page and turns to mush at
+  16px, where a favicon lives; two survives the whole way down and still reads as
+  entries rather than as decoration.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108"
+     role="img" aria-labelledby="t">
+  <title id="t">LedgerBook</title>
+  <rect x="4" y="4" width="100" height="100" rx="24" fill="#16161B"/>
+  <g fill="#E8B931">
+    <rect x="52" y="26" width="4"  height="56" rx="2"/>
+    <rect x="26" y="40" width="22" height="8"  rx="4"/>
+    <rect x="26" y="58" width="22" height="8"  rx="4"/>
+    <rect x="60" y="40" width="22" height="8"  rx="4"/>
+    <rect x="60" y="58" width="22" height="8"  rx="4"/>
+  </g>
+</svg>

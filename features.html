@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What LedgerBook does</title>
+<meta name="description" content="Double-entry books, five kinds of entry, analytics, loans, encrypted backups — on your phone, with no account.">
+
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="canonical" href="https://oslraahat.github.io/ledgerbook-web/features.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LedgerBook">
+<meta property="og:title" content="What LedgerBook does">
+<meta property="og:description" content="Double-entry books, five kinds of entry, analytics, loans, encrypted backups — on your phone, with no account.">
+<meta property="og:url" content="https://oslraahat.github.io/ledgerbook-web/features.html">
+<meta property="og:image" content="https://oslraahat.github.io/ledgerbook-web/assets/icon-512.png">
+<meta name="twitter:card" content="summary">
+
+
+
+<!-- Bengali needs a font that has it. Without this the page falls back to whatever the
+     phone has, which on a good many Android builds renders matras a step out of place. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Before the stylesheet paints, so a reader who chose the theme that is not their
+     system's never sees the other one flash first. Small enough to stay inline; a
+     separate file would be a round trip in front of the first paint. -->
+<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="./">
+      <svg viewBox="0 0 108 108" aria-hidden="true" fill="currentColor">
+        <rect x="52" y="26" width="4" height="56" rx="2"/>
+        <rect x="26" y="40" width="22" height="8" rx="4"/>
+        <rect x="26" y="58" width="22" height="8" rx="4"/>
+        <rect x="60" y="40" width="22" height="8" rx="4"/>
+        <rect x="60" y="58" width="22" height="8" rx="4"/>
+      </svg>
+      <b data-s="appName">LedgerBook</b>
+    </a>
+    <nav>
+      <a href="./" data-s="navHome">Home</a>
+      <a href="features.html" aria-current="page" data-s="navFeatures">Features</a>
+      <a href="install.html" data-s="navInstall">How to install</a>
+      <a href="privacy.html" data-s="navPrivacy">Privacy</a>
+    </nav>
+    <div class="switches">
+      <button id="theme" type="button" aria-label="Switch theme">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+      </button>
+      <button id="lang" type="button">বাংলা</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="hero" style="padding-bottom:16px">
+      <h1 data-s="featTitle">What it does</h1>
+      <p class="lead" data-s="featLead"></p>
+    </section>
+
+    <section>
+      <h2 data-s="featBooksTitle">Keeping the books</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 data-s="f1Head"></h3>
+          <p data-s="f1Body"></p>
+        </div>
+        <div class="card">
+          <h3 data-s="f2Head"></h3>
+          <p data-s="f2Body"></p>
+        </div>
+        <div class="card">
+          <h3 data-s="f3Head"></h3>
+          <p data-s="f3Body"></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-s="featSeeTitle">Seeing where it went</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 data-s="f4Head"></h3>
+          <p data-s="f4Body"></p>
+        </div>
+        <div class="card">
+          <h3 data-s="f5Head"></h3>
+          <p data-s="f5Body"></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-s="featKeepTitle">Keeping it safe</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 data-s="f6Head"></h3>
+          <p data-s="f6Body"></p>
+        </div>
+        <div class="card">
+          <h3 data-s="f7Head"></h3>
+          <p data-s="f7Body"></p>
+        </div>
+        <div class="card">
+          <h3 data-s="f8Head"></h3>
+          <p data-s="f8Body"></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta">
+        <a class="btn" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases"
+           data-s="downloadAlt">Open the releases page</a>
+        <a class="btn btn-quiet" href="install.html" data-s="navInstall">How to install</a>
+      </div>
+      <p class="meta" id="dl-meta"></p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-s="footerNote"></p>
+    <p><a href="https://github.com/oslraahat/ledgerbook-releases/releases" data-s="allVersions">All versions</a></p>
+  </div>
+</footer>
+
+<script src="assets/strings.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

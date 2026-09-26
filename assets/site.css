@@ -1,0 +1,281 @@
+/*
+ * The site's colours are the app's colours, named the same way.
+ *
+ * Taken from Color.kt rather than picked to look similar: a visitor who downloads the app
+ * should find the thing they were just looking at. Both themes are here because the app
+ * has both, and a reader who keeps their phone on light should not be handed a black page
+ * and then a white app.
+ *
+ * Two accent tokens, not one, and this is the part worth reading before changing:
+ *
+ *   --accent      what you FILL with -- button backgrounds, the logo, a rule.
+ *   --accent-ink  what you WRITE with -- links, a figure, anything that is text.
+ *
+ * On the dark theme they are the same value, because #E8B931 carries 9.80 on a card and
+ * black on it carries 11.42, so one tone does both jobs. On light paper it cannot: the
+ * fill step #F59E0B measures 2.05 against the page, so a link in it fails a reader
+ * outright while the same colour behind black text is perfectly sound. The app hit this
+ * exact wall and answered it with a separate ink one step deeper -- #A85408, 5.10 on the
+ * page -- and the two live two lines apart there with a long comment saying which is
+ * which, because twice a commit about the fill took the ink along with it.
+ *
+ * So: filling with --accent-ink looks muddy, and writing in --accent is unreadable. They
+ * are not two shades of a preference.
+ */
+:root {
+  /* Light — PaperBackground, PaperSurface, PaperOutline, InkText, InkTextMuted. */
+  --page: #F8FAFC;
+  --card: #FFFFFF;
+  --edge: #CBD5E1;
+  --accent: #F59E0B;
+  --accent-ink: #A85408;
+  --accent-on-tint: #8A4406;
+  --on-accent: #000000;
+  --ink: #0F172A;
+  --ink-muted: #5A6A80;
+  --green: #14713A;
+  --red: #B42318;
+
+  --gutter: 20px;
+  --max: 960px;
+  --radius-card: 16px;
+  --radius-field: 12px;
+
+  color-scheme: light;
+}
+
+/* Dark — NightBackground, the card over it, NightOutline, and the one accent that does
+   both jobs. Written twice: once for the reader whose system is dark and who has not
+   chosen, and once for the reader who pressed the switch. The first is guarded so that
+   choosing light on a dark phone actually sticks. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page: #0E0E11;
+    --card: #16161B;
+    --edge: #23232A;
+    --accent: #E8B931;
+    --accent-ink: #E8B931;
+    --accent-on-tint: #E8B931;
+    --on-accent: #12100A;
+    --ink: #F8FAFC;
+    --ink-muted: #9CA3AF;
+    --green: #5BE38F;
+    --red: #FF8A7A;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --page: #0E0E11;
+  --card: #16161B;
+  --edge: #23232A;
+  --accent: #E8B931;
+  --accent-ink: #E8B931;
+  --accent-on-tint: #E8B931;
+  --on-accent: #12100A;
+  --ink: #F8FAFC;
+  --ink-muted: #9CA3AF;
+  --green: #5BE38F;
+  --red: #FF8A7A;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--page);
+  color: var(--ink);
+  font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system,
+               "Segoe UI", Roboto, sans-serif;
+  /* Bengali sits low in its line and runs into the line below at the leading Latin
+     text is happy with. 1.7 is what stops the descenders of one line touching the
+     matras of the next. */
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+/* -- header ------------------------------------------------------------------- */
+header {
+  border-bottom: 1px solid var(--edge);
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--page) 88%, transparent);
+  backdrop-filter: blur(8px);
+}
+.bar { display: flex; align-items: center; gap: 14px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
+.brand svg { width: 30px; height: 30px; color: var(--accent-ink); }
+.brand b { font-size: 17px; letter-spacing: .2px; }
+nav { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+/* The language and theme switches, kept together as one item so they never wrap apart. */
+.switches { display: flex; align-items: center; gap: 6px; }
+nav a {
+  color: var(--ink-muted); text-decoration: none; font-size: 14px;
+  padding: 7px 10px; border-radius: 8px;
+}
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); background: var(--card); }
+
+/* The language switch is a control, so it looks like one rather than like a link. */
+#lang {
+  font: inherit; font-size: 14px; cursor: pointer;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--edge); border-radius: 999px; padding: 6px 14px;
+}
+#lang:hover { border-color: var(--accent-ink); }
+
+/* -- hero --------------------------------------------------------------------- */
+.hero { padding: 64px 0 40px; }
+.hero h1 {
+  font-size: clamp(30px, 6vw, 46px); line-height: 1.25;
+  margin: 0 0 16px; letter-spacing: -.5px;
+}
+.hero p.lead { color: var(--ink-muted); font-size: clamp(16px, 2.4vw, 19px); margin: 0 0 28px; max-width: 34em; }
+
+.cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--on-accent);
+  font-weight: 700; font-size: 16px; text-decoration: none;
+  padding: 14px 22px; border-radius: var(--radius-field); border: 0;
+}
+.btn:hover { filter: brightness(1.06); }
+.btn[aria-disabled="true"] { opacity: .6; pointer-events: none; }
+.btn-quiet {
+  background: transparent; color: var(--accent-ink);
+  border: 1px solid var(--edge); font-weight: 600;
+}
+.meta { color: var(--ink-muted); font-size: 14px; margin: 14px 0 0; }
+.meta a { color: var(--accent-ink); }
+
+/* -- cards -------------------------------------------------------------------- */
+section { padding: 44px 0; }
+h2 { font-size: clamp(22px, 3.4vw, 28px); margin: 0 0 22px; letter-spacing: -.3px; }
+.grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.card {
+  background: var(--card); border: 1px solid var(--edge);
+  border-radius: var(--radius-card); padding: 20px;
+}
+.card h3 { margin: 0 0 8px; font-size: 17px; }
+.card p { margin: 0; color: var(--ink-muted); font-size: 15px; }
+
+/* -- steps -------------------------------------------------------------------- */
+ol.steps { list-style: none; counter-reset: s; margin: 0; padding: 0; display: grid; gap: 14px; }
+ol.steps li {
+  counter-increment: s; position: relative;
+  background: var(--card); border: 1px solid var(--edge);
+  border-radius: var(--radius-card); padding: 20px 20px 20px 66px;
+}
+ol.steps li::before {
+  content: counter(s);
+  position: absolute; left: 20px; top: 18px;
+  width: 30px; height: 30px; border-radius: 999px;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent-on-tint); font-weight: 700; font-size: 15px;
+}
+ol.steps h3 { margin: 0 0 6px; font-size: 17px; }
+ol.steps p { margin: 0; color: var(--ink-muted); font-size: 15px; }
+
+/* -- table -------------------------------------------------------------------- */
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: start; padding: 12px 14px; border-bottom: 1px solid var(--edge); }
+th { color: var(--ink); font-weight: 700; width: 34%; }
+td { color: var(--ink-muted); }
+tr:last-child th, tr:last-child td { border-bottom: 0; }
+
+/* The fingerprint is a long unbroken string; left to itself it pushes the page wide
+   on a phone, which is the one place this is read. */
+code.hash {
+  display: block; word-break: break-all; font-size: 13px; line-height: 1.6;
+  background: var(--page); border: 1px solid var(--edge);
+  border-radius: 8px; padding: 12px; color: var(--accent-ink);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* -- footer ------------------------------------------------------------------- */
+footer { border-top: 1px solid var(--edge); padding: 26px 0 40px; color: var(--ink-muted); font-size: 14px; }
+footer a { color: var(--accent-ink); }
+
+/* Hidden until the language is settled, so the page never shows one language and
+   then swaps under the reader. */
+body[data-lang] .lang-pending { visibility: visible; }
+.lang-pending { visibility: hidden; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn, nav a, #lang { transition: background-color .15s, color .15s, border-color .15s; }
+}
+
+/* -- step screenshots ----------------------------------------------------------
+ *
+ * The warnings in steps 2 and 3 are the part people stop at, so those steps carry a
+ * picture of the actual screen rather than a description of it. A reader who has the
+ * dialog in front of them should be able to match it to the page at a glance.
+ *
+ * Each is cropped to the dialog itself. A full phone screen at a readable width came out
+ * over a thousand pixels tall, which turned four steps into a scroll; and three quarters
+ * of it was the dimmed page behind, which carries nothing the reader needs.
+ *
+ * So no fixed max-width -- the crops are different shapes, and one number that suits the
+ * widest makes the tallest small. They take the column, up to the width they were cut at,
+ * so none is ever enlarged past its own pixels.
+ */
+ol.steps figure { margin: 16px 0 0; }
+ol.steps figure img {
+  display: block; width: 100%; max-width: 420px; height: auto;
+  border: 1px solid var(--edge); border-radius: var(--radius-field);
+  background: var(--page);
+}
+ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px; max-width: 420px; }
+
+/* -- theme switch --------------------------------------------------------------
+ *
+ * One button holding both glyphs, with CSS deciding which is shown, so pressing it never
+ * waits on script. It offers the theme you are not in -- a moon while you are reading on
+ * white -- for the same reason the language button says বাংলা to an English reader.
+ */
+#theme {
+  display: inline-grid; place-items: center;
+  width: 36px; height: 36px; padding: 0; cursor: pointer;
+  color: var(--ink); background: var(--card);
+  border: 1px solid var(--edge); border-radius: 999px;
+}
+#theme:hover { border-color: var(--accent-ink); }
+#theme svg { width: 17px; height: 17px; grid-area: 1 / 1; }
+
+/* Light is the default, so the moon shows and the sun is put away. */
+#theme .i-sun  { display: none; }
+#theme .i-moon { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) #theme .i-sun  { display: block; }
+  :root:not([data-theme="light"]) #theme .i-moon { display: none; }
+}
+:root[data-theme="dark"] #theme .i-sun  { display: block; }
+:root[data-theme="dark"] #theme .i-moon { display: none; }
+
+/* -- header on a narrow screen -------------------------------------------------
+ *
+ * Four things sit to the right of the name — two links and two switches — and on a phone
+ * they do not fit beside it. Left alone they wrap raggedly: বাংলা drops to a second line
+ * on its own while the name floats vertically centred against the pair of rows.
+ *
+ * So below 560px the header stops pretending to be one row and becomes two on purpose:
+ * the name, then the controls beneath it, each row aligned to the same left edge as the
+ * text below. Two deliberate rows read as a design; one row that broke does not.
+ */
+@media (max-width: 559px) {
+  .bar { flex-wrap: wrap; row-gap: 8px; padding-block: 10px 12px; }
+  /* Row one is the name and the two switches; row two is the links, full width beneath.
+     Letting all six wrap on their own gave three ragged rows with বাংলা alone on the
+     last -- this is the same content in two rows that were meant. */
+  .brand { flex: 1 1 auto; }
+  .switches { margin-left: auto; }
+  nav { order: 3; flex: 1 0 100%; margin-left: 0; gap: 2px; }
+  nav a { padding: 6px 8px; font-size: 13.5px; }
+}
