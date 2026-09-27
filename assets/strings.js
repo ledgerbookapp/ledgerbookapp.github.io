@@ -27,27 +27,40 @@ const S = {
   // -- hero --------------------------------------------------------------------
   tagline:      ['Your money, your phone, nobody else.',
                  'আপনার টাকার হিসাব আপনার ফোনেই, আর কারও কাছে নয়।'],
-  heroLead:     ['A double-entry ledger for everyday money. No account to open, no data ' +
-                 'leaving your phone, and books that cannot quietly stop balancing.',
+  heroLead:     ['A double-entry ledger for everyday money. No account to open, nothing ' +
+                 'reported to anybody, and books that cannot quietly stop balancing.',
                  'দৈনন্দিন টাকার জন্য দুই-তরফা হিসাবের খাতা। অ্যাকাউন্ট খুলতে হয় না, ' +
-                 'তথ্য ফোন ছেড়ে কোথাও যায় না, আর হিসাব কখনো চুপচাপ বেহিসেব হয়ে যায় না।'],
+                 'কারও কাছে কিছু রিপোর্ট হয় না, আর হিসাব কখনো চুপচাপ বেহিসেব হয়ে যায় না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
   downloadBusy: ['Finding the latest version…', 'সর্বশেষ ভার্সন খোঁজা হচ্ছে…'],
   downloadAlt:  ['Open the releases page', 'রিলিজ পাতা খুলুন'],
   versionLine:  ['Version {v} · {size} · Android 6.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  qrHead:       ['Scan to put it on your phone', 'ফোনে নিতে স্ক্যান করুন'],
+  // Deliberately not "scan to get the APK". A printed square cannot point at a file
+  // whose name carries the version number, and pointing it at one would mean a dead
+  // code the day after the next release. It points at the install page, which is where
+  // the download button looks the version up for itself.
+  qrBody:       ['Point a phone camera at it. It opens the install page there, where the ' +
+                 'download button finds the current version.',
+                 'ফোনের ক্যামেরা ধরুন। ওখানে ইনস্টল পাতাটা খুলবে, যার ডাউনলোড বোতাম নিজেই ' +
+                 'চলতি ভার্সনটা খুঁজে নেয়।'],
   installFirst: ['First time? Read how to install — it takes two minutes.',
                  'প্রথমবার? ইনস্টল করার নিয়মটা পড়ে নিন — দুই মিনিটের কাজ।'],
 
   // -- why ---------------------------------------------------------------------
   whyTitle:     ['Why this one', 'কেন এটা'],
-  why1Head:     ['It cannot send your money data anywhere',
-                 'আপনার হিসাব কোথাও পাঠাতে পারে না'],
+  why1Head:     ['It has nowhere to send your money data',
+                 'আপনার হিসাব পাঠানোর জায়গাই নেই এর'],
   why1Body:     ['Not a promise — a fact about how it is built. Two files in the whole ' +
                  'app touch the internet, and both of them are the thing that checks ' +
-                 'whether a new version exists. There is no other path out.',
+                 'whether a new version exists. There is no server of ours for an entry ' +
+                 'to go to. Android’s own backup is a separate matter, and the privacy ' +
+                 'page says exactly what it carries.',
                  'এটা প্রতিশ্রুতি নয় — গঠনের সত্য। পুরো অ্যাপে মাত্র দুটো ফাইল ইন্টারনেট ছোঁয়, ' +
-                 'আর দুটোই শুধু দেখে নতুন ভার্সন এসেছে কিনা। বেরোনোর আর কোনো পথই নেই।'],
+                 'আর দুটোই শুধু দেখে নতুন ভার্সন এসেছে কিনা। আমাদের এমন কোনো সার্ভার নেই ' +
+                 'যেখানে একটা এন্ট্রি যেতে পারে। অ্যান্ড্রয়েডের নিজের ব্যাকআপ আলাদা ব্যাপার, ' +
+                 'আর গোপনীয়তার পাতায় সেটা কী কী নেয় তা হুবহু লেখা আছে।'],
   why2Head:     ['Every amount is written twice', 'প্রতিটা টাকা দুবার লেখা হয়'],
   why2Body:     ['Real double-entry, the way an accountant keeps books: money leaving one ' +
                  'place always arrives somewhere. The Trial Balance page shows the two ' +
@@ -102,11 +115,12 @@ const S = {
                  'This app looks safe, আর আপনি আবার Install-এ চাপবেন।'],
   step4Head:    ['Set your PIN', 'পিন ঠিক করুন'],
   step4Body:    ['Open LedgerBook. It asks what to call you, then for a four-digit PIN, ' +
-                 'typed twice. The name, the PIN and everything you write after stay on ' +
-                 'the phone; there is nowhere to sign in to.',
+                 'typed twice. The PIN stays on this phone and is never copied — not ' +
+                 'even into a backup. There is nowhere to sign in to and no account to ' +
+                 'make.',
                  'LedgerBook খুলুন। প্রথমে জিজ্ঞেস করবে আপনাকে কী নামে ডাকবে, তারপর চার ' +
-                 'সংখ্যার একটা পিন, দুবার লিখতে হবে। নাম, পিন আর এরপর যা লিখবেন সব ফোনেই ' +
-                 'থাকে; সাইন ইন করার কোনো জায়গাই নেই।'],
+                 'সংখ্যার একটা পিন, দুবার লিখতে হবে। পিন এই ফোনেই থাকে, কোথাও কপি হয় ' +
+                 'না — ব্যাকআপেও না। সাইন ইন করার জায়গা নেই, অ্যাকাউন্টও বানাতে হয় না।'],
 
   // Captions under the step screenshots. They name the button to press, because a reader
   // matching the picture to their own screen is looking for exactly that.
@@ -122,8 +136,8 @@ const S = {
                  'Play Protect এটা আগে দেখেনি। Scan app বেছে নিন।'],
   cap3c:        ['What the scan came back with. Tap Install.',
                  'পরীক্ষার পর যা দেখায়। Install-এ চাপুন।'],
-  cap4:         ['Four digits, typed twice. Nothing leaves the phone.',
-                 'চার সংখ্যা, দুবার লিখতে হবে। কিছুই ফোন ছেড়ে যায় না।'],
+  cap4:         ['Four digits, typed twice. The PIN is never copied anywhere.',
+                 'চার সংখ্যা, দুবার লিখতে হবে। পিন কোথাও কপি হয় না।'],
 
   verifyTitle:  ['Checking you got the right file', 'ঠিক ফাইলটাই পেয়েছেন কিনা দেখা'],
   verifyBody:   ['Every release publishes the fingerprint of its own file. If the number ' +
@@ -155,7 +169,29 @@ const S = {
                  'নিচের সবকিছুই আজকের অ্যাপে আছে — এই পাতায় "আসছে" বলে কোনো অংশ নেই, ' +
                  'কারণ যেটা এখনো ব্যবহার করা যায় না সেটা সুবিধা নয়।'],
 
+  shotsTitle:   ['A look at it', 'দেখতে কেমন'],
+  // Shot on a phone with a made-up ledger on it, not the author's own. A page that
+  // spends three paragraphs on where your money data does not go cannot illustrate
+  // itself with somebody's real balances, bank suffixes and creditors' names.
+  shotsLead:    ['Six screens, on a sample ledger made up for the purpose.',
+                 'ছয়টা পাতা, এই কাজের জন্য বানানো একটা নমুনা খাতায়।'],
+  shotHome:     ["The first screen", "প্রথম পাতা"],
+  shotTxn:      ["Every entry, filtered", "সব এন্ট্রি, ছেঁকে দেখা"],
+  shotAccounts: ["The accounts", "অ্যাকাউন্টগুলো"],
+  shotLoans:    ["Who owes whom", "কে কার কাছে ধারে"],
+  shotAnalytics:["Where the month went", "মাসটা কোথায় গেল"],
+  shotBackup:   ["Backup and restore", "ব্যাকআপ আর ফেরানো"],
+
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],
+  f0Head:       ['What you have, on the first screen', 'কী আছে, প্রথম পাতাতেই'],
+  f0Body:       ['The app opens on one figure — everything you own less everything you ' +
+                 'owe — with the accounts that add up to it underneath and the last few ' +
+                 'entries below that. The everyday errand, which is to check the number ' +
+                 'and write down today, never needs a second page.',
+                 'অ্যাপ খুললেই একটা সংখ্যা — যা আপনার আছে তার থেকে যা আপনি দেন বাদ দিয়ে — ' +
+                 'তার নিচে সেই সংখ্যা যেসব অ্যাকাউন্ট মিলে হয়, আর তারও নিচে সাম্প্রতিক ' +
+                 'কয়েকটা এন্ট্রি। রোজকার কাজটা, মানে সংখ্যাটা দেখা আর আজকেরটা লিখে রাখা, ' +
+                 'দ্বিতীয় পাতায় যেতে হয় না।'],
   f1Head:       ['Five kinds of entry', 'পাঁচ রকম এন্ট্রি'],
   f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out ' +
                  'of the bank. Each is its own screen asking only what that kind of entry ' +
@@ -198,12 +234,14 @@ const S = {
                  'দুই দিকেরই ধার, ফেরতের তারিখসহ, আর সেই তারিখ এলে মনে করিয়ে দেওয়া। চাইলে ' +
                  'নাম টাইপ না করে পরিচিতি থেকে বেছে নিতে পারেন।'],
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
-  f7Body:       ['A backup is an encrypted file written where you choose. There is no ' +
-                 'cloud to sync with and no account to restore from — which also means ' +
-                 'nobody can restore it but you.',
-                 'ব্যাকআপ মানে একটা এনক্রিপ্টেড ফাইল, আপনি যেখানে বলবেন সেখানে লেখা হয়। ' +
-                 'মেলানোর কোনো ক্লাউড নেই, ফিরিয়ে আনার কোনো অ্যাকাউন্ট নেই — অর্থাৎ আপনি ' +
-                 'ছাড়া আর কেউ ওটা ফেরাতেও পারবে না।'],
+  f7Body:       ['A backup is one file, encrypted with AES-GCM under a key stretched ' +
+                 'from your own password, written where you choose. No account is needed ' +
+                 'to make one or to read one back — which also means nobody can restore ' +
+                 'it for you.',
+                 'ব্যাকআপ মানে একটা ফাইল, আপনার নিজের পাসওয়ার্ড থেকে বানানো চাবি দিয়ে ' +
+                 'AES-GCM-এ এনক্রিপ্ট করা, আপনি যেখানে বলবেন সেখানে লেখা। ' +
+                 'বানাতে বা ফেরাতে কোনো অ্যাকাউন্ট লাগে না — অর্থাৎ আপনি ছাড়া আর কেউ ' +
+                 'ওটা ফিরিয়েও দিতে পারবে না।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
   f8Body:       ['A PIN or your fingerprint on the way in. Bangla or English, light or ' +
                  'dark, and an accent colour — all switchable whenever you like, and all ' +
@@ -212,11 +250,15 @@ const S = {
                  'পছন্দের রং — সবই যখন খুশি বদলানো যায়, আর মনে থাকে।'],
 
   // -- privacy -----------------------------------------------------------------
-  privLead:     ['The short version: nothing is collected, because there is nowhere for it ' +
-                 'to go. The rest of this page is that claim spelled out, so you can check ' +
-                 'it rather than take it.',
-                 'সংক্ষেপে: কিছুই সংগ্রহ করা হয় না, কারণ পাঠানোর কোনো জায়গাই নেই। এই পাতার ' +
-                 'বাকিটা ওই কথাটারই খোলাসা, যাতে বিশ্বাস না করে মিলিয়ে দেখতে পারেন।'],
+  privLead:     ['The short version: nothing is collected and nothing is reported, because ' +
+                 'there is nobody to report to. One copy of your ledger can leave the ' +
+                 'phone — Android’s own backup, into your own Google account — and it has ' +
+                 'a section to itself below. The rest of this page is all of that spelled ' +
+                 'out, so you can check it rather than take it.',
+                 'সংক্ষেপে: কিছুই সংগ্রহ করা হয় না, কোথাও রিপোর্টও যায় না, কারণ রিপোর্ট ' +
+                 'করার মতো কেউ নেই। আপনার খাতার একটা কপি ফোন ছাড়তে পারে — অ্যান্ড্রয়েডের ' +
+                 'নিজের ব্যাকআপ, আপনারই গুগল অ্যাকাউন্টে — নিচে তার নিজের একটা অংশ আছে। ' +
+                 'এই পাতার বাকিটা সেসবেরই খোলাসা, যাতে বিশ্বাস না করে মিলিয়ে দেখতে পারেন।'],
 
   privCollectTitle:['What is collected', 'কী কী সংগ্রহ করা হয়'],
   privCollectBody:['Nothing. No account, no sign-in, no email address, no device ' +
@@ -241,19 +283,43 @@ const S = {
   privNetBody:  ['Twice, and both for the same errand: it asks GitHub what the newest ' +
                  'release is, and if you say yes it downloads that file. Two files in the ' +
                  'whole app can open a connection and both of them are that errand — so ' +
-                 'there is no path an entry could take out, whether or not anyone wanted ' +
-                 'it to.',
+                 'no entry of yours travels on a connection the app opens. Android’s ' +
+                 'backup does not use them either; it is the system copying the file, ' +
+                 'and it is the next section.',
                  'দুবার, আর দুবারই একই কাজে: গিটহাবকে জিজ্ঞেস করে সবচেয়ে নতুন রিলিজ কোনটা, ' +
                  'আর আপনি হ্যাঁ বললে সেই ফাইলটা নামায়। পুরো অ্যাপে মাত্র দুটো ফাইল সংযোগ খুলতে ' +
-                 'পারে, আর দুটোই এই কাজেরই — তাই কেউ চাইলেও কোনো হিসাব বেরোনোর পথই নেই।'],
+                 'পারে, আর দুটোই এই কাজেরই — তাই অ্যাপের খোলা কোনো সংযোগে আপনার হিসাব ' +
+                 'যায় না। অ্যান্ড্রয়েডের ব্যাকআপও ওই দুটো দিয়ে যায় না; ওটা সিস্টেমের ' +
+                 'নিজের ফাইল-কপি, আর সেটাই পরের অংশ।'],
 
-  privBackupTitle:['Backups', 'ব্যাকআপ'],
-  privBackupBody:['A backup is an encrypted file, written where you point it. Nobody ' +
-                 'receives a copy and no service holds a key — which is the same sentence ' +
-                 'read the other way: lose the file and the password, and nobody can get ' +
-                 'it back for you either.',
-                 'ব্যাকআপ মানে একটা এনক্রিপ্টেড ফাইল, আপনি যেখানে দেখাবেন সেখানে লেখা হয়। ' +
-                 'কেউ কোনো কপি পায় না, চাবি রাখার কোনো সেবাও নেই — উল্টো করে পড়লে কথাটা ' +
+  privAutoTitle:['The one copy that leaves the phone', 'যে কপিটা ফোন ছাড়ে'],
+  privAutoBody: ['Android backs up apps to your Google account, and LedgerBook lets it. ' +
+                 'What goes is the ledger database and your language and theme settings. ' +
+                 'What does not go is your PIN — it is left off the list on purpose, so a ' +
+                 'restored install always asks you to set a new one. The copy is made by ' +
+                 'Android, not by the app, into your own account, and on Android 9 and ' +
+                 'later it is encrypted with your screen lock, which Google does not ' +
+                 'have. Turn it off in Android’s own Settings and nothing goes at all; ' +
+                 'the app’s Backup page has the link. This is also what brings your ' +
+                 'ledger back when you reinstall or move to a new phone.',
+                 'অ্যান্ড্রয়েড অ্যাপগুলোর ব্যাকআপ আপনার গুগল অ্যাকাউন্টে রাখে, আর LedgerBook ' +
+                 'সেটা হতে দেয়। যায় খাতার ডেটাবেস আর আপনার ভাষা ও থিমের পছন্দ। যায় না ' +
+                 'আপনার পিন — ইচ্ছা করেই তালিকার বাইরে রাখা, তাই ফিরিয়ে আনা অ্যাপ সবসময় ' +
+                 'নতুন পিন চায়। কপিটা অ্যাপ বানায় না, অ্যান্ড্রয়েড বানায়, আপনারই ' +
+                 'অ্যাকাউন্টে, আর অ্যান্ড্রয়েড ৯ বা তার পরে সেটা আপনার স্ক্রিন লক দিয়ে ' +
+                 'এনক্রিপ্ট করা — যেটা গুগলের কাছে নেই। অ্যান্ড্রয়েডের সেটিংস থেকে বন্ধ ' +
+                 'করে দিলে কিছুই যায় না; অ্যাপের ব্যাকআপ পাতায় সেই লিংক আছে। এটাই আবার ' +
+                 'আপনার খাতা ফিরিয়ে আনে, যখন অ্যাপ আবার ইনস্টল করেন বা নতুন ফোনে যান।'],
+
+  privBackupTitle:['Backups you make yourself', 'নিজের হাতে বানানো ব্যাকআপ'],
+  privBackupBody:['The backup you make from inside the app is a different thing: one ' +
+                 'encrypted file, written where you point it. Nobody is sent a copy and ' +
+                 'no service holds its key — which is the same sentence read the other ' +
+                 'way: lose the file and the password, and nobody can get it back for ' +
+                 'you either.',
+                 'অ্যাপের ভেতর থেকে আপনি যে ব্যাকআপ বানান সেটা আলাদা জিনিস: একটা ' +
+                 'এনক্রিপ্টেড ফাইল, আপনি যেখানে দেখাবেন সেখানে লেখা। কারও কাছে কপি ' +
+                 'পাঠানো হয় না, চাবি রাখার কোনো সেবাও নেই — উল্টো করে পড়লে কথাটা ' +
                  'একই: ফাইল আর পাসওয়ার্ড দুটোই হারালে কেউ সেটা আপনাকে ফিরিয়েও দিতে পারবে না।'],
 
   privDeleteTitle:['Getting rid of it all', 'সব মুছে ফেলা'],
