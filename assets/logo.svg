@@ -2,7 +2,7 @@
 <!--
   The LedgerBook mark: a ledger's spine with equal entries either side.
 
-  The app's one real difference from every other money app is double entry -- every
+  The app's one real difference from every other money app is double entry — every
   amount is written twice, once on each side, and the two must agree. That is what this
   draws: a rule down the middle and the same weight of ink to its left and right. Read
   quickly it is a broken equals sign, which says the same thing again.

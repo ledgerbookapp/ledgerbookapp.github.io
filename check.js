@@ -80,6 +80,14 @@ for (const page of rest)
   if (headers.get(page) !== headers.get(first))
     note(`${page}: its header has drifted from ${first}'s`);
 
+// -- the SVGs -------------------------------------------------------------------
+// An SVG file is XML, and XML forbids "--" inside a comment. A browser that meets one
+// refuses the whole file, silently: logo.svg carried an explanatory comment with a
+// dash pair in it, and for as long as it did every tab fell back to the PNG icon.
+for (const f of fs.readdirSync('assets').filter(n => n.endsWith('.svg')))
+  for (const m of fs.readFileSync('assets/' + f, 'utf8').matchAll(/<!--([\s\S]*?)-->/g))
+    if (m[1].includes('--')) note(`assets/${f}: a comment contains "--", which makes the file invalid XML`);
+
 // -- what the script reaches for ------------------------------------------------
 const js = fs.readFileSync('assets/site.js', 'utf8');
 for (const m of js.matchAll(/\bS\.([A-Za-z][A-Za-z0-9]*)/g))

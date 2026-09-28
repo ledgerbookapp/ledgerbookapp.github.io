@@ -448,7 +448,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 /* `.hero` is shared with the other pages and zeroes the side padding; the gutter is put
    back here because this one is also the `.wrap`. */
 .hero-home {
-  display: grid; grid-template-columns: minmax(0, 600px) 1fr;
+  display: grid; grid-template-columns: minmax(0, 720px) 1fr;
   column-gap: 40px; align-items: start;
   padding: 96px var(--gutter) 0;
 }
@@ -465,10 +465,17 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   padding: 3px 10px; border-radius: 999px;
 }
 
+/* Two lines, always: "Your money, your phone," and then "nobody else." in gold -- the
+   owner asked for the sentence to break at its comma and nowhere else. The first line
+   is the long one, 11.22em in Manrope at this weight, so the size is whatever makes it
+   fit the column it is in (cqi is that column's width) and no larger than 72px. Below
+   28px it is allowed to wrap rather than shrink further. */
+.hero-copy { container-type: inline-size; }
 .hero-home h1 {
-  font-size: clamp(44px, 5vw + 16px, 72px); line-height: 1; font-weight: 800;
+  font-size: clamp(28px, 100cqi / 11.4, 72px); line-height: 1.02; font-weight: 800;
   letter-spacing: -.035em; margin: 0;
 }
+.hero-home h1 span, .hero-home h1 em { display: block; }
 .hero-home h1 em { font-style: normal; color: var(--accent-ink); }
 .hero-home p.lead {
   font-size: 18px; line-height: 1.78; color: var(--ink-muted);
@@ -479,7 +486,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 
 /* -- the phone -------------------------------------------------------------------- */
 .phone {
-  justify-self: end; margin: 18px clamp(0px, 5.5vw, 80px) 0 0;
+  justify-self: end; margin: 18px clamp(0px, 4vw, 60px) 0 0;
   width: 300px; height: 610px; padding: 10px;
   background: var(--frame); border: 1px solid var(--edge); border-radius: 46px;
   box-shadow: var(--shadow);
@@ -654,9 +661,8 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
  * of a headline cuts through the first -- so it gets room, and none of the negative
  * tracking, which only pulls conjuncts into each other.
  */
-/* Bengali also sets larger than Latin at the same size -- the headline ran to four lines
-   where the English takes three -- so it is drawn a step smaller. */
-html[lang="bn"] .hero-home h1 { font-size: clamp(36px, 4vw + 12px, 58px); line-height: 1.3; letter-spacing: 0; }
+/* The Bangla first line is 16em, not 11, so it is fitted the same way to its own width. */
+html[lang="bn"] .hero-home h1 { font-size: clamp(28px, 100cqi / 16.2, 58px); line-height: 1.3; letter-spacing: 0; }
 html[lang="bn"] .mock-tag, html[lang="bn"] .mock-label, html[lang="bn"] .pill-tag { letter-spacing: 0; }
 html[lang="bn"] .sec-head h2, html[lang="bn"] .trust h2, html[lang="bn"] .band h2 { line-height: 1.35; letter-spacing: 0; }
 html[lang="bn"] .num-big, html[lang="bn"] .brand b { letter-spacing: 0; }
