@@ -346,18 +346,31 @@ function setupLightbox() {
  * line a third of the way down the window -- so the mark moves as a heading comes up to
  * reading height, not when it first peeks in at the bottom. At the very end of the page
  * the last section is marked even if it is too short to reach that line.
+ *
+ * Except when the reader chose one. The last two sections are short, so on a window a
+ * thousand pixels tall, jumping to "What it asks for" lands at the bottom of the page --
+ * and the end-of-page rule marked "Getting rid of it all", the one they had not pressed.
+ * So a pressed link, or a #section in the address, stays marked until the reader moves
+ * the page themselves: a wheel, a touch, or a key.
  */
 function setupToc() {
   const links = [...document.querySelectorAll('.priv-toc a')];
   if (!links.length) return;
   const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  let chosen = links.findIndex(a => a.getAttribute('href') === location.hash);
   function paint() {
-    const line = window.innerHeight / 3;
-    let n = 0;
-    secs.forEach((s, k) => { if (s && s.getBoundingClientRect().top <= line) n = k; });
-    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) n = secs.length - 1;
+    let n = chosen;
+    if (n < 0) {
+      const line = window.innerHeight / 3;
+      n = 0;
+      secs.forEach((s, k) => { if (s && s.getBoundingClientRect().top <= line) n = k; });
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) n = secs.length - 1;
+    }
     links.forEach((a, k) => a.classList.toggle('on', k === n));
   }
+  links.forEach((a, k) => a.addEventListener('click', () => { chosen = k; paint(); }));
+  const release = () => { if (chosen >= 0) { chosen = -1; paint(); } };
+  ['wheel', 'touchstart', 'keydown'].forEach(t => window.addEventListener(t, release, { passive: true }));
   window.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
   window.addEventListener('resize', paint);
   paint();
