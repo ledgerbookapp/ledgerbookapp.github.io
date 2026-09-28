@@ -202,18 +202,18 @@ const S = {
                  'সে প্রতিটা APK নিয়েই এটা বলে। Download anyway বেছে নিন।'],
   step2Head:    ['Open it', 'ফাইলটা খুলুন'],
   step2Body:    ['Open the downloaded file. Android says this source is not allowed to ' +
-                 'install apps yet. Tap Settings — not Cancel — and turn on Allow from ' +
-                 'this source. The install carries on by itself from there.',
+                 'install apps yet. Tap **Settings** — not Cancel — and turn on **Allow from ' +
+                 'this source**. The install carries on by itself from there.',
                  'নামানো ফাইলটা খুলুন। অ্যান্ড্রয়েড বলবে এই উৎস থেকে অ্যাপ ইনস্টলের অনুমতি নেই। ' +
-                 'Settings-এ চাপুন — Cancel নয় — আর Allow from this source চালু করুন। ' +
+                 '**Settings**-এ চাপুন — Cancel নয় — আর **Allow from this source** চালু করুন। ' +
                  'এরপর ইনস্টল নিজে থেকেই এগোতে থাকবে।'],
   step3Head:    ['Install', 'ইনস্টল করুন'],
   step3Body:    ['Tap Install. Play Protect then says it has not seen this app before and ' +
-                 'offers to scan it — choose Scan app. It takes about a minute and comes ' +
-                 'back with This app looks safe, and then you tap Install again.',
+                 'offers to scan it — choose **Scan app**. It takes about a minute and comes ' +
+                 'back with **This app looks safe**, and then you tap Install again.',
                  'Install-এ চাপুন। এরপর Play Protect বলবে এই অ্যাপ সে আগে দেখেনি, আর পরীক্ষা ' +
-                 'করার প্রস্তাব দেবে — Scan app বেছে নিন। প্রায় এক মিনিট লাগে, তারপর দেখাবে ' +
-                 'This app looks safe, আর আপনি আবার Install-এ চাপবেন।'],
+                 'করার প্রস্তাব দেবে — **Scan app** বেছে নিন। প্রায় এক মিনিট লাগে, তারপর দেখাবে ' +
+                 '**This app looks safe**, আর আপনি আবার Install-এ চাপবেন।'],
   step4Head:    ['Set your PIN', 'পিন ঠিক করুন'],
   step4Body:    ['Open LedgerBook. It asks what to call you, then for a four-digit PIN, ' +
                  'typed twice. The PIN stays on this phone and is never copied — not ' +
@@ -237,8 +237,34 @@ const S = {
                  'Play Protect এটা আগে দেখেনি। Scan app বেছে নিন।'],
   cap3c:        ['What the scan came back with. Tap Install.',
                  'পরীক্ষার পর যা দেখায়। Install-এ চাপুন।'],
-  cap4:         ['Four digits, typed twice. The PIN is never copied anywhere.',
-                 'চার সংখ্যা, দুবার লিখতে হবে। পিন কোথাও কপি হয় না।'],
+  cap4a:        ['It asks what to call you. You can change this anytime in Settings.',
+                 'আপনাকে কী নামে ডাকবে জিজ্ঞেস করে। পরে যেকোনো সময় Settings থেকে বদলানো যায়।'],
+  cap4b:        ['Four digits. Step 1 of 2.', 'চার সংখ্যা। ধাপ ১/২।'],
+  cap4c:        ['The same four digits again. The PIN is never copied anywhere.',
+                 'একই চার সংখ্যা আবার। পিন কোথাও কপি হয় না।'],
+
+  // -- the install page's furniture --------------------------------------------
+  stepWarning:  ['Warning', 'সতর্কতা'],
+  warn1:        ['Expected warning 1 of 2', 'প্রত্যাশিত সতর্কতা, ২টার ১ম'],
+  warn2:        ['Expected warning 2 of 2', 'প্রত্যাশিত সতর্কতা, ২টার ২য়'],
+  // The small labels over each picture in steps 3 and 4, in the order they happen.
+  s3a:          ['Tap Install', 'Install-এ চাপুন'],
+  s3b:          ['Choose Scan app', 'Scan app বেছে নিন'],
+  s3c:          ['Tap Install again', 'আবার Install-এ চাপুন'],
+  s4a:          ['Tell it your name', 'নাম বলুন'],
+  s4b:          ['Create your PIN', 'পিন তৈরি করুন'],
+  s4c:          ['Confirm your PIN', 'পিনটি আবার দিন'],
+  chipNoSignIn: ['No sign-in', 'সাইন ইন নেই'],
+  chipNoAccount:['No account', 'অ্যাকাউন্ট নেই'],
+  chipPinStays: ['PIN never leaves the phone', 'পিন ফোনের বাইরে যায় না'],
+  installDone:  ['That’s it — the app is ready to use.', 'ব্যস — অ্যাপ ব্যবহারের জন্য তৈরি।'],
+  // Stepping through a step's pictures on a phone, where they show one at a time.
+  galPrev:      ['Prev', 'আগে'],
+  galNext:      ['Next', 'পরে'],
+  // The fingerprint card. {v} is filled from the releases API, like every version here.
+  hashTitle:    ['SHA-256 · Version {v}', 'SHA-256 · ভার্সন {v}'],
+  hashCopy:     ['Copy', 'কপি'],
+  hashCopied:   ['Copied', 'কপি হয়েছে'],
 
   verifyTitle:  ['Checking you got the right file', 'ঠিক ফাইলটাই পেয়েছেন কিনা দেখা'],
   verifyBody:   ['Every release publishes the fingerprint of its own file. If the number ' +

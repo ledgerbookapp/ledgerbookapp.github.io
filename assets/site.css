@@ -1008,3 +1008,191 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
   .lb-next { right: 16px; }
   .lb-figure figcaption { padding: 0 64px; }
 }
+
+/* =============================================================================
+ * The install page
+ *
+ * Built to the owner's drawings at 1440 and 390. Each step is a card of its own, its
+ * pictures beside or under the words, and on a phone a step with several pictures shows
+ * them one at a time with Prev and Next under them.
+ * ============================================================================= */
+
+/* -- hero ------------------------------------------------------------------------ */
+.inst-hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) 410px; gap: 48px; align-items: end;
+  padding: 88px var(--gutter) 0;
+}
+.inst-hero .pill-eyebrow { margin-bottom: 18px; }
+.inst-hero h1 {
+  font-size: clamp(40px, 3.4vw + 16px, 64px); line-height: 1.08; font-weight: 800;
+  letter-spacing: -.035em; margin: 0;
+}
+.inst-hero p.lead { margin: 18px 0 0; max-width: 600px; color: var(--ink-muted); font-size: 17px; line-height: 1.75; }
+.inst-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; margin-top: 28px; }
+.inst-cta .meta { margin: 0; }
+
+.toc {
+  list-style: none; margin: 0; padding: 12px 24px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 16px;
+}
+.toc li + li { border-top: 1px solid var(--rule); }
+.toc a {
+  display: flex; align-items: center; gap: 14px; padding: 14px 0;
+  color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 600;
+}
+.toc a:hover > span:nth-child(2) { color: var(--accent-ink); }
+.toc-n {
+  display: inline-grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 999px;
+  background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 800;
+}
+.toc-warn { margin-left: auto; color: var(--accent-ink); font-size: 12px; font-weight: 700; }
+
+/* -- the steps ----------------------------------------------------------------------- */
+.inst-steps { display: grid; gap: 24px; padding-top: 96px; }
+.step {
+  padding: 40px; background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-card);
+  scroll-margin-top: 96px;
+}
+.step .num-title { font-size: 26px; gap: 14px; margin: 0; }
+.step-copy > p:not(.warn-chip), .step-body { margin: 16px 0 0; color: var(--ink-muted); font-size: 15.5px; line-height: 1.75; }
+.step-copy b, .step-body b { color: var(--ink); font-weight: 700; }
+.warn-chip {
+  display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; padding: 6px 12px;
+  border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent-on-tint); font-size: 13px; font-weight: 700;
+}
+.warn-chip .ico { width: 15px; height: 15px; }
+
+.step-split { display: grid; grid-template-columns: 410px minmax(0, 1fr); gap: 36px; align-items: start; }
+/* The body sits on the same line the pictures start on in steps 1 and 2. */
+.step-head { display: grid; grid-template-columns: 410px minmax(0, 1fr); gap: 24px 36px; align-items: center; }
+.step-head .step-body { margin: 0; }
+
+/* The pictures. System dialogs are pictures with their own grey margin, so they only
+   take a corner and a hairline; the app's own screens go in the drawn phone. */
+.step-pics { min-width: 0; }
+.gal-track { display: flex; gap: 20px; align-items: flex-start; }
+.pic { margin: 0; flex: 1 1 0; min-width: 0; max-width: 360px; }
+.pic > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
+.pic figcaption { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
+.step-wide .step-pics { margin-top: 36px; }
+.gal-3 .pic { max-width: none; }
+.pic-label { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: 14px; font-weight: 600; }
+.pic-letter {
+  display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 999px;
+  border: 1px solid var(--edge); font-size: 12px; font-weight: 700; color: var(--ink-muted);
+}
+.gal-phones .gal-track { justify-content: center; gap: 24px; }
+.gal-phones .pic { flex: 0 1 290px; }
+.gal-phones .frame { padding: 6px; border-radius: 40px; border-width: 3px; background: #0C0B0A; }
+.gal-phones .frame img { border-radius: 33px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }
+.chips span {
+  padding: 5px 13px; border: 1px solid var(--edge); border-radius: 999px;
+  font-size: 13.5px; font-weight: 600; color: var(--ink);
+}
+
+.done {
+  display: flex; align-items: center; gap: 16px; margin: 32px 0 0; padding: 20px 22px;
+  border-radius: 14px; background: color-mix(in srgb, var(--green) 13%, var(--card));
+  font-size: 16px; font-weight: 600; color: var(--ink);
+}
+.done-tick {
+  display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 999px;
+  background: var(--green); color: #0C0B0A;
+}
+.done-tick .ico { width: 17px; height: 17px; stroke-width: 2.6; }
+
+/* Prev and Next exist for the phone layout only. */
+.gal-nav { display: none; }
+
+/* -- checking the file ----------------------------------------------------------- */
+.verify { display: grid; grid-template-columns: minmax(0, 1fr) 544px; gap: 32px 64px; align-items: start; }
+.pill-quiet { color: var(--ink-muted); }
+.verify .sec-title { margin-top: 2px; }
+.verify-copy > p:not(.pill-eyebrow) { margin: 16px 0 0; color: var(--ink-muted); font-size: 16px; line-height: 1.75; max-width: 460px; }
+.hash-card { padding: 24px; background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-card); }
+.hash-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+.hash-head b { font-size: 15px; }
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 14px; font-weight: 600;
+  color: var(--ink); background: var(--panel); border: 1px solid var(--edge);
+}
+.copy-btn[hidden] { display: none; }
+.copy-btn .ico { width: 16px; height: 16px; }
+.copy-btn:hover { border-color: var(--ink-faint); }
+.copy-btn.is-done { color: var(--green); border-color: color-mix(in srgb, var(--green) 45%, transparent); }
+.hash-card code.hash {
+  padding: 16px 18px; border-radius: 12px; background: var(--panel);
+  font-size: 14.5px; line-height: 1.6; color: var(--accent-ink);
+}
+
+/* -- narrower -------------------------------------------------------------------- */
+@media (max-width: 1079px) {
+  .inst-hero { grid-template-columns: 1fr; gap: 32px; }
+  .step-split { grid-template-columns: 1fr; gap: 24px; }
+  .step-head { grid-template-columns: 1fr; gap: 14px; }
+  .verify { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 719px) {
+  .inst-hero { padding-top: 40px; gap: 28px; }
+  .inst-hero h1 { font-size: 44px; line-height: 1.02; }
+  .inst-hero p.lead { font-size: 16px; line-height: 1.65; }
+  .inst-cta { flex-direction: column; align-items: stretch; gap: 14px; margin-top: 24px; }
+  .inst-cta .meta { text-align: center; }
+  .toc { padding: 4px 18px; }
+  .toc a { padding: 12px 0; }
+
+  .inst-steps { gap: 20px; padding-top: 48px; }
+  .step { padding: 20px; border-radius: 22px; }
+  .step .num-title { font-size: 24px; }
+  .step-copy > p:not(.warn-chip), .step-body { font-size: 15.5px; line-height: 1.6; }
+  .step .chips { display: none; }
+  .step-head { grid-template-columns: 1fr; gap: 0; }
+  .step-head .step-body { margin-top: 14px; }
+  .step-wide .step-pics { margin-top: 20px; }
+
+  /* One picture at a time: the row scrolls sideways a picture's width per step, and the
+     buttons under it do the same for anyone who does not think to swipe. */
+  .gal-track {
+    gap: 0; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scrollbar-width: none;
+    align-items: flex-start; transition: height .25s ease;
+  }
+  .gal-track::-webkit-scrollbar { display: none; }
+  .gal .pic, .gal-phones .pic { flex: 0 0 100%; max-width: none; scroll-snap-align: start; }
+  /* The wide layout centres the three phones with a gap between; a strip that scrolls
+     must start at its left edge with none, or the first picture sits out of reach. */
+  .gal-phones .gal-track { gap: 0; justify-content: flex-start; }
+  .gal-phones .frame { width: 66%; margin: 0 auto; }
+  .gal-phones figcaption { text-align: center; padding: 0 12px; }
+  .pic-label { gap: 5px; font-size: 15px; }
+  .pic-letter { display: inline; width: auto; height: auto; border: 0; font-size: 15px; color: var(--ink); }
+  .pic-letter::after { content: " ·"; }
+
+  .gal-nav { display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+  .gal-btn {
+    display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+    min-height: 44px; padding: 0 16px; border-radius: 12px; font: inherit; font-size: 15px; font-weight: 700;
+    color: var(--ink); background: none; border: 1px solid var(--edge);
+  }
+  .gal-btn .ico { width: 18px; height: 18px; }
+  .gal-btn:disabled { color: var(--ink-faint); cursor: default; }
+  .gal-next { margin-left: auto; background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+  .gal-next:disabled { background: none; color: var(--ink-faint); border-color: var(--edge); }
+  .gal-dots { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
+  .gal-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--edge); transition: width .2s; }
+  .gal-dot.on { width: 22px; background: var(--accent); }
+  .gal-count { color: var(--ink-muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+
+  .done { margin-top: 20px; padding: 14px; gap: 10px; font-size: 14.5px; }
+  .done-tick { width: 28px; height: 28px; }
+
+  .verify-copy > p:not(.pill-eyebrow) { font-size: 16px; line-height: 1.65; }
+  .hash-card { padding: 20px 18px; }
+  .hash-card code.hash { font-size: 13.5px; }
+}
+
+html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing: 0; line-height: 1.3; }

@@ -76,46 +76,141 @@
   </div>
 </header>
 
-<main>
-  <div class="wrap">
+<main class="home inst">
 
-    <section class="hero" style="padding-bottom:20px">
+  <!-- -- hero: the words and the button on the left, the four steps as a list on the right -->
+  <section class="wrap inst-hero">
+    <div class="inst-hero-copy">
+      <p class="pill-eyebrow" data-s="navInstall">How to install</p>
       <h1 data-s="installTitle">Installing LedgerBook</h1>
       <p class="lead" data-s="installLead"></p>
-      <div class="cta">
-        <a class="btn" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases"
-           data-s="downloadAlt">Open the releases page</a>
+      <div class="inst-cta">
+        <!-- Starts as a link to the releases page and is narrowed to the exact file once
+             the API answers, so it is never a dead button. -->
+        <a class="btn btn-lg" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+          <span data-dl-label>Open the releases page</span>
+        </a>
+        <p class="meta" data-rel="line"></p>
       </div>
-      <p class="meta" id="dl-meta"></p>
-    </section>
+    </div>
+    <ol class="toc">
+      <li><a href="#step-1"><span class="toc-n">1</span><span data-s="step1Head">Download the file</span><span class="toc-warn" data-s="stepWarning">Warning</span></a></li>
+      <li><a href="#step-2"><span class="toc-n">2</span><span data-s="step2Head">Open it</span><span class="toc-warn" data-s="stepWarning">Warning</span></a></li>
+      <li><a href="#step-3"><span class="toc-n">3</span><span data-s="step3Head">Install</span></a></li>
+      <li><a href="#step-4"><span class="toc-n">4</span><span data-s="step4Head">Set your PIN</span></a></li>
+    </ol>
+  </section>
 
-    <section>
-      <ol class="steps">
-        <li><h3 data-s="step1Head">Download the file</h3><p data-s="step1Body"></p>
-          <figure><img src="assets/screens/step1-download.png" alt="" loading="lazy" width="536" height="304"><figcaption data-s="cap1"></figcaption></figure></li>
-        <li><h3 data-s="step2Head">Open it</h3><p data-s="step2Body"></p>
-          <figure><img src="assets/screens/step2-permission.png" alt="" loading="lazy" width="481" height="426"><figcaption data-s="cap2"></figcaption></figure>
-          <figure><img src="assets/screens/step2-allow.png" alt="" loading="lazy" width="510" height="415"><figcaption data-s="cap2b"></figcaption></figure></li>
-        <li><h3 data-s="step3Head">Install</h3><p data-s="step3Body"></p>
-          <figure><img src="assets/screens/step3-install.png" alt="" loading="lazy" width="481" height="327"><figcaption data-s="cap3"></figcaption></figure>
-          <figure><img src="assets/screens/step3-protect.png" alt="" loading="lazy" width="499" height="649"><figcaption data-s="cap3b"></figcaption></figure>
-          <figure><img src="assets/screens/step3-safe.png" alt="" loading="lazy" width="499" height="643"><figcaption data-s="cap3c"></figcaption></figure></li>
-        <li><h3 data-s="step4Head">Set your PIN</h3><p data-s="step4Body"></p>
-          <figure><img src="assets/screens/step4-pin.png" alt="" loading="lazy" width="540" height="900"><figcaption data-s="cap4"></figcaption></figure></li>
-      </ol>
-    </section>
+  <section class="wrap inst-steps">
 
-    <section>
-      <h2 data-s="verifyTitle">Checking you got the right file</h2>
-      <div class="card">
-        <p data-s="verifyBody" style="margin-bottom:14px"></p>
-        <!-- Filled from the release body once the API answers; empty until then, which is
-             honest -- a fingerprint printed from memory would be worse than none. -->
-        <code class="hash" id="dl-hash"></code>
+    <!-- -- 1 --------------------------------------------------------------------- -->
+    <article class="step step-split" id="step-1">
+      <div class="step-copy">
+        <h2 class="num-title"><span class="num-badge">1</span><span data-s="step1Head">Download the file</span></h2>
+        <p data-s="step1Body"></p>
+        <p class="warn-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg><span data-s="warn1">Expected warning 1 of 2</span></p>
       </div>
-    </section>
+      <div class="step-pics">
+        <figure class="pic"><img src="assets/screens/step1-download.png" alt="" loading="lazy" width="536" height="304"><figcaption data-s="cap1"></figcaption></figure>
+      </div>
+    </article>
 
-  </div>
+    <!-- -- 2 --------------------------------------------------------------------- -->
+    <article class="step step-split" id="step-2">
+      <div class="step-copy">
+        <h2 class="num-title"><span class="num-badge">2</span><span data-s="step2Head">Open it</span></h2>
+        <p data-s-rich="step2Body"></p>
+        <p class="warn-chip"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg><span data-s="warn2">Expected warning 2 of 2</span></p>
+      </div>
+      <div class="step-pics gal" data-gal>
+        <div class="gal-track">
+          <figure class="pic"><img src="assets/screens/step2-permission.png" alt="" loading="lazy" width="481" height="426"><figcaption data-s="cap2"></figcaption></figure>
+          <figure class="pic"><img src="assets/screens/step2-allow.png" alt="" loading="lazy" width="510" height="415"><figcaption data-s="cap2b"></figcaption></figure>
+        </div>
+        <div class="gal-nav">
+          <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <!-- -- 3 --------------------------------------------------------------------- -->
+    <article class="step step-wide" id="step-3">
+      <div class="step-head">
+        <h2 class="num-title"><span class="num-badge">3</span><span data-s="step3Head">Install</span></h2>
+        <p class="step-body" data-s-rich="step3Body"></p>
+      </div>
+      <div class="step-pics gal gal-3" data-gal>
+        <div class="gal-track">
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">a</span><span data-s="s3a">Tap Install</span></p>
+            <img src="assets/screens/step3-install.png" alt="" loading="lazy" width="481" height="327"><figcaption data-s="cap3"></figcaption></figure>
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">b</span><span data-s="s3b">Choose Scan app</span></p>
+            <img src="assets/screens/step3-protect.png" alt="" loading="lazy" width="499" height="649"><figcaption data-s="cap3b"></figcaption></figure>
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">c</span><span data-s="s3c">Tap Install again</span></p>
+            <img src="assets/screens/step3-safe.png" alt="" loading="lazy" width="499" height="643"><figcaption data-s="cap3c"></figcaption></figure>
+        </div>
+        <div class="gal-nav">
+          <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+    </article>
+
+    <!-- -- 4 --------------------------------------------------------------------- -->
+    <!-- The three screens are the app as released since 1.1.65: the name on a screen of
+         its own, then the PIN, then the PIN again. -->
+    <article class="step step-wide" id="step-4">
+      <div class="step-head">
+        <div>
+          <h2 class="num-title"><span class="num-badge">4</span><span data-s="step4Head">Set your PIN</span></h2>
+          <p class="chips"><span data-s="chipNoSignIn">No sign-in</span><span data-s="chipNoAccount">No account</span><span data-s="chipPinStays">PIN never leaves the phone</span></p>
+        </div>
+        <p class="step-body" data-s="step4Body"></p>
+      </div>
+      <div class="step-pics gal gal-3 gal-phones" data-gal>
+        <div class="gal-track">
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">a</span><span data-s="s4a">Tell it your name</span></p>
+            <div class="frame"><img src="assets/screens/step4-name.png" alt="" loading="lazy" width="546" height="1184"></div><figcaption data-s="cap4a"></figcaption></figure>
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">b</span><span data-s="s4b">Create your PIN</span></p>
+            <div class="frame"><img src="assets/screens/step4-create.png" alt="" loading="lazy" width="546" height="1184"></div><figcaption data-s="cap4b"></figcaption></figure>
+          <figure class="pic"><p class="pic-label"><span class="pic-letter">c</span><span data-s="s4c">Confirm your PIN</span></p>
+            <div class="frame"><img src="assets/screens/step4-confirm.png" alt="" loading="lazy" width="546" height="1184"></div><figcaption data-s="cap4c"></figcaption></figure>
+        </div>
+        <div class="gal-nav">
+          <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      <p class="done"><span class="done-tick"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span data-s="installDone">That’s it — the app is ready to use.</span></p>
+    </article>
+
+  </section>
+
+  <!-- -- checking the file ----------------------------------------------------------- -->
+  <section class="wrap block verify">
+    <div class="verify-copy">
+      <p class="pill-eyebrow pill-quiet" data-s="permOptional">Optional</p>
+      <h2 class="sec-title" data-s="verifyTitle">Checking you got the right file</h2>
+      <p data-s="verifyBody"></p>
+    </div>
+    <div class="hash-card">
+      <div class="hash-head">
+        <b><span class="only-wide" data-rel="hashTitle">SHA-256</span><span class="only-narrow" data-rel="hashTitleShort">SHA-256</span></b>
+        <button type="button" class="copy-btn" data-copy="#dl-hash" hidden>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+          <span data-s="hashCopy">Copy</span></button>
+      </div>
+      <!-- Filled from the release body once the API answers; until then it says where the
+           number is, which is honest -- a fingerprint printed from memory would be worse
+           than none. -->
+      <code class="hash" id="dl-hash" data-rel="sha"></code>
+    </div>
+  </section>
+
 </main>
 
 <footer>

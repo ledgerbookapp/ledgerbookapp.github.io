@@ -37,6 +37,17 @@ function applyLang(lang) {
     const pair = S[el.dataset.s];
     if (pair) el.textContent = pair[i];
   });
+  // data-s-rich: the same, but **marked** words come out bold -- the names of buttons the
+  // reader is about to see on their phone. Built as text nodes and <b> elements, never
+  // as HTML, so nothing in the catalogue can become markup by accident.
+  document.querySelectorAll('[data-s-rich]').forEach(el => {
+    const pair = S[el.dataset.sRich];
+    if (!pair) return;
+    el.replaceChildren(...pair[i].split('**').map((part, n) => {
+      if (n % 2 === 0) return document.createTextNode(part);
+      const b = document.createElement('b'); b.textContent = part; return b;
+    }));
+  });
   // A control whose face is a glyph still needs words for a screen reader; data-s-label
   // puts them in aria-label instead of in the text, and in the same language.
   document.querySelectorAll('[data-s-label]').forEach(el => {
@@ -147,6 +158,8 @@ function renderRelease() {
     set('[data-rel="lineShort"]', '');
     set('[data-rel="title"]', S.relLatest[i]);
     set('[data-rel="sha"]', S.relHashWait[i]);
+    set('[data-rel="hashTitle"], [data-rel="hashTitleShort"]', 'SHA-256');
+    document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = true; });
     return;
   }
 
@@ -157,6 +170,66 @@ function renderRelease() {
   if (release.size) set('[data-rel="size"]', fmtSize(release.size));
   if (release.sha) set('#dl-hash, [data-rel="sha"]', release.sha);
   else set('[data-rel="sha"]', S.relHashWait[i]);
+  set('[data-rel="hashTitle"]', f(S.hashTitle[i]));
+  set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + release.version);
+  // Copy is offered only once there is a fingerprint to copy.
+  document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = !release.sha; });
+}
+
+/* -- copying the fingerprint --------------------------------------------------
+ *
+ * Sixty-four characters are not typed by hand into a checksum app. The button copies the
+ * fingerprint and says so for two seconds, then goes back to saying Copy.
+ */
+function setupCopy() {
+  document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
+    const src = document.querySelector(btn.dataset.copy);
+    if (!src || !release || !release.sha) return;
+    const label = btn.querySelector('[data-s]');
+    try { await navigator.clipboard.writeText(release.sha); } catch (_) { return; }
+    const i = LANGS[currentLang()];
+    label.textContent = S.hashCopied[i];
+    btn.classList.add('is-done');
+    setTimeout(() => { label.textContent = S.hashCopy[LANGS[currentLang()]]; btn.classList.remove('is-done'); }, 2000);
+  }));
+}
+
+/* -- a step's pictures, one at a time on a phone -------------------------------
+ *
+ * On a wide screen every picture of a step sits side by side and this does nothing. On a
+ * phone the row becomes a strip that scrolls sideways a picture at a time, and the Prev
+ * and Next buttons under it move it; the dots and the count follow the strip however it
+ * was moved -- by the buttons or by the reader's thumb.
+ */
+function setupGalleries() {
+  document.querySelectorAll('[data-gal]').forEach(gal => {
+    const track = gal.querySelector('.gal-track');
+    const items = [...track.children];
+    const prev = gal.querySelector('.gal-prev');
+    const next = gal.querySelector('.gal-next');
+    const dots = [...gal.querySelectorAll('.gal-dot')];
+    const count = gal.querySelector('.gal-count');
+    const at = () => Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+    const nav = gal.querySelector('.gal-nav');
+    function paint() {
+      const n = Math.min(items.length - 1, Math.max(0, at()));
+      // One at a time, the strip takes the height of the picture in view -- otherwise a
+      // short dialog sits above a gap the height of the tallest phone. Side by side, it
+      // is left to size itself.
+      const single = nav && getComputedStyle(nav).display !== 'none';
+      track.style.height = single ? items[n].offsetHeight + 'px' : '';
+      dots.forEach((d, k) => d.classList.toggle('on', k === n));
+      if (count) count.textContent = (n + 1) + ' / ' + items.length;
+      if (prev) prev.disabled = n === 0;
+      if (next) next.disabled = n === items.length - 1;
+    }
+    const go = (d) => track.scrollTo({ left: (at() + d) * track.clientWidth, behavior: 'smooth' });
+    if (prev) prev.addEventListener('click', () => go(-1));
+    if (next) next.addEventListener('click', () => go(1));
+    track.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
+    window.addEventListener('resize', paint);
+    paint();
+  });
 }
 
 /* -- the menu ------------------------------------------------------------------
@@ -293,6 +366,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   labelMenu();
   setupLightbox();
+  setupGalleries();
+  setupCopy();
 
   releaseReady = loadRelease();
 });

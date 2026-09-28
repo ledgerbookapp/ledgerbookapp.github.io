@@ -51,7 +51,7 @@ for (const page of PAGES) {
   if (!fs.existsSync(page)) { note(`missing page: ${page}`); continue; }
   const html = fs.readFileSync(page, 'utf8');
 
-  for (const m of html.matchAll(/data-s(-label)?="([^"]+)"/g))
+  for (const m of html.matchAll(/data-s(-label|-rich)?="([^"]+)"/g))
     if (!S[m[2]]) note(`${page}: data-s${m[1] || ''}="${m[2]}" has no entry in the catalogue`);
 
   for (const m of html.matchAll(/(?:src|href)="((?:assets)\/[^"]+)"/g))

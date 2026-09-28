@@ -63,3 +63,11 @@ They are not decoration. Writing the guide from memory had it telling readers to
 "Install anyway", a button that is not on that screen, and to set a PIN on first launch
 without mentioning that it asks for a name first. Both were found by photographing the
 real thing. If a step's wording changes, re-take its picture.
+
+**Step 4 is the exception, for now.** 1.1.65 split the first launch into three screens —
+the name, the PIN, the PIN again — and the old single picture (`step4-pin.png`, one screen
+with both PIN rows on it) no longer matched anything a reader would see, so it is gone.
+The three that replace it (`step4-name`, `step4-create`, `step4-confirm`) are cut from the
+owner's drawing of the install page, which shows the released screens in the dark theme;
+they were not taken on the emulator. Re-take them there when the chance comes, on the same
+clean emulator as the rest, and keep the names.
