@@ -64,10 +64,15 @@ They are not decoration. Writing the guide from memory had it telling readers to
 without mentioning that it asks for a name first. Both were found by photographing the
 real thing. If a step's wording changes, re-take its picture.
 
-**Step 4 is the exception, for now.** 1.1.65 split the first launch into three screens —
-the name, the PIN, the PIN again — and the old single picture (`step4-pin.png`, one screen
-with both PIN rows on it) no longer matched anything a reader would see, so it is gone.
-The three that replace it (`step4-name`, `step4-create`, `step4-confirm`) are cut from the
-owner's drawing of the install page, which shows the released screens in the dark theme;
-they were not taken on the emulator. Re-take them there when the chance comes, on the same
-clean emulator as the rest, and keep the names.
+**Step 4 and the features page are full size.** 1.1.65 split the first launch into
+three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both
+themes, taken on LB_Clean at 1080 wide with the status bar cut off (`step4-*-light`,
+`step4-*-dark`). The features page's twelve are the same device, full screen, 1080×2424,
+so the enlarged view is sharp on a phone. They came from the sample ledger already on
+LB_Clean, with the owner's name set to Raahat; reaching the sign-up screens used the app's
+own Sign Out & Reset PIN, which keeps the ledger.
+
+Steps 1 to 3 are still the older half-size crops, around 500 pixels wide, and look soft
+on a sharp screen. Re-taking them needs a genuine first install on LB_Clean, which means
+uninstalling there — and that ledger is what the features page is photographed from, so
+export a backup from the app first.
