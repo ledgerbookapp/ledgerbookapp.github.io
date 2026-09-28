@@ -759,3 +759,185 @@ html[lang="bn"] .num-big, html[lang="bn"] .brand b { letter-spacing: 0; }
     text-decoration: underline; text-underline-offset: 4px;
   }
 }
+
+/* -- the current page in the header ---------------------------------------------
+ * The owner's drawing of the features page marks where you are with a gold rule under
+ * the link as well as the brighter ink. It belongs to the header, so every page has it;
+ * the folded menu on a phone keeps only the ink, since a rule under a full-width row
+ * reads as a divider rather than as "you are here".
+ */
+@media (min-width: 880px) {
+  nav a[aria-current="page"] { font-weight: 600; box-shadow: inset 0 -2px var(--accent); padding-bottom: 8px; margin-bottom: -2px; }
+}
+
+/* =============================================================================
+ * The features page
+ *
+ * Built to the owner's drawings at 1440 and 390 like the home page, and sharing its
+ * pieces: the tile, the card, the band. What is new is below.
+ * ============================================================================= */
+
+/* -- hero: centred on a wide screen, left-aligned on a phone ---------------------- */
+.feat-hero { text-align: center; padding: 96px var(--gutter) 0; }
+.pill-eyebrow {
+  display: inline-block; margin: 0 0 20px; padding: 6px 16px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 999px;
+  color: var(--accent-ink); font-size: 13px; font-weight: 600; line-height: 1.5;
+}
+.feat-hero h1 {
+  font-size: clamp(44px, 3.4vw + 16px, 64px); line-height: 1.08; font-weight: 800;
+  letter-spacing: -.035em; margin: 0;
+}
+.feat-hero p.lead {
+  margin: 22px auto 0; max-width: 580px;
+  color: var(--ink-muted); font-size: 18px; line-height: 1.75;
+}
+.jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 32px; }
+.jump a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px;
+  border: 1px solid var(--edge); border-radius: 999px;
+  color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
+}
+.jump a:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
+/* A jump lands the heading under the sticky header, not behind it. */
+.feat [id] { scroll-margin-top: 96px; }
+
+/* -- a section's heading ---------------------------------------------------------- */
+.sec-title, .num-title {
+  font-size: clamp(30px, 1.2vw + 20px, 36px); line-height: 1.15; font-weight: 800;
+  letter-spacing: -.03em; margin: 0;
+}
+.sec-sub { margin: 8px 0 0; color: var(--ink-muted); font-size: 16px; line-height: 1.6; }
+.num-title { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; }
+.num-badge {
+  display: inline-grid; place-items: center; flex: none;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--accent); color: var(--on-accent);
+  font-size: 15px; font-weight: 800; letter-spacing: 0;
+}
+
+/* -- the six screenshots, each in a drawn phone ----------------------------------- */
+.frame {
+  position: relative; padding: 5px; border-radius: 26px;
+  background: var(--page); border: 2px solid var(--frame);
+  box-shadow: var(--shadow);
+}
+.frame img { display: block; width: 100%; height: auto; border-radius: 21px; }
+.frame .s-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .frame .s-light { display: none; }
+  :root:not([data-theme="light"]) .frame .s-dark  { display: block; }
+}
+:root[data-theme="dark"] .frame .s-light { display: none; }
+:root[data-theme="dark"] .frame .s-dark  { display: block; }
+
+.shots-row {
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 18px;
+  margin-top: 40px;
+}
+.shots-row .shot { margin: 0; }
+.shots-row figcaption { margin-top: 16px; text-align: center; color: var(--ink); font-size: 14.5px; }
+
+/* -- the cards of 01 and 03 ------------------------------------------------------- */
+.fcards { display: grid; gap: 20px; }
+.fcards-4 { grid-template-columns: repeat(4, 1fr); }
+.fcards-3 { grid-template-columns: repeat(3, 1fr); }
+.fcard { padding: 28px; border-radius: var(--radius-card); }
+.fcard h3 { margin: 20px 0 12px; font-size: 18px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
+.fcard p { font-size: 15px; line-height: 1.7; }
+
+/* -- 02: the words beside a phone -------------------------------------------------- */
+.see {
+  display: grid; grid-template-columns: minmax(0, 1fr) 292px; gap: 64px; align-items: center;
+  padding: 56px; background: var(--card); border: 1px solid var(--edge); border-radius: 28px;
+}
+.see .num-title { margin-bottom: 32px; }
+.see-list { display: grid; gap: 16px; }
+.see-item {
+  display: flex; align-items: flex-start; gap: 18px; padding: 24px;
+  background: var(--panel); border: 1px solid var(--edge); border-radius: 16px;
+}
+.see-item h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.2px; }
+.see-item p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
+.frame-lg { padding: 6px; border-radius: 40px; border-width: 3px; }
+.frame-lg img { border-radius: 33px; }
+
+/* -- the band, in a row -------------------------------------------------------------- */
+.band-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px 40px;
+  text-align: start; padding: 56px;
+}
+.band-row h2 { font-size: clamp(30px, 1.2vw + 22px, 40px); }
+.band-row .band-meta { margin: 10px 0 0; min-height: 0; }
+.band-row .band-cta { flex-wrap: nowrap; }
+
+/* -- narrower ------------------------------------------------------------------------ */
+@media (max-width: 1079px) {
+  .fcards-4 { grid-template-columns: repeat(2, 1fr); }
+  .shots-row { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: 32px; }
+  .see { grid-template-columns: 1fr; gap: 32px; }
+  .see .see-copy { display: contents; }
+  .see .num-title { order: -2; margin-bottom: 0; }
+  .see-phone { order: -1; width: 260px; justify-self: center; }
+  .see-list { order: 0; }
+  .band-row { flex-direction: column; text-align: center; }
+}
+
+@media (max-width: 719px) {
+  .feat-hero { text-align: start; padding-top: 40px; }
+  .pill-eyebrow { margin-bottom: 16px; }
+  .feat-hero h1 { font-size: 44px; }
+  .feat-hero p.lead { margin: 16px 0 0; font-size: 17px; line-height: 1.6; }
+  .jump { justify-content: flex-start; margin-top: 20px; }
+  .jump a { min-height: 36px; padding: 0 14px; }
+  .shots-block { padding-top: 64px; }
+
+  /* The six become a row wider than the screen that scrolls sideways, each frame
+     snapping to the gutter; the row runs to the edge of the screen on both sides so the
+     next phone shows half in view, which is what says there is more this way. */
+  .shots-row {
+    display: flex; gap: 14px; margin: 28px calc(-1 * var(--gutter)) 0;
+    padding: 0 var(--gutter) 12px; overflow-x: auto;
+    scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  }
+  .shots-row .shot { flex: 0 0 158px; scroll-snap-align: start; }
+  .shots-row figcaption { font-size: 14px; margin-top: 12px; }
+
+  .num-title { font-size: 30px; gap: 14px; margin-bottom: 24px; }
+  .num-badge { width: 36px; height: 36px; font-size: 14px; }
+
+  /* On a phone the icon moves up beside the heading, and the words take the full width
+     beneath both -- the drawing's answer to a half-empty column under a small square. */
+  .fcards-4, .fcards-3 { grid-template-columns: 1fr; gap: 16px; }
+  .fcard {
+    display: grid; grid-template-columns: auto 1fr; align-items: center;
+    column-gap: 16px; padding: 20px;
+  }
+  .fcard h3 { margin: 0; font-size: 17px; }
+  .fcard p { grid-column: 1 / -1; margin-top: 12px; font-size: 15px; line-height: 1.65; }
+  .fcard .tile { width: 40px; height: 40px; }
+
+  .see { padding: 20px; border-radius: 22px; gap: 24px; }
+  .see .num-title { margin-top: 4px; }
+  .see-phone { width: 230px; }
+  .see-item { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0 16px; padding: 20px; }
+  .see-item .tile { width: 40px; height: 40px; }
+  .see-item > div { display: contents; }
+  .see-item h3 { margin: 0; font-size: 17px; }
+  .see-item p { grid-column: 1 / -1; margin-top: 12px; }
+
+  .band-row { padding: 36px 22px 32px; gap: 20px; }
+  .band-row h2 { font-size: 29px; letter-spacing: -.04em; }
+  .band-row .band-cta { flex-direction: column; align-items: stretch; flex-wrap: wrap; width: 100%; gap: 14px; }
+  /* Here the second choice stays a button, as drawn -- unlike the home page's band. */
+  .band-row .btn-ghost {
+    border: 1.5px solid color-mix(in srgb, currentColor 28%, transparent);
+    min-height: 56px; padding: 0 28px; text-decoration: none;
+  }
+}
+
+/* Bangla on this page, for the same reason as on the home page: the tight tracking that
+   suits Manrope pulls conjuncts into one another, and the leading needs room for matras. */
+html[lang="bn"] .feat-hero h1, html[lang="bn"] .sec-title, html[lang="bn"] .num-title,
+html[lang="bn"] .band-row h2 { letter-spacing: 0; line-height: 1.3; }
+html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }

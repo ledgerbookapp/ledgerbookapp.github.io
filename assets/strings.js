@@ -283,6 +283,8 @@ const S = {
   // itself with somebody's real balances, bank suffixes and creditors' names.
   shotsLead:    ['Six screens, on a sample ledger made up for the purpose.',
                  'ছয়টা পাতা, এই কাজের জন্য বানানো একটা নমুনা খাতায়।'],
+  // Added on a phone, where the six sit in a row wider than the screen.
+  shotsSwipe:   [' Swipe to see them all.', ' সবগুলো দেখতে পাশে সরান।'],
   shotHome:     ["The first screen", "প্রথম পাতা"],
   shotTxn:      ["Every entry, filtered", "সব এন্ট্রি, ছেঁকে দেখা"],
   shotAccounts: ["The accounts", "অ্যাকাউন্টগুলো"],
@@ -290,6 +292,7 @@ const S = {
   shotAnalytics:["Where the month went", "মাসটা কোথায় গেল"],
   shotBackup:   ["Backup and restore", "ব্যাকআপ আর ফেরানো"],
 
+  featCta:      ['All of it, on your phone', 'সবকিছু, আপনার ফোনেই'],
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],
   f0Head:       ['What you have, on the first screen', 'কী আছে, প্রথম পাতাতেই'],
   f0Body:       ['The app opens on one figure — everything you own less everything you ' +
