@@ -16,7 +16,7 @@ and it works.
 | `privacy.html` | what is collected (nothing) and why that is checkable |
 | `404.html` | served for any unknown path |
 | `assets/strings.js` | **every word on the site, in English and Bangla, one pair per line** |
-| `assets/site.css` | the app's own colours, both themes |
+| `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |
 | `assets/site.js` | the language switch, the theme switch, and the release lookup |
 | `assets/screens/` | the install-guide screenshots, cropped to the dialog |
 | `check.js` | run before publishing — see below |

@@ -25,12 +25,12 @@
      phone has, which on a good many Android builds renders matras a step out of place. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -39,22 +39,23 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="./">
-      <svg viewBox="0 0 108 108" aria-hidden="true" fill="currentColor">
+      <span class="brand-tile"><svg viewBox="22 22 64 64" aria-hidden="true" fill="currentColor">
         <rect x="52" y="26" width="4" height="56" rx="2"/>
         <rect x="26" y="40" width="22" height="8" rx="4"/>
         <rect x="26" y="58" width="22" height="8" rx="4"/>
         <rect x="60" y="40" width="22" height="8" rx="4"/>
         <rect x="60" y="58" width="22" height="8" rx="4"/>
-      </svg>
+      </svg></span>
       <b data-s="appName">LedgerBook</b>
     </a>
-    <nav>
+    <nav id="nav">
       <a href="./" data-s="navHome">Home</a>
       <a href="features.html" aria-current="page" data-s="navFeatures">Features</a>
       <a href="install.html" data-s="navInstall">How to install</a>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
     </nav>
     <div class="switches">
+      <button id="lang" type="button">বাংলা</button>
       <button id="theme" type="button" aria-label="Switch theme">
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
              stroke-linecap="round" aria-hidden="true">
@@ -66,7 +67,14 @@
           <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
         </svg>
       </button>
-      <button id="lang" type="button">বাংলা</button>
+      <a class="btn btn-pill" data-dl href="https://github.com/oslraahat/ledgerbook-releases/releases"
+         data-s="navDownload">Download</a>
+      <button id="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open the menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true">
+          <path class="m-top" d="M4 8h16"/><path class="m-bot" d="M4 16h16"/>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
@@ -183,9 +191,23 @@
 </main>
 
 <footer>
-  <div class="wrap">
-    <p data-s="footerNote"></p>
-    <p><a href="https://github.com/oslraahat/ledgerbook-releases/releases" data-s="allVersions">All versions</a></p>
+  <div class="wrap foot">
+    <div class="foot-note">
+      <span class="brand-tile brand-tile-sm"><svg viewBox="22 22 64 64" aria-hidden="true" fill="currentColor">
+        <rect x="52" y="26" width="4" height="56" rx="2"/>
+        <rect x="26" y="40" width="22" height="8" rx="4"/>
+        <rect x="26" y="58" width="22" height="8" rx="4"/>
+        <rect x="60" y="40" width="22" height="8" rx="4"/>
+        <rect x="60" y="58" width="22" height="8" rx="4"/>
+      </svg></span>
+      <b class="foot-name" data-s="appName">LedgerBook</b>
+      <p data-s="footerNote"></p>
+    </div>
+    <p class="foot-links">
+      <a class="foot-all" href="https://github.com/oslraahat/ledgerbook-releases/releases" data-s="allVersions">All versions</a>
+      <a href="privacy.html" data-s="navPrivacy">Privacy</a>
+      <a href="install.html" data-s="navInstall">How to install</a>
+    </p>
   </div>
 </footer>
 

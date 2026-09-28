@@ -44,6 +44,7 @@ function applyLang(lang) {
   try { localStorage.setItem('lb.lang', lang); } catch (_) { /* private window */ }
   renderRelease();
   labelTheme();
+  labelMenu();
 }
 
 /* -- the theme -----------------------------------------------------------------
@@ -96,31 +97,71 @@ function fmtSize(bytes) {
   return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
 }
 
+/*
+ * The home page names the release in six places -- the header pill, two download buttons,
+ * two version lines, the stat and the release card -- so they are found by attribute
+ * rather than by id, and one answer fills them all:
+ *
+ *   data-dl            a link that becomes the file, or stays the releases page.
+ *   data-dl-label      inside one: its words, which say which of those two it is.
+ *   data-rel="..."     line / lineShort / title / size / sha -- one fact each.
+ *
+ * The ids the install and features pages use (dl, dl-meta, dl-hash) still work, and mean
+ * the same as data-dl, data-rel="line" and data-rel="sha" did before there were several.
+ */
 function renderRelease() {
   const i = LANGS[currentLang()];
-  const btn = document.getElementById('dl');
-  const meta = document.getElementById('dl-meta');
-  const hash = document.getElementById('dl-hash');
-  if (!btn) return;
+  const fill = (v) => (s) => s.replace('{v}', v).replace('{size}', fmtSize(release.size));
+
+  document.querySelectorAll('#dl, [data-dl]').forEach(a => {
+    a.href = release ? release.url : RELEASES_URL;
+    a.removeAttribute('aria-disabled');
+  });
+  // The words say which of the two the link is. A button that says "Download" and opens
+  // a web page would be a small lie; the header pill's single word is true either way.
+  const label = release ? S.download[i] : S.downloadAlt[i];
+  const dl = document.getElementById('dl');
+  if (dl && !dl.querySelector('[data-dl-label]')) dl.textContent = label;
+  document.querySelectorAll('[data-dl-label]').forEach(el => { el.textContent = label; });
+
+  const set = (sel, text) => document.querySelectorAll(sel).forEach(el => { el.textContent = text; });
 
   if (!release) {
-    // No answer yet, or none coming. The button still works; it just cannot say which
-    // version it is about.
-    btn.textContent = S.downloadAlt[i];
-    btn.href = RELEASES_URL;
-    btn.removeAttribute('aria-disabled');
-    if (meta) meta.textContent = '';
+    // No answer yet, or none coming. Every link still works; the lines that would name a
+    // version say only what is true without one.
+    set('#dl-meta, [data-rel="line"]', '');
+    set('[data-rel="lineShort"]', '');
+    set('[data-rel="title"]', S.relLatest[i]);
+    set('[data-rel="sha"]', S.relHashWait[i]);
     return;
   }
 
-  btn.textContent = S.download[i];
-  btn.href = release.url;
-  if (meta) {
-    meta.textContent = S.versionLine[i]
-      .replace('{v}', release.version)
-      .replace('{size}', fmtSize(release.size));
-  }
-  if (hash && release.sha) hash.textContent = release.sha;
+  const f = fill(release.version);
+  set('#dl-meta, [data-rel="line"]', f(S.versionLine[i]));
+  set('[data-rel="lineShort"]', f(S.versionLineShort[i]));
+  set('[data-rel="title"]', f(S.relTitle[i]));
+  if (release.size) set('[data-rel="size"]', fmtSize(release.size));
+  if (release.sha) set('#dl-hash, [data-rel="sha"]', release.sha);
+  else set('[data-rel="sha"]', S.relHashWait[i]);
+}
+
+/* -- the menu ------------------------------------------------------------------
+ *
+ * Below the width where the four links fit beside the name, they fold behind one button.
+ * The links are in the HTML either way, so without script a narrow reader still gets
+ * them -- the stylesheet only hides them once this has run and can bring them back.
+ */
+function labelMenu() {
+  const btn = document.getElementById('menu');
+  if (!btn) return;
+  const open = document.body.classList.contains('menu-open');
+  btn.setAttribute('aria-expanded', String(open));
+  btn.setAttribute('aria-label', S[open ? 'menuClose' : 'menuOpen'][LANGS[currentLang()]]);
+}
+
+function setMenu(open) {
+  document.body.classList.toggle('menu-open', open);
+  labelMenu();
 }
 
 async function loadRelease() {
@@ -161,6 +202,19 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTheme(activeTheme() === 'dark' ? 'light' : 'dark');
   });
   labelTheme();
+
+  const menu = document.getElementById('menu');
+  if (menu) menu.addEventListener('click', () => {
+    setMenu(!document.body.classList.contains('menu-open'));
+  });
+  // Choosing a link, pressing Escape, or widening past the fold all put it away again.
+  document.querySelectorAll('header nav a').forEach(a =>
+    a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  window.matchMedia('(min-width: 880px)').addEventListener('change', e => {
+    if (e.matches) setMenu(false);
+  });
+  labelMenu();
 
   loadRelease();
 });

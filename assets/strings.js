@@ -23,10 +23,21 @@ const S = {
   // to everyone who can see it.
   toDark:       ['Switch to the dark theme', 'অন্ধকার থিমে যান'],
   toLight:      ['Switch to the light theme', 'আলো থিমে যান'],
+  navDownload:  ['Download', 'ডাউনলোড'],
+  menuOpen:     ['Open the menu', 'মেনু খুলুন'],
+  menuClose:    ['Close the menu', 'মেনু বন্ধ করুন'],
 
   // -- hero --------------------------------------------------------------------
-  tagline:      ['Your money, your phone, nobody else.',
-                 'আপনার টাকার হিসাব আপনার ফোনেই, আর কারও কাছে নয়।'],
+  heroBadge:    ['Free', 'ফ্রি'],
+  // The pill above the headline. The narrow screen gets the short one, because the long
+  // one broke over three lines inside a pill meant to be one.
+  heroPill:     ['Offline double-entry ledger for Android',
+                 'অ্যান্ড্রয়েডের জন্য অফলাইন দুই-তরফা হিসাবের খাতা'],
+  heroPillShort:['Offline ledger for Android', 'অ্যান্ড্রয়েডের অফলাইন খাতা'],
+  // One sentence in two keys: the second half is set in the accent colour, and a colour
+  // change mid-sentence needs an element boundary to hang on.
+  taglineLead:  ['Your money, your phone,', 'আপনার টাকার হিসাব আপনার ফোনেই,'],
+  taglineAccent:['nobody else.', 'আর কারও কাছে নয়।'],
   heroLead:     ['A double-entry ledger for everyday money. No account to open, nothing ' +
                  'reported to anybody, and books that cannot quietly stop balancing.',
                  'দৈনন্দিন টাকার জন্য দুই-তরফা হিসাবের খাতা। অ্যাকাউন্ট খুলতে হয় না, ' +
@@ -45,22 +56,58 @@ const S = {
                  'download button finds the current version.',
                  'ফোনের ক্যামেরা ধরুন। ওখানে ইনস্টল পাতাটা খুলবে, যার ডাউনলোড বোতাম নিজেই ' +
                  'চলতি ভার্সনটা খুঁজে নেয়।'],
-  installFirst: ['First time? Read how to install — it takes two minutes.',
-                 'প্রথমবার? ইনস্টল করার নিয়মটা পড়ে নিন — দুই মিনিটের কাজ।'],
+  versionLineShort:['Version {v} · {size} · Android 6.0+',
+                 'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০+'],
+
+  // The phone drawn beside the headline. A made-up ledger, for the same reason the
+  // screenshots on the features page are: this page cannot illustrate privacy with
+  // somebody's real balances. The amounts stay in the HTML, the same in both languages.
+  mockTitle:    ['Journal', 'জার্নাল'],
+  mockSample:   ['Sample', 'নমুনা'],
+  mockTrial:    ['Trial balance', 'ট্রায়াল ব্যালেন্স'],
+  mockBalanced: ['Balanced', 'মিলেছে'],
+  mockDebits:   ['Debits', 'ডেবিট'],
+  mockCredits:  ['Credits', 'ক্রেডিট'],
+  mockRecent:   ['Recent', 'সাম্প্রতিক'],
+  mockGroceries:['Groceries', 'বাজার'],
+  mockGroceriesSub:['Food ← Cash', 'খাবার ← নগদ'],
+  mockSalary:   ['Salary', 'বেতন'],
+  mockSalarySub:['Bank ← Income', 'ব্যাংক ← আয়'],
+  mockLoan:     ['Loan to Rafi', 'রাফিকে ধার'],
+  mockLoanSub:  ['Due in 7 days', '৭ দিন পরে ফেরত'],
+  mockPower:    ['Electricity', 'বিদ্যুৎ'],
+  mockPowerSub: ['Utilities ← Bank', 'ইউটিলিটি ← ব্যাংক'],
+  mockNew:      ['New entry', 'নতুন এন্ট্রি'],
+
+  // -- the four numbers under the hero -----------------------------------------
+  stat1:        ['servers of ours for an entry to go to',
+                 'আমাদের সার্ভার, যেখানে কোনো এন্ট্রি যেতে পারে'],
+  stat2:        ['files that touch the internet, both for updates',
+                 'ফাইল ইন্টারনেট ছোঁয়, দুটোই আপডেটের জন্য'],
+  stat3:        ['permissions, each with a single job', 'অনুমতি, প্রতিটার একটাই কাজ'],
+  stat4:        ['the whole app, Android 6.0 and up', 'পুরো অ্যাপ, অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  stat4Short:   ['the whole app', 'পুরো অ্যাপ'],
 
   // -- why ---------------------------------------------------------------------
   whyTitle:     ['Why this one', 'কেন এটা'],
+  whyH2:        ['Private by design, correct by design', 'গঠনেই গোপন, গঠনেই নির্ভুল'],
+  whySub:       ['Where your data goes, whether the totals hold, and whether it needs a ' +
+                 'network at all.',
+                 'আপনার তথ্য কোথায় যায়, যোগফল টেকে কিনা, আর নেটওয়ার্ক আদৌ লাগে কিনা।'],
   why1Head:     ['It has nowhere to send your money data',
                  'আপনার হিসাব পাঠানোর জায়গাই নেই এর'],
   why1Body:     ['Not a promise — a fact about how it is built. Two files in the whole ' +
                  'app touch the internet, and both of them are the thing that checks ' +
                  'whether a new version exists. There is no server of ours for an entry ' +
-                 'to go to. Android’s own backup is a separate matter, and the privacy ' +
-                 'page says exactly what it carries.',
+                 'to go to. Android’s own backup is a separate matter, and the ',
                  'এটা প্রতিশ্রুতি নয় — গঠনের সত্য। পুরো অ্যাপে মাত্র দুটো ফাইল ইন্টারনেট ছোঁয়, ' +
                  'আর দুটোই শুধু দেখে নতুন ভার্সন এসেছে কিনা। আমাদের এমন কোনো সার্ভার নেই ' +
                  'যেখানে একটা এন্ট্রি যেতে পারে। অ্যান্ড্রয়েডের নিজের ব্যাকআপ আলাদা ব্যাপার, ' +
-                 'আর গোপনীয়তার পাতায় সেটা কী কী নেয় তা হুবহু লেখা আছে।'],
+                 'আর '],
+  // The sentence above carries on through a link to the privacy page and out again. The
+  // spaces at the joins belong to the halves, so the link text is only the link.
+  why1Link:     ['privacy page', 'গোপনীয়তার পাতায়'],
+  why1End:      [' says exactly what it carries.', ' সেটা কী কী নেয় তা হুবহু লেখা আছে।'],
   why2Head:     ['Every amount is written twice', 'প্রতিটা টাকা দুবার লেখা হয়'],
   why2Body:     ['Real double-entry, the way an accountant keeps books: money leaving one ' +
                  'place always arrives somewhere. The Trial Balance page shows the two ' +
@@ -74,6 +121,43 @@ const S = {
                  'কোনো কিছু নেটওয়ার্কের জন্য অপেক্ষা করে না। ব্যাকআপ এনক্রিপ্টেড ফাইল, যা আপনার ' +
                  'নিজের কাছেই থাকে, আর অ্যাপটা পিন বা আঙুলের ছাপ দিয়ে তালা দেওয়া যায়।'],
 
+  // -- at a glance -------------------------------------------------------------
+  // Eight lines, each a heading and a sentence. The narrow screen gets a shorter sentence
+  // where the long one ran to three lines in a half-width column; where the two would be
+  // the same words there is only one key.
+  featH2:       ['Everything it does, at a glance', 'এক নজরে সবকিছু'],
+  g1Head:       ['Double-entry journal', 'দুই-তরফা জার্নাল'],
+  g1Body:       ['Every entry has a debit and a matching credit.',
+                 'প্রতিটা এন্ট্রির একটা ডেবিট, আর তার মিলিয়ে একটা ক্রেডিট।'],
+  g1Short:      ['A debit and a matching credit, every time.',
+                 'প্রতিবার একটা ডেবিট, মিলিয়ে একটা ক্রেডিট।'],
+  g2Head:       ['Trial Balance', 'ট্রায়াল ব্যালেন্স পাতা'],
+  g2Body:       ['See both sides agree, so a wrong total is caught.',
+                 'দুই দিক মিলছে কিনা দেখুন, তাই ভুল যোগফল ধরা পড়ে।'],
+  g2Short:      ['Both sides agree, or you see it.', 'দুই দিক মেলে, নয়তো চোখে পড়ে।'],
+  g3Head:       ['Loan tracking', 'ধারের হিসাব'],
+  g3Body:       ['Record who owes what; pick names from contacts.',
+                 'কে কত ধারে তা লিখুন; নাম বেছে নিন পরিচিতি থেকে।'],
+  g3Short:      ['Who owes what, names from contacts.', 'কে কত ধারে, নাম পরিচিতি থেকে।'],
+  g4Head:       ['Due-date reminders', 'ফেরতের দিন মনে করানো'],
+  g4Body:       ['A notification when a loan falls due.', 'ধার ফেরতের দিন এলে একটা নোটিফিকেশন।'],
+  g5Head:       ['Encrypted backups', 'এনক্রিপ্টেড ব্যাকআপ'],
+  g5Body:       ['Backup files you keep yourself.', 'ব্যাকআপ ফাইল, যা আপনার নিজের কাছে থাকে।'],
+  g5Short:      ['Files you keep yourself.', 'ফাইল থাকে আপনার নিজের কাছে।'],
+  g6Head:       ['PIN & fingerprint lock', 'পিন ও আঙুলের ছাপের তালা'],
+  g6HeadShort:  ['PIN & fingerprint', 'পিন ও আঙুলের ছাপ'],
+  g6Body:       ['Lock the app behind a PIN or your fingerprint.',
+                 'অ্যাপে পিন বা আঙুলের ছাপের তালা দিন।'],
+  g6Short:      ['Lock the app behind either.', 'যেকোনোটা দিয়ে অ্যাপে তালা দিন।'],
+  g7Head:       ['In-app updates', 'অ্যাপের ভেতরেই আপডেট'],
+  g7Body:       ['Checks for a new version, downloads and installs it.',
+                 'নতুন ভার্সন খোঁজে, নামায়, তারপর ইনস্টল করে।'],
+  g7Short:      ['Checks, downloads, installs.', 'খোঁজে, নামায়, ইনস্টল করে।'],
+  g8Head:       ['Verifiable releases', 'মিলিয়ে দেখার মতো রিলিজ'],
+  g8Body:       ['Every release carries a SHA-256 fingerprint.',
+                 'প্রতিটা রিলিজের সাথে একটা SHA-256 ছাপ থাকে।'],
+  g8Short:      ['A SHA-256 fingerprint on each.', 'প্রতিটায় একটা SHA-256 ছাপ।'],
+
   // -- trust -------------------------------------------------------------------
   trustTitle:   ['Why it is not on the Play Store', 'প্লে স্টোরে নেই কেন'],
   trustBody:    ['It is published here instead, as a file you download and install ' +
@@ -85,6 +169,17 @@ const S = {
                  'করবেন। আপনার ফোন এ নিয়ে সতর্ক করবে, কারণ ফোন এক অচেনা ফাইলের সাথে আরেকটার ' +
                  'তফাত বুঝতে পারে না। যেটা বোঝা যায় তা হল ফাইলটা প্রকাশিত ফাইলটাই কিনা — ' +
                  'প্রতিটা রিলিজের সাথে একটা SHA-256 ছাপ থাকে, আর ইনস্টল পাতায় মিলিয়ে দেখার নিয়ম আছে।'],
+
+  installLink:  ['Read the install guide', 'ইনস্টলের নিয়ম পড়ুন'],
+  // The card beside it. Filled from the releases API like the download button; until
+  // it answers the card says "latest" rather than a number it would have to remember.
+  relTitle:     ['Release {v}', 'রিলিজ {v}'],
+  relLatest:    ['Latest release', 'সর্বশেষ রিলিজ'],
+  relVerifiable:['Verifiable', 'মিলিয়ে দেখা যায়'],
+  relSize:      ['File size', 'ফাইলের আকার'],
+  relRequires:  ['Requires', 'লাগবে'],
+  relAndroid:   ['Android 6.0 and up', 'অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  relHashWait:  ['Listed on the releases page', 'রিলিজ পাতায় দেওয়া আছে'],
 
   // -- install -----------------------------------------------------------------
   installTitle: ['Installing LedgerBook', 'LedgerBook ইনস্টল করা'],
@@ -148,7 +243,10 @@ const S = {
                  'এটা ঐচ্ছিক — বেশিরভাগ মানুষ এই ধাপটা বাদ দেন।'],
 
   // -- permissions -------------------------------------------------------------
+  permEyebrow:  ['Permissions', 'অনুমতি'],
   permTitle:    ['What it asks for, and why', 'কী কী অনুমতি চায়, আর কেন'],
+  permSub:      ['Four permissions. Each one has a single job.', 'চারটে অনুমতি। প্রতিটার একটাই কাজ।'],
+  permOptional: ['Optional', 'ঐচ্ছিক'],
   permInternet: ['Internet', 'ইন্টারনেট'],
   permInternetW:['Only to check whether a newer version exists.',
                  'শুধু নতুন ভার্সন এসেছে কিনা দেখার জন্য।'],
@@ -158,6 +256,10 @@ const S = {
   permContacts: ['Contacts', 'পরিচিতি'],
   permContactsW:['Optional. To pick a name when you record a loan, instead of typing it.',
                  'ঐচ্ছিক। ধার লেখার সময় নাম টাইপ না করে বেছে নেওয়ার জন্য।'],
+  // The home page's cards carry "Optional" as a badge beside the heading, so their
+  // sentence leaves it out; the privacy page's table still reads the one above.
+  permContactsJob:['To pick a name when you record a loan, instead of typing it.',
+                 'ধার লেখার সময় নাম টাইপ না করে বেছে নেওয়ার জন্য।'],
   permInstall:  ['Install apps', 'অ্যাপ ইনস্টল'],
   permInstallW: ['To install the update it downloaded for you.',
                  'নিজে নামানো নতুন ভার্সনটা ইনস্টল করার জন্য।'],
@@ -329,6 +431,10 @@ const S = {
                  'অ্যাপটা আনইনস্টল করুন। এটুকুই পুরো নিয়ম — বন্ধ করার মতো অ্যাকাউন্ট নেই, ' +
                  'পাঠানোর মতো অনুরোধ নেই, কারণ কোথাও কোনো কপিই ছিল না যে জিজ্ঞেস করতে হবে। ' +
                  'আপনি যে ব্যাকআপ ফাইলগুলো লিখেছেন সেগুলো আপনারই, মুছে ফেলবেন।'],
+
+  // -- the band at the bottom of the home page --------------------------------
+  ctaTitle:     ['Keep your books in your pocket', 'হিসাবের খাতা থাকুক আপনার পকেটে'],
+  ctaFirst:     ['First time? It takes two minutes.', 'প্রথমবার? দুই মিনিটের কাজ।'],
 
   // -- footer ------------------------------------------------------------------
   footerNote:   ['Built for keeping one household’s books. No trackers on this page.',

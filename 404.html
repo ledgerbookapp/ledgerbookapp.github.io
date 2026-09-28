@@ -21,9 +21,9 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
-<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -32,13 +32,13 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="/">
-      <svg viewBox="0 0 108 108" aria-hidden="true" fill="currentColor">
+      <span class="brand-tile"><svg viewBox="22 22 64 64" aria-hidden="true" fill="currentColor">
         <rect x="52" y="26" width="4" height="56" rx="2"/>
         <rect x="26" y="40" width="22" height="8" rx="4"/>
         <rect x="26" y="58" width="22" height="8" rx="4"/>
         <rect x="60" y="40" width="22" height="8" rx="4"/>
         <rect x="60" y="58" width="22" height="8" rx="4"/>
-      </svg>
+      </svg></span>
       <b>LedgerBook</b>
     </a>
   </div>

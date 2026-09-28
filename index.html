@@ -25,12 +25,12 @@
      phone has, which on a good many Android builds renders matras a step out of place. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -39,22 +39,23 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="./">
-      <svg viewBox="0 0 108 108" aria-hidden="true" fill="currentColor">
+      <span class="brand-tile"><svg viewBox="22 22 64 64" aria-hidden="true" fill="currentColor">
         <rect x="52" y="26" width="4" height="56" rx="2"/>
         <rect x="26" y="40" width="22" height="8" rx="4"/>
         <rect x="26" y="58" width="22" height="8" rx="4"/>
         <rect x="60" y="40" width="22" height="8" rx="4"/>
         <rect x="60" y="58" width="22" height="8" rx="4"/>
-      </svg>
+      </svg></span>
       <b data-s="appName">LedgerBook</b>
     </a>
-    <nav>
+    <nav id="nav">
       <a href="./" aria-current="page" data-s="navHome">Home</a>
       <a href="features.html" data-s="navFeatures">Features</a>
       <a href="install.html" data-s="navInstall">How to install</a>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
     </nav>
     <div class="switches">
+      <button id="lang" type="button">বাংলা</button>
       <button id="theme" type="button" aria-label="Switch theme">
         <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
              stroke-linecap="round" aria-hidden="true">
@@ -66,81 +67,251 @@
           <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
         </svg>
       </button>
-      <button id="lang" type="button">বাংলা</button>
+      <a class="btn btn-pill" data-dl href="https://github.com/oslraahat/ledgerbook-releases/releases"
+         data-s="navDownload">Download</a>
+      <button id="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open the menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" aria-hidden="true">
+          <path class="m-top" d="M4 8h16"/><path class="m-bot" d="M4 16h16"/>
+        </svg>
+      </button>
     </div>
   </div>
 </header>
 
-<main>
-  <div class="wrap">
+<main class="home">
 
-    <section class="hero">
-      <h1 data-s="tagline">Your money, your phone, nobody else.</h1>
+  <!-- -- hero ------------------------------------------------------------------ -->
+  <section class="wrap hero hero-home">
+    <div class="hero-copy">
+      <p class="pill">
+        <span class="pill-tag" data-s="heroBadge">Free</span>
+        <span class="only-wide" data-s="heroPill">Offline double-entry ledger for Android</span>
+        <span class="only-narrow" data-s="heroPillShort">Offline ledger for Android</span>
+      </p>
+      <h1><span data-s="taglineLead">Your money, your phone,</span>
+        <em data-s="taglineAccent">nobody else.</em></h1>
       <p class="lead" data-s="heroLead">A double-entry ledger for everyday money.</p>
 
       <div class="cta">
         <!-- Starts as a link to the releases page and is narrowed to the exact file once
              the API answers, so it is never a dead button. -->
-        <a class="btn" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases"
-           data-s="downloadAlt">Open the releases page</a>
-        <a class="btn btn-quiet" href="install.html" data-s="navInstall">How to install</a>
+        <a class="btn btn-lg" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+          <span data-dl-label>Open the releases page</span>
+        </a>
+        <a class="btn btn-lg btn-quiet" href="install.html" data-s="navInstall">How to install</a>
       </div>
-      <p class="meta" id="dl-meta"></p>
-      <p class="meta"><a href="install.html" data-s="installFirst">First time? Read how to install.</a></p>
+      <!-- The narrow layout names the version under the buttons; the wide one leaves it to
+           the band at the foot of the page and gives this place to the code instead. -->
+      <p class="meta hero-meta" data-rel="line"></p>
 
       <!-- Hidden on a narrow screen, where the reader is already holding the phone the
            code would send them to. -->
       <aside class="qr">
-        <img src="assets/qr.svg" alt="" width="132" height="132">
+        <img src="assets/qr.svg" alt="" width="96" height="96">
         <div>
           <b data-s="qrHead">Scan to put it on your phone</b>
           <p data-s="qrBody"></p>
         </div>
       </aside>
-    </section>
+    </div>
 
-    <section>
-      <h2 data-s="whyTitle">Why this one</h2>
-      <div class="grid">
-        <div class="card">
-          <h3 data-s="why1Head">It cannot send your money data anywhere</h3>
-          <p data-s="why1Body"></p>
+    <!-- A drawing of the app, not a screenshot of it: text, so it follows the language
+         switch and the theme like the rest of the page. The narrow layout drops the frame
+         and the last row, which a phone-sized reader does not need a phone to picture. -->
+    <div class="phone" aria-hidden="true">
+      <div class="phone-screen">
+        <div class="mock-head">
+          <b data-s="mockTitle">Journal</b>
+          <span class="mock-tag" data-s="mockSample">Sample</span>
         </div>
-        <div class="card">
-          <h3 data-s="why2Head">Every amount is written twice</h3>
-          <p data-s="why2Body"></p>
+        <div class="mock-tb">
+          <div class="mock-tb-top">
+            <span data-s="mockTrial">Trial balance</span>
+            <span class="mock-ok"><svg class="ico" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span data-s="mockBalanced">Balanced</span></span>
+          </div>
+          <div class="mock-tb-sides">
+            <div><span data-s="mockDebits">Debits</span><b class="num">৳50,430</b></div>
+            <div><span data-s="mockCredits">Credits</span><b class="num">৳50,430</b></div>
+          </div>
         </div>
-        <div class="card">
-          <h3 data-s="why3Head">It works with the phone in flight mode</h3>
-          <p data-s="why3Body"></p>
-        </div>
+        <p class="mock-label" data-s="mockRecent">Recent</p>
+        <ul class="mock-rows">
+          <li><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.1a2 2 0 0 1-2 1.9H8.2a2 2 0 0 1-2-1.9z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span>
+            <span class="mock-what"><b data-s="mockGroceries">Groceries</b><small data-s="mockGroceriesSub">Food ← Cash</small></span>
+            <span class="num">৳1,250</span></li>
+          <li><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span>
+            <span class="mock-what"><b data-s="mockSalary">Salary</b><small data-s="mockSalarySub">Bank ← Income</small></span>
+            <span class="num">৳42,000</span></li>
+          <li><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
+            <span class="mock-what"><b data-s="mockLoan">Loan to Rafi</b><small data-s="mockLoanSub">Due in 7 days</small></span>
+            <span class="num">৳5,000</span></li>
+          <li class="mock-extra"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
+            <span class="mock-what"><b data-s="mockPower">Electricity</b><small data-s="mockPowerSub">Utilities ← Bank</small></span>
+            <span class="num">৳2,180</span></li>
+        </ul>
+        <span class="mock-new"><svg class="ico" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span data-s="mockNew">New entry</span></span>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section>
-      <h2 data-s="trustTitle">Why it is not on the Play Store</h2>
-      <div class="card"><p data-s="trustBody"></p></div>
-    </section>
+  <!-- -- four numbers ---------------------------------------------------------- -->
+  <section class="wrap stats-wrap">
+    <dl class="stats">
+      <div><dt class="num-big">0</dt><dd data-s="stat1">servers of ours for an entry to go to</dd></div>
+      <div><dt class="num-big">2</dt><dd data-s="stat2">files that touch the internet, both for updates</dd></div>
+      <div><dt class="num-big">4</dt><dd data-s="stat3">permissions, each with a single job</dd></div>
+      <!-- The size is overwritten from the release once the API answers; the figure
+           written here is only what shows if it never does. -->
+      <div><dt class="num-big" data-rel="size">2.6 MB</dt>
+        <dd><span class="only-wide" data-s="stat4">the whole app, Android 6.0 and up</span><span
+            class="only-narrow" data-s="stat4Short">the whole app</span></dd></div>
+    </dl>
+  </section>
 
-    <section>
+  <!-- -- why -------------------------------------------------------------------- -->
+  <section class="wrap block">
+    <div class="sec-head">
+      <p class="eyebrow" data-s="whyTitle">Why this one</p>
+      <h2 data-s="whyH2">Private by design, correct by design</h2>
+      <p data-s="whySub"></p>
+    </div>
+    <div class="why">
+      <article class="card why-card">
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3 data-s="why1Head">It has nowhere to send your money data</h3>
+        <p><span data-s="why1Body"></span><a href="privacy.html" data-s="why1Link">privacy page</a><span data-s="why1End"></span></p>
+      </article>
+      <article class="card why-card">
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
+        <h3 data-s="why2Head">Every amount is written twice</h3>
+        <p data-s="why2Body"></p>
+      </article>
+      <article class="card why-card">
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3c.8 0 1.5.7 1.5 1.5V9l7 4v2l-7-2v4.5l2 1.5v1.5l-3.5-1-3.5 1V19l2-1.5V13l-7 2v-2l7-4V4.5C10.5 3.7 11.2 3 12 3z"/></svg></span>
+        <h3 data-s="why3Head">It works with the phone in flight mode</h3>
+        <p data-s="why3Body"></p>
+      </article>
+    </div>
+  </section>
+
+  <!-- -- at a glance ------------------------------------------------------------ -->
+  <section class="wrap block">
+    <div class="sec-head">
+      <p class="eyebrow" data-s="navFeatures">Features</p>
+      <h2 data-s="featH2">Everything it does, at a glance</h2>
+    </div>
+    <ul class="glance">
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M12 10v10"/></svg></span>
+        <h3 data-s="g1Head">Double-entry journal</h3>
+        <p><span class="only-wide" data-s="g1Body"></span><span class="only-narrow" data-s="g1Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
+        <h3 data-s="g2Head">Trial Balance</h3>
+        <p><span class="only-wide" data-s="g2Body"></span><span class="only-narrow" data-s="g2Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M16 21v-1a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v1"/><path d="M19 8v6M22 11h-6"/></svg></span>
+        <h3 data-s="g3Head">Loan tracking</h3>
+        <p><span class="only-wide" data-s="g3Body"></span><span class="only-narrow" data-s="g3Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
+        <h3 data-s="g4Head">Due-date reminders</h3>
+        <p data-s="g4Body"></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
+        <h3 data-s="g5Head">Encrypted backups</h3>
+        <p><span class="only-wide" data-s="g5Body"></span><span class="only-narrow" data-s="g5Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+        <h3><span class="only-wide" data-s="g6Head">PIN &amp; fingerprint lock</span><span class="only-narrow" data-s="g6HeadShort"></span></h3>
+        <p><span class="only-wide" data-s="g6Body"></span><span class="only-narrow" data-s="g6Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.9 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
+        <h3 data-s="g7Head">In-app updates</h3>
+        <p><span class="only-wide" data-s="g7Body"></span><span class="only-narrow" data-s="g7Short"></span></p></li>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <h3 data-s="g8Head">Verifiable releases</h3>
+        <p><span class="only-wide" data-s="g8Body"></span><span class="only-narrow" data-s="g8Short"></span></p></li>
+    </ul>
+  </section>
+
+  <!-- -- why not the Play Store ------------------------------------------------- -->
+  <section class="wrap block">
+    <div class="trust">
+      <div class="trust-copy">
+        <p class="eyebrow" data-s="navInstall">How to install</p>
+        <h2 data-s="trustTitle">Why it is not on the Play Store</h2>
+        <p data-s="trustBody"></p>
+        <a class="arrow-link trust-link-wide" href="install.html"><span data-s="installLink">Read the install guide</span>
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="release">
+        <div class="release-head">
+          <b data-rel="title">Latest release</b>
+          <span class="badge-ok"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="relVerifiable">Verifiable</span></span>
+        </div>
+        <dl class="release-rows">
+          <div><dt data-s="relSize">File size</dt><dd data-rel="size">2.6 MB</dd></div>
+          <div><dt data-s="relRequires">Requires</dt><dd data-s="relAndroid">Android 6.0 and up</dd></div>
+          <div class="release-hash"><dt>SHA-256</dt><dd><code data-rel="sha"></code></dd></div>
+        </dl>
+      </div>
+      <!-- The same link again, placed after the card, for the narrow layout where the
+           card falls under the paragraph and the link belongs at the very end. -->
+      <a class="arrow-link trust-link-narrow" href="install.html"><span data-s="installLink">Read the install guide</span>
+        <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </section>
+
+  <!-- -- permissions ------------------------------------------------------------ -->
+  <section class="wrap block">
+    <div class="sec-head">
+      <p class="eyebrow" data-s="permEyebrow">Permissions</p>
       <h2 data-s="permTitle">What it asks for, and why</h2>
-      <div class="card">
-        <table>
-          <tr><th data-s="permInternet">Internet</th><td data-s="permInternetW"></td></tr>
-          <tr><th data-s="permNotify">Notifications</th><td data-s="permNotifyW"></td></tr>
-          <tr><th data-s="permContacts">Contacts</th><td data-s="permContactsW"></td></tr>
-          <tr><th data-s="permInstall">Install apps</th><td data-s="permInstallW"></td></tr>
-        </table>
-      </div>
-    </section>
+      <p data-s="permSub">Four permissions. Each one has a single job.</p>
+    </div>
+    <ul class="perms">
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
+        <div><h3 data-s="permInternet">Internet</h3><p data-s="permInternetW"></p></div></li>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
+        <div><h3 data-s="permNotify">Notifications</h3><p data-s="permNotifyW"></p></div></li>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
+        <div><h3><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></h3><p data-s="permContactsJob"></p></div></li>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></span>
+        <div><h3 data-s="permInstall">Install apps</h3><p data-s="permInstallW"></p></div></li>
+    </ul>
+  </section>
 
-  </div>
+  <!-- -- the band ---------------------------------------------------------------- -->
+  <section class="wrap block">
+    <div class="band">
+      <h2 data-s="ctaTitle">Keep your books in your pocket</h2>
+      <p class="band-meta"><span class="only-wide" data-rel="line"></span><span class="only-narrow" data-rel="lineShort"></span></p>
+      <div class="band-cta">
+        <a class="btn btn-lg btn-dark" data-dl href="https://github.com/oslraahat/ledgerbook-releases/releases">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
+          <span data-dl-label>Open the releases page</span>
+        </a>
+        <a class="btn btn-lg btn-ghost" href="install.html" data-s="ctaFirst">First time? It takes two minutes.</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
-  <div class="wrap">
-    <p data-s="footerNote"></p>
-    <p><a href="https://github.com/oslraahat/ledgerbook-releases/releases" data-s="allVersions">All versions</a></p>
+  <div class="wrap foot">
+    <div class="foot-note">
+      <span class="brand-tile brand-tile-sm"><svg viewBox="22 22 64 64" aria-hidden="true" fill="currentColor">
+        <rect x="52" y="26" width="4" height="56" rx="2"/>
+        <rect x="26" y="40" width="22" height="8" rx="4"/>
+        <rect x="26" y="58" width="22" height="8" rx="4"/>
+        <rect x="60" y="40" width="22" height="8" rx="4"/>
+        <rect x="60" y="58" width="22" height="8" rx="4"/>
+      </svg></span>
+      <b class="foot-name" data-s="appName">LedgerBook</b>
+      <p data-s="footerNote"></p>
+    </div>
+    <p class="foot-links">
+      <a class="foot-all" href="https://github.com/oslraahat/ledgerbook-releases/releases" data-s="allVersions">All versions</a>
+      <a href="privacy.html" data-s="navPrivacy">Privacy</a>
+      <a href="install.html" data-s="navInstall">How to install</a>
+    </p>
   </div>
 </footer>
 

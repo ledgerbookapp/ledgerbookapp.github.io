@@ -11,8 +11,8 @@
  *   --accent      what you FILL with -- button backgrounds, the logo, a rule.
  *   --accent-ink  what you WRITE with -- links, a figure, anything that is text.
  *
- * On the dark theme they are the same value, because #E8B931 carries 9.80 on a card and
- * black on it carries 11.42, so one tone does both jobs. On light paper it cannot: the
+ * On the dark theme they are the same value, because #F2B830 carries 10.24 on a card and
+ * the page's near-black on it carries 10.93, so one tone does both jobs. On light paper it cannot: the
  * fill step #F59E0B measures 2.05 against the page, so a link in it fails a reader
  * outright while the same colour behind black text is perfectly sound. The app hit this
  * exact wall and answered it with a separate ink one step deeper -- #A85408, 5.10 on the
@@ -36,51 +36,78 @@
   --green: #14713A;
   --red: #B42318;
 
+  /* The quieter surfaces the home page is drawn with: a hairline softer than --edge, the
+     inset panel a phone screen or the release card sits on, the bezel of the phone, and
+     the faintest text -- the "RECENT" over a list, the line under an entry's name. */
+  --rule: #E2E8F0;
+  --panel: #F1F5F9;
+  --frame: #E2E8F0;
+  --ink-faint: #64748B;
+  --shadow: 0 30px 60px -24px rgba(15, 23, 42, .28);
+
   --gutter: 20px;
-  --max: 960px;
-  --radius-card: 16px;
+  --max: 1120px;
+  --radius-card: 20px;
   --radius-field: 12px;
+
+  --font: "Manrope", "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system,
+          "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Bengali",
+          monospace;
 
   color-scheme: light;
 }
 
-/* Dark — NightBackground, the card over it, NightOutline, and the one accent that does
-   both jobs. Written twice: once for the reader whose system is dark and who has not
-   chosen, and once for the reader who pressed the switch. The first is guarded so that
-   choosing light on a dark phone actually sticks. */
+/* Dark — the owner's drawing of the site, sampled from it: a warm near-black rather than
+   the app's cooler NightBackground, a card one step up, and the gold the drawing fills
+   its buttons with. Written twice: once for the reader whose system is dark and who has
+   not chosen, and once for the reader who pressed the switch. The first is guarded so
+   that choosing light on a dark phone actually sticks. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --page: #0E0E11;
-    --card: #16161B;
-    --edge: #23232A;
-    --accent: #E8B931;
-    --accent-ink: #E8B931;
-    --accent-on-tint: #E8B931;
-    --on-accent: #12100A;
-    --ink: #F8FAFC;
-    --ink-muted: #9CA3AF;
-    --green: #5BE38F;
+    --page: #0C0B0A;
+    --card: #151411;
+    --edge: #24221E;
+    --rule: #1F1D1A;
+    --panel: #0F0E0C;
+    --frame: #1B1A17;
+    --accent: #F2B830;
+    --accent-ink: #F2B830;
+    --accent-on-tint: #F2B830;
+    --on-accent: #0C0B0A;
+    --ink: #F5F2EC;
+    --ink-muted: #A29C92;
+    --ink-faint: #8A847A;
+    --green: #8EDC9A;
     --red: #FF8A7A;
+    --shadow: 0 40px 80px -24px rgba(0, 0, 0, .7);
 
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --page: #0E0E11;
-  --card: #16161B;
-  --edge: #23232A;
-  --accent: #E8B931;
-  --accent-ink: #E8B931;
-  --accent-on-tint: #E8B931;
-  --on-accent: #12100A;
-  --ink: #F8FAFC;
-  --ink-muted: #9CA3AF;
-  --green: #5BE38F;
+  --page: #0C0B0A;
+  --card: #151411;
+  --edge: #24221E;
+  --rule: #1F1D1A;
+  --panel: #0F0E0C;
+  --frame: #1B1A17;
+  --accent: #F2B830;
+  --accent-ink: #F2B830;
+  --accent-on-tint: #F2B830;
+  --on-accent: #0C0B0A;
+  --ink: #F5F2EC;
+  --ink-muted: #A29C92;
+  --ink-faint: #8A847A;
+  --green: #8EDC9A;
   --red: #FF8A7A;
+  --shadow: 0 40px 80px -24px rgba(0, 0, 0, .7);
 
   color-scheme: dark;
 }
+
+@media (min-width: 720px) { :root { --gutter: 32px; } }
 
 * { box-sizing: border-box; }
 
@@ -90,8 +117,9 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
-  font-family: "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system,
-               "Segoe UI", Roboto, sans-serif;
+  /* Manrope has no Bengali, so a Bangla page falls through to Noto glyph by glyph --
+     which is the point of listing it second rather than switching fonts by language. */
+  font-family: var(--font);
   /* Bengali sits low in its line and runs into the line below at the leading Latin
      text is happy with. 1.7 is what stops the descenders of one line touching the
      matras of the next. */
@@ -99,41 +127,70 @@ body {
   font-size: 17px;
 }
 
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.wrap { max-width: calc(var(--max) + 2 * var(--gutter)); margin: 0 auto; padding: 0 var(--gutter); }
 
-/* -- header ------------------------------------------------------------------- */
-header {
-  border-bottom: 1px solid var(--edge);
+/* -- header -------------------------------------------------------------------
+ *
+ * Three columns, not a row: the name, the links centred on the page rather than on the
+ * space left over, and the controls. `body > header` because the home page has headers of
+ * its own inside sections, and none of them should stick to the top.
+ */
+body > header {
+  border-bottom: 1px solid var(--rule);
   position: sticky; top: 0; z-index: 10;
-  background: color-mix(in srgb, var(--page) 88%, transparent);
-  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--page) 90%, transparent);
+  backdrop-filter: blur(10px);
 }
-.bar { display: flex; align-items: center; gap: 14px; padding-block: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); }
-.brand svg { width: 30px; height: 30px; color: var(--accent-ink); }
-.brand b { font-size: 17px; letter-spacing: .2px; }
-nav { margin-left: auto; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-/* The language and theme switches, kept together as one item so they never wrap apart. */
-.switches { display: flex; align-items: center; gap: 6px; }
-nav a {
-  color: var(--ink-muted); text-decoration: none; font-size: 14px;
-  padding: 7px 10px; border-radius: 8px;
+.bar {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  column-gap: 24px; min-height: 76px;
 }
-nav a:hover, nav a[aria-current="page"] { color: var(--ink); background: var(--card); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand b { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
+/* The mark sits on a gold tile, the way the app's own icon does. */
+.brand-tile {
+  display: inline-grid; place-items: center; flex: none;
+  width: 32px; height: 32px; border-radius: 9px;
+  background: var(--accent); color: var(--on-accent);
+}
+.brand-tile svg { width: 20px; height: 20px; }
+.brand-tile-sm { width: 26px; height: 26px; border-radius: 7px; }
+.brand-tile-sm svg { width: 16px; height: 16px; }
 
-/* The language switch is a control, so it looks like one rather than like a link. */
-#lang {
-  font: inherit; font-size: 14px; cursor: pointer;
-  color: var(--ink); background: var(--card);
-  border: 1px solid var(--edge); border-radius: 999px; padding: 6px 14px;
+nav { display: flex; align-items: center; gap: 36px; }
+nav a {
+  color: var(--ink-muted); text-decoration: none; font-size: 15px; font-weight: 500;
+  padding: 6px 0;
 }
-#lang:hover { border-color: var(--accent-ink); }
+nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
+
+/* The language and theme switches and the download pill, kept together as one item so
+   they never wrap apart. */
+.switches { display: flex; align-items: center; justify-content: flex-end; gap: 14px; }
+
+/* The language switch is a control; in this header the controls are bare words and
+   glyphs, and the pill beside them is the one thing that is filled. */
+#lang {
+  font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
+  color: var(--ink); background: none; border: 0; padding: 6px 4px;
+}
+#lang:hover { color: var(--accent-ink); }
+
+#menu {
+  display: none; place-items: center; cursor: pointer;
+  width: 40px; height: 40px; padding: 0; margin-right: -8px;
+  color: var(--ink); background: none; border: 0;
+}
+#menu svg { width: 24px; height: 24px; }
+#menu path { transition: transform .2s; transform-origin: 12px 12px; }
+.menu-open #menu .m-top { transform: translateY(4px) rotate(45deg); }
+.menu-open #menu .m-bot { transform: translateY(-4px) rotate(-45deg); }
 
 /* -- hero --------------------------------------------------------------------- */
 .hero { padding: 64px 0 40px; }
 .hero h1 {
-  font-size: clamp(30px, 6vw, 46px); line-height: 1.25;
-  margin: 0 0 16px; letter-spacing: -.5px;
+  font-size: clamp(30px, 6vw, 46px); line-height: 1.25; font-weight: 800;
+  margin: 0 0 16px; letter-spacing: -1px;
 }
 .hero p.lead { color: var(--ink-muted); font-size: clamp(16px, 2.4vw, 19px); margin: 0 0 28px; max-width: 34em; }
 
@@ -162,27 +219,38 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); background: var(--c
 
 .qr {
   display: none;
-  margin: 32px 0 0; padding: 16px; gap: 16px; align-items: center;
+  margin: 28px 0 0; padding: 16px; gap: 20px; align-items: center;
   background: var(--card); border: 1px solid var(--edge);
-  border-radius: var(--radius-card); max-width: 30em;
+  border-radius: 16px; max-width: 554px;
 }
 /* The square is drawn in black on white and has to stay that way to scan, so it keeps
    its own white behind it on the dark theme rather than inheriting the card. */
 .qr img { background: #fff; border-radius: 8px; padding: 6px; flex: none; }
-.qr b { display: block; margin-bottom: 4px; }
-.qr p { margin: 0; color: var(--ink-muted); font-size: 14px; line-height: 1.5; }
+.qr b { display: block; margin-bottom: 4px; font-size: 15px; }
+.qr p { margin: 0; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
 @media (min-width: 720px) { .qr { display: flex; } }
 .btn {
-  display: inline-flex; align-items: center; gap: 10px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   background: var(--accent); color: var(--on-accent);
-  font-weight: 700; font-size: 16px; text-decoration: none;
+  font-weight: 700; font-size: 16px; text-decoration: none; white-space: nowrap;
   padding: 14px 22px; border-radius: var(--radius-field); border: 0;
 }
 .btn:hover { filter: brightness(1.06); }
 .btn[aria-disabled="true"] { opacity: .6; pointer-events: none; }
 .btn-quiet {
-  background: transparent; color: var(--accent-ink);
+  background: transparent; color: var(--ink);
   border: 1px solid var(--edge); font-weight: 600;
+}
+.btn-quiet:hover { border-color: var(--ink-faint); filter: none; }
+.btn-lg { min-height: 56px; padding: 0 28px; }
+.btn-pill { min-height: 44px; padding: 0 20px; border-radius: 999px; font-size: 15px; }
+
+/* Line icons, drawn at the weight of the text beside them and coloured by whatever holds
+   them. One class instead of stroke attributes on thirty separate SVGs. */
+.ico {
+  width: 20px; height: 20px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
 }
 .meta { color: var(--ink-muted); font-size: 14px; margin: 14px 0 0; }
 .meta a { color: var(--accent-ink); }
@@ -233,8 +301,28 @@ code.hash {
 }
 
 /* -- footer ------------------------------------------------------------------- */
-footer { border-top: 1px solid var(--edge); padding: 26px 0 40px; color: var(--ink-muted); font-size: 14px; }
-footer a { color: var(--accent-ink); }
+footer {
+  border-top: 1px solid var(--rule); margin-top: 128px;
+  padding: 40px 0 72px; color: var(--ink-muted); font-size: 14px;
+}
+.foot { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px 48px; }
+.foot-note { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 14px; }
+.foot-note p { margin: 0; }
+/* The name is written beside the mark only on a phone, where the footer is the last
+   thing on a long scroll and the header is a long way back up. */
+.foot-name { display: none; color: var(--ink); font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; font-weight: 600; }
+.foot-links a { color: var(--ink-muted); text-decoration: none; }
+.foot-links a:hover { color: var(--ink); }
+.foot-links .foot-all { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 719px) {
+  footer { margin-top: 72px; padding: 32px 0 56px; }
+  .foot { flex-direction: column; }
+  .foot-name { display: inline; }
+  .foot-note p { flex-basis: 100%; font-size: 15px; line-height: 1.6; }
+  .foot-links { font-size: 15px; }
+}
 
 /* Hidden until the language is settled, so the page never shows one language and
    then swaps under the reader. */
@@ -276,11 +364,10 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 #theme {
   display: inline-grid; place-items: center;
   width: 36px; height: 36px; padding: 0; cursor: pointer;
-  color: var(--ink); background: var(--card);
-  border: 1px solid var(--edge); border-radius: 999px;
+  color: var(--ink); background: none; border: 0; border-radius: 999px;
 }
-#theme:hover { border-color: var(--accent-ink); }
-#theme svg { width: 17px; height: 17px; grid-area: 1 / 1; }
+#theme:hover { color: var(--accent-ink); }
+#theme svg { width: 19px; height: 19px; grid-area: 1 / 1; }
 
 /* Light is the default, so the moon shows and the sun is put away. */
 #theme .i-sun  { display: none; }
@@ -295,21 +382,359 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 
 /* -- header on a narrow screen -------------------------------------------------
  *
- * Four things sit to the right of the name — two links and two switches — and on a phone
- * they do not fit beside it. Left alone they wrap raggedly: বাংলা drops to a second line
- * on its own while the name floats vertically centred against the pair of rows.
+ * Below 880px the four links no longer fit between the name and the controls, and
+ * wrapping them gave rows that read as a header that broke. So they fold behind one
+ * button and open as a panel under the bar; the download pill goes too, since the page
+ * the reader is on carries its own download button in the first screenful.
  *
- * So below 560px the header stops pretending to be one row and becomes two on purpose:
- * the name, then the controls beneath it, each row aligned to the same left edge as the
- * text below. Two deliberate rows read as a design; one row that broke does not.
+ * Only once script has run (the `js` class on <html>, set in each page's head before the
+ * first paint) -- without it there is no button that works, so the links stay in view as
+ * a second row instead.
  */
-@media (max-width: 559px) {
-  .bar { flex-wrap: wrap; row-gap: 8px; padding-block: 10px 12px; }
-  /* Row one is the name and the two switches; row two is the links, full width beneath.
-     Letting all six wrap on their own gave three ragged rows with বাংলা alone on the
-     last -- this is the same content in two rows that were meant. */
-  .brand { flex: 1 1 auto; }
-  .switches { margin-left: auto; }
-  nav { order: 3; flex: 1 0 100%; margin-left: 0; gap: 2px; }
-  nav a { padding: 6px 8px; font-size: 13.5px; }
+@media (max-width: 879px) {
+  .bar { grid-template-columns: 1fr auto; min-height: 64px; }
+  .brand b { font-size: 20px; }
+  .brand-tile { width: 30px; height: 30px; }
+  .btn-pill { display: none; }
+  .switches { gap: 10px; }
+
+  nav { grid-column: 1 / -1; flex-wrap: wrap; gap: 4px 20px; padding-bottom: 12px; }
+
+  .js #menu { display: inline-grid; }
+  .js nav {
+    display: none;
+    position: absolute; left: 0; right: 0; top: 100%;
+    flex-direction: column; align-items: stretch; gap: 0;
+    padding: 8px var(--gutter) 20px;
+    background: var(--page); border-bottom: 1px solid var(--rule);
+  }
+  .js .menu-open nav { display: flex; }
+  .js nav a { font-size: 17px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .js nav a:last-child { border-bottom: 0; }
+}
+
+/* =============================================================================
+ * The home page
+ *
+ * Built to the owner's two drawings of it, one at 1440 wide and one at 390, and measured
+ * off them in CSS pixels. Everything below is scoped to `.home` or to a class only the
+ * home page uses, so the other three pages keep the plainer shapes above.
+ * ============================================================================= */
+
+/* Two wordings of the same thing, where the narrow column needs the shorter one. */
+.only-narrow { display: none; }
+@media (max-width: 719px) {
+  .only-wide { display: none; }
+  .only-narrow { display: inline; }
+}
+
+.num, .num-big { font-variant-numeric: tabular-nums; }
+.num { font-family: var(--mono); font-weight: 500; }
+
+/* A small square an icon sits in -- tinted in the accent, or outlined. */
+.tile {
+  display: inline-grid; place-items: center; flex: none;
+  width: 44px; height: 44px; border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  color: var(--accent-ink);
+}
+.tile .ico { width: 19px; height: 19px; }
+.tile-lg { width: 48px; height: 48px; }
+.tile-lg .ico { width: 20px; height: 20px; }
+.tile-line { width: 46px; height: 46px; background: none; border: 1px solid var(--edge); }
+.tile-line .ico { width: 18px; height: 18px; }
+
+/* -- hero ----------------------------------------------------------------------- */
+/* `.hero` is shared with the other pages and zeroes the side padding; the gutter is put
+   back here because this one is also the `.wrap`. */
+.hero-home {
+  display: grid; grid-template-columns: minmax(0, 600px) 1fr;
+  column-gap: 40px; align-items: start;
+  padding: 96px var(--gutter) 0;
+}
+
+.pill {
+  display: inline-flex; align-items: center; gap: 10px;
+  margin: 0 0 24px; padding: 4px 16px 4px 4px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 999px;
+  font-size: 13px; font-weight: 500; line-height: 1.4; color: var(--ink);
+}
+.pill-tag {
+  background: var(--accent); color: var(--on-accent);
+  font-size: 11px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px;
+}
+
+.hero-home h1 {
+  font-size: clamp(44px, 5vw + 16px, 72px); line-height: 1; font-weight: 800;
+  letter-spacing: -.035em; margin: 0;
+}
+.hero-home h1 em { font-style: normal; color: var(--accent-ink); }
+.hero-home p.lead {
+  font-size: 18px; line-height: 1.78; color: var(--ink-muted);
+  margin: 28px 0 0; max-width: 520px;
+}
+.hero-home .cta { margin-top: 40px; gap: 12px; }
+.hero-meta { display: none; }
+
+/* -- the phone -------------------------------------------------------------------- */
+.phone {
+  justify-self: end; margin: 18px clamp(0px, 5.5vw, 80px) 0 0;
+  width: 300px; height: 610px; padding: 10px;
+  background: var(--frame); border: 1px solid var(--edge); border-radius: 46px;
+  box-shadow: var(--shadow);
+}
+.phone-screen {
+  height: 100%; display: flex; flex-direction: column;
+  padding: 30px 18px 18px;
+  background: var(--panel); border-radius: 36px;
+  font-size: 13px; line-height: 1.35;
+}
+.mock-head { display: flex; justify-content: space-between; align-items: baseline; }
+.mock-head b { font-size: 21px; font-weight: 700; letter-spacing: -.3px; }
+.mock-tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+
+.mock-tb {
+  margin-top: 18px; padding: 12px 14px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: 14px;
+}
+.mock-tb-top { display: flex; justify-content: space-between; align-items: center; color: var(--ink-muted); font-size: 12px; }
+.mock-ok { display: inline-flex; align-items: center; gap: 5px; color: var(--green); font-weight: 600; }
+.mock-ok .ico { width: 13px; height: 13px; stroke-width: 2.5; }
+.mock-tb-sides { display: grid; grid-template-columns: 1fr 1fr; margin-top: 10px; }
+.mock-tb-sides span { display: block; color: var(--ink-faint); font-size: 11px; }
+.mock-tb-sides b { font-size: 16px; }
+
+.mock-label {
+  margin: 20px 0 6px; font-size: 10.5px; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--ink-faint);
+}
+.mock-rows { list-style: none; margin: 0; padding: 0; }
+.mock-rows li {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px;
+  padding: 10px 0; border-top: 1px solid var(--rule);
+}
+.mock-rows li:first-child { border-top: 0; }
+.mock-rows .tile { width: 30px; height: 30px; border-radius: 8px; }
+.mock-rows .tile .ico { width: 15px; height: 15px; }
+.mock-what { min-width: 0; }
+.mock-what b { display: block; font-size: 13px; font-weight: 600; }
+.mock-what small { display: block; font-size: 10.5px; color: var(--ink-faint); }
+.mock-rows .num { font-size: 13px; }
+
+.mock-new {
+  margin-top: auto; min-height: 44px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--accent); color: var(--on-accent);
+  border-radius: 12px; font-size: 13.5px; font-weight: 700;
+}
+.mock-new .ico { width: 15px; height: 15px; }
+
+/* -- the four numbers ------------------------------------------------------------- */
+.stats-wrap { padding: 64px var(--gutter) 0; }
+.stats {
+  display: grid; grid-template-columns: repeat(4, 1fr); margin: 0;
+  background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-card);
+  overflow: hidden;
+}
+.stats > div { padding: 30px 32px; border-left: 1px solid var(--edge); }
+.stats > div:first-child { border-left: 0; }
+.num-big {
+  font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -1px; color: var(--ink);
+}
+.stats dd { margin: 10px 0 0; max-width: 230px; color: var(--ink-muted); font-size: 14.5px; line-height: 1.45; }
+
+/* -- sections --------------------------------------------------------------------- */
+.home .block { padding: 120px var(--gutter) 0; }
+.sec-head { text-align: center; max-width: 680px; margin: 0 auto 64px; }
+.eyebrow { margin: 0 0 14px; color: var(--accent-ink); font-size: 14px; font-weight: 700; }
+.sec-head h2, .trust h2, .band h2 {
+  font-size: clamp(34px, 2.6vw + 12px, 48px); line-height: 1.1; font-weight: 800;
+  letter-spacing: -.03em; margin: 0;
+}
+.sec-head h2 { max-width: 640px; margin-inline: auto; }
+.sec-head p:not(.eyebrow) { margin: 18px auto 0; max-width: 600px; color: var(--ink-muted); font-size: 18px; line-height: 1.6; }
+
+/* -- why -------------------------------------------------------------------------- */
+.why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.why-card { padding: 32px; border-radius: var(--radius-card); }
+.why-card h3 { margin: 22px 0 12px; font-size: 20px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
+.why-card p { font-size: 15.5px; line-height: 1.7; }
+.why-card a { color: var(--accent-ink); text-underline-offset: 3px; }
+
+/* -- at a glance ------------------------------------------------------------------ */
+.glance {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px 32px;
+}
+.glance h3 { margin: 20px 0 8px; font-size: 17px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
+.glance p { margin: 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; }
+
+/* -- why not the Play Store ------------------------------------------------------- */
+.trust {
+  display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 32px 64px; align-items: center;
+  padding: 56px; background: var(--card); border: 1px solid var(--edge); border-radius: 28px;
+}
+.trust h2 { font-size: clamp(34px, 1.6vw + 16px, 40px); margin-bottom: 24px; }
+.trust-copy > p:not(.eyebrow) { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.75; }
+.arrow-link {
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+  color: var(--accent-ink); font-weight: 700; font-size: 16px; text-decoration: none;
+}
+.arrow-link .ico { width: 17px; height: 17px; transition: transform .15s; }
+.arrow-link:hover .ico { transform: translateX(3px); }
+.trust-link-narrow { display: none; }
+
+.release { background: var(--panel); border: 1px solid var(--edge); border-radius: 16px; }
+.release-head {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 16px 24px; border-bottom: 1px solid var(--edge);
+}
+.release-head b { font-size: 16px; }
+.badge-ok {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 12px; border-radius: 999px;
+  background: color-mix(in srgb, var(--green) 14%, transparent); color: var(--green);
+  font-size: 13px; font-weight: 600;
+}
+.badge-ok .ico { width: 13px; height: 13px; stroke-width: 2.5; }
+.release-rows { margin: 0; padding: 0 24px 16px; }
+.release-rows > div {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 13px 0; border-bottom: 1px solid var(--rule);
+}
+.release-rows dt { color: var(--ink-muted); font-size: 14.5px; }
+.release-rows dd { margin: 0; font-weight: 700; font-size: 14.5px; text-align: end; }
+.release-rows .release-hash { display: block; border-bottom: 0; padding-bottom: 4px; }
+.release-hash dd { text-align: start; margin-top: 4px; }
+.release-hash code {
+  display: block; font-family: var(--mono); font-weight: 400; font-size: 13px;
+  line-height: 1.6; word-break: break-all; color: var(--ink);
+}
+
+/* -- permissions ------------------------------------------------------------------ */
+.perms {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+}
+.perms .card { display: flex; align-items: flex-start; gap: 20px; padding: 28px; }
+.perms h3 { margin: 0 0 6px; font-size: 17px; font-weight: 700; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px; }
+.perms p { font-size: 15px; line-height: 1.55; }
+.badge-soft {
+  padding: 2px 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-on-tint);
+  font-size: 12px; font-weight: 700;
+}
+
+/* -- the band --------------------------------------------------------------------- *
+ * Gold with the page's own near-black written on it -- the fill colour used as a fill,
+ * which is the one job it can do on both themes.
+ */
+.band {
+  text-align: center; padding: 72px 56px;
+  background: var(--accent); color: var(--on-accent); border-radius: 28px;
+}
+.band-meta { margin: 16px 0 32px; font-size: 17px; opacity: .72; min-height: 1.6em; }
+.band-cta { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.btn-dark { background: #0C0B0A; color: #F5F2EC; }
+.btn-ghost {
+  background: transparent; color: inherit; font-weight: 700;
+  border: 1.5px solid color-mix(in srgb, currentColor 28%, transparent);
+}
+.btn-ghost:hover { filter: none; border-color: currentColor; }
+
+/* -- Bangla ------------------------------------------------------------------------
+ * The display sizes above are set as tight as Manrope's Latin allows. Bengali hangs its
+ * matras above the line and its vowel signs below, and at a leading of 1 the second line
+ * of a headline cuts through the first -- so it gets room, and none of the negative
+ * tracking, which only pulls conjuncts into each other.
+ */
+/* Bengali also sets larger than Latin at the same size -- the headline ran to four lines
+   where the English takes three -- so it is drawn a step smaller. */
+html[lang="bn"] .hero-home h1 { font-size: clamp(36px, 4vw + 12px, 58px); line-height: 1.3; letter-spacing: 0; }
+html[lang="bn"] .mock-tag, html[lang="bn"] .mock-label, html[lang="bn"] .pill-tag { letter-spacing: 0; }
+html[lang="bn"] .sec-head h2, html[lang="bn"] .trust h2, html[lang="bn"] .band h2 { line-height: 1.35; letter-spacing: 0; }
+html[lang="bn"] .num-big, html[lang="bn"] .brand b { letter-spacing: 0; }
+
+/* -- the narrower layouts --------------------------------------------------------- */
+@media (max-width: 1079px) {
+  .hero-home { grid-template-columns: 1fr; }
+  .why { grid-template-columns: 1fr; }
+  .glance { grid-template-columns: repeat(2, 1fr); }
+  .trust { grid-template-columns: 1fr; }
+  .trust-link-wide { display: none; }
+  .trust-link-narrow { display: inline-flex; margin-top: 0; }
+
+  /* The phone loses its bezel and becomes a card the width of the column: at this size
+     the reader is looking at a phone already, and a drawing of one inside it is a toy. */
+  .phone {
+    justify-self: stretch; width: auto; height: auto; margin: 40px 0 0;
+    padding: 0; background: none; border: 0; box-shadow: none;
+  }
+  .phone-screen {
+    padding: 34px 19px 20px; border-radius: 32px;
+    background: var(--card); border: 1px solid var(--edge); font-size: 15px;
+  }
+  .mock-head b { font-size: 28px; }
+  .mock-tag { font-size: 11px; }
+  .mock-tb { margin-top: 26px; padding: 14px 14px 16px; border-radius: 20px; background: var(--panel); }
+  .mock-tb-top { font-size: 14px; }
+  .mock-tb-sides span { font-size: 13px; }
+  .mock-tb-sides b { font-size: 20px; }
+  .mock-label, .mock-rows .mock-extra, .mock-new { display: none; }
+  .mock-rows { margin-top: 12px; }
+  .mock-rows li { gap: 12px; padding: 12px 0; }
+  .mock-rows .tile { width: 32px; height: 32px; border-radius: 10px; }
+  .mock-rows .tile .ico { width: 16px; height: 16px; }
+  .mock-what b { font-size: 16px; }
+  .mock-what small { font-size: 13px; }
+  .mock-rows .num { font-size: 15px; }
+}
+
+@media (max-width: 719px) {
+  .hero-home { padding-top: 40px; }
+  .hero-home p.lead { font-size: 17px; line-height: 1.65; margin-top: 32px; }
+  .hero-home .cta { flex-direction: column; align-items: stretch; margin-top: 28px; }
+  .hero-meta { display: block; text-align: center; margin-top: 18px; }
+
+  .stats-wrap { padding-top: 24px; }
+  .stats { grid-template-columns: 1fr 1fr; border-radius: 24px; }
+  .stats > div { padding: 22px 20px 24px; border-left: 0; }
+  .stats > div:nth-child(even) { border-left: 1px solid var(--edge); }
+  .stats > div:nth-child(n+3) { border-top: 1px solid var(--edge); }
+  .num-big { font-size: 30px; }
+  .stats dd { font-size: 14.5px; line-height: 1.35; }
+
+  .home .block { padding-top: 80px; }
+  .sec-head { margin-bottom: 40px; }
+  .sec-head p:not(.eyebrow) { font-size: 17px; }
+
+  .why { gap: 16px; }
+  .why-card { padding: 25px; border-radius: 24px; }
+  .why-card h3 { font-size: 19px; }
+
+  .glance { gap: 36px 20px; }
+  .glance h3 { font-size: 16.5px; letter-spacing: -.3px; }
+  .glance .tile-line { width: 42px; height: 42px; }
+  .glance p { font-size: 14.5px; }
+
+  .trust { padding: 32px 25px; border-radius: 24px; gap: 24px; }
+  .trust h2 { font-size: 32px; margin-bottom: 20px; }
+  .release-head, .release-rows { padding-inline: 16px; }
+
+  .perms { grid-template-columns: 1fr; gap: 16px; }
+  .perms .card { padding: 22px; gap: 16px; }
+
+  .band { padding: 44px 24px 40px; border-radius: 24px; }
+  .band-meta { margin: 14px 0 28px; font-size: 15px; }
+  .band-cta { flex-direction: column; align-items: stretch; gap: 20px; }
+  /* On a phone the second choice is a line of text, not a second button the same size
+     as the first -- two equal buttons stacked read as "which one?". */
+  .btn-ghost {
+    border: 0; min-height: auto; padding: 8px 0;
+    text-decoration: underline; text-underline-offset: 4px;
+  }
 }
