@@ -101,46 +101,46 @@
          scrolls sideways, each frame snapping into place. -->
     <div class="shots-row">
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-1" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-home-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-home-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotHome">The first screen</figcaption>
+        </button>
+        <figcaption id="cap-1" data-s="shotHome">The first screen</figcaption>
       </figure>
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-2" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-txn-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-txn-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotTxn">Every entry, filtered</figcaption>
+        </button>
+        <figcaption id="cap-2" data-s="shotTxn">Every entry, filtered</figcaption>
       </figure>
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-3" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-accounts-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-accounts-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotAccounts">The accounts</figcaption>
+        </button>
+        <figcaption id="cap-3" data-s="shotAccounts">The accounts</figcaption>
       </figure>
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-4" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-loans-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-loans-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotLoans">Who owes whom</figcaption>
+        </button>
+        <figcaption id="cap-4" data-s="shotLoans">Who owes whom</figcaption>
       </figure>
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-5" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-analytics-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-analytics-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotAnalytics">Where the month went</figcaption>
+        </button>
+        <figcaption id="cap-5" data-s="shotAnalytics">Where the month went</figcaption>
       </figure>
       <figure class="shot">
-        <div class="frame">
+        <button type="button" class="frame zoom" aria-describedby="cap-6" data-s-label="lbOpen">
           <img class="s-light" src="assets/screens/app-backup-light.png" width="540" height="1212" loading="lazy" alt="">
           <img class="s-dark"  src="assets/screens/app-backup-dark.png"  width="540" height="1212" loading="lazy" alt="">
-        </div>
-        <figcaption data-s="shotBackup">Backup and restore</figcaption>
+        </button>
+        <figcaption id="cap-6" data-s="shotBackup">Backup and restore</figcaption>
       </figure>
     </div>
   </section>
@@ -235,6 +235,22 @@
   </section>
 
 </main>
+
+<!-- The screenshots at full size. One dialog for all six: it reads the picture and its
+     caption from whichever frame was pressed, and steps to the next frame from there. -->
+<dialog class="lightbox" id="lightbox" aria-labelledby="lb-cap">
+  <button type="button" class="lb-btn lb-close" data-s-label="lbClose" aria-label="Close">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  <button type="button" class="lb-btn lb-prev" data-s-label="lbPrev" aria-label="Previous screen">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+  <figure class="lb-figure">
+    <img id="lb-img" alt="" width="540" height="1212">
+    <figcaption><span id="lb-cap"></span> <span class="lb-count" id="lb-count"></span></figcaption>
+  </figure>
+  <button type="button" class="lb-btn lb-next" data-s-label="lbNext" aria-label="Next screen">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+</dialog>
+
 
 <footer>
   <div class="wrap foot">

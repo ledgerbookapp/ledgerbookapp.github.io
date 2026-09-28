@@ -37,6 +37,12 @@ function applyLang(lang) {
     const pair = S[el.dataset.s];
     if (pair) el.textContent = pair[i];
   });
+  // A control whose face is a glyph still needs words for a screen reader; data-s-label
+  // puts them in aria-label instead of in the text, and in the same language.
+  document.querySelectorAll('[data-s-label]').forEach(el => {
+    const pair = S[el.dataset.sLabel];
+    if (pair) el.setAttribute('aria-label', pair[i]);
+  });
 
   // The switch offers the other language, not the current one -- a button labelled with
   // what you are already reading tells you nothing about what pressing it does.
@@ -198,6 +204,69 @@ async function loadRelease() {
   }
 }
 
+/* -- the screenshots, full size ------------------------------------------------
+ *
+ * On the features page a screenshot is 170 pixels wide, which shows that a screen exists
+ * and not what is on it. Pressing one opens it at the height of the window in a <dialog>,
+ * which brings Escape, focus trapping and the dimmed page behind for nothing.
+ *
+ * The picture is whichever of the pair the page is showing -- light or dark, by the
+ * theme -- read off the frame at the moment it opens, so the big one is always the one
+ * the reader just pressed. Arrows, the arrow keys and a swipe step through the six.
+ */
+function setupLightbox() {
+  const box = document.getElementById('lightbox');
+  if (!box || typeof box.showModal !== 'function') return;
+  const frames = [...document.querySelectorAll('.zoom')];
+  const img = document.getElementById('lb-img');
+  const cap = document.getElementById('lb-cap');
+  const count = document.getElementById('lb-count');
+  let at = 0;
+
+  const shown = (frame) =>
+    [...frame.querySelectorAll('img')].find(im => getComputedStyle(im).display !== 'none')
+    || frame.querySelector('img');
+
+  function show(n) {
+    at = (n + frames.length) % frames.length;
+    const frame = frames[at];
+    img.src = shown(frame).currentSrc || shown(frame).src;
+    cap.textContent = frame.closest('figure').querySelector('figcaption').textContent;
+    count.textContent = (at + 1) + ' / ' + frames.length;
+  }
+  function close() { box.close(); }
+
+  frames.forEach((frame, n) => frame.addEventListener('click', () => {
+    show(n);
+    document.documentElement.classList.add('lb-open');
+    box.showModal();
+  }));
+  box.addEventListener('close', () => {
+    document.documentElement.classList.remove('lb-open');
+    frames[at].focus();
+  });
+  box.querySelector('.lb-close').addEventListener('click', close);
+  box.querySelector('.lb-prev').addEventListener('click', () => show(at - 1));
+  box.querySelector('.lb-next').addEventListener('click', () => show(at + 1));
+  // A click on the dimmed space around the picture closes it; one on the picture or a
+  // button does not.
+  box.addEventListener('click', e => { if (e.target === box || e.target.classList.contains('lb-figure')) close(); });
+  box.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft') show(at - 1);
+    else if (e.key === 'ArrowRight') show(at + 1);
+  });
+
+  // A sideways swipe of more than 50 pixels steps; anything shorter is a tap or a wobble.
+  let x0 = null;
+  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    x0 = null;
+    if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+  });
+}
+
 /* -- go ------------------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang());
@@ -223,6 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.matches) setMenu(false);
   });
   labelMenu();
+  setupLightbox();
 
   releaseReady = loadRelease();
 });

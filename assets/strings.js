@@ -285,6 +285,12 @@ const S = {
                  'ছয়টা পাতা, এই কাজের জন্য বানানো একটা নমুনা খাতায়।'],
   // Added on a phone, where the six sit in a row wider than the screen.
   shotsSwipe:   [' Swipe to see them all.', ' সবগুলো দেখতে পাশে সরান।'],
+  // The full-size view of a screenshot. Read out by screen readers, as the buttons'
+  // labels; the glyphs on them say the same to everyone else.
+  lbOpen:       ['Enlarge', 'বড় করে দেখুন'],
+  lbClose:      ['Close', 'বন্ধ করুন'],
+  lbPrev:       ['Previous screen', 'আগের পাতা'],
+  lbNext:       ['Next screen', 'পরের পাতা'],
   shotHome:     ["The first screen", "প্রথম পাতা"],
   shotTxn:      ["Every entry, filtered", "সব এন্ট্রি, ছেঁকে দেখা"],
   shotAccounts: ["The accounts", "অ্যাকাউন্টগুলো"],

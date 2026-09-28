@@ -941,3 +941,70 @@ html[lang="bn"] .num-big, html[lang="bn"] .brand b { letter-spacing: 0; }
 html[lang="bn"] .feat-hero h1, html[lang="bn"] .sec-title, html[lang="bn"] .num-title,
 html[lang="bn"] .band-row h2 { letter-spacing: 0; line-height: 1.3; }
 html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }
+
+/* -- the screenshots, pressable ------------------------------------------------------
+ * The frame is a button now, so it drops a button's own look and keeps the phone's; the
+ * pointer and a small lift say it can be pressed, and a gold ring shows keyboard focus.
+ */
+button.frame {
+  display: block; width: 100%; font: inherit; color: inherit; cursor: zoom-in;
+  transition: transform .2s, border-color .2s;
+}
+button.frame:hover { transform: translateY(-4px); border-color: var(--edge); }
+button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+/* -- the full-size view ------------------------------------------------------------ */
+.lightbox {
+  width: 100vw; height: 100dvh; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0; background: transparent; color: #F5F2EC;
+  overflow: hidden;
+}
+.lightbox[open] {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+}
+.lightbox::backdrop { background: rgba(8, 7, 6, .88); backdrop-filter: blur(6px); }
+/* While it is open the page behind does not scroll under the reader's wheel. */
+.lb-open, .lb-open body { overflow: hidden; }
+
+.lb-figure {
+  grid-column: 2; margin: 0; height: 100dvh; padding: 24px 0 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  min-width: 0;
+}
+.lb-figure img {
+  display: block; min-height: 0; max-height: calc(100dvh - 96px); max-width: 100%;
+  width: auto; height: auto; border-radius: 28px;
+  border: 2px solid rgba(255, 255, 255, .12); box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+}
+.lb-figure figcaption { font-size: 15px; font-weight: 600; text-align: center; }
+.lb-count { margin-left: 8px; color: rgba(245, 242, 236, .55); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+.lb-btn {
+  display: inline-grid; place-items: center; cursor: pointer;
+  width: 48px; height: 48px; margin: 0 24px; padding: 0; border-radius: 999px;
+  color: #F5F2EC; background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14);
+  transition: background-color .15s;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, .16); }
+.lb-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lb-btn .ico { width: 22px; height: 22px; }
+.lb-prev { grid-column: 1; }
+.lb-next { grid-column: 3; }
+.lb-close { position: absolute; top: 16px; right: 16px; margin: 0; z-index: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox[open] .lb-figure img { animation: lb-in .18s ease-out; }
+  @keyframes lb-in { from { opacity: 0; transform: scale(.97); } }
+}
+
+/* On a phone the arrows sit over the picture's lower corners, where a thumb is, and the
+   picture takes the whole width between the gutters. */
+@media (max-width: 719px) {
+  .lightbox[open] { grid-template-columns: 1fr; }
+  .lb-figure { grid-column: 1; grid-row: 1; padding: 64px 16px 16px; }
+  .lb-figure img { max-height: calc(100dvh - 150px); border-radius: 22px; }
+  .lb-prev, .lb-next { position: absolute; bottom: 14px; margin: 0; grid-column: auto; }
+  .lb-prev { left: 16px; }
+  .lb-next { right: 16px; }
+  .lb-figure figcaption { padding: 0 64px; }
+}
