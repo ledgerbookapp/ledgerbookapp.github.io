@@ -72,7 +72,9 @@ so the enlarged view is sharp on a phone. They came from the sample ledger alrea
 LB_Clean, with the owner's name set to Raahat; reaching the sign-up screens used the app's
 own Sign Out & Reset PIN, which keeps the ledger.
 
-Steps 1 to 3 are still the older half-size crops, around 500 pixels wide, and look soft
-on a sharp screen. Re-taking them needs a genuine first install on LB_Clean, which means
-uninstalling there — and that ledger is what the features page is photographed from, so
-export a backup from the app first.
+Steps 1 to 3 were re-taken the same day, full size, because the old ones still showed the
+app icon from before it changed. That needed a genuine first install on LB_Clean: its app
+data was copied off with run-as, the app uninstalled, the release downloaded through the
+site's own get.html in the emulator's Chrome and walked up to Play Protect's "This app looks
+safe", then declined; the debug build went back on and the data was restored, and the
+ledger reads as it did (net 1,96,170). Do the same next time -- back the data up first.
