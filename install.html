@@ -27,7 +27,7 @@
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -145,7 +145,7 @@
       <div class="step-pics gal gal-3" data-gal>
         <div class="gal-track">
           <figure class="pic"><p class="pic-label"><span class="pic-letter">a</span><span data-s="s3a">Tap Install</span></p>
-            <img src="assets/screens/step3-install.png" alt="" loading="lazy" width="950" height="642"><figcaption data-s="cap3"></figcaption></figure>
+            <img src="assets/screens/step3-install.png" alt="" loading="lazy" width="950" height="642"><figcaption data-rel="cap3">Tap Install.</figcaption></figure>
           <figure class="pic"><p class="pic-label"><span class="pic-letter">b</span><span data-s="s3b">Choose Scan app</span></p>
             <img src="assets/screens/step3-protect.png" alt="" loading="lazy" width="988" height="1288"><figcaption data-s="cap3b"></figcaption></figure>
           <figure class="pic"><p class="pic-label"><span class="pic-letter">c</span><span data-s="s3c">Tap Install again</span></p>

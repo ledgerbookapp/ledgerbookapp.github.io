@@ -7,6 +7,12 @@
  * page they can read and a file they can fetch.
  */
 
+// The stylesheet folds the narrow-screen links behind the menu button only under this
+// class. It is set here, by the file that wires that button, and not in the page's head:
+// set there, a site.js that never arrived left the links hidden behind a button that did
+// nothing.
+document.documentElement.classList.add('js');
+
 /* -- language ------------------------------------------------------------------
  *
  * Index 0 is English, 1 is Bangla, matching the order in strings.js.
@@ -67,6 +73,7 @@ function applyLang(lang) {
   renderRelease();
   labelTheme();
   labelMenu();
+  repaintGalleries();
 }
 
 /* -- the theme -----------------------------------------------------------------
@@ -117,9 +124,18 @@ let release = null;
 // know where to send the reader; nothing else needs to.
 let releaseReady = Promise.resolve();
 
+// Bangla text writes its numbers in Bangla digits -- the catalogue's own "৬.০" -- so a
+// number the script puts into a Bangla sentence is written the same way.
+function num(s) {
+  s = String(s);
+  return currentLang() === 'bn' ? s.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]) : s;
+}
+
+// Decimal megabytes, as Chrome's own download prompt counts them: the same file there is
+// "2.69 MB", and dividing by 1024 twice here made it "2.6 MB" on the page beside it.
 function fmtSize(bytes) {
   if (!bytes) return '';
-  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+  return num((bytes / 1e6).toFixed(1)) + ' MB';
 }
 
 /*
@@ -136,7 +152,7 @@ function fmtSize(bytes) {
  */
 function renderRelease() {
   const i = LANGS[currentLang()];
-  const fill = (v) => (s) => s.replace('{v}', v).replace('{size}', fmtSize(release.size));
+  const fill = (v) => (s) => s.replace('{v}', num(v)).replace('{size}', fmtSize(release.size));
 
   document.querySelectorAll('#dl, [data-dl]').forEach(a => {
     a.href = release ? release.url : RELEASES_URL;
@@ -159,6 +175,10 @@ function renderRelease() {
     set('[data-rel="title"]', S.relLatest[i]);
     set('[data-rel="sha"]', S.relHashWait[i]);
     set('[data-rel="hashTitle"], [data-rel="hashTitleShort"]', 'SHA-256');
+    // A size written into the page would be a guess about a file nobody has looked up --
+    // and was already a different guess from the install guide's. A dash says "unknown".
+    set('[data-rel="size"]', '—');
+    set('[data-rel="cap3"]', S.cap3Plain[i]);
     document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = true; });
     return;
   }
@@ -167,11 +187,12 @@ function renderRelease() {
   set('#dl-meta, [data-rel="line"]', f(S.versionLine[i]));
   set('[data-rel="lineShort"]', f(S.versionLineShort[i]));
   set('[data-rel="title"]', f(S.relTitle[i]));
-  if (release.size) set('[data-rel="size"]', fmtSize(release.size));
+  set('[data-rel="size"]', release.size ? fmtSize(release.size) : '—');
+  set('[data-rel="cap3"]', release.size ? f(S.cap3[i]) : S.cap3Plain[i]);
   if (release.sha) set('#dl-hash, [data-rel="sha"]', release.sha);
   else set('[data-rel="sha"]', S.relHashWait[i]);
   set('[data-rel="hashTitle"]', f(S.hashTitle[i]));
-  set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + release.version);
+  set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + num(release.version));
   // Copy is offered only once there is a fingerprint to copy.
   document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = !release.sha; });
 }
@@ -200,7 +221,14 @@ function setupCopy() {
  * phone the row becomes a strip that scrolls sideways a picture at a time, and the Prev
  * and Next buttons under it move it; the dots and the count follow the strip however it
  * was moved -- by the buttons or by the reader's thumb.
+ *
+ * The strip's height is measured, so it is measured again whenever a picture's height
+ * can change underneath it: a caption rewrapping in the other language, or the web font
+ * arriving after the first measure. Once only, it clipped the caption that grew.
  */
+const galleryPaints = [];
+function repaintGalleries() { galleryPaints.forEach(p => p()); }
+
 function setupGalleries() {
   document.querySelectorAll('[data-gal]').forEach(gal => {
     const track = gal.querySelector('.gal-track');
@@ -219,7 +247,7 @@ function setupGalleries() {
       const single = nav && getComputedStyle(nav).display !== 'none';
       track.style.height = single ? items[n].offsetHeight + 'px' : '';
       dots.forEach((d, k) => d.classList.toggle('on', k === n));
-      if (count) count.textContent = (n + 1) + ' / ' + items.length;
+      if (count) count.textContent = num(n + 1) + ' / ' + num(items.length);
       if (prev) prev.disabled = n === 0;
       if (next) next.disabled = n === items.length - 1;
     }
@@ -228,8 +256,14 @@ function setupGalleries() {
     if (next) next.addEventListener('click', () => go(1));
     track.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
     window.addEventListener('resize', paint);
+    if (typeof ResizeObserver === 'function') {
+      const ro = new ResizeObserver(() => requestAnimationFrame(paint));
+      items.forEach(it => ro.observe(it));
+    }
+    galleryPaints.push(paint);
     paint();
   });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(repaintGalleries);
 }
 
 /* -- the menu ------------------------------------------------------------------
@@ -305,7 +339,7 @@ function setupLightbox() {
     const frame = frames[at];
     img.src = shown(frame).currentSrc || shown(frame).src;
     cap.textContent = frame.closest('figure').querySelector('figcaption').textContent;
-    count.textContent = (at + 1) + ' / ' + frames.length;
+    count.textContent = num(at + 1) + ' / ' + num(frames.length);
   }
   function close() { box.close(); }
 
@@ -350,15 +384,45 @@ function setupLightbox() {
  * Except when the reader chose one. The last two sections are short, so on a window a
  * thousand pixels tall, jumping to "What it asks for" lands at the bottom of the page --
  * and the end-of-page rule marked "Getting rid of it all", the one they had not pressed.
- * So a pressed link, or a #section in the address, stays marked until the reader moves
- * the page themselves: a wheel, a touch, or a key.
+ * So a pressed link, or a #section in the address, stays marked until the page moves
+ * away from where the jump left it -- by more than a line, and by any means: wheel,
+ * thumb, keys, the scrollbar dragged, Back. Watching for particular gestures instead
+ * missed the scrollbar and Back, and left the choice marked over a different section.
+ *
+ * The list only shows on a wide screen, so on a phone none of this measures anything.
  */
 function setupToc() {
+  const toc = document.querySelector('.priv-toc');
   const links = [...document.querySelectorAll('.priv-toc a')];
-  if (!links.length) return;
+  if (!toc || !links.length) return;
   const secs = links.map(a => document.querySelector(a.getAttribute('href')));
-  let chosen = links.findIndex(a => a.getAttribute('href') === location.hash);
+  let chosen = -1;
+  let settledAt = null;   // scrollY once the jump to `chosen` has landed
+  let queued = false;
+
+  // A #section counts as chosen only if the page is where a jump to it would leave it --
+  // its heading under the header, or the page's very bottom when the section is too near
+  // the end to rise that far. A reload that restores an older scroll position keeps the
+  // hash but not the place, and is not a choice.
+  function chooseFromHash() {
+    const k = links.findIndex(a => a.getAttribute('href') === location.hash);
+    if (k < 0 || !secs[k]) { choose(-1); return; }
+    const margin = parseFloat(getComputedStyle(secs[k]).scrollMarginTop) || 0;
+    const maxY = document.documentElement.scrollHeight - window.innerHeight;
+    const want = Math.min(maxY, secs[k].getBoundingClientRect().top + window.scrollY - margin);
+    choose(Math.abs(window.scrollY - want) <= 40 ? k : -1);
+  }
+  function choose(k) {
+    chosen = k;
+    settledAt = null;
+    // Two frames: the browser finishes the jump in the first.
+    requestAnimationFrame(() => requestAnimationFrame(() => { settledAt = window.scrollY; }));
+    paint();
+  }
   function paint() {
+    queued = false;
+    if (toc.offsetParent === null) return;   // hidden on this screen
+    if (chosen >= 0 && settledAt !== null && Math.abs(window.scrollY - settledAt) > 40) chosen = -1;
     let n = chosen;
     if (n < 0) {
       const line = window.innerHeight / 3;
@@ -368,11 +432,12 @@ function setupToc() {
     }
     links.forEach((a, k) => a.classList.toggle('on', k === n));
   }
-  links.forEach((a, k) => a.addEventListener('click', () => { chosen = k; paint(); }));
-  const release = () => { if (chosen >= 0) { chosen = -1; paint(); } };
-  ['wheel', 'touchstart', 'keydown'].forEach(t => window.addEventListener(t, release, { passive: true }));
-  window.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
-  window.addEventListener('resize', paint);
+  const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(paint); } };
+  links.forEach((a, k) => a.addEventListener('click', () => choose(k)));
+  window.addEventListener('hashchange', chooseFromHash);
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  requestAnimationFrame(chooseFromHash);
   paint();
 }
 
@@ -397,9 +462,13 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('header nav a').forEach(a =>
     a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
-  window.matchMedia('(min-width: 880px)').addEventListener('change', e => {
-    if (e.matches) setMenu(false);
-  });
+  // addEventListener on a media query arrived in Safari 14; older ones have only
+  // addListener, and calling the missing one threw here and stopped everything after it
+  // -- the galleries, the lightbox and the release lookup, which get.html depends on.
+  const wide = window.matchMedia ? window.matchMedia('(min-width: 880px)') : null;
+  const onWide = e => { if (e.matches) setMenu(false); };
+  if (wide && wide.addEventListener) wide.addEventListener('change', onWide);
+  else if (wide && wide.addListener) wide.addListener(onWide);
   labelMenu();
   setupLightbox();
   setupGalleries();

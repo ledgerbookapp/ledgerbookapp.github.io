@@ -231,8 +231,10 @@ const S = {
                  'এখানে Settings-এ চাপুন — Cancel নয়।'],
   cap2b:        ['Turn on Allow from this source. The install goes on from here.',
                  'Allow from this source চালু করুন। ইনস্টল এখান থেকেই এগোবে।'],
-  cap3:         ['Tap Install. The app is about 2.7 MB.',
-                 'Install-এ চাপুন। অ্যাপটা প্রায় ২.৭ MB।'],
+  // The size comes from the release, like every other number here; until it does the
+  // caption says only what to press.
+  cap3:         ['Tap Install. The app is {size}.', 'Install-এ চাপুন। অ্যাপটা {size}।'],
+  cap3Plain:    ['Tap Install.', 'Install-এ চাপুন।'],
   cap3b:        ['Play Protect has not seen it before. Choose Scan app.',
                  'Play Protect এটা আগে দেখেনি। Scan app বেছে নিন।'],
   cap3c:        ['What the scan came back with. Tap Install.',

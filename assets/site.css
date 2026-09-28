@@ -387,9 +387,9 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
  * button and open as a panel under the bar; the download pill goes too, since the page
  * the reader is on carries its own download button in the first screenful.
  *
- * Only once script has run (the `js` class on <html>, set in each page's head before the
- * first paint) -- without it there is no button that works, so the links stay in view as
- * a second row instead.
+ * Only once site.js has loaded (the `js` class on <html>, which that file sets as it
+ * runs, right before it wires the button) -- without it there is no button that works, so
+ * the links stay in view as a second row instead.
  */
 @media (max-width: 879px) {
   .bar { grid-template-columns: 1fr auto; min-height: 64px; }

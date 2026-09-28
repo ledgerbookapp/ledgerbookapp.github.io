@@ -22,6 +22,10 @@ const fs = require('fs');
 const path = require('path');
 
 const PAGES = ['index.html', 'features.html', 'install.html', 'privacy.html'];
+// Pages with no header of their own -- the QR code's landing page -- still get every
+// check but the two about the header. get.html was once left out entirely, so a renamed
+// string or a moved icon there would have gone unreported.
+const HEADERLESS = ['get.html'];
 const problems = [];
 const note = (m) => problems.push(m);
 
@@ -47,7 +51,7 @@ for (const [k, v] of Object.entries(S)) {
 // -- the pages ------------------------------------------------------------------
 const headers = new Map();
 
-for (const page of PAGES) {
+for (const page of [...PAGES, ...HEADERLESS]) {
   if (!fs.existsSync(page)) { note(`missing page: ${page}`); continue; }
   const html = fs.readFileSync(page, 'utf8');
 
@@ -64,6 +68,8 @@ for (const page of PAGES) {
 
   for (const need of ['assets/site.css', 'assets/strings.js', 'assets/site.js'])
     if (!html.includes(need)) note(`${page}: does not load ${need}`);
+
+  if (HEADERLESS.includes(page)) continue;
 
   // aria-current is the one thing a header is *supposed* to differ by, so take it out
   // before comparing. Anything else that differs is drift.
@@ -99,4 +105,4 @@ if (problems.length) {
   console.error(`\n${problems.length} problem${problems.length > 1 ? 's' : ''}.`);
   process.exit(1);
 }
-console.log(`${PAGES.length} pages, ${Object.keys(S).length} strings, nothing to report.`);
+console.log(`${PAGES.length + HEADERLESS.length} pages, ${Object.keys(S).length} strings, nothing to report.`);

@@ -30,7 +30,7 @@
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -164,7 +164,7 @@
       <div><dt class="num-big">4</dt><dd data-s="stat3">permissions, each with a single job</dd></div>
       <!-- The size is overwritten from the release once the API answers; the figure
            written here is only what shows if it never does. -->
-      <div><dt class="num-big" data-rel="size">2.6 MB</dt>
+      <div><dt class="num-big" data-rel="size">—</dt>
         <dd><span class="only-wide" data-s="stat4">the whole app, Android 6.0 and up</span><span
             class="only-narrow" data-s="stat4Short">the whole app</span></dd></div>
     </dl>
@@ -246,7 +246,7 @@
           <span class="badge-ok"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="relVerifiable">Verifiable</span></span>
         </div>
         <dl class="release-rows">
-          <div><dt data-s="relSize">File size</dt><dd data-rel="size">2.6 MB</dd></div>
+          <div><dt data-s="relSize">File size</dt><dd data-rel="size">—</dd></div>
           <div><dt data-s="relRequires">Requires</dt><dd data-s="relAndroid">Android 6.0 and up</dd></div>
           <div class="release-hash"><dt>SHA-256</dt><dd><code data-rel="sha"></code></dd></div>
         </dl>
