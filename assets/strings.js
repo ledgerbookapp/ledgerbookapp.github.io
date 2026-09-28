@@ -48,14 +48,20 @@ const S = {
   versionLine:  ['Version {v} · {size} · Android 6.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
   qrHead:       ['Scan to put it on your phone', 'ফোনে নিতে স্ক্যান করুন'],
-  // Deliberately not "scan to get the APK". A printed square cannot point at a file
-  // whose name carries the version number, and pointing it at one would mean a dead
-  // code the day after the next release. It points at the install page, which is where
-  // the download button looks the version up for itself.
-  qrBody:       ['Point a phone camera at it. It opens the install page there, where the ' +
-                 'download button finds the current version.',
-                 'ফোনের ক্যামেরা ধরুন। ওখানে ইনস্টল পাতাটা খুলবে, যার ডাউনলোড বোতাম নিজেই ' +
-                 'চলতি ভার্সনটা খুঁজে নেয়।'],
+  // A printed square cannot point at a file whose name carries the version number --
+  // that would be a dead code the day after the next release. It points at get.html,
+  // which looks the newest file up and hands the phone straight to it. Scanning skips
+  // the install guide, so the sentence sends a first-timer there.
+  qrBody:       ['Point a phone camera at it and the newest version downloads straight ' +
+                 'away. First time? Read how to install first.',
+                 'ফোনের ক্যামেরা ধরুন, সর্বশেষ ভার্সনটা সাথে সাথে নামতে শুরু করবে। ' +
+                 'প্রথমবার? খোলার আগে ইনস্টলের নিয়মটা পড়ে নিন।'],
+  // get.html, the page the code opens. On screen for a second before the download.
+  getTitle:     ['Downloading LedgerBook…', 'LedgerBook নামানো হচ্ছে…'],
+  getLead:      ['Finding the newest version. The download starts by itself — if it does ' +
+                 'not, use the button below.',
+                 'সর্বশেষ ভার্সন খোঁজা হচ্ছে। ডাউনলোড নিজে থেকেই শুরু হবে — না হলে নিচের ' +
+                 'বোতামটা চাপুন।'],
   versionLineShort:['Version {v} · {size} · Android 6.0+',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০+'],
 

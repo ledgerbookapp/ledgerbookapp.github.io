@@ -18,7 +18,12 @@
 const LANGS = { en: 0, bn: 1 };
 
 function currentLang() {
-  const saved = localStorage.getItem('lb.lang');
+  // Reading can throw as well as writing: a browser set to block site data raises
+  // SecurityError on the first touch of localStorage. The writes below were already
+  // guarded; unguarded here, the same error would stop the whole start-up -- language,
+  // menu, and the release lookup -- since everything runs from one handler.
+  let saved = null;
+  try { saved = localStorage.getItem('lb.lang'); } catch (_) { /* storage blocked */ }
   if (saved && saved in LANGS) return saved;
   return (navigator.language || '').toLowerCase().startsWith('bn') ? 'bn' : 'en';
 }
@@ -91,6 +96,9 @@ const REPO = 'oslraahat/ledgerbook-releases';
 const RELEASES_URL = 'https://github.com/' + REPO + '/releases';
 
 let release = null;
+// Settles once the lookup has answered or given up, whichever. get.html waits on it to
+// know where to send the reader; nothing else needs to.
+let releaseReady = Promise.resolve();
 
 function fmtSize(bytes) {
   if (!bytes) return '';
@@ -216,5 +224,5 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   labelMenu();
 
-  loadRelease();
+  releaseReady = loadRelease();
 });

@@ -14,6 +14,7 @@ and it works.
 | `features.html` | what the app does — only what it does today |
 | `install.html` | the four steps, each with a photograph of the real Android screen |
 | `privacy.html` | what is collected (nothing) and why that is checkable |
+| `get.html` | where the QR code points: looks up the newest APK and starts the download |
 | `404.html` | served for any unknown path |
 | `assets/strings.js` | **every word on the site, in English and Bangla, one pair per line** |
 | `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |

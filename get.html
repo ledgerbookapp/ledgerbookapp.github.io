@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Downloading LedgerBook</title>
+<meta name="robots" content="noindex">
+
+<!--
+  Where the QR code on the home page points. A printed square cannot name a file whose
+  name carries the version number -- LedgerBook_v1.1.65.apk today, _v1.1.66 after the
+  next release -- so it names this page instead, and this page asks the releases API
+  which file is newest and hands the phone straight to it. The code never changes and
+  never goes stale.
+
+  If the API does not answer (offline, rate limited, blocked) the reader lands on the
+  releases page, which always has the file; and the links below are there for anyone
+  whose phone does not follow the redirect.
+-->
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+<script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <h1 data-s="getTitle">Downloading LedgerBook…</h1>
+      <p class="lead" data-s="getLead">Finding the newest version. The download starts by itself.</p>
+      <div class="cta">
+        <a class="btn" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases">Open the releases page</a>
+        <a class="btn btn-quiet" href="install.html" data-s="navInstall">How to install</a>
+      </div>
+      <p class="meta" id="dl-meta"></p>
+    </section>
+  </div>
+</main>
+
+<script src="assets/strings.js"></script>
+<script src="assets/site.js"></script>
+<script>
+  // site.js registered its own start-up first, so releaseReady is the live lookup by the
+  // time this runs. replace(), not assign(): Back from the download should not land here
+  // and start a second one.
+  document.addEventListener('DOMContentLoaded', () => {
+    let gone = false;
+    const go = (url) => { if (!gone) { gone = true; location.replace(url); } };
+    // The lookup has no timeout of its own; a phone on a bad connection should not stare
+    // at this page for a minute before being sent somewhere useful.
+    setTimeout(() => go(RELEASES_URL), 8000);
+    releaseReady.then(() => go(release ? release.url : RELEASES_URL));
+  });
+</script>
+</body>
+</html>
