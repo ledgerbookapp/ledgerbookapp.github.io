@@ -340,6 +340,29 @@ function setupLightbox() {
   });
 }
 
+/* -- the privacy page's list of sections ---------------------------------------
+ *
+ * Marks the section the reader is in. "In" is the last section whose top has passed a
+ * line a third of the way down the window -- so the mark moves as a heading comes up to
+ * reading height, not when it first peeks in at the bottom. At the very end of the page
+ * the last section is marked even if it is too short to reach that line.
+ */
+function setupToc() {
+  const links = [...document.querySelectorAll('.priv-toc a')];
+  if (!links.length) return;
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  function paint() {
+    const line = window.innerHeight / 3;
+    let n = 0;
+    secs.forEach((s, k) => { if (s && s.getBoundingClientRect().top <= line) n = k; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) n = secs.length - 1;
+    links.forEach((a, k) => a.classList.toggle('on', k === n));
+  }
+  window.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
+  window.addEventListener('resize', paint);
+  paint();
+}
+
 /* -- go ------------------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang());
@@ -368,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupLightbox();
   setupGalleries();
   setupCopy();
+  setupToc();
 
   releaseReady = loadRelease();
 });

@@ -286,10 +286,8 @@ const S = {
   permNotifyW:  ['To remind you when a loan is due, and when an update is out.',
                  'ধার ফেরতের তারিখ, আর নতুন ভার্সন এলে জানানোর জন্য।'],
   permContacts: ['Contacts', 'পরিচিতি'],
-  permContactsW:['Optional. To pick a name when you record a loan, instead of typing it.',
-                 'ঐচ্ছিক। ধার লেখার সময় নাম টাইপ না করে বেছে নেওয়ার জন্য।'],
-  // The home page's cards carry "Optional" as a badge beside the heading, so their
-  // sentence leaves it out; the privacy page's table still reads the one above.
+  // "Optional" is a badge beside the heading wherever this is shown, so the sentence
+  // leaves it out.
   permContactsJob:['To pick a name when you record a loan, instead of typing it.',
                  'ধার লেখার সময় নাম টাইপ না করে বেছে নেওয়ার জন্য।'],
   permInstall:  ['Install apps', 'অ্যাপ ইনস্টল'],
@@ -403,13 +401,34 @@ const S = {
                  'নিজের ব্যাকআপ, আপনারই গুগল অ্যাকাউন্টে — নিচে তার নিজের একটা অংশ আছে। ' +
                  'এই পাতার বাকিটা সেসবেরই খোলাসা, যাতে বিশ্বাস না করে মিলিয়ে দেখতে পারেন।'],
 
+  // The four answers under the lead: a label and the short answer to it.
+  privSum1V:    ['Nothing', 'কিছুই না'],
+  privSum2:     ['Network use', 'নেটওয়ার্ক ব্যবহার'],
+  privSum2V:    ['Update check only', 'শুধু আপডেট খোঁজা'],
+  privSum3:     ['Leaves the phone', 'ফোন ছাড়ে'],
+  privSum3V:    ['Android backup', 'অ্যান্ড্রয়েড ব্যাকআপ'],
+  privSum4:     ['To delete it all', 'সব মুছতে'],
+  privSum4V:    ['Uninstall', 'আনইনস্টল'],
+  privToc:      ['On this page', 'এই পাতায়'],
+  privNo2:      ['No analytics', 'অ্যানালিটিক্স নেই'],
+  privNo3:      ['No crash reports', 'ক্র্যাশ রিপোর্ট নেই'],
+  privNo4:      ['No ads', 'বিজ্ঞাপন নেই'],
+  privNet1:     ['Ask GitHub for the newest release', 'গিটহাবকে সবচেয়ে নতুন রিলিজ জিজ্ঞেস করা'],
+  privNet2:     ['Download it — only if you say yes', 'নামানো — শুধু আপনি হ্যাঁ বললে'],
+  privGoes:     ['What goes', 'যা যায়'],
+  privGoes1:    ['The ledger database', 'খাতার ডেটাবেস'],
+  privGoes2:    ['Language and theme settings', 'ভাষা আর থিমের পছন্দ'],
+  privStays:    ['What does not go', 'যা যায় না'],
+  privStays1:   ['Your PIN', 'আপনার পিন'],
+  privStaysNote:['A restored install always asks you to set a new one.',
+                 'ফিরিয়ে আনা অ্যাপ সবসময় নতুন পিন চায়।'],
   privCollectTitle:['What is collected', 'কী কী সংগ্রহ করা হয়'],
-  privCollectBody:['Nothing. No account, no sign-in, no email address, no device ' +
+  privCollectBody:['**Nothing.** No account, no sign-in, no email address, no device ' +
                  'identifier, no usage statistics, no crash reports, no advertising. There ' +
                  'is no analytics library and no ad library in the app — the whole ' +
                  'dependency list is Android’s own components, Kotlin, and one library for ' +
                  'reading a release’s version number.',
-                 'কিছুই না। অ্যাকাউন্ট নেই, সাইন ইন নেই, ইমেইল নেই, ডিভাইসের পরিচয় নেই, ' +
+                 '**কিছুই না।** অ্যাকাউন্ট নেই, সাইন ইন নেই, ইমেইল নেই, ডিভাইসের পরিচয় নেই, ' +
                  'ব্যবহারের পরিসংখ্যান নেই, ক্র্যাশ রিপোর্ট নেই, বিজ্ঞাপন নেই। অ্যাপে কোনো ' +
                  'analytics বা বিজ্ঞাপনের লাইব্রেরিই নেই — পুরো তালিকাটা অ্যান্ড্রয়েডের নিজের ' +
                  'উপকরণ, কোটলিন, আর রিলিজের ভার্সন নম্বর পড়ার একটা লাইব্রেরি।'],

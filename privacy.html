@@ -79,57 +79,119 @@
   </div>
 </header>
 
-<main>
-  <div class="wrap">
+<main class="home priv">
 
-    <section class="hero" style="padding-bottom:16px">
-      <h1 data-s="navPrivacy">Privacy</h1>
-      <p class="lead" data-s="privLead"></p>
-    </section>
+  <!-- -- hero ------------------------------------------------------------------ -->
+  <section class="wrap priv-hero">
+    <h1 data-s="navPrivacy">Privacy</h1>
+    <p class="lead" data-s="privLead"></p>
+    <dl class="priv-sum">
+      <div><dt data-s="privCollectTitle">What is collected</dt><dd data-s="privSum1V">Nothing</dd></div>
+      <div><dt data-s="privSum2">Network use</dt><dd data-s="privSum2V">Update check only</dd></div>
+      <div><dt data-s="privSum3">Leaves the phone</dt><dd data-s="privSum3V">Android backup</dd></div>
+      <div><dt data-s="privSum4">To delete it all</dt><dd data-s="privSum4V">Uninstall</dd></div>
+    </dl>
+  </section>
 
-    <section>
-      <h2 data-s="privCollectTitle">What is collected</h2>
-      <div class="card"><p data-s="privCollectBody"></p></div>
-    </section>
+  <div class="wrap priv-body">
 
-    <section>
-      <h2 data-s="privWhereTitle">Where your entries live</h2>
-      <div class="card"><p data-s="privWhereBody"></p></div>
-    </section>
+    <!-- Wide screens only. It follows the reader down the page and marks the section
+         they are in; on a phone the sections simply follow one another. -->
+    <aside class="priv-toc" aria-labelledby="toc-h">
+      <p id="toc-h" data-s="privToc">On this page</p>
+      <a href="#collected" data-s="privCollectTitle">What is collected</a>
+      <a href="#where" data-s="privWhereTitle">Where your entries live</a>
+      <a href="#network" data-s="privNetTitle">Every time it uses the network</a>
+      <a href="#copy" data-s="privAutoTitle">The one copy that leaves the phone</a>
+      <a href="#backups" data-s="privBackupTitle">Backups you make yourself</a>
+      <a href="#asks" data-s="permTitle">What it asks for, and why</a>
+      <a href="#delete" data-s="privDeleteTitle">Getting rid of it all</a>
+    </aside>
 
-    <section>
-      <h2 data-s="privNetTitle">Every time it uses the network</h2>
-      <div class="card"><p data-s="privNetBody"></p></div>
-    </section>
+    <div class="priv-cards">
 
-    <section>
-      <h2 data-s="permTitle">What it asks for, and why</h2>
-      <div class="card">
-        <table>
-          <tr><th data-s="permInternet">Internet</th><td data-s="permInternetW"></td></tr>
-          <tr><th data-s="permNotify">Notifications</th><td data-s="permNotifyW"></td></tr>
-          <tr><th data-s="permContacts">Contacts</th><td data-s="permContactsW"></td></tr>
-          <tr><th data-s="permInstall">Install apps</th><td data-s="permInstallW"></td></tr>
-        </table>
-      </div>
-    </section>
+      <section class="pcard" id="collected">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
+        <div>
+          <h2 data-s="privCollectTitle">What is collected</h2>
+          <p data-s-rich="privCollectBody"></p>
+          <p class="chips"><span data-s="chipNoAccount">No account</span><span data-s="privNo2">No analytics</span><span data-s="privNo3">No crash reports</span><span data-s="privNo4">No ads</span></p>
+        </div>
+      </section>
 
-    <section>
-      <h2 data-s="privAutoTitle">The one copy that leaves the phone</h2>
-      <div class="card"><p data-s="privAutoBody"></p></div>
-    </section>
+      <section class="pcard" id="where">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+        <div>
+          <h2 data-s="privWhereTitle">Where your entries live</h2>
+          <p data-s="privWhereBody"></p>
+        </div>
+      </section>
 
-    <section>
-      <h2 data-s="privBackupTitle">Backups you make yourself</h2>
-      <div class="card"><p data-s="privBackupBody"></p></div>
-    </section>
+      <section class="pcard" id="network">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
+        <div>
+          <h2 data-s="privNetTitle">Every time it uses the network</h2>
+          <p data-s="privNetBody"></p>
+          <ol class="pboxes pnet">
+            <li><span class="toc-n">1</span><span data-s="privNet1">Ask GitHub for the newest release</span></li>
+            <li><span class="toc-n">2</span><span data-s="privNet2">Download it — only if you say yes</span></li>
+          </ol>
+        </div>
+      </section>
 
-    <section>
-      <h2 data-s="privDeleteTitle">Getting rid of it all</h2>
-      <div class="card"><p data-s="privDeleteBody"></p></div>
-    </section>
+      <!-- The one section where something does leave, so it is the one set apart. -->
+      <section class="pcard pcard-hi" id="copy">
+        <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
+        <div>
+          <h2 data-s="privAutoTitle">The one copy that leaves the phone</h2>
+          <p data-s="privAutoBody"></p>
+          <div class="pboxes pgo">
+            <div class="goes">
+              <p class="plabel" data-s="privGoes">What goes</p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes1">The ledger database</span></p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes2">Language and theme settings</span></p>
+            </div>
+            <div class="stays">
+              <p class="plabel" data-s="privStays">What does not go</p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-s="privStays1">Your PIN</span></p>
+              <p class="pnote" data-s="privStaysNote"></p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section class="pcard" id="backups">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
+        <div>
+          <h2 data-s="privBackupTitle">Backups you make yourself</h2>
+          <p data-s="privBackupBody"></p>
+        </div>
+      </section>
+
+      <section class="pcard" id="asks">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <div>
+          <h2 data-s="permTitle">What it asks for, and why</h2>
+          <dl class="ptable">
+            <div><dt data-s="permInternet">Internet</dt><dd data-s="permInternetW"></dd></div>
+            <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW"></dd></div>
+            <div><dt><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></dt><dd data-s="permContactsJob"></dd></div>
+            <div><dt data-s="permInstall">Install apps</dt><dd data-s="permInstallW"></dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="pcard" id="delete">
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
+        <div>
+          <h2 data-s="privDeleteTitle">Getting rid of it all</h2>
+          <p data-s="privDeleteBody"></p>
+        </div>
+      </section>
+
+    </div>
   </div>
+
 </main>
 
 <footer>
