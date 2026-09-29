@@ -188,10 +188,10 @@
           </article>
         </div>
       </div>
-      <div class="frame frame-lg see-phone">
+      <button type="button" class="frame frame-lg see-phone zoom" data-s-label="lbOpen" data-cap="shotAnalytics">
         <img class="s-light" src="assets/screens/app-analytics-light.png" width="1080" height="2424" loading="lazy" alt="">
         <img class="s-dark"  src="assets/screens/app-analytics-dark.png"  width="1080" height="2424" loading="lazy" alt="">
-      </div>
+      </button>
     </div>
   </section>
 
@@ -236,20 +236,6 @@
 
 </main>
 
-<!-- The screenshots at full size. One dialog for all six: it reads the picture and its
-     caption from whichever frame was pressed, and steps to the next frame from there. -->
-<dialog class="lightbox" id="lightbox" aria-labelledby="lb-cap">
-  <button type="button" class="lb-btn lb-close" data-s-label="lbClose" aria-label="Close">
-    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
-  <button type="button" class="lb-btn lb-prev" data-s-label="lbPrev" aria-label="Previous screen">
-    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
-  <figure class="lb-figure">
-    <img id="lb-img" alt="" width="1080" height="2424">
-    <figcaption><span id="lb-cap"></span> <span class="lb-count" id="lb-count"></span></figcaption>
-  </figure>
-  <button type="button" class="lb-btn lb-next" data-s-label="lbNext" aria-label="Next screen">
-    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
-</dialog>
 
 
 <footer>

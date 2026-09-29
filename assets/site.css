@@ -946,6 +946,17 @@ html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }
  * The frame is a button now, so it drops a button's own look and keeps the phone's; the
  * pointer and a small lift say it can be pressed, and a gold ring shows keyboard focus.
  */
+/* A picture that opens full size is a button. :where() keeps this reset at zero
+   specificity, so a .frame that is also a .zoom keeps its drawn phone's padding and
+   border; a bare picture just loses the button's own look. */
+:where(button.zoom) {
+  display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none;
+  font: inherit; color: inherit; text-align: inherit; cursor: zoom-in;
+}
+button.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+button.zoom:not(.frame) img { transition: transform .2s, box-shadow .2s; }
+button.zoom:not(.frame):hover img { transform: translateY(-3px); box-shadow: var(--shadow); }
+
 button.frame {
   display: block; width: 100%; font: inherit; color: inherit; cursor: zoom-in;
   transition: transform .2s, border-color .2s;
@@ -977,7 +988,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
   border: 2px solid rgba(255, 255, 255, .12); box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
 }
 .lb-figure figcaption { font-size: 15px; font-weight: 600; text-align: center; }
-.lb-count { margin-left: 8px; color: rgba(245, 242, 236, .55); font-weight: 500; font-variant-numeric: tabular-nums; }
+.lb-count { white-space: nowrap; margin-left: 8px; color: rgba(245, 242, 236, .55); font-weight: 500; font-variant-numeric: tabular-nums; }
 
 .lb-btn {
   display: inline-grid; place-items: center; cursor: pointer;
@@ -1073,7 +1084,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .step-pics { min-width: 0; }
 .gal-track { display: flex; gap: 20px; align-items: flex-start; }
 .pic { margin: 0; flex: 1 1 0; min-width: 0; max-width: 360px; }
-.pic > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
+.pic > img, .pic > .zoom > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
 .pic figcaption { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
 .step-wide .step-pics { margin-top: 36px; }
 .gal-3 .pic { max-width: none; }

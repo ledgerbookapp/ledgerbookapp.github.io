@@ -313,21 +313,77 @@ async function loadRelease() {
 
 /* -- the screenshots, full size ------------------------------------------------
  *
- * On the features page a screenshot is 170 pixels wide, which shows that a screen exists
- * and not what is on it. Pressing one opens it at the height of the window in a <dialog>,
+ * A screenshot in a page is a few hundred pixels wide at most -- 170 on the features page
+ * -- which shows that a screen exists and not what is on it. Every picture of the app or
+ * of a phone dialog is a .zoom button; pressing one opens it at the height of the
+ * window in a <dialog>,
  * which brings Escape, focus trapping and the dimmed page behind for nothing.
  *
  * The picture is whichever of the pair the page is showing -- light or dark, by the
  * theme -- read off the frame at the moment it opens, so the big one is always the one
- * the reader just pressed. Arrows, the arrow keys and a swipe step through the six.
+ * the reader just pressed. Arrows, the arrow keys and a swipe step through every
+ * picture on the page, in page order.
  */
+// The dialog is built here rather than written into each page: every page with a
+// pressable picture gets the same one, and a page without any gets none. Its buttons'
+// words come from the catalogue through data-s-label, like everything else.
+const LB_ICONS = {
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  prev: '<path d="m15 5-7 7 7 7"/>',
+  next: '<path d="m9 5 7 7-7 7"/>'
+};
+function buildLightbox() {
+  const box = document.createElement('dialog');
+  box.className = 'lightbox';
+  box.id = 'lightbox';
+  box.setAttribute('aria-labelledby', 'lb-cap');
+  const btn = (kind, key) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'lb-btn lb-' + kind;
+    b.dataset.sLabel = key;
+    b.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + LB_ICONS[kind] + '</svg>';
+    return b;
+  };
+  const fig = document.createElement('figure');
+  fig.className = 'lb-figure';
+  const img = document.createElement('img');
+  img.id = 'lb-img';
+  img.alt = '';
+  const cap = document.createElement('figcaption');
+  const text = document.createElement('span');
+  text.id = 'lb-cap';
+  const count = document.createElement('span');
+  count.className = 'lb-count';
+  count.id = 'lb-count';
+  cap.append(text, ' ', count);
+  fig.append(img, cap);
+  box.append(btn('close', 'lbClose'), btn('prev', 'lbPrev'), fig, btn('next', 'lbNext'));
+  document.body.append(box);
+  return box;
+}
+
 function setupLightbox() {
-  const box = document.getElementById('lightbox');
-  if (!box || typeof box.showModal !== 'function') return;
   const frames = [...document.querySelectorAll('.zoom')];
+  if (!frames.length) return;
+  const probe = document.createElement('dialog');
+  if (typeof probe.showModal !== 'function') return;
+  const box = buildLightbox();
   const img = document.getElementById('lb-img');
   const cap = document.getElementById('lb-cap');
   const count = document.getElementById('lb-count');
+  // The new buttons need their words, in whichever language is showing.
+  box.querySelectorAll('[data-s-label]').forEach(el => {
+    el.setAttribute('aria-label', S[el.dataset.sLabel][LANGS[currentLang()]]);
+  });
+  // A picture with no caption of its own -- the big phone beside "Seeing where it went"
+  // -- names one from the catalogue.
+  const caption = (frame) => {
+    const fc = frame.closest('figure') && frame.closest('figure').querySelector('figcaption');
+    if (fc) return fc.textContent;
+    const key = frame.dataset.cap;
+    return key && S[key] ? S[key][LANGS[currentLang()]] : '';
+  };
   let at = 0;
 
   const shown = (frame) =>
@@ -338,7 +394,7 @@ function setupLightbox() {
     at = (n + frames.length) % frames.length;
     const frame = frames[at];
     img.src = shown(frame).currentSrc || shown(frame).src;
-    cap.textContent = frame.closest('figure').querySelector('figcaption').textContent;
+    cap.textContent = caption(frame);
     count.textContent = num(at + 1) + ' / ' + num(frames.length);
   }
   function close() { box.close(); }
