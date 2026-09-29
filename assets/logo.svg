@@ -1,25 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The LedgerBook mark: a ledger's spine with equal entries either side.
+  The LedgerBook mark: a wallet with a ledger page standing in it.
 
-  The app's one real difference from every other money app is double entry — every
-  amount is written twice, once on each side, and the two must agree. That is what this
-  draws: a rule down the middle and the same weight of ink to its left and right. Read
-  quickly it is a broken equals sign, which says the same thing again.
+  Drawn to the owner's pick from the logo canvas, "C7 — Wallet + ledger, standard":
+  the wallet is the app's own, the one on its PIN screens, and the page tucked in behind
+  the flap is the book it keeps. The page sits on its own grid, centred on the wallet,
+  six to seven units in from the tile's edges.
 
-  Two bars a side rather than three or four. Four is a ledger page and turns to mush at
-  16px, where a favicon lives; two survives the whole way down and still reads as
-  entries rather than as decoration.
+  This is the full mark, for 40 pixels and up. Below that the stitching and the second
+  page turn to noise; favicon.svg is the simplified cut for 24 and 16.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108"
      role="img" aria-labelledby="t">
   <title id="t">LedgerBook</title>
-  <rect x="4" y="4" width="100" height="100" rx="24" fill="#16161B"/>
-  <g fill="#E8B931">
-    <rect x="52" y="26" width="4"  height="56" rx="2"/>
-    <rect x="26" y="40" width="22" height="8"  rx="4"/>
-    <rect x="26" y="58" width="22" height="8"  rx="4"/>
-    <rect x="60" y="40" width="22" height="8"  rx="4"/>
-    <rect x="60" y="58" width="22" height="8"  rx="4"/>
+  <rect width="108" height="108" rx="26" fill="#F2B830"/>
+  <rect x="46" y="13" width="36" height="24" rx="5" fill="#8B6A1F" transform="rotate(8 64 25)"/>
+  <g transform="rotate(-6 54 30)">
+    <rect x="31.5" y="17.5" width="48" height="28" rx="6" fill="#8B6A1F"/>
+    <rect x="30" y="16" width="48" height="28" rx="6" fill="#0C0B0A"/>
+    <rect x="37" y="16" width="1.6" height="28" fill="#8B6A1F"/>
+    <g fill="#F2B830">
+      <rect x="43" y="22" width="28" height="4" rx="2"/>
+      <rect x="43" y="28.5" width="28" height="4" rx="2"/>
+    </g>
   </g>
+  <rect x="21" y="40" width="66" height="50" rx="12" fill="#F2B830" stroke="#0C0B0A" stroke-width="7"/>
+  <path d="M62 48 H37 A8 8 0 0 0 29 56 V74 A8 8 0 0 0 37 82 H62" fill="none" stroke="#0C0B0A"
+        stroke-width="2" stroke-dasharray="3.2 3.2" stroke-linecap="round"/>
+  <path d="M88 54.5 H73 A10.5 10.5 0 0 0 73 75.5 H88 Z" fill="#0C0B0A"/>
+  <circle cx="73.5" cy="65" r="5" fill="#F2B830"/>
+  <circle cx="73.5" cy="65" r="2" fill="#0C0B0A"/>
 </svg>

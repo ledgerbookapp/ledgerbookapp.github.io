@@ -19,6 +19,7 @@ and it works.
 | `assets/strings.js` | **every word on the site, in English and Bangla, one pair per line** |
 | `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |
 | `assets/site.js` | the language switch, the theme switch, and the release lookup |
+| `assets/logo.svg` | the mark: a wallet with a ledger page in it, for 40px and up; `favicon.svg` is its cut for 16–24px, and the PNG icons are drawn from these two |
 | `assets/screens/` | the install-guide screenshots, cropped to the dialog |
 | `check.js` | run before publishing — see below |
 

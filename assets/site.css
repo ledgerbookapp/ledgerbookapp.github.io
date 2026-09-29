@@ -147,15 +147,10 @@ body > header {
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
 .brand b { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
-/* The mark sits on a gold tile, the way the app's own icon does. */
-.brand-tile {
-  display: inline-grid; place-items: center; flex: none;
-  width: 32px; height: 32px; border-radius: 9px;
-  background: var(--accent); color: var(--on-accent);
-}
-.brand-tile svg { width: 20px; height: 20px; }
-.brand-tile-sm { width: 26px; height: 26px; border-radius: 7px; }
-.brand-tile-sm svg { width: 16px; height: 16px; }
+/* The mark is a file, with its own gold tile drawn in: logo.svg at reading size, and
+   favicon.svg -- the simplified cut -- where it is small, as in the footer. */
+.brand-tile { display: block; flex: none; width: 32px; height: 32px; }
+.brand-tile-sm { width: 26px; height: 26px; }
 
 nav { display: flex; align-items: center; gap: 36px; }
 nav a {

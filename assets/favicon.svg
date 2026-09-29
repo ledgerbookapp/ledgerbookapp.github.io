@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  The mark as a browser tab draws it: 16 pixels, sometimes on a dark tab strip.
+  The mark as a browser tab draws it: 16 to 24 pixels.
 
-  logo.svg is the mark at reading size — a dark tile with a hairline spine — and at 16px
-  it failed twice over. The dark tile vanished into a dark tab strip, and the spine, four
-  units of 108, came to half a pixel and was simply not there.
-
-  So this is the header's version instead: the gold tile, filling the square rather than
-  inset in it, with the entries drawn in the page's near-black and thick enough to
-  survive the reduction — the spine twice as wide, the entries half again as tall, and
-  more space between them so they stay two bars and do not smear into one.
+  The simplified cut of logo.svg, as the owner's logo canvas draws it for those sizes:
+  one page instead of two, no stitching, a heavier outline and wider ledger lines, and
+  the clasp a plain dot — everything that would come to half a pixel is taken out, and
+  what is left is thick enough to stay a wallet with a page in it.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108"
      role="img" aria-labelledby="t">
   <title id="t">LedgerBook</title>
   <rect width="108" height="108" rx="26" fill="#F2B830"/>
-  <g fill="#0C0B0A">
-    <rect x="50" y="20" width="8"  height="68" rx="4"/>
-    <rect x="18" y="33" width="26" height="13" rx="6.5"/>
-    <rect x="18" y="62" width="26" height="13" rx="6.5"/>
-    <rect x="64" y="33" width="26" height="13" rx="6.5"/>
-    <rect x="64" y="62" width="26" height="13" rx="6.5"/>
+  <g transform="rotate(-6 54 30)">
+    <rect x="30" y="15" width="48" height="29" rx="6" fill="#0C0B0A"/>
+    <g fill="#F2B830">
+      <rect x="38" y="21" width="32" height="5" rx="2.5"/>
+      <rect x="38" y="29" width="32" height="5" rx="2.5"/>
+    </g>
   </g>
+  <rect x="21" y="40" width="66" height="50" rx="12" fill="#F2B830" stroke="#0C0B0A" stroke-width="8"/>
+  <path d="M88 54 H73 A11 11 0 0 0 73 76 H88 Z" fill="#0C0B0A"/>
+  <circle cx="73.5" cy="65" r="4" fill="#F2B830"/>
 </svg>
