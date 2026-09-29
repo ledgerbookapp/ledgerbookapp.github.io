@@ -27,7 +27,7 @@
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -36,7 +36,7 @@
 <header>
   <div class="wrap bar">
     <a class="brand" href="./">
-      <img class="brand-tile" src="assets/logo.svg" width="32" height="32" alt="">
+      <picture><source media="(min-resolution: 2dppx)" srcset="assets/logo.svg"><img class="brand-tile" src="assets/favicon.svg" width="32" height="32" alt=""></picture>
       <b data-s="appName">LedgerBook</b>
     </a>
     <nav id="nav">

@@ -10,7 +10,8 @@
   file cannot load a font, so on a phone without a Bengali face that letter would come
   out as an empty box; here it is drawn as a line instead, the same everywhere.
 
-  This is the full mark, for 40 pixels and up. favicon.svg is the simplified cut for 24
+  This is the full mark, for 40 device pixels and up — the header shows it at 32, but
+  only on a screen where 32 is 64 or more. favicon.svg is the simplified cut for 24
   and 16, where the stitching, the note's border and the sign come to half a pixel.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108"

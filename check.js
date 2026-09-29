@@ -58,7 +58,7 @@ for (const page of [...PAGES, ...HEADERLESS]) {
   for (const m of html.matchAll(/data-s(-label|-rich)?="([^"]+)"/g))
     if (!S[m[2]]) note(`${page}: data-s${m[1] || ''}="${m[2]}" has no entry in the catalogue`);
 
-  for (const m of html.matchAll(/(?:src|href)="((?:assets)\/[^"]+)"/g))
+  for (const m of html.matchAll(/(?:src|srcset|href)="((?:assets)\/[^"]+)"/g))
     if (!fs.existsSync(m[1])) note(`${page}: ${m[1]} is referenced but not on disk`);
 
   // Every <img> carries its own size so the page does not jump as pictures arrive.
@@ -79,6 +79,18 @@ for (const page of [...PAGES, ...HEADERLESS]) {
 
   const current = [...html.matchAll(/aria-current="page"/g)].length;
   if (current !== 1) note(`${page}: marks ${current} nav links as the current page, want 1`);
+}
+
+// The 404 page is served at any depth, so it names its files from the root
+// (/assets/...) and loads no script; its header is meant to differ. It still gets the
+// file and picture checks -- a renamed logo broke it once without anyone being told.
+{
+  const html = fs.readFileSync('404.html', 'utf8');
+  for (const m of html.matchAll(/(?:src|srcset|href)="\/(assets\/[^"]+)"/g))
+    if (!fs.existsSync(m[1])) note(`404.html: /${m[1]} is referenced but not on disk`);
+  for (const m of html.matchAll(/<img\b[^>]*>/g))
+    if (!/width="\d+"/.test(m[0]) || !/height="\d+"/.test(m[0]))
+      note(`404.html: an <img> has no width/height -- ${m[0].slice(0, 60)}`);
 }
 
 const [first, ...rest] = [...headers.keys()];

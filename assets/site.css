@@ -147,9 +147,12 @@ body > header {
 }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
 .brand b { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
-/* The mark is a file, with its own gold tile drawn in: logo.svg at reading size, and
-   favicon.svg -- the simplified cut -- where it is small, as in the footer. */
+/* The mark is a file, with its own gold tile drawn in: logo.svg where there are 40 device
+   pixels or more to draw it in -- the header on a 2x screen -- and favicon.svg, the
+   simplified cut, where there are fewer: the header on a 1x screen, and the footer. */
 .brand-tile { display: block; flex: none; width: 32px; height: 32px; }
+/* The header picks its cut by screen density; the <picture> around it takes no box. */
+.brand picture { display: contents; }
 .brand-tile-sm { width: 26px; height: 26px; }
 
 nav { display: flex; align-items: center; gap: 36px; }
@@ -392,7 +395,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 @media (max-width: 879px) {
   .bar { grid-template-columns: 1fr auto; min-height: 64px; }
   .brand b { font-size: 20px; }
-  .brand-tile { width: 30px; height: 30px; }
+  .bar .brand-tile { width: 30px; height: 30px; }
   .btn-pill { display: none; }
   .switches { gap: 10px; }
 
@@ -953,11 +956,19 @@ html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }
   display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none;
   font: inherit; color: inherit; text-align: inherit; cursor: zoom-in;
 }
+/* Words for a screen reader that the picture already says to everyone else. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
 button.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 button.zoom:not(.frame) img { transition: transform .2s, box-shadow .2s; }
 button.zoom:not(.frame):hover img { transform: translateY(-3px); box-shadow: var(--shadow); }
 
-button.frame {
+/* Zero specificity, like the reset above: a phone drawn at a set width -- the big one on
+   the features page, 260px and then 230px -- keeps it. As plain `button.frame` this
+   outranked `.see-phone` and stretched that phone to the whole column. */
+:where(button.frame) {
   display: block; width: 100%; font: inherit; color: inherit; cursor: zoom-in;
   transition: transform .2s, border-color .2s;
 }
@@ -1084,7 +1095,9 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .step-pics { min-width: 0; }
 .gal-track { display: flex; gap: 20px; align-items: flex-start; }
 .pic { margin: 0; flex: 1 1 0; min-width: 0; max-width: 360px; }
-.pic > img, .pic > .zoom > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
+/* Bare dialog screenshots only. A drawn phone is also a .zoom, and reaching its pictures
+   here showed both of its light and dark pair at once and put a border round each. */
+.pic > img, .pic > button.zoom:not(.frame) > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
 .pic figcaption { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
 .step-wide .step-pics { margin-top: 36px; }
 .gal-3 .pic { max-width: none; }

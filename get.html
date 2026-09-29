@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
-<script>try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}</script>
+<script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>

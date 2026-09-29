@@ -7,10 +7,12 @@
  * page they can read and a file they can fetch.
  */
 
-// The stylesheet folds the narrow-screen links behind the menu button only under this
-// class. It is set here, by the file that wires that button, and not in the page's head:
-// set there, a site.js that never arrived left the links hidden behind a button that did
-// nothing.
+// The stylesheet folds the narrow-screen links behind the menu button only under the
+// `js` class. The page's head sets it before first paint, so a phone never shows the
+// links unfolded and then folds them; and at load it takes the class off again unless
+// this flag says the file that wires the button has run -- so a site.js that never
+// arrived leaves the links in view, not behind a button that does nothing.
+window.LB_READY = true;
 document.documentElement.classList.add('js');
 
 /* -- language ------------------------------------------------------------------
@@ -22,6 +24,11 @@ document.documentElement.classList.add('js');
  * every page is the kind of small rudeness that makes a site feel careless.
  */
 const LANGS = { en: 0, bn: 1 };
+// The language actually on the page. Where storage is blocked the saved choice cannot
+// be read back, and falling through to the browser's guess every time left the switch
+// stuck -- pressing it asked for the same language again -- and Bangla sentences with
+// Latin digits in them.
+let appliedLang = null;
 
 function currentLang() {
   // Reading can throw as well as writing: a browser set to block site data raises
@@ -31,10 +38,12 @@ function currentLang() {
   let saved = null;
   try { saved = localStorage.getItem('lb.lang'); } catch (_) { /* storage blocked */ }
   if (saved && saved in LANGS) return saved;
+  if (appliedLang) return appliedLang;
   return (navigator.language || '').toLowerCase().startsWith('bn') ? 'bn' : 'en';
 }
 
 function applyLang(lang) {
+  appliedLang = lang;
   const i = LANGS[lang];
   document.documentElement.lang = lang;
   document.body.dataset.lang = lang;
@@ -128,7 +137,7 @@ let releaseReady = Promise.resolve();
 // number the script puts into a Bangla sentence is written the same way.
 function num(s) {
   s = String(s);
-  return currentLang() === 'bn' ? s.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]) : s;
+  return (appliedLang || currentLang()) === 'bn' ? s.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]) : s;
 }
 
 // Decimal megabytes, as Chrome's own download prompt counts them: the same file there is
@@ -372,6 +381,25 @@ function setupLightbox() {
   const img = document.getElementById('lb-img');
   const cap = document.getElementById('lb-cap');
   const count = document.getElementById('lb-count');
+  // Every one of these buttons is labelled "Enlarge"; what makes each one different is
+  // the picture it opens, so each is described by its caption. The features page's six
+  // were written that way by hand; the rest had nine buttons a screen reader could not
+  // tell apart. A picture with no caption -- the big phone -- gets a hidden one from the
+  // catalogue, which the language switch keeps up to date like any other data-s.
+  frames.forEach((f, k) => {
+    if (f.hasAttribute('aria-describedby')) return;
+    let fc = f.closest('figure') && f.closest('figure').querySelector('figcaption');
+    if (!fc && f.dataset.cap && S[f.dataset.cap]) {
+      fc = document.createElement('span');
+      fc.className = 'sr-only';
+      fc.dataset.s = f.dataset.cap;
+      fc.textContent = S[f.dataset.cap][LANGS[currentLang()]];
+      f.append(fc);
+    }
+    if (!fc) return;
+    if (!fc.id) fc.id = 'zoom-cap-' + k;
+    f.setAttribute('aria-describedby', fc.id);
+  });
   // The new buttons need their words, in whichever language is showing.
   box.querySelectorAll('[data-s-label]').forEach(el => {
     el.setAttribute('aria-label', S[el.dataset.sLabel][LANGS[currentLang()]]);
@@ -507,8 +535,9 @@ function setupToc() {
  *
  * And the Bengali font only downloaded when Bangla was first shown, so the first press
  * drew the page in a fallback face and then again a moment later in the real one -- two
- * reflows, text jumping size twice. It is fetched quietly once the page has settled,
- * so the switch finds it already there.
+ * reflows, text jumping size twice. It is fetched ahead now -- as the pointer reaches the
+ * switch, or at load for a reader whose browser speaks Bangla -- so the switch mostly
+ * finds it already there (warmFonts, below).
  */
 const READING_BLOCKS = 'p, h1, h2, h3, li, dt, dd, figure, .card, .pcard, .step-copy, .see-item';
 
@@ -529,15 +558,26 @@ function readingAnchor() {
 function switchLang(lang) {
   const anchor = window.scrollY > 0 ? readingAnchor() : null;
   const before = anchor ? anchor.getBoundingClientRect().top : null;
+  // The browser anchors scrolling by itself too, to a node of its own choosing; with both
+  // at work the page could be corrected twice. This switch does it alone, for the moment
+  // it takes.
+  const root = document.documentElement;
+  root.style.overflowAnchor = 'none';
   applyLang(lang);
   if (before !== null) window.scrollBy(0, anchor.getBoundingClientRect().top - before);
+  requestAnimationFrame(() => { root.style.overflowAnchor = ''; });
 }
 
+// Only the Bengali face ever needs fetching ahead -- Manrope is first in every font
+// stack, so it is already there in both languages. And only for a reader who is likely
+// to want it: one whose browser speaks Bangla, or one who reaches for the switch. An
+// English reader who never does no longer downloads a Bengali font on every page.
+let fontsWarmed = false;
 function warmFonts() {
-  if (!document.fonts || !document.fonts.load) return;
-  const other = currentLang() === 'bn' ? 'Manrope' : 'Noto Sans Bengali';
-  const text = other === 'Manrope' ? 'LedgerBook' : 'আপনার টাকা';
-  ['400', '600', '700'].forEach(w => document.fonts.load(w + ' 16px "' + other + '"', text).catch(() => {}));
+  if (fontsWarmed || !document.fonts || !document.fonts.load) return;
+  fontsWarmed = true;
+  ['400', '600', '700'].forEach(w =>
+    document.fonts.load(w + ' 16px "Noto Sans Bengali"', 'আপনার টাকা').catch(() => {}));
 }
 
 /* -- go ------------------------------------------------------------------------ */
@@ -547,7 +587,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btn) btn.addEventListener('click', () => {
     switchLang(currentLang() === 'en' ? 'bn' : 'en');
   });
-  window.addEventListener('load', () => setTimeout(warmFonts, 300));
+  if (btn) ['pointerenter', 'pointerdown', 'focus'].forEach(t => btn.addEventListener(t, warmFonts, { passive: true }));
+  const speaksBangla = (navigator.languages || [navigator.language || ''])
+    .some(l => String(l).toLowerCase().startsWith('bn'));
+  if (speaksBangla && currentLang() === 'en') window.addEventListener('load', () => setTimeout(warmFonts, 300));
   const th = document.getElementById('theme');
   if (th) th.addEventListener('click', () => {
     applyTheme(activeTheme() === 'dark' ? 'light' : 'dark');
