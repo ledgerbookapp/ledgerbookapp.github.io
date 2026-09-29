@@ -497,13 +497,57 @@ function setupToc() {
   paint();
 }
 
+/* -- switching language without the page jumping -------------------------------
+ *
+ * The two languages are different lengths, so every paragraph above the reader grows or
+ * shrinks when the language changes, and what they were reading slid away under them.
+ * Before switching, note the paragraph or card two-fifths of the way down the view --
+ * about where a reader's eye rests -- and where it sat; after, scroll by however far it
+ * moved, so it is still there.
+ *
+ * And the Bengali font only downloaded when Bangla was first shown, so the first press
+ * drew the page in a fallback face and then again a moment later in the real one -- two
+ * reflows, text jumping size twice. It is fetched quietly once the page has settled,
+ * so the switch finds it already there.
+ */
+const READING_BLOCKS = 'p, h1, h2, h3, li, dt, dd, figure, .card, .pcard, .step-copy, .see-item';
+
+// The block the reader is looking at: the smallest paragraph, heading or card near
+// two-fifths of the way down the view. A whole section would carry every paragraph above
+// the reader's line inside it, and each of those changes length too. When that point
+// falls in the gap between two cards, look a little above and below it.
+function readingAnchor() {
+  const base = window.innerHeight * 0.4;
+  for (const dy of [0, 24, -24, 48, -48, 96, -96, 160, -160]) {
+    const el = document.elementFromPoint(window.innerWidth / 2, base + dy);
+    const block = el && el.closest(READING_BLOCKS);
+    if (block && !block.closest('body > header')) return block;
+  }
+  return null;
+}
+
+function switchLang(lang) {
+  const anchor = window.scrollY > 0 ? readingAnchor() : null;
+  const before = anchor ? anchor.getBoundingClientRect().top : null;
+  applyLang(lang);
+  if (before !== null) window.scrollBy(0, anchor.getBoundingClientRect().top - before);
+}
+
+function warmFonts() {
+  if (!document.fonts || !document.fonts.load) return;
+  const other = currentLang() === 'bn' ? 'Manrope' : 'Noto Sans Bengali';
+  const text = other === 'Manrope' ? 'LedgerBook' : 'আপনার টাকা';
+  ['400', '600', '700'].forEach(w => document.fonts.load(w + ' 16px "' + other + '"', text).catch(() => {}));
+}
+
 /* -- go ------------------------------------------------------------------------ */
 document.addEventListener('DOMContentLoaded', () => {
   applyLang(currentLang());
   const btn = document.getElementById('lang');
   if (btn) btn.addEventListener('click', () => {
-    applyLang(currentLang() === 'en' ? 'bn' : 'en');
+    switchLang(currentLang() === 'en' ? 'bn' : 'en');
   });
+  window.addEventListener('load', () => setTimeout(warmFonts, 300));
   const th = document.getElementById('theme');
   if (th) th.addEventListener('click', () => {
     applyTheme(activeTheme() === 'dark' ? 'light' : 'dark');

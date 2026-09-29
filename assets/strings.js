@@ -188,7 +188,9 @@ const S = {
   relHashWait:  ['Listed on the releases page', 'রিলিজ পাতায় দেওয়া আছে'],
 
   // -- install -----------------------------------------------------------------
-  installTitle: ['Installing LedgerBook', 'LedgerBook ইনস্টল করা'],
+  // One line in both languages: the longer Bangla wrapped to two, and the whole page
+  // dropped 97px the moment the language changed.
+  installTitle: ['Installing LedgerBook', 'LedgerBook ইনস্টল'],
   installLead:  ['Four steps, about two minutes. Your phone will show two warnings along ' +
                  'the way and both are expected — they appear for every app that does not ' +
                  'come from the Play Store, not because of anything about this one.',
