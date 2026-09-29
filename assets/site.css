@@ -222,11 +222,15 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   display: none;
   margin: 28px 0 0; padding: 16px; gap: 20px; align-items: center;
   background: var(--card); border: 1px solid var(--edge);
-  border-radius: 16px; max-width: 554px;
+  border-radius: 16px; max-width: 600px;
 }
 /* The square is drawn in black on white and has to stay that way to scan, so it keeps
    its own white behind it on the dark theme rather than inheriting the card. */
-.qr img { background: #fff; border-radius: 8px; padding: 6px; flex: none; }
+/* 185px is the code's 37 modules at exactly 5 pixels each: large enough for a phone
+   camera to lock on from arm's length, and a whole number of pixels per module so its
+   edges stay sharp -- at 96px they were 2.6, and blurred. The quiet zone is inside the
+   file, so no padding here would add to it. */
+.qr img { background: #fff; border-radius: 10px; flex: none; image-rendering: pixelated; }
 .qr b { display: block; margin-bottom: 4px; font-size: 15px; }
 .qr p { margin: 0; color: var(--ink-muted); font-size: 14px; line-height: 1.55; }
 @media (min-width: 720px) { .qr { display: flex; } }
