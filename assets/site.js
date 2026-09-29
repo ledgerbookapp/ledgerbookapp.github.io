@@ -63,6 +63,15 @@ function applyLang(lang) {
       const b = document.createElement('b'); b.textContent = part; return b;
     }));
   });
+  // Pictures of the app's own screens come in both languages, as the app does: data-bn
+  // names the Bangla one, and the English src is kept to switch back to. The phone's own
+  // dialogs -- Chrome, Play Protect -- have none; they are in whatever language the
+  // reader's phone is, and the Bangla text names their buttons in English to match.
+  document.querySelectorAll('img[data-bn]').forEach(img => {
+    if (!img.dataset.en) img.dataset.en = img.getAttribute('src');
+    const want = lang === 'bn' ? img.dataset.bn : img.dataset.en;
+    if (img.getAttribute('src') !== want) img.setAttribute('src', want);
+  });
   // A control whose face is a glyph still needs words for a screen reader; data-s-label
   // puts them in aria-label instead of in the text, and in the same language.
   document.querySelectorAll('[data-s-label]').forEach(el => {

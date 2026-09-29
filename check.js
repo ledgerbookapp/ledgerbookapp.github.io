@@ -58,7 +58,7 @@ for (const page of [...PAGES, ...HEADERLESS]) {
   for (const m of html.matchAll(/data-s(-label|-rich)?="([^"]+)"/g))
     if (!S[m[2]]) note(`${page}: data-s${m[1] || ''}="${m[2]}" has no entry in the catalogue`);
 
-  for (const m of html.matchAll(/(?:src|srcset|href)="((?:assets)\/[^"]+)"/g))
+  for (const m of html.matchAll(/(?:src|srcset|href|data-bn)="((?:assets)\/[^"]+)"/g))
     if (!fs.existsSync(m[1])) note(`${page}: ${m[1]} is referenced but not on disk`);
 
   // Every <img> carries its own size so the page does not jump as pictures arrive.

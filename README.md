@@ -73,8 +73,9 @@ so the enlarged view is sharp on a phone. They came from the sample ledger alrea
 LB_Clean, with the owner's name set to Raahat; reaching the sign-up screens used the app's
 own Sign Out & Reset PIN, which keeps the ledger.
 
-Steps 1 to 3 were re-taken the same day, full size, because the old ones still showed the
-app icon from before it changed. That needed a genuine first install on LB_Clean: its app
+Steps 1 to 3 were re-taken full size, and again for 1.1.67, the release that gave the app
+the wallet icon the site already uses -- the installer shows the icon inside the APK, so
+these pictures follow the app's icon, never the site's. That needed a genuine first install on LB_Clean: its app
 data was copied off with run-as, the app uninstalled, the release downloaded through the
 site's own get.html in the emulator's Chrome and walked up to Play Protect's "This app looks
 safe", then declined; the debug build went back on and the data was restored, and the
