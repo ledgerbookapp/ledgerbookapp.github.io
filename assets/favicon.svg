@@ -3,22 +3,28 @@
   The mark as a browser tab draws it: 16 to 24 pixels.
 
   The simplified cut of logo.svg, as the owner's logo canvas draws it for those sizes:
-  one page instead of two, no stitching, a heavier outline and wider ledger lines, and
-  the clasp a plain dot — everything that would come to half a pixel is taken out, and
-  what is left is thick enough to stay a wallet with a page in it.
+  the note keeps its coin but loses its border and sign, the book loses its spine and
+  bookmark, the wallet its stitching and ringed clasp, and the outline is heavier. What
+  is left is thick enough to stay a wallet with a book and a note in it.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" width="108" height="108"
      role="img" aria-labelledby="t">
   <title id="t">LedgerBook</title>
   <rect width="108" height="108" rx="26" fill="#F2B830"/>
-  <g transform="rotate(-6 54 30)">
-    <rect x="30" y="15" width="48" height="29" rx="6" fill="#0C0B0A"/>
-    <g fill="#F2B830">
-      <rect x="38" y="21" width="32" height="5" rx="2.5"/>
-      <rect x="38" y="29" width="32" height="5" rx="2.5"/>
+  <g transform="translate(0 2)">
+    <g transform="rotate(9 66 24)">
+      <rect x="46" y="12" width="40" height="25" rx="3.5" fill="#8B6A1F"/>
+      <circle cx="72" cy="24.5" r="6" fill="#F2B830"/>
     </g>
+    <g transform="rotate(-7 44 30)">
+      <rect x="22" y="12" width="42" height="36" rx="5" fill="#0C0B0A"/>
+      <g fill="#F2B830">
+        <rect x="33" y="21" width="24" height="5" rx="2.5"/>
+        <rect x="33" y="29" width="24" height="5" rx="2.5"/>
+      </g>
+    </g>
+    <rect x="21" y="40" width="66" height="50" rx="12" fill="#F2B830" stroke="#0C0B0A" stroke-width="6.5"/>
+    <path d="M88 54 H73 A11 11 0 0 0 73 76 H88 Z" fill="#0C0B0A"/>
+    <circle cx="73.5" cy="65" r="4" fill="#F2B830"/>
   </g>
-  <rect x="21" y="40" width="66" height="50" rx="12" fill="#F2B830" stroke="#0C0B0A" stroke-width="8"/>
-  <path d="M88 54 H73 A11 11 0 0 0 73 76 H88 Z" fill="#0C0B0A"/>
-  <circle cx="73.5" cy="65" r="4" fill="#F2B830"/>
 </svg>
