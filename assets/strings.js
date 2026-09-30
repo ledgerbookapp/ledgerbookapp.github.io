@@ -393,6 +393,13 @@ const S = {
                  'remembered.',
                  'ঢোকার মুখে পিন বা আঙুলের ছাপ। বাংলা বা ইংরেজি, আলো বা অন্ধকার, আর একটা ' +
                  'পছন্দের রং — সবই যখন খুশি বদলানো যায়, আর মনে থাকে।'],
+  // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
+  // is the phone's alone -- the privacy page's promise has to hold for it too.
+  f9Head:       ['A list behind the bell', 'বেলের পেছনে একটা তালিকা'],
+  f9Body:       ['App updates, backups saved or restored, and loan reminders, gathered in ' +
+                 'one list. It is kept on your phone only, and cleared if you reinstall.',
+                 'অ্যাপের আপডেট, ব্যাকআপ সেভ বা ফেরানো, আর ধারের রিমাইন্ডার — সব এক ' +
+                 'তালিকায়। এটা শুধু আপনার ফোনেই থাকে, অ্যাপ আবার ইনস্টল করলে মুছে যায়।'],
 
   // -- privacy -----------------------------------------------------------------
   privLead:     ['The short version: nothing is collected and nothing is reported, because ' +
