@@ -106,6 +106,19 @@ for (const f of fs.readdirSync('assets').filter(n => n.endsWith('.svg')))
   for (const m of fs.readFileSync('assets/' + f, 'utf8').matchAll(/<!--([\s\S]*?)-->/g))
     if (m[1].includes('--')) note(`assets/${f}: a comment contains "--", which makes the file invalid XML`);
 
+// -- the website's version -------------------------------------------------------
+// SITE_VERSION in site.js is the number; each footer also carries it as plain text for
+// a reader without script. A publish that raises one and not the other is caught here.
+{
+  const sv = (fs.readFileSync('assets/site.js', 'utf8').match(/const SITE_VERSION = '([^']+)'/) || [])[1];
+  if (!sv) note('site.js: SITE_VERSION not found');
+  else for (const page of PAGES) {
+    const m = fs.readFileSync(page, 'utf8').match(/data-site-version>([^<]*)</);
+    if (!m) note(`${page}: its footer has no website version`);
+    else if (m[1] !== 'Website v' + sv) note(`${page}: footer says "${m[1]}", SITE_VERSION is ${sv}`);
+  }
+}
+
 // -- what the script reaches for ------------------------------------------------
 const js = fs.readFileSync('assets/site.js', 'utf8');
 for (const m of js.matchAll(/\bS\.([A-Za-z][A-Za-z0-9]*)/g))

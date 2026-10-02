@@ -23,6 +23,13 @@ document.documentElement.classList.add('js');
  * reader who switched to Bangla once did so on purpose, and having to switch again on
  * every page is the kind of small rudeness that makes a site feel careless.
  */
+/*
+ * The website's own version, shown in every footer. Raised on every publish: the last
+ * number for a fix to what is there, the middle one for a new page, section or feature.
+ * The app's version is a separate thing and comes from the releases API.
+ */
+const SITE_VERSION = '2.12.0';
+
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
 // be read back, and falling through to the browser's guess every time left the switch
@@ -71,6 +78,9 @@ function applyLang(lang) {
     if (!img.dataset.en) img.dataset.en = img.getAttribute('src');
     const want = lang === 'bn' ? img.dataset.bn : img.dataset.en;
     if (img.getAttribute('src') !== want) img.setAttribute('src', want);
+  });
+  document.querySelectorAll('[data-site-version]').forEach(el => {
+    el.textContent = S.siteVersion[i].replace('{v}', num(SITE_VERSION));
   });
   // A control whose face is a glyph still needs words for a screen reader; data-s-label
   // puts them in aria-label instead of in the text, and in the same language.
@@ -193,7 +203,6 @@ function renderRelease() {
     set('[data-rel="title"]', S.relLatest[i]);
     set('[data-rel="sha"]', S.relHashWait[i]);
     set('[data-rel="hashTitle"], [data-rel="hashTitleShort"]', 'SHA-256');
-    set('[data-rel="footVersion"]', '');
     // A size written into the page would be a guess about a file nobody has looked up --
     // and was already a different guess from the install guide's. A dash says "unknown".
     set('[data-rel="size"]', '—');
@@ -211,7 +220,6 @@ function renderRelease() {
   if (release.sha) set('#dl-hash, [data-rel="sha"]', release.sha);
   else set('[data-rel="sha"]', S.relHashWait[i]);
   set('[data-rel="hashTitle"]', f(S.hashTitle[i]));
-  set('[data-rel="footVersion"]', f(S.footVersion[i]));
   set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + num(release.version));
   // Copy is offered only once there is a fingerprint to copy.
   document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = !release.sha; });

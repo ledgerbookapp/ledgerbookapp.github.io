@@ -46,7 +46,14 @@ value. On light paper the fill measures 2.05 against the page, so a link in it c
 read — the ink is a step deeper for exactly that reason. The app hit this same wall and
 `Color.kt` carries a long comment about the two commits that walked into it.
 
-## The version number
+## The website's version
+
+Every footer says "Website v2.12.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+`assets/site.js`, and is raised on every publish: the last part for a fix to what is
+there, the middle part for a new page, section or feature. It is the site's own version and
+has nothing to do with the app's.
+
+## The app's version number
 
 Nothing on this site names a version. `site.js` asks the GitHub releases API what the newest
 one is and fills in the number, the size, the download link and the SHA-256 from the release
