@@ -193,6 +193,7 @@ function renderRelease() {
     set('[data-rel="title"]', S.relLatest[i]);
     set('[data-rel="sha"]', S.relHashWait[i]);
     set('[data-rel="hashTitle"], [data-rel="hashTitleShort"]', 'SHA-256');
+    set('[data-rel="footVersion"]', '');
     // A size written into the page would be a guess about a file nobody has looked up --
     // and was already a different guess from the install guide's. A dash says "unknown".
     set('[data-rel="size"]', '—');
@@ -210,6 +211,7 @@ function renderRelease() {
   if (release.sha) set('#dl-hash, [data-rel="sha"]', release.sha);
   else set('[data-rel="sha"]', S.relHashWait[i]);
   set('[data-rel="hashTitle"]', f(S.hashTitle[i]));
+  set('[data-rel="footVersion"]', f(S.footVersion[i]));
   set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + num(release.version));
   // Copy is offered only once there is a fingerprint to copy.
   document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = !release.sha; });
@@ -303,6 +305,26 @@ function setMenu(open) {
   labelMenu();
 }
 
+/*
+ * The API allows sixty unsigned requests an hour from one address, and a household, an
+ * office or a phone carrier's shared address can spend that before lunch -- after which
+ * every version line on the site was blank. So the last answer is kept in the browser and
+ * shown at once, then replaced if a fresh one arrives. A week old at most: a release is
+ * rarely older than that before the next, and a stale number is worse than none.
+ */
+const RELEASE_KEY = 'lb.release';
+const RELEASE_MAX_AGE = 7 * 24 * 3600 * 1000;
+
+function restoreRelease() {
+  try {
+    const kept = JSON.parse(localStorage.getItem(RELEASE_KEY) || 'null');
+    if (kept && kept.at && Date.now() - kept.at < RELEASE_MAX_AGE && kept.release && kept.release.url) {
+      release = kept.release;
+      renderRelease();
+    }
+  } catch (_) { /* storage blocked or garbled: just wait for the API */ }
+}
+
 async function loadRelease() {
   try {
     const r = await fetch('https://api.github.com/repos/' + REPO + '/releases/latest',
@@ -323,6 +345,7 @@ async function loadRelease() {
       size: apk.size,
       sha: m ? m[1] : null
     };
+    try { localStorage.setItem(RELEASE_KEY, JSON.stringify({ at: Date.now(), release })); } catch (_) { /* private window */ }
     renderRelease();
   } catch (_) {
     // Offline, rate limited, or blocked. renderRelease has already left a working link.
@@ -627,5 +650,6 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCopy();
   setupToc();
 
+  restoreRelease();
   releaseReady = loadRelease();
 });

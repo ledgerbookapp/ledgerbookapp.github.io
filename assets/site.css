@@ -319,6 +319,8 @@ footer {
 .foot-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; font-weight: 600; }
 .foot-links a { color: var(--ink-muted); text-decoration: none; }
 .foot-links a:hover { color: var(--ink); }
+.foot-ver { color: var(--ink-muted); font-weight: 500; }
+.foot-ver:empty { display: none; }
 .foot-links .foot-all { color: var(--accent-ink); text-decoration: underline; text-underline-offset: 3px; }
 
 @media (max-width: 719px) {
@@ -487,7 +489,9 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   margin: 28px 0 0; max-width: 500px;
 }
 .hero-home .cta { margin-top: 40px; gap: 12px; }
-.hero-meta { display: none; }
+/* The version under the buttons, at every width. The drawing kept it to the phone layout
+   and left the desktop naming no version until the band at the foot of the page. */
+.hero-home .hero-meta { margin-top: 14px; }
 
 /* -- the phone -------------------------------------------------------------------- */
 .phone {

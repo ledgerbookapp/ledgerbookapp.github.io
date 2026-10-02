@@ -510,5 +510,7 @@ const S = {
   // -- footer ------------------------------------------------------------------
   footerNote:   ['Built for keeping one household’s books. No trackers on this page.',
                  'একটা সংসারের হিসাব রাখার জন্য বানানো। এই পাতায় কোনো ট্র্যাকার নেই।'],
+  // In every footer, filled from the release like every other version on the site.
+  footVersion:  ['Latest version {v}', 'সর্বশেষ ভার্সন {v}'],
   allVersions:  ['All versions', 'সব ভার্সন']
 };
