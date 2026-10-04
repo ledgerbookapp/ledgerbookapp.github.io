@@ -88,7 +88,7 @@
       </p>
       <h1><span data-s="taglineLead">Your money, your phone,</span>
         <em data-s="taglineAccent">nobody else.</em></h1>
-      <p class="lead" data-s="heroLead">A double-entry ledger for everyday money.</p>
+      <p class="lead" data-s="heroLead">A double-entry ledger for everyday money. No account to open, nothing reported to anybody, and books that cannot quietly stop balancing.</p>
 
       <div class="cta">
         <!-- Starts as a link to the releases page and is narrowed to the exact file once
@@ -99,17 +99,16 @@
         </a>
         <a class="btn btn-lg btn-quiet" href="install.html" data-s="navInstall">How to install</a>
       </div>
-      <!-- The narrow layout names the version under the buttons; the wide one leaves it to
-           the band at the foot of the page and gives this place to the code instead. -->
+      <!-- The version under the buttons, at every width. -->
       <p class="meta hero-meta" data-rel="line"></p>
 
       <!-- Hidden on a narrow screen, where the reader is already holding the phone the
-           code would send them to. -->
+           code would send them to; there it folds behind a button below, for a friend. -->
       <aside class="qr">
         <img src="assets/qr.svg" alt="" width="185" height="185">
         <div>
           <b data-s="qrHead">Scan to put it on your phone</b>
-          <p data-s="qrBody"></p>
+          <p data-s="qrBody">Point a phone camera at it and the newest version downloads straight away. First time? Read how to install first.</p>
         </div>
       </aside>
 
@@ -122,7 +121,7 @@
           <svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
         <img src="assets/qr.svg" alt="" width="220" height="220">
-        <p data-s="qrShareBody"></p>
+        <p data-s="qrShareBody">Hold this screen up to the other phone’s camera. The newest version downloads there straight away.</p>
       </details>
     </div>
 
@@ -130,8 +129,8 @@
          reader sees the real thing before reading a word about it. It follows the theme
          and the language like the rest of the page, and opens full size when pressed. -->
     <button type="button" class="frame frame-lg zoom hero-shot" data-s-label="lbOpen" data-cap="shotHome">
-      <img class="s-light" src="assets/screens/app-home-light.png" data-bn="assets/screens/app-home-light-bn.png" width="1080" height="2259" fetchpriority="high" alt="">
-      <img class="s-dark"  src="assets/screens/app-home-dark.png" data-bn="assets/screens/app-home-dark-bn.png"  width="1080" height="2259" fetchpriority="high" alt="">
+      <img class="s-light" src="assets/screens/app-home-light.png" data-bn="assets/screens/app-home-light-bn.png" width="1080" height="2259" loading="lazy" alt="">
+      <img class="s-dark"  src="assets/screens/app-home-dark.png" data-bn="assets/screens/app-home-dark-bn.png"  width="1080" height="2259" loading="lazy" alt="">
     </button>
   </section>
 
@@ -154,23 +153,23 @@
     <div class="sec-head">
       <p class="eyebrow" data-s="whyTitle">Why this one</p>
       <h2 data-s="whyH2">Private by design, correct by design</h2>
-      <p data-s="whySub"></p>
+      <p data-s="whySub">Where your data goes, whether the totals hold, and whether it needs a network at all.</p>
     </div>
     <div class="why">
       <article class="card why-card">
         <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <h3 data-s="why1Head">It has nowhere to send your money data</h3>
-        <p><span data-s="why1Body"></span><a href="privacy.html" data-s="why1Link">privacy page</a><span data-s="why1End"></span></p>
+        <p><span data-s="why1Body">Not a promise — a fact about how it is built. Two files in the whole app touch the internet, and both of them are the thing that checks whether a new version exists. There is no server of ours for an entry to go to. Android’s own backup is a separate matter, and the </span><a href="privacy.html" data-s="why1Link">privacy page</a><span data-s="why1End"> says exactly what it carries.</span></p>
       </article>
       <article class="card why-card">
         <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
         <h3 data-s="why2Head">Every amount is written twice</h3>
-        <p data-s="why2Body"></p>
+        <p data-s="why2Body">Real double-entry, the way an accountant keeps books: money leaving one place always arrives somewhere. The Trial Balance page shows the two sides agreeing, so a wrong total is caught instead of carried.</p>
       </article>
       <article class="card why-card">
         <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3c.8 0 1.5.7 1.5 1.5V9l7 4v2l-7-2v4.5l2 1.5v1.5l-3.5-1-3.5 1V19l2-1.5V13l-7 2v-2l7-4V4.5C10.5 3.7 11.2 3 12 3z"/></svg></span>
         <h3 data-s="why3Head">It works with the phone in flight mode</h3>
-        <p data-s="why3Body"></p>
+        <p data-s="why3Body">Nothing waits on a network. Backups are encrypted files you keep yourself, and you can lock the app with a PIN or your fingerprint.</p>
       </article>
     </div>
   </section>
@@ -184,28 +183,28 @@
     <ul class="glance">
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M12 10v10"/></svg></span>
         <h3 data-s="g1Head">Double-entry journal</h3>
-        <p><span class="only-wide" data-s="g1Body"></span><span class="only-narrow" data-s="g1Short"></span></p></li>
+        <p><span class="only-wide" data-s="g1Body">Every entry has a debit and a matching credit.</span><span class="only-narrow" data-s="g1Short">A debit and a matching credit, every time.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
         <h3 data-s="g2Head">Trial Balance</h3>
-        <p><span class="only-wide" data-s="g2Body"></span><span class="only-narrow" data-s="g2Short"></span></p></li>
+        <p><span class="only-wide" data-s="g2Body">See both sides agree, so a wrong total is caught.</span><span class="only-narrow" data-s="g2Short">Both sides agree, or you see it.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M16 21v-1a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v1"/><path d="M19 8v6M22 11h-6"/></svg></span>
         <h3 data-s="g3Head">Loan tracking</h3>
-        <p><span class="only-wide" data-s="g3Body"></span><span class="only-narrow" data-s="g3Short"></span></p></li>
+        <p><span class="only-wide" data-s="g3Body">Record who owes what; pick names from contacts.</span><span class="only-narrow" data-s="g3Short">Who owes what, names from contacts.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
         <h3 data-s="g4Head">Due-date reminders</h3>
-        <p data-s="g4Body"></p></li>
+        <p data-s="g4Body">A notification when a loan falls due.</p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <h3 data-s="g5Head">Encrypted backups</h3>
-        <p><span class="only-wide" data-s="g5Body"></span><span class="only-narrow" data-s="g5Short"></span></p></li>
+        <p><span class="only-wide" data-s="g5Body">Backup files you keep yourself.</span><span class="only-narrow" data-s="g5Short">Files you keep yourself.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
-        <h3><span class="only-wide" data-s="g6Head">PIN &amp; fingerprint lock</span><span class="only-narrow" data-s="g6HeadShort"></span></h3>
-        <p><span class="only-wide" data-s="g6Body"></span><span class="only-narrow" data-s="g6Short"></span></p></li>
+        <h3><span class="only-wide" data-s="g6Head">PIN &amp; fingerprint lock</span><span class="only-narrow" data-s="g6HeadShort">PIN &amp; fingerprint</span></h3>
+        <p><span class="only-wide" data-s="g6Body">Lock the app behind a PIN or your fingerprint.</span><span class="only-narrow" data-s="g6Short">Lock the app behind either.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.9 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
         <h3 data-s="g7Head">In-app updates</h3>
-        <p><span class="only-wide" data-s="g7Body"></span><span class="only-narrow" data-s="g7Short"></span></p></li>
+        <p><span class="only-wide" data-s="g7Body">Checks for a new version, downloads and installs it.</span><span class="only-narrow" data-s="g7Short">Checks, downloads, installs.</span></p></li>
       <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <h3 data-s="g8Head">Verifiable releases</h3>
-        <p><span class="only-wide" data-s="g8Body"></span><span class="only-narrow" data-s="g8Short"></span></p></li>
+        <p><span class="only-wide" data-s="g8Body">Every release carries a SHA-256 fingerprint.</span><span class="only-narrow" data-s="g8Short">A SHA-256 fingerprint on each.</span></p></li>
     </ul>
   </section>
 
@@ -215,7 +214,7 @@
       <div class="trust-copy">
         <p class="eyebrow" data-s="navInstall">How to install</p>
         <h2 data-s="trustTitle">Why it is not on the Play Store</h2>
-        <p data-s="trustBody"></p>
+        <p data-s="trustBody">It is published here instead, as a file you download and install yourself. Your phone will warn you about that, because a phone cannot tell one unknown file from another. What it can tell you is whether the file is exactly the one published — every release carries a SHA-256 fingerprint, and the install guide shows how to check it.</p>
         <a class="arrow-link trust-link-wide" href="install.html"><span data-s="installLink">Read the install guide</span>
           <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -246,13 +245,13 @@
     </div>
     <ul class="perms">
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
-        <div><h3 data-s="permInternet">Internet</h3><p data-s="permInternetW"></p></div></li>
+        <div><h3 data-s="permInternet">Internet</h3><p data-s="permInternetW">Only to check whether a newer version exists.</p></div></li>
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
-        <div><h3 data-s="permNotify">Notifications</h3><p data-s="permNotifyW"></p></div></li>
+        <div><h3 data-s="permNotify">Notifications</h3><p data-s="permNotifyW">To remind you when a loan is due, and when an update is out.</p></div></li>
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></span>
-        <div><h3><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></h3><p data-s="permContactsJob"></p></div></li>
+        <div><h3><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></h3><p data-s="permContactsJob">To pick a name when you record a loan, instead of typing it.</p></div></li>
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></span>
-        <div><h3 data-s="permInstall">Install apps</h3><p data-s="permInstallW"></p></div></li>
+        <div><h3 data-s="permInstall">Install apps</h3><p data-s="permInstallW">To install the update it downloaded for you.</p></div></li>
     </ul>
   </section>
 
@@ -264,28 +263,28 @@
     </div>
     <div class="faq">
       <details>
-        <summary><span data-s="faqQ1"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA1"></p>
+        <summary><span data-s="faqQ1">My phone warned me. Is it safe?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA1">Android shows that warning for every app that does not come from the Play Store, because it cannot tell one unknown file from another. Play Protect then scans this one and says it looks safe. To be sure the file is exactly the one published, the install guide shows how to check its SHA-256 fingerprint.</p>
       </details>
       <details>
-        <summary><span data-s="faqQ2"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA2"></p>
+        <summary><span data-s="faqQ2">Does it cost anything?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA2">No. It is free, with no ads and no account to open.</p>
       </details>
       <details>
-        <summary><span data-s="faqQ3"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA3"></p>
+        <summary><span data-s="faqQ3">What if I change or lose my phone?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA3">Android backs the ledger up to your own Google account and brings it back when you install the app on a new phone; you set a new PIN there. You can also save an encrypted backup file yourself from the app’s Backup page, and restore it on any phone.</p>
       </details>
       <details>
-        <summary><span data-s="faqQ4"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA4"></p>
+        <summary><span data-s="faqQ4">Does it need the internet?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA4">No. Everything works offline. It goes online only to check for a newer version, and to download it when you say yes.</p>
       </details>
       <details>
-        <summary><span data-s="faqQ5"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA5"></p>
+        <summary><span data-s="faqQ5">Is there an iPhone version?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA5">No. It is for Android only, version 6.0 and up.</p>
       </details>
       <details>
-        <summary><span data-s="faqQ6"></span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <p data-s="faqA6"></p>
+        <summary><span data-s="faqQ6">How do I get updates?</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <p data-s="faqA6">The app tells you when a new version is out, downloads it when you say yes, and installs it. You do not need to come back to this page.</p>
       </details>
     </div>
   </section>
@@ -312,10 +311,10 @@
     <div class="foot-note">
       <img class="brand-tile brand-tile-sm" src="assets/favicon.svg" width="26" height="26" alt="">
       <b class="foot-name" data-s="appName">LedgerBook</b>
-      <p data-s="footerNote"></p>
+      <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.13.0</span>
+      <span class="foot-ver" data-site-version>Website v2.13.1</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

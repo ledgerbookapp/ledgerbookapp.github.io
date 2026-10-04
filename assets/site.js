@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.13.0';
+const SITE_VERSION = '2.13.1';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -127,6 +127,15 @@ function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   try { localStorage.setItem('lb.theme', theme); } catch (_) { /* private window */ }
   labelTheme();
+}
+
+// With no theme chosen the page follows the phone, which can change while the page is
+// open (a sunset schedule); the button's spoken label follows it too.
+if (window.matchMedia) {
+  const mq = window.matchMedia('(prefers-color-scheme: dark)');
+  const relabel = () => labelTheme();
+  if (mq.addEventListener) mq.addEventListener('change', relabel);
+  else if (mq.addListener) mq.addListener(relabel);
 }
 
 function labelTheme() {
@@ -386,13 +395,16 @@ function showDownloadNote() {
       '<button type="button" class="dl-note-x" data-s-label="lbClose">' +
         ICON('<path d="M6 6l12 12M18 6 6 18"/>') + '</button>' +
       '<ol>' +
-        '<li class="dl-done">' + ICON('<path d="M20 6 9 17l-5-5"/>') + '<span data-s="dlNoteStarted"></span></li>' +
+        '<li class="dl-done">' + ICON('<path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/>') + '<span data-s-rich="dlNoteStarted"></span></li>' +
         '<li class="dl-wait">' + ICON('<path d="M12 3a9 9 0 1 0 9 9"/>') + '<span data-s="dlNoteCheck"></span></li>' +
         '<li class="dl-next">' + ICON('<path d="M5 12h14M13 6l6 6-6 6"/>') + '<span data-s-rich="dlNoteOpen"></span></li>' +
       '</ol>' +
-      (location.pathname.endsWith('install.html') ? '' :
+      // Not on the install guide itself -- found by its steps, since GitHub Pages serves
+      // the page at /install as well as /install.html.
+      (document.querySelector('.inst-steps') ? '' :
         '<a class="dl-note-guide" href="install.html" data-s="dlNoteGuide"></a>');
     note.querySelector('.dl-note-x').addEventListener('click', () => note.remove());
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') note.remove(); });
     document.body.append(note);
     applyLang(currentLang());
   }

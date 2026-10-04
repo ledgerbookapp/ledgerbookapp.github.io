@@ -81,6 +81,37 @@ for (const page of [...PAGES, ...HEADERLESS]) {
   if (current !== 1) note(`${page}: marks ${current} nav links as the current page, want 1`);
 }
 
+// -- the English in the HTML ----------------------------------------------------
+// Every element with a key also carries that key's English as its content, so a crawler,
+// a link preview or a reader whose script did not run sees real words, not empty boxes.
+// The two drifted twice -- a lead sentence shortened in the HTML and never in the
+// catalogue -- so they are compared here. `node check.js --fix` rewrites the HTML to
+// match the catalogue, which is the one source.
+const FIX = process.argv.includes('--fix');
+const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const rich = (t) => esc(t).split('**').map((p, n) => n % 2 ? '<b>' + p + '</b>' : p).join('');
+for (const page of [...PAGES, ...HEADERLESS]) {
+  let html = fs.readFileSync(page, 'utf8'), changed = false;
+  html = html.replace(/(<([a-z0-9]+)\b[^>]*?\sdata-s(-rich)?="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/g,
+    (all, open, tag, isRich, key, inner, close) => {
+      if (!S[key]) return all;
+      if (!isRich && /</.test(inner)) return all;      // holds markup of its own: not ours
+      const want = isRich ? rich(S[key][0]) : esc(S[key][0]);
+      if (inner === want) return all;
+      if (!FIX) note(`${page}: data-s${isRich || ''}="${key}" says "${inner.slice(0, 40)}", the catalogue "${S[key][0].slice(0, 40)}"`);
+      changed = true;
+      return open + want + close;
+    });
+  if (FIX && changed) { fs.writeFileSync(page, html); console.log('rewrote ' + page); }
+}
+
+// Keys the script builds into markup of its own, and the captions it reads by name.
+for (const m of fs.readFileSync('assets/site.js', 'utf8').matchAll(/data-s(?:-rich|-label)?="([^"]+)"/g))
+  if (!S[m[1]]) note(`site.js: builds data-s="${m[1]}", which the catalogue does not have`);
+for (const page of [...PAGES, ...HEADERLESS])
+  for (const m of fs.readFileSync(page, 'utf8').matchAll(/data-cap="([^"]+)"/g))
+    if (!S[m[1]]) note(`${page}: data-cap="${m[1]}" has no entry in the catalogue`);
+
 // The 404 page is served at any depth, so it names its files from the root
 // (/assets/...) and loads no script; its header is meant to differ. It still gets the
 // file and picture checks -- a renamed logo broke it once without anyone being told.

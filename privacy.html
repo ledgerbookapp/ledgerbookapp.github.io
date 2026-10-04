@@ -81,7 +81,7 @@
   <!-- -- hero ------------------------------------------------------------------ -->
   <section class="wrap priv-hero">
     <h1 data-s="navPrivacy">Privacy</h1>
-    <p class="lead" data-s="privLead"></p>
+    <p class="lead" data-s="privLead">The short version: nothing is collected and nothing is reported, because there is nobody to report to. One copy of your ledger can leave the phone — Android’s own backup, into your own Google account — and it has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.</p>
     <dl class="priv-sum">
       <div><dt data-s="privCollectTitle">What is collected</dt><dd data-s="privSum1V">Nothing</dd></div>
       <div><dt data-s="privSum2">Network use</dt><dd data-s="privSum2V">Update check only</dd></div>
@@ -111,7 +111,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
         <div>
           <h2 data-s="privCollectTitle">What is collected</h2>
-          <p data-s-rich="privCollectBody"></p>
+          <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, and one library for reading a release’s version number.</p>
           <p class="chips"><span data-s="chipNoAccount">No account</span><span data-s="privNo2">No analytics</span><span data-s="privNo3">No crash reports</span><span data-s="privNo4">No ads</span></p>
         </div>
       </section>
@@ -120,7 +120,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
         <div>
           <h2 data-s="privWhereTitle">Where your entries live</h2>
-          <p data-s="privWhereBody"></p>
+          <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of. It is never copied anywhere else unless you write a backup yourself. Uninstalling the app deletes it.</p>
         </div>
       </section>
 
@@ -128,7 +128,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
         <div>
           <h2 data-s="privNetTitle">Every time it uses the network</h2>
-          <p data-s="privNetBody"></p>
+          <p data-s="privNetBody">Twice, and both for the same errand: it asks GitHub what the newest release is, and if you say yes it downloads that file. Two files in the whole app can open a connection and both of them are that errand — so no entry of yours travels on a connection the app opens. Android’s backup does not use them either; it is the system copying the file, and it is the next section.</p>
           <ol class="pboxes pnet">
             <li><span class="toc-n">1</span><span data-s="privNet1">Ask GitHub for the newest release</span></li>
             <li><span class="toc-n">2</span><span data-s="privNet2">Download it — only if you say yes</span></li>
@@ -141,7 +141,7 @@
         <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
         <div>
           <h2 data-s="privAutoTitle">The one copy that leaves the phone</h2>
-          <p data-s="privAutoBody"></p>
+          <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it. What goes is the ledger database and your language and theme settings. What does not go is your PIN — it is left off the list on purpose, so a restored install always asks you to set a new one. The copy is made by Android, not by the app, into your own account, and on Android 9 and later it is encrypted with your screen lock, which Google does not have. Turn it off in Android’s own Settings and nothing goes at all; the app’s Backup page has the link. This is also what brings your ledger back when you reinstall or move to a new phone.</p>
           <div class="pboxes pgo">
             <div class="goes">
               <p class="plabel" data-s="privGoes">What goes</p>
@@ -151,7 +151,7 @@
             <div class="stays">
               <p class="plabel" data-s="privStays">What does not go</p>
               <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-s="privStays1">Your PIN</span></p>
-              <p class="pnote" data-s="privStaysNote"></p>
+              <p class="pnote" data-s="privStaysNote">A restored install always asks you to set a new one.</p>
             </div>
           </div>
         </div>
@@ -161,7 +161,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <div>
           <h2 data-s="privBackupTitle">Backups you make yourself</h2>
-          <p data-s="privBackupBody"></p>
+          <p data-s="privBackupBody">The backup you make from inside the app is a different thing: one encrypted file, written where you point it. Nobody is sent a copy and no service holds its key — which is the same sentence read the other way: lose the file and the password, and nobody can get it back for you either.</p>
         </div>
       </section>
 
@@ -170,10 +170,10 @@
         <div>
           <h2 data-s="permTitle">What it asks for, and why</h2>
           <dl class="ptable">
-            <div><dt data-s="permInternet">Internet</dt><dd data-s="permInternetW"></dd></div>
-            <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW"></dd></div>
-            <div><dt><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></dt><dd data-s="permContactsJob"></dd></div>
-            <div><dt data-s="permInstall">Install apps</dt><dd data-s="permInstallW"></dd></div>
+            <div><dt data-s="permInternet">Internet</dt><dd data-s="permInternetW">Only to check whether a newer version exists.</dd></div>
+            <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW">To remind you when a loan is due, and when an update is out.</dd></div>
+            <div><dt><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></dt><dd data-s="permContactsJob">To pick a name when you record a loan, instead of typing it.</dd></div>
+            <div><dt data-s="permInstall">Install apps</dt><dd data-s="permInstallW">To install the update it downloaded for you.</dd></div>
           </dl>
         </div>
       </section>
@@ -182,7 +182,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
         <div>
           <h2 data-s="privDeleteTitle">Getting rid of it all</h2>
-          <p data-s="privDeleteBody"></p>
+          <p data-s="privDeleteBody">Uninstall the app. That is the whole procedure — no account to close and no request to send, because there was never a copy anywhere to ask about. Any backup files you wrote are yours to delete.</p>
         </div>
       </section>
 
@@ -196,10 +196,10 @@
     <div class="foot-note">
       <img class="brand-tile brand-tile-sm" src="assets/favicon.svg" width="26" height="26" alt="">
       <b class="foot-name" data-s="appName">LedgerBook</b>
-      <p data-s="footerNote"></p>
+      <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.13.0</span>
+      <span class="foot-ver" data-site-version>Website v2.13.1</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

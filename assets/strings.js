@@ -43,7 +43,6 @@ const S = {
                  'দৈনন্দিন টাকার জন্য দুই-তরফা হিসাবের খাতা। অ্যাকাউন্ট খুলতে হয় না, ' +
                  'কারও কাছে কিছু রিপোর্ট হয় না, আর হিসাব কখনো চুপচাপ বেহিসেব হয়ে যায় না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
-  downloadBusy: ['Finding the latest version…', 'সর্বশেষ ভার্সন খোঁজা হচ্ছে…'],
   downloadAlt:  ['Open the releases page', 'রিলিজ পাতা খুলুন'],
   versionLine:  ['Version {v} · {size} · Android 6.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
@@ -62,11 +61,15 @@ const S = {
                  'downloads there straight away.',
                  'এই স্ক্রিনটা অন্য ফোনের ক্যামেরার সামনে ধরুন। সর্বশেষ ভার্সনটা সেখানে ' +
                  'সাথে সাথে নামতে শুরু করবে।'],
-  // The note that appears once the file is asked for, on an Android phone.
-  dlNoteStarted:['The download has started.', 'ডাউনলোড শুরু হয়েছে।'],
-  dlNoteCheck:  ['Near the end, Chrome checks the file for a few seconds. That is normal — ' +
-                 'let it finish.',
-                 'শেষের দিকে Chrome কয়েক সেকেন্ড ফাইলটা পরীক্ষা করে। এটা স্বাভাবিক — ' +
+  // The note that appears once the file is asked for, on an Android phone. "The
+  // browser", not Chrome: Samsung Internet and Firefox show it too, and pause the same.
+  // The first line does not claim the download has started -- at that moment the browser
+  // is usually still asking whether to keep the file.
+  dlNoteStarted:['If the browser warns you, tap **Download anyway**.',
+                 'ব্রাউজার সতর্ক করলে **Download anyway** চাপুন।'],
+  dlNoteCheck:  ['Near the end, the browser checks the file for a few seconds. That is ' +
+                 'normal — let it finish.',
+                 'শেষের দিকে ব্রাউজার কয়েক সেকেন্ড ফাইলটা পরীক্ষা করে। এটা স্বাভাবিক — ' +
                  'শেষ হওয়া পর্যন্ত অপেক্ষা করুন।'],
   dlNoteOpen:   ['When it is done, tap **Open** in the notification.',
                  'শেষ হলে নোটিফিকেশন থেকে **Open** চাপুন।'],
@@ -304,7 +307,7 @@ const S = {
                  'then scans this one and says it looks safe. To be sure the file is exactly ' +
                  'the one published, the install guide shows how to check its SHA-256 fingerprint.',
                  'প্লে স্টোরের বাইরের যেকোনো অ্যাপেই অ্যান্ড্রয়েড এই সতর্কবার্তা দেখায়, কারণ ' +
-                 'অচেনা এক ফাইলকে আরেকটা থেকে সে আলাদা করতে পারে না। এরপর প্লে প্রোটেক্ট ' +
+                 'অচেনা এক ফাইলকে আরেকটা থেকে সে আলাদা করতে পারে না। এরপর Play Protect ' +
                  'অ্যাপটা স্ক্যান করে জানায় যে এটা নিরাপদ। ফাইলটা হুবহু প্রকাশিত ফাইলই কিনা ' +
                  'নিশ্চিত হতে চাইলে, ইনস্টল গাইডে এর SHA-256 ছাপ মিলিয়ে দেখার নিয়ম আছে।'],
   faqQ2:        ['Does it cost anything?', 'টাকা লাগে?'],
@@ -320,9 +323,10 @@ const S = {
                  'ব্যাকআপ পাতা থেকে নিজেও একটা এনক্রিপ্টেড ব্যাকআপ ফাইল রাখতে পারেন, আর ' +
                  'যেকোনো ফোনে সেটা ফিরিয়ে আনতে পারেন।'],
   faqQ4:        ['Does it need the internet?', 'ইন্টারনেট লাগে?'],
-  faqA4:        ['No. Everything works offline. It goes online only to check whether a newer ' +
-                 'version exists.',
-                 'না। সবকিছু অফলাইনেই চলে। শুধু নতুন ভার্সন এসেছে কিনা দেখতে ইন্টারনেটে যায়।'],
+  faqA4:        ['No. Everything works offline. It goes online only to check for a newer ' +
+                 'version, and to download it when you say yes.',
+                 'না। সবকিছু অফলাইনেই চলে। শুধু নতুন ভার্সন এসেছে কিনা দেখতে, আর আপনি রাজি ' +
+                 'হলে সেটা নামাতে ইন্টারনেটে যায়।'],
   faqQ5:        ['Is there an iPhone version?', 'আইফোনে চলবে?'],
   faqA5:        ['No. It is for Android only, version 6.0 and up.',
                  'না। এটা শুধু অ্যান্ড্রয়েডের জন্য, ভার্সন ৬.০ বা তার পরের।'],

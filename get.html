@@ -34,7 +34,7 @@
   <div class="wrap">
     <section class="hero">
       <h1 data-s="getTitle">Downloading LedgerBook…</h1>
-      <p class="lead" data-s="getLead">Finding the newest version. The download starts by itself.</p>
+      <p class="lead" data-s="getLead">Finding the newest version. The download starts by itself — if it does not, use the button below.</p>
       <div class="cta">
         <a class="btn" id="dl" href="https://github.com/oslraahat/ledgerbook-releases/releases">Open the releases page</a>
         <a class="btn btn-quiet" href="install.html" data-s="navInstall">How to install</a>
@@ -53,9 +53,14 @@
   document.addEventListener('DOMContentLoaded', () => {
     let gone = false;
     const go = (url) => { if (!gone) { gone = true; location.replace(url); } };
+    // An iPhone or a computer that scans the code has no use for an APK: it goes to the
+    // home page, which says what the app is and what it runs on.
+    if (!ON_ANDROID) { go('./'); return; }
     // The lookup has no timeout of its own; a phone on a bad connection should not stare
-    // at this page for a minute before being sent somewhere useful.
-    setTimeout(() => go(RELEASES_URL), 8000);
+    // at this page for a minute before being sent somewhere useful. If a release is
+    // already known from an earlier visit, that is a better place to land than the
+    // releases page when the lookup is merely slow.
+    setTimeout(() => go(release ? release.url : RELEASES_URL), 8000);
     releaseReady.then(() => {
       // The page stays on screen while the file comes down, so it can say what to
       // expect at the end of it.

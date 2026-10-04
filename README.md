@@ -3,7 +3,7 @@
 The marketing site for [LedgerBook](https://github.com/oslraahat/ledgerbook-releases), served
 by GitHub Pages at <https://ledgerbookapp.github.io/>.
 
-Four static pages, no build step, no framework, no tracker. Open `index.html` in a browser
+Four pages, a QR landing page and a 404 — all static, no build step, no framework, no tracker. Open `index.html` in a browser
 and it works.
 
 ## What is where
@@ -18,10 +18,10 @@ and it works.
 | `404.html` | served for any unknown path |
 | `assets/strings.js` | **every word on the site, in English and Bangla, one pair per line** |
 | `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |
-| `assets/site.js` | the language switch, the theme switch, and the release lookup |
+| `assets/site.js` | the language and theme switches, the release lookup, the full-size picture view, the galleries, the copy button, and the note shown once a download starts |
 | `assets/logo.svg` | the mark: a wallet holding the ledger book and a taka note, for 40px and up; `favicon.svg` is its cut for 16–24px, and the PNG icons are drawn from these two |
 | `assets/og-image.png` | the 1200×630 picture a shared link shows in WhatsApp, Messenger and the rest; rendered from HTML with the dark home screenshot, so retake it when that screenshot changes |
-| `assets/screens/` | the install-guide screenshots, cropped to the dialog |
+| `assets/screens/` | the app's own screens (features page, home page, install step 4) and the phone's install dialogs (steps 1–3), cropped to the dialog |
 | `check.js` | run before publishing — see below |
 
 ## Before you publish
@@ -30,10 +30,11 @@ and it works.
 node check.js
 ```
 
-It reads the four pages and the catalogue and complains about the things that have actually
+It reads the pages and the catalogue and complains about the things that have actually
 gone wrong here before: a header that drifted on one page, a `data-s` with no string behind
 it, a string with only one of its two languages, two keys holding the same English, an
-`<img>` with no size, a missing file. It caught a duplicate on its first run.
+`<img>` with no size, a missing file, and English in the HTML that no longer matches the
+catalogue — `node check.js --fix` writes the catalogue's English back into the pages. It caught a duplicate on its first run.
 
 ## The two rules worth knowing
 
@@ -49,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.13.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.13.1". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
