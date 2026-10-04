@@ -419,6 +419,16 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   .js nav a { font-size: 17px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
   .js nav a:last-child { border-bottom: 0; }
 }
+/* Brand, language, theme and menu need about 372px at the sizes above; on a narrower
+   phone the menu button was pushed off the edge and the whole page scrolled sideways. */
+@media (max-width: 374px) {
+  .bar { column-gap: 8px; }
+  .brand { gap: 8px; }
+  .brand b { font-size: 18px; }
+  .bar .brand-tile { width: 28px; height: 28px; }
+  .switches { gap: 4px; }
+  #lang { width: 58px; }
+}
 
 /* =============================================================================
  * The home page
