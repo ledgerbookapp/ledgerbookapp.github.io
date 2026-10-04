@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.13.1 | 2026-10-04 | — | Fourteen fixes from a review; install page fits 320px; step 1 retaken on 1.1.71 |
+| 2.13.2 | 2026-10-04 | — | Pictures follow app 1.1.72: count badges, loan days in words, the new welcome screen; step 1 on 1.1.72 |
+| 2.13.1 | 2026-10-04 | 46f6333 | Fourteen fixes from a review; install page fits 320px; step 1 retaken on 1.1.71 |
 | 2.13.0 | 2026-10-04 | 8dcad96 | Real screenshot in the hero; questions before installing; a share picture; the QR on phones; a note while the file downloads; balanced headings; cleaner install dialogs |
 | 2.12.3 | 2026-10-04 | 305292f | The header fits phones narrower than 375px |
 | 2.12.2 | 2026-10-04 | 0854e26 | Home: why cards and the at-a-glance list put the heading beside its icon |
