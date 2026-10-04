@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.12.3';
+const SITE_VERSION = '2.13.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -359,6 +359,55 @@ async function loadRelease() {
     // Offline, rate limited, or blocked. renderRelease has already left a working link.
   }
 }
+
+/* -- after the download starts --------------------------------------------------
+ *
+ * Once a download starts it belongs to the browser, and no page can see how far it has
+ * got. What a reader can be told is what is about to happen: near the end Chrome holds a
+ * new APK back for a few seconds while it checks the file with Google, and that pause,
+ * unexplained, reads as a download that has stuck. So a note says so, the moment the
+ * file is asked for -- from any download button, and on get.html for the QR code.
+ *
+ * Android only: that is where the file is going to be opened, and a computer's browser
+ * shows its own download bar.
+ */
+const ON_ANDROID = /Android/i.test(navigator.userAgent);
+const ICON = (d) => '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + d + '</svg>';
+
+function showDownloadNote() {
+  if (!ON_ANDROID) return;
+  let note = document.querySelector('.dl-note');
+  if (!note) {
+    note = document.createElement('aside');
+    note.className = 'dl-note';
+    note.setAttribute('role', 'status');
+    // Built from fixed markup; every word goes in afterwards through the catalogue.
+    note.innerHTML =
+      '<button type="button" class="dl-note-x" data-s-label="lbClose">' +
+        ICON('<path d="M6 6l12 12M18 6 6 18"/>') + '</button>' +
+      '<ol>' +
+        '<li class="dl-done">' + ICON('<path d="M20 6 9 17l-5-5"/>') + '<span data-s="dlNoteStarted"></span></li>' +
+        '<li class="dl-wait">' + ICON('<path d="M12 3a9 9 0 1 0 9 9"/>') + '<span data-s="dlNoteCheck"></span></li>' +
+        '<li class="dl-next">' + ICON('<path d="M5 12h14M13 6l6 6-6 6"/>') + '<span data-s-rich="dlNoteOpen"></span></li>' +
+      '</ol>' +
+      (location.pathname.endsWith('install.html') ? '' :
+        '<a class="dl-note-guide" href="install.html" data-s="dlNoteGuide"></a>');
+    note.querySelector('.dl-note-x').addEventListener('click', () => note.remove());
+    document.body.append(note);
+    applyLang(currentLang());
+  }
+  // Pressed again: bring it back into view rather than stacking a second one.
+  note.classList.remove('dl-note-in');
+  void note.offsetWidth;
+  note.classList.add('dl-note-in');
+}
+
+// Only a link that is the file itself: one still pointing at the releases page opens a
+// web page, and the note would describe a download that is not happening.
+document.addEventListener('click', e => {
+  const a = e.target.closest && e.target.closest('#dl, [data-dl]');
+  if (a && release && a.href === release.url) showDownloadNote();
+});
 
 /* -- the screenshots, full size ------------------------------------------------
  *

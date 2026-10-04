@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.12.3 | 2026-10-04 | — | The header fits phones narrower than 375px |
+| 2.13.0 | 2026-10-04 | — | Real screenshot in the hero; questions before installing; a share picture; the QR on phones; a note while the file downloads; balanced headings; cleaner install dialogs |
+| 2.12.3 | 2026-10-04 | 305292f | The header fits phones narrower than 375px |
 | 2.12.2 | 2026-10-04 | 0854e26 | Home: why cards and the at-a-glance list put the heading beside its icon |
 | 2.12.1 | 2026-10-02 | cf8ab2f | Feature cards: the heading beside its icon, two lines at most |
 | 2.12.0 | 2026-10-02 | d89ba8a | The website's own version in every footer, in place of the app's and the All versions link |

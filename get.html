@@ -56,7 +56,12 @@
     // The lookup has no timeout of its own; a phone on a bad connection should not stare
     // at this page for a minute before being sent somewhere useful.
     setTimeout(() => go(RELEASES_URL), 8000);
-    releaseReady.then(() => go(release ? release.url : RELEASES_URL));
+    releaseReady.then(() => {
+      // The page stays on screen while the file comes down, so it can say what to
+      // expect at the end of it.
+      if (release) showDownloadNote();
+      go(release ? release.url : RELEASES_URL);
+    });
   });
 </script>
 </body>

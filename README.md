@@ -20,6 +20,7 @@ and it works.
 | `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |
 | `assets/site.js` | the language switch, the theme switch, and the release lookup |
 | `assets/logo.svg` | the mark: a wallet holding the ledger book and a taka note, for 40px and up; `favicon.svg` is its cut for 16–24px, and the PNG icons are drawn from these two |
+| `assets/og-image.png` | the 1200×630 picture a shared link shows in WhatsApp, Messenger and the rest; rendered from HTML with the dark home screenshot, so retake it when that screenshot changes |
 | `assets/screens/` | the install-guide screenshots, cropped to the dialog |
 | `check.js` | run before publishing — see below |
 
@@ -48,7 +49,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.12.3". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.13.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.

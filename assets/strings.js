@@ -56,6 +56,21 @@ const S = {
                  'away. First time? Read how to install first.',
                  'ফোনের ক্যামেরা ধরুন, সর্বশেষ ভার্সনটা সাথে সাথে নামতে শুরু করবে। ' +
                  'প্রথমবার? খোলার আগে ইনস্টলের নিয়মটা পড়ে নিন।'],
+  // The same code on a phone, folded away until asked for: shown to a friend's camera.
+  qrShare:      ['Install it on another phone', 'অন্য ফোনে ইনস্টল করুন'],
+  qrShareBody:  ['Hold this screen up to the other phone’s camera. The newest version ' +
+                 'downloads there straight away.',
+                 'এই স্ক্রিনটা অন্য ফোনের ক্যামেরার সামনে ধরুন। সর্বশেষ ভার্সনটা সেখানে ' +
+                 'সাথে সাথে নামতে শুরু করবে।'],
+  // The note that appears once the file is asked for, on an Android phone.
+  dlNoteStarted:['The download has started.', 'ডাউনলোড শুরু হয়েছে।'],
+  dlNoteCheck:  ['Near the end, Chrome checks the file for a few seconds. That is normal — ' +
+                 'let it finish.',
+                 'শেষের দিকে Chrome কয়েক সেকেন্ড ফাইলটা পরীক্ষা করে। এটা স্বাভাবিক — ' +
+                 'শেষ হওয়া পর্যন্ত অপেক্ষা করুন।'],
+  dlNoteOpen:   ['When it is done, tap **Open** in the notification.',
+                 'শেষ হলে নোটিফিকেশন থেকে **Open** চাপুন।'],
+  dlNoteGuide:  ['Read how to install', 'ইনস্টলের নিয়ম দেখুন'],
   // get.html, the page the code opens. On screen for a second before the download.
   getTitle:     ['Downloading LedgerBook…', 'LedgerBook নামানো হচ্ছে…'],
   getLead:      ['Finding the newest version. The download starts by itself — if it does ' +
@@ -64,26 +79,6 @@ const S = {
                  'বোতামটা চাপুন।'],
   versionLineShort:['Version {v} · {size} · Android 6.0+',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০+'],
-
-  // The phone drawn beside the headline. A made-up ledger, for the same reason the
-  // screenshots on the features page are: this page cannot illustrate privacy with
-  // somebody's real balances. The amounts stay in the HTML, the same in both languages.
-  mockTitle:    ['Journal', 'জার্নাল'],
-  mockSample:   ['Sample', 'নমুনা'],
-  mockTrial:    ['Trial balance', 'ট্রায়াল ব্যালেন্স'],
-  mockBalanced: ['Balanced', 'মিলেছে'],
-  mockDebits:   ['Debits', 'ডেবিট'],
-  mockCredits:  ['Credits', 'ক্রেডিট'],
-  mockRecent:   ['Recent', 'সাম্প্রতিক'],
-  mockGroceries:['Groceries', 'বাজার'],
-  mockGroceriesSub:['Food ← Cash', 'খাবার ← নগদ'],
-  mockSalary:   ['Salary', 'বেতন'],
-  mockSalarySub:['Bank ← Income', 'ব্যাংক ← আয়'],
-  mockLoan:     ['Loan to Rafi', 'রাফিকে ধার'],
-  mockLoanSub:  ['Due in 7 days', '৭ দিন পরে ফেরত'],
-  mockPower:    ['Electricity', 'বিদ্যুৎ'],
-  mockPowerSub: ['Utilities ← Bank', 'ইউটিলিটি ← ব্যাংক'],
-  mockNew:      ['New entry', 'নতুন এন্ট্রি'],
 
   // -- the four numbers under the hero -----------------------------------------
   stat1:        ['servers of ours for an entry to go to',
@@ -297,6 +292,45 @@ const S = {
   permInstall:  ['Install apps', 'অ্যাপ ইনস্টল'],
   permInstallW: ['To install the update it downloaded for you.',
                  'নিজে নামানো নতুন ভার্সনটা ইনস্টল করার জন্য।'],
+
+  // -- questions, on the home page ------------------------------------------------
+  // What a first-time reader asks before installing a file from outside the Play Store.
+  // Every answer is a thing the rest of the site already says; this only gathers it.
+  faqEyebrow:   ['Questions', 'প্রশ্ন'],
+  faqTitle:     ['Before you install', 'ইনস্টলের আগে'],
+  faqQ1:        ['My phone warned me. Is it safe?', 'ফোন সতর্ক করল। এটা কি নিরাপদ?'],
+  faqA1:        ['Android shows that warning for every app that does not come from the Play ' +
+                 'Store, because it cannot tell one unknown file from another. Play Protect ' +
+                 'then scans this one and says it looks safe. To be sure the file is exactly ' +
+                 'the one published, the install guide shows how to check its SHA-256 fingerprint.',
+                 'প্লে স্টোরের বাইরের যেকোনো অ্যাপেই অ্যান্ড্রয়েড এই সতর্কবার্তা দেখায়, কারণ ' +
+                 'অচেনা এক ফাইলকে আরেকটা থেকে সে আলাদা করতে পারে না। এরপর প্লে প্রোটেক্ট ' +
+                 'অ্যাপটা স্ক্যান করে জানায় যে এটা নিরাপদ। ফাইলটা হুবহু প্রকাশিত ফাইলই কিনা ' +
+                 'নিশ্চিত হতে চাইলে, ইনস্টল গাইডে এর SHA-256 ছাপ মিলিয়ে দেখার নিয়ম আছে।'],
+  faqQ2:        ['Does it cost anything?', 'টাকা লাগে?'],
+  faqA2:        ['No. It is free, with no ads and no account to open.',
+                 'না। এটা ফ্রি — কোনো বিজ্ঞাপন নেই, কোনো অ্যাকাউন্টও খুলতে হয় না।'],
+  faqQ3:        ['What if I change or lose my phone?', 'ফোন বদলালে বা হারালে কী হবে?'],
+  faqA3:        ['Android backs the ledger up to your own Google account and brings it back ' +
+                 'when you install the app on a new phone; you set a new PIN there. You can ' +
+                 'also save an encrypted backup file yourself from the app’s Backup page, and ' +
+                 'restore it on any phone.',
+                 'অ্যান্ড্রয়েড খাতাটা আপনার নিজের গুগল অ্যাকাউন্টে ব্যাকআপ রাখে, আর নতুন ফোনে ' +
+                 'অ্যাপ ইনস্টল করলে ফিরিয়ে আনে; সেখানে নতুন একটা পিন দিতে হয়। চাইলে অ্যাপের ' +
+                 'ব্যাকআপ পাতা থেকে নিজেও একটা এনক্রিপ্টেড ব্যাকআপ ফাইল রাখতে পারেন, আর ' +
+                 'যেকোনো ফোনে সেটা ফিরিয়ে আনতে পারেন।'],
+  faqQ4:        ['Does it need the internet?', 'ইন্টারনেট লাগে?'],
+  faqA4:        ['No. Everything works offline. It goes online only to check whether a newer ' +
+                 'version exists.',
+                 'না। সবকিছু অফলাইনেই চলে। শুধু নতুন ভার্সন এসেছে কিনা দেখতে ইন্টারনেটে যায়।'],
+  faqQ5:        ['Is there an iPhone version?', 'আইফোনে চলবে?'],
+  faqA5:        ['No. It is for Android only, version 6.0 and up.',
+                 'না। এটা শুধু অ্যান্ড্রয়েডের জন্য, ভার্সন ৬.০ বা তার পরের।'],
+  faqQ6:        ['How do I get updates?', 'আপডেট পাব কীভাবে?'],
+  faqA6:        ['The app tells you when a new version is out, downloads it when you say yes, ' +
+                 'and installs it. You do not need to come back to this page.',
+                 'নতুন ভার্সন এলে অ্যাপ নিজেই জানায়, আপনি রাজি হলে নামিয়ে ইনস্টল করে দেয়। ' +
+                 'এই পাতায় আর ফিরে আসতে হয় না।'],
 
   // -- features ----------------------------------------------------------------
   featTitle:    ['What it does', 'কী কী করে'],
