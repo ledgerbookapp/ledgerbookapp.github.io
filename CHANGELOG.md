@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.12.1 | 2026-10-02 | — | Feature cards: the heading beside its icon, two lines at most |
+| 2.12.2 | 2026-10-04 | — | Home: why cards and the at-a-glance list put the heading beside its icon |
+| 2.12.1 | 2026-10-02 | cf8ab2f | Feature cards: the heading beside its icon, two lines at most |
 | 2.12.0 | 2026-10-02 | d89ba8a | The website's own version in every footer, in place of the app's and the All versions link |
 | 2.11.0 | 2026-10-02 | 44326df | The app version under the download buttons at every width; last answer kept when the API is busy |
 | 2.10.1 | 2026-09-30 | 8f77085 | Pictures follow app 1.1.70 |

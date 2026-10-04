@@ -578,9 +578,14 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 
 /* -- why -------------------------------------------------------------------------- */
 .why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.why-card { padding: 32px; border-radius: var(--radius-card); }
-.why-card h3 { margin: 22px 0 12px; font-size: 19px; line-height: 1.4; font-weight: 700; letter-spacing: -.3px; }
-.why-card p { font-size: 15px; line-height: 1.72; }
+/* The icon and its heading share a line, the words full width beneath -- the same
+   shape as the feature cards. */
+.why-card {
+  display: grid; grid-template-columns: auto 1fr; align-items: center; align-content: start;
+  column-gap: 18px; padding: 32px; border-radius: var(--radius-card);
+}
+.why-card h3 { margin: 0; font-size: 18px; line-height: 1.4; font-weight: 700; letter-spacing: -.3px; }
+.why-card p { grid-column: 1 / -1; margin-top: 18px; font-size: 15px; line-height: 1.72; }
 .why-card a { color: var(--accent-ink); text-underline-offset: 3px; }
 
 /* -- at a glance ------------------------------------------------------------------ */
@@ -588,8 +593,10 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   list-style: none; margin: 0; padding: 0;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px 32px;
 }
-.glance h3 { margin: 20px 0 8px; font-size: 17px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
-.glance p { margin: 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; }
+/* Icon beside its heading, the line beneath both -- as on the cards above. */
+.glance li { display: grid; grid-template-columns: auto 1fr; align-items: center; align-content: start; column-gap: 14px; }
+.glance h3 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
+.glance p { grid-column: 1 / -1; margin: 14px 0 0; color: var(--ink-muted); font-size: 14.5px; line-height: 1.55; }
 
 /* -- why not the Play Store ------------------------------------------------------- */
 .trust {
@@ -736,13 +743,16 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 
   .why { gap: 16px; }
   .why-card { padding: 25px; border-radius: 22px; }
-  .why-card h3 { margin: 18px 0 10px; font-size: 18px; }
-  .why-card p { line-height: 1.66; }
+  .why-card p { margin-top: 14px; line-height: 1.66; }
 
   .glance { gap: 24px 20px; }
-  .glance h3 { margin: 12px 0 6px; font-size: 16px; letter-spacing: -.3px; }
-  .glance .tile-line { width: 42px; height: 42px; }
-  .glance p { font-size: 14px; line-height: 1.45; }
+  .glance li { column-gap: 10px; }
+  .glance h3 { font-size: 16px; letter-spacing: -.3px; }
+  .glance .tile-line { width: 38px; height: 38px; }
+  .glance p { margin-top: 10px; font-size: 14px; line-height: 1.45; }
+  /* Two to a row beside an icon leaves about 110px for a heading on the narrowest
+     phones; a point smaller keeps "In-app updates" in Bangla to two lines. */
+  @media (max-width: 389px) { .glance h3 { font-size: 15px; } }
 
   .trust { padding: 22px 25px 32px; border-radius: 22px; gap: 16px; }
   .trust-link-narrow { margin-top: 12px; }
