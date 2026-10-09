@@ -81,11 +81,11 @@
   <!-- -- hero ------------------------------------------------------------------ -->
   <section class="wrap priv-hero">
     <h1 data-s="navPrivacy">Privacy</h1>
-    <p class="lead" data-s="privLead">The short version: nothing is collected and nothing is reported, because there is nobody to report to. One copy of your ledger can leave the phone — Android’s own backup, into your own Google account — and it has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.</p>
+    <p class="lead" data-s="privLead">The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you write a backup yourself; Android’s own backup carries only the app’s settings, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.</p>
     <dl class="priv-sum">
       <div><dt data-s="privCollectTitle">What is collected</dt><dd data-s="privSum1V">Nothing</dd></div>
       <div><dt data-s="privSum2">Network use</dt><dd data-s="privSum2V">Update check only</dd></div>
-      <div><dt data-s="privSum3">Leaves the phone</dt><dd data-s="privSum3V">Android backup</dd></div>
+      <div><dt data-s="privSum3">Leaves the phone</dt><dd data-s="privSum3V">Settings only</dd></div>
       <div><dt data-s="privSum4">To delete it all</dt><dd data-s="privSum4V">Uninstall</dd></div>
     </dl>
   </section>
@@ -99,7 +99,7 @@
       <a href="#collected" data-s="privCollectTitle">What is collected</a>
       <a href="#where" data-s="privWhereTitle">Where your entries live</a>
       <a href="#network" data-s="privNetTitle">Every time it uses the network</a>
-      <a href="#copy" data-s="privAutoTitle">The one copy that leaves the phone</a>
+      <a href="#copy" data-s="privAutoTitle">What Android’s backup carries</a>
       <a href="#backups" data-s="privBackupTitle">Backups you make yourself</a>
       <a href="#asks" data-s="permTitle">What it asks for, and why</a>
       <a href="#delete" data-s="privDeleteTitle">Getting rid of it all</a>
@@ -111,7 +111,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
         <div>
           <h2 data-s="privCollectTitle">What is collected</h2>
-          <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, and one library for reading a release’s version number.</p>
+          <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, SQLCipher to encrypt the ledger, and one library for reading a release’s version number.</p>
           <p class="chips"><span data-s="chipNoAccount">No account</span><span data-s="privNo2">No analytics</span><span data-s="privNo3">No crash reports</span><span data-s="privNo4">No ads</span></p>
         </div>
       </section>
@@ -120,7 +120,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
         <div>
           <h2 data-s="privWhereTitle">Where your entries live</h2>
-          <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of. It is never copied anywhere else unless you write a backup yourself. Uninstalling the app deletes it.</p>
+          <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of — encrypted with SQLCipher, under a key held in the phone’s Android Keystore that never leaves this device. It is never copied anywhere else unless you write a backup yourself. Uninstalling the app deletes it.</p>
         </div>
       </section>
 
@@ -128,7 +128,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
         <div>
           <h2 data-s="privNetTitle">Every time it uses the network</h2>
-          <p data-s="privNetBody">Twice, and both for the same errand: it asks GitHub what the newest release is, and if you say yes it downloads that file. Two files in the whole app can open a connection and both of them are that errand — so no entry of yours travels on a connection the app opens. Android’s backup does not use them either; it is the system copying the file, and it is the next section.</p>
+          <p data-s="privNetBody">Twice, and both for the same errand: it asks GitHub what the newest release is, and if you say yes it downloads that file. Two files in the whole app can open a connection and both of them are that errand — so no entry of yours travels on a connection the app opens. Android’s backup does not use them either; it is the system copying the app’s settings, and it is the next section.</p>
           <ol class="pboxes pnet">
             <li><span class="toc-n">1</span><span data-s="privNet1">Ask GitHub for the newest release</span></li>
             <li><span class="toc-n">2</span><span data-s="privNet2">Download it — only if you say yes</span></li>
@@ -140,18 +140,19 @@
       <section class="pcard pcard-hi" id="copy">
         <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
         <div>
-          <h2 data-s="privAutoTitle">The one copy that leaves the phone</h2>
-          <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it. What goes is the ledger database and your language and theme settings. What does not go is your PIN — it is left off the list on purpose, so a restored install always asks you to set a new one. The copy is made by Android, not by the app, into your own account, and on Android 9 and later it is encrypted with your screen lock, which Google does not have. Turn it off in Android’s own Settings and nothing goes at all; the app’s Backup page has the link. This is also what brings your ledger back when you reinstall or move to a new phone.</p>
+          <h2 data-s="privAutoTitle">What Android’s backup carries</h2>
+          <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it — but only the app’s settings. The ledger is left out on purpose: it is encrypted under a key that cannot leave this phone, so a copy anywhere else could never be opened. Your PIN and your profile stay behind too. That is why moving to a new phone takes a backup file of your own: export it here, restore it there. Turn Android’s backup off in its own Settings and nothing goes at all; the app’s Backup page has the link.</p>
           <div class="pboxes pgo">
             <div class="goes">
               <p class="plabel" data-s="privGoes">What goes</p>
-              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes1">The ledger database</span></p>
-              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes2">Language and theme settings</span></p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes1">Language, theme, colour and text size</span></p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-s="privGoes2">Reminder and TIN settings</span></p>
             </div>
             <div class="stays">
               <p class="plabel" data-s="privStays">What does not go</p>
-              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-s="privStays1">Your PIN</span></p>
-              <p class="pnote" data-s="privStaysNote">A restored install always asks you to set a new one.</p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-s="privStays1">Your ledger</span></p>
+              <p class="pitem"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-s="privStays2">Your PIN and profile</span></p>
+              <p class="pnote" data-s="privStaysNote">To move phones, export a backup file and restore it on the new one.</p>
             </div>
           </div>
         </div>
@@ -171,8 +172,7 @@
           <h2 data-s="permTitle">What it asks for, and why</h2>
           <dl class="ptable">
             <div><dt data-s="permInternet">Internet</dt><dd data-s="permInternetW">Only to check whether a newer version exists.</dd></div>
-            <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW">To remind you when a loan is due, and when an update is out.</dd></div>
-            <div><dt><span data-s="permContacts">Contacts</span> <span class="badge-soft" data-s="permOptional">Optional</span></dt><dd data-s="permContactsJob">To pick a name when you record a loan, instead of typing it.</dd></div>
+            <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW">To remind you when a loan is due or a deposit matures, and when an update is out.</dd></div>
             <div><dt data-s="permInstall">Install apps</dt><dd data-s="permInstallW">To install the update it downloaded for you.</dd></div>
           </dl>
         </div>
@@ -199,7 +199,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.13.3</span>
+      <span class="foot-ver" data-site-version>Website v2.14.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

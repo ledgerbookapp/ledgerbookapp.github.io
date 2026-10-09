@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.13.3 | 2026-10-08 | — | Privacy: the four-answer summary on a gold ground, dark words in both themes |
+| 2.14.0 | 2026-10-09 | — | Words follow app 1.1.82: FDR & DPS, the encrypted ledger, auto-lock, loans by mobile number, three permissions (no Contacts), Android backup carries settings only; pictures still 1.1.72 |
+| 2.13.3 | 2026-10-08 | cd24a90 | Privacy: the four-answer summary on a gold ground, dark words in both themes |
 | 2.13.2 | 2026-10-04 | 3000fe4 | Pictures follow app 1.1.72: count badges, loan days in words, the new welcome screen; step 1 on 1.1.72 |
 | 2.13.1 | 2026-10-04 | 46f6333 | Fourteen fixes from a review; install page fits 320px; step 1 retaken on 1.1.71 |
 | 2.13.0 | 2026-10-04 | 8dcad96 | Real screenshot in the hero; questions before installing; a share picture; the QR on phones; a note while the file downloads; balanced headings; cleaner install dialogs |
