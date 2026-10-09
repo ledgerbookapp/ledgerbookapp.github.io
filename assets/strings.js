@@ -120,8 +120,8 @@ const S = {
                  'গেলে সেটা আরেক জায়গায় পৌঁছায়ই। ট্রায়াল ব্যালেন্স পাতা দুই দিকের মিল দেখায়, ' +
                  'তাই ভুল হিসাব বয়ে বেড়াতে হয় না, ধরা পড়ে যায়।'],
   why3Head:     ['It works with the phone in flight mode', 'ফ্লাইট মোডেও পুরোপুরি চলে'],
-  why3Body:     ['Nothing waits on a network. The ledger is encrypted on the phone, backups are encrypted files you keep yourself, and the app locks behind a PIN or your fingerprint.',
-                 'কোনো কিছু নেটওয়ার্কের জন্য অপেক্ষা করে না। খাতা ফোনেই এনক্রিপ্ট করা থাকে, ব্যাকআপ এনক্রিপ্টেড ফাইল যা আপনার নিজের কাছেই থাকে, আর অ্যাপ পিন বা আঙুলের ছাপ দিয়ে তালা দেওয়া।'],
+  why3Body:     ['Nothing waits on a network. The ledger is encrypted on the phone, backups are files you keep yourself — with a password if you choose one — and the app locks behind a PIN or your fingerprint.',
+                 'কোনো কিছু নেটওয়ার্কের জন্য অপেক্ষা করে না। খাতা ফোনেই এনক্রিপ্ট করা থাকে, ব্যাকআপ ফাইল আপনার নিজের কাছেই থাকে — চাইলে পাসওয়ার্ডসহ — আর অ্যাপ পিন বা আঙুলের ছাপ দিয়ে তালা দেওয়া।'],
 
   // -- at a glance -------------------------------------------------------------
   // Eight lines, each a heading and a sentence. The narrow screen gets a shorter sentence
@@ -142,12 +142,16 @@ const S = {
                  'কে কত ধারে — প্রতিটা মোবাইল নম্বরে একটা কার্ড।'],
   g3Short:      ['Who owes what, by mobile number.',
                  'কে কত ধারে, মোবাইল নম্বর ধরে।'],
-  g4Head:       ['Due-date reminders', 'ফেরতের দিন মনে করানো'],
+  g4Head:       ['Due-date reminders',
+                 'তারিখ এলে মনে করানো'],
   g4Body:       ['When a loan falls due or a deposit matures.',
                  'ধার ফেরতের দিন, বা জমার মেয়াদ পূর্ণ হলে।'],
-  g5Head:       ['Encrypted backups', 'এনক্রিপ্টেড ব্যাকআপ'],
-  g5Body:       ['Backup files you keep yourself.', 'ব্যাকআপ ফাইল, যা আপনার নিজের কাছে থাকে।'],
-  g5Short:      ['Files you keep yourself.', 'ফাইল থাকে আপনার নিজের কাছে।'],
+  g5Head:       ['Backups, your password',
+                 'ব্যাকআপ, আপনার পাসওয়ার্ড'],
+  g5Body:       ['Backup files you keep, with a password if you want one.',
+                 'ব্যাকআপ ফাইল আপনার কাছে, চাইলে পাসওয়ার্ডসহ।'],
+  g5Short:      ['Your files, your password.',
+                 'আপনার ফাইল, আপনার পাসওয়ার্ড।'],
   g6Head:       ['PIN & fingerprint lock', 'পিন ও আঙুলের ছাপের তালা'],
   g6HeadShort:  ['PIN & fingerprint', 'পিন ও আঙুলের ছাপ'],
   g6Body:       ['A PIN or your fingerprint, locking again a minute after you leave.',
@@ -218,8 +222,8 @@ const S = {
                  'করার প্রস্তাব দেবে — **Scan app** বেছে নিন। প্রায় এক মিনিট লাগে, তারপর দেখাবে ' +
                  '**This app looks safe**, আর আপনি আবার Install-এ চাপবেন।'],
   step4Head:    ['Set your PIN', 'পিন ঠিক করুন'],
-  step4Body:    ['Open LedgerBook. It asks what to call you, then for a four-digit PIN, typed twice — three short steps. The PIN stays on this phone and is never copied — not even into a backup. There is nowhere to sign in to and no account to make.',
-                 'LedgerBook খুলুন। প্রথমে জিজ্ঞেস করবে আপনাকে কী নামে ডাকবে, তারপর চার সংখ্যার একটা পিন, দুবার লিখতে হবে — তিনটে ছোট ধাপ। পিন এই ফোনেই থাকে, কোথাও কপি হয় না — ব্যাকআপেও না। সাইন ইন করার জায়গা নেই, অ্যাকাউন্টও বানাতে হয় না।'],
+  step4Body:    ['Open LedgerBook. It asks what to call you, then how you would like to type your PIN — Number Pad or Keyboard — then for a four-digit PIN, typed twice. The PIN stays on this phone and is never copied — not even into a backup. There is nowhere to sign in to and no account to make.',
+                 'LedgerBook খুলুন। প্রথমে জিজ্ঞেস করবে আপনাকে কী নামে ডাকবে, তারপর পিন কীভাবে দেবেন — নম্বর প্যাড না কিবোর্ড — তারপর চার সংখ্যার একটা পিন, দুবার লিখতে হবে। পিন এই ফোনেই থাকে, কোথাও কপি হয় না — ব্যাকআপেও না। সাইন ইন করার জায়গা নেই, অ্যাকাউন্টও বানাতে হয় না।'],
 
   // Captions under the step screenshots. They name the button to press, because a reader
   // matching the picture to their own screen is looking for exactly that.
@@ -282,8 +286,8 @@ const S = {
                  'তিনটে অনুমতি। প্রতিটার একটাই কাজ।'],
   permOptional: ['Optional', 'ঐচ্ছিক'],
   permInternet: ['Internet', 'ইন্টারনেট'],
-  permInternetW:['Only to check whether a newer version exists.',
-                 'শুধু নতুন ভার্সন এসেছে কিনা দেখার জন্য।'],
+  permInternetW: ['Only to check for a newer version, and to download it when you say yes.',
+                  'শুধু নতুন ভার্সন খুঁজতে, আর আপনি রাজি হলে সেটা নামাতে।'],
   permNotify:   ['Notifications', 'নোটিফিকেশন'],
   permNotifyW:  ['To remind you when a loan is due or a deposit matures, and when an update is out.',
                  'ধার ফেরতের তারিখ, জমার মেয়াদ পূর্ণ হওয়া, আর নতুন ভার্সন এলে জানানোর জন্য।'],
@@ -311,8 +315,8 @@ const S = {
   faqA2:        ['No. It is free, with no ads and no account to open.',
                  'না। এটা ফ্রি — কোনো বিজ্ঞাপন নেই, কোনো অ্যাকাউন্টও খুলতে হয় না।'],
   faqQ3:        ['What if I change or lose my phone?', 'ফোন বদলালে বা হারালে কী হবে?'],
-  faqA3:        ['Your ledger is encrypted on this phone, so it does not move to a new one on its own. Before you change phones, save an encrypted backup file from the app’s Backup page, restore it on the new phone and set a new PIN there. Keep a copy of that file off the phone too, in case the phone is lost.',
-                 'আপনার খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে যায় না। ফোন বদলানোর আগে অ্যাপের ব্যাকআপ পাতা থেকে একটা এনক্রিপ্টেড ব্যাকআপ ফাইল রাখুন, নতুন ফোনে সেটা ফিরিয়ে আনুন আর সেখানে নতুন একটা পিন দিন। ফোন হারালে যাতে কাজে আসে, ফাইলটার একটা কপি ফোনের বাইরেও রাখুন।'],
+  faqA3:        ['Your ledger is encrypted on this phone, so it does not move to a new one on its own. Before you change phones, save a backup file from the app’s Backup page — with a password, if you like. On the new phone, install the app, set a PIN, then restore the file from the Backup page. Keep a copy of that file off the phone too, in case the phone is lost.',
+                 'আপনার খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে যায় না। ফোন বদলানোর আগে অ্যাপের ব্যাকআপ পাতা থেকে একটা ব্যাকআপ ফাইল রাখুন — চাইলে পাসওয়ার্ডসহ। নতুন ফোনে অ্যাপ ইনস্টল করুন, একটা পিন দিন, তারপর ব্যাকআপ পাতা থেকে ফাইলটা ফিরিয়ে আনুন। ফোন হারালে যাতে কাজে আসে, ফাইলটার একটা কপি ফোনের বাইরেও রাখুন।'],
   faqQ4:        ['Does it need the internet?', 'ইন্টারনেট লাগে?'],
   faqA4:        ['No. Everything works offline. It goes online only to check for a newer ' +
                  'version, and to download it when you say yes.',
@@ -396,11 +400,11 @@ const S = {
   f6Body:       ['Loans in both directions, each person known by their mobile number, with the date it is due and a reminder when it comes. Record a repayment on the day it actually happened, and fix a mistyped amount later — the books follow.',
                  'দুই দিকেরই ধার, প্রত্যেক মানুষকে চেনা হয় তাঁর মোবাইল নম্বর দিয়ে, ফেরতের তারিখসহ, আর সেই তারিখ এলে মনে করিয়ে দেওয়া। ফেরত যেদিন আসলে এসেছিল সেই তারিখেই লেখা যায়, আর ভুল লেখা অঙ্ক পরে ঠিক করা যায় — হিসাবও সেই অনুযায়ী বদলায়।'],
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
-  f7Body:       ['A backup is one file, encrypted with AES-GCM under a key stretched from your own password, written where you choose — by hand, or once a day into a folder. No account is needed to make one or to read one back, which also means nobody can restore it for you.',
-                 'ব্যাকআপ মানে একটা ফাইল, আপনার নিজের পাসওয়ার্ড থেকে বানানো চাবি দিয়ে AES-GCM-এ এনক্রিপ্ট করা, আপনি যেখানে বলবেন সেখানে লেখা — হাতে, বা প্রতিদিন একবার একটা ফোল্ডারে। বানাতে বা ফেরাতে কোনো অ্যাকাউন্ট লাগে না — অর্থাৎ আপনি ছাড়া আর কেউ ওটা ফিরিয়েও দিতে পারবে না।'],
+  f7Body:       ['A backup is one file, written where you choose — by hand, or once a day into a folder. A password is your choice: add one and the file is encrypted with AES-GCM under a key stretched from it, or leave it plain for a place you already trust. No account is needed to make one or to read one back, which also means nobody can restore it for you.',
+                 'ব্যাকআপ মানে একটা ফাইল, আপনি যেখানে বলবেন সেখানে লেখা — হাতে, বা প্রতিদিন একবার একটা ফোল্ডারে। পাসওয়ার্ড দেবেন কিনা সেটা আপনার পছন্দ: দিলে সেটা থেকে বানানো চাবিতে AES-GCM-এ এনক্রিপ্ট হয়, না দিলে সাধারণ ফাইল থাকে — যে জায়গায় আপনি ভরসা করেন সেখানে রাখার জন্য। বানাতে বা ফেরাতে কোনো অ্যাকাউন্ট লাগে না — অর্থাৎ আপনি ছাড়া আর কেউ ওটা ফিরিয়েও দিতে পারবে না।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
-  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in, a lock again a minute after you leave, and the PIN asked once more before an export, a restore or signing out. Bangla or English, light or dark — switchable whenever you like.',
-                 'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা, আর export, ফেরানো বা সাইন আউটের আগে আরেকবার পিন। বাংলা বা ইংরেজি, আলো বা অন্ধকার — যখন খুশি বদলানো যায়।'],
+  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in, a lock again a minute after you leave, and the PIN asked once more before an export, a restore, a PDF download or signing out. Bangla or English, light or dark — switchable whenever you like.',
+                 'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা, আর export, ফেরানো, PDF নামানো বা সাইন আউটের আগে আরেকবার পিন। বাংলা বা ইংরেজি, আলো বা অন্ধকার — যখন খুশি বদলানো যায়।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেলের পেছনে একটা তালিকা'],
@@ -429,8 +433,8 @@ const S = {
   privGoes:     ['What goes', 'যা যায়'],
   privGoes1:    ['Language, theme, colour and text size',
                  'ভাষা, থিম, রং আর লেখার আকার'],
-  privGoes2:    ['Reminder and TIN settings',
-                 'রিমাইন্ডার আর TIN-এর সেটিং'],
+  privGoes2:    ['Reminder, TIN and PIN-entry settings',
+                 'রিমাইন্ডার, TIN আর পিন দেওয়ার ধরনের সেটিং'],
   privStays:    ['What does not go', 'যা যায় না'],
   privStays1:   ['Your ledger',
                  'আপনার খাতা'],
@@ -457,23 +461,12 @@ const S = {
                  'অ্যান্ড্রয়েড অ্যাপগুলোর ব্যাকআপ আপনার গুগল অ্যাকাউন্টে রাখে, আর LedgerBook সেটা হতে দেয় — কিন্তু শুধু অ্যাপের সেটিংস। খাতা ইচ্ছা করেই বাইরে রাখা: সেটা এমন এক চাবিতে এনক্রিপ্ট করা যা এই ফোন ছাড়তে পারে না, তাই অন্য কোথাও কপি গেলেও খোলা যেত না। আপনার পিন আর প্রোফাইলও এখানেই থাকে। এজন্যই নতুন ফোনে যেতে নিজের একটা ব্যাকআপ ফাইল লাগে: এখানে export করুন, সেখানে ফিরিয়ে আনুন। অ্যান্ড্রয়েডের সেটিংস থেকে ব্যাকআপ বন্ধ করে দিলে কিছুই যায় না; অ্যাপের ব্যাকআপ পাতায় সেই লিংক আছে।'],
 
   privBackupTitle:['Backups you make yourself', 'নিজের হাতে বানানো ব্যাকআপ'],
-  privBackupBody:['The backup you make from inside the app is a different thing: one ' +
-                 'encrypted file, written where you point it. Nobody is sent a copy and ' +
-                 'no service holds its key — which is the same sentence read the other ' +
-                 'way: lose the file and the password, and nobody can get it back for ' +
-                 'you either.',
-                 'অ্যাপের ভেতর থেকে আপনি যে ব্যাকআপ বানান সেটা আলাদা জিনিস: একটা ' +
-                 'এনক্রিপ্টেড ফাইল, আপনি যেখানে দেখাবেন সেখানে লেখা। কারও কাছে কপি ' +
-                 'পাঠানো হয় না, চাবি রাখার কোনো সেবাও নেই — উল্টো করে পড়লে কথাটা ' +
-                 'একই: ফাইল আর পাসওয়ার্ড দুটোই হারালে কেউ সেটা আপনাকে ফিরিয়েও দিতে পারবে না।'],
+  privBackupBody: ['The backup you make from inside the app is a different thing: one file, written where you point it. Whether it carries a password is your choice — with one, it is encrypted and only that password opens it; without one, it is a plain file for a place you trust. Nobody is sent a copy and no service holds the password — which is the same sentence read the other way: lose the file and the password, and nobody can get it back for you either.',
+                   'অ্যাপের ভেতর থেকে আপনি যে ব্যাকআপ বানান সেটা আলাদা জিনিস: একটা ফাইল, আপনি যেখানে দেখাবেন সেখানে লেখা। তাতে পাসওয়ার্ড থাকবে কিনা সেটা আপনার পছন্দ — দিলে এনক্রিপ্ট হয়, শুধু সেই পাসওয়ার্ডেই খোলে; না দিলে সাধারণ ফাইল, ভরসার জায়গায় রাখার জন্য। কারও কাছে কপি পাঠানো হয় না, পাসওয়ার্ড রাখার কোনো সেবাও নেই — উল্টো করে পড়লে কথাটা একই: ফাইল আর পাসওয়ার্ড দুটোই হারালে কেউ সেটা আপনাকে ফিরিয়েও দিতে পারবে না।'],
 
   privDeleteTitle:['Getting rid of it all', 'সব মুছে ফেলা'],
-  privDeleteBody:['Uninstall the app. That is the whole procedure — no account to close ' +
-                 'and no request to send, because there was never a copy anywhere to ask ' +
-                 'about. Any backup files you wrote are yours to delete.',
-                 'অ্যাপটা আনইনস্টল করুন। এটুকুই পুরো নিয়ম — বন্ধ করার মতো অ্যাকাউন্ট নেই, ' +
-                 'পাঠানোর মতো অনুরোধ নেই, কারণ কোথাও কোনো কপিই ছিল না যে জিজ্ঞেস করতে হবে। ' +
-                 'আপনি যে ব্যাকআপ ফাইলগুলো লিখেছেন সেগুলো আপনারই, মুছে ফেলবেন।'],
+  privDeleteBody: ['Uninstall the app. That is the whole procedure for the ledger — no account to close and no request to send, because it never had a copy anywhere else. The only other copy is Android’s backup of the app’s settings in your Google account; remove it there, or switch that backup off first. Any backup files you wrote are yours to delete.',
+                   'অ্যাপটা আনইনস্টল করুন। খাতার জন্য এটুকুই পুরো নিয়ম — বন্ধ করার মতো অ্যাকাউন্ট নেই, পাঠানোর মতো অনুরোধ নেই, কারণ এর কোনো কপি আর কোথাও ছিল না। একমাত্র অন্য কপি হলো আপনার গুগল অ্যাকাউন্টে অ্যান্ড্রয়েডের রাখা অ্যাপের সেটিংস; সেখান থেকে মুছুন, বা আগে সেই ব্যাকআপ বন্ধ করুন। আপনি যে ব্যাকআপ ফাইলগুলো লিখেছেন সেগুলো আপনারই, মুছে ফেলবেন।'],
 
   // -- the band at the bottom of the home page --------------------------------
   ctaTitle:     ['Keep your books in your pocket', 'হিসাবের খাতা থাকুক আপনার পকেটে'],

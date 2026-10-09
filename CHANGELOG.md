@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.14.1 | 2026-10-09 | — | Pictures follow app 1.1.82: all six screens and step 4 retaken on the sample ledger, step 4 now three steps, loan numbers shown as 01XXXXXXXXX |
+| 2.14.2 | 2026-10-09 | — | Fixes from a review: the backup password is the owner's choice, step 4 names the PIN-entry choice, the Google settings copy on deleting, meta description, internet and PDF wording, sitemap dates |
+| 2.14.1 | 2026-10-09 | db0f8d1 | Pictures follow app 1.1.82: all six screens and step 4 retaken on the sample ledger, step 4 now three steps, loan numbers shown as 01XXXXXXXXX |
 | 2.14.0 | 2026-10-09 | 8cbc5b2 | Words follow app 1.1.82: FDR & DPS, the encrypted ledger, auto-lock, loans by mobile number, three permissions (no Contacts), Android backup carries settings only; pictures still 1.1.72 |
 | 2.13.3 | 2026-10-08 | cd24a90 | Privacy: the four-answer summary on a gold ground, dark words in both themes |
 | 2.13.2 | 2026-10-04 | 3000fe4 | Pictures follow app 1.1.72: count badges, loan days in words, the new welcome screen; step 1 on 1.1.72 |

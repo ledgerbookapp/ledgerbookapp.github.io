@@ -50,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.14.1". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.14.2". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -77,10 +77,12 @@ real thing. If a step's wording changes, re-take its picture.
 **Step 4 and the features page are full size.** 1.1.65 split the first launch into
 three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both
 themes, taken on LB_Clean at 1080 wide with the status bar cut off (`step4-*-light`,
-`step4-*-dark`). The features page's twelve are the same device, full screen, 1080×2424,
+`step4-*-dark`). The features page's twenty-four (six screens, two themes, two languages) are the same
+device, cut to 1080×2259,
 so the enlarged view is sharp on a phone. They came from the sample ledger already on
-LB_Clean, with the owner's name set to Raahat; reaching the sign-up screens used the app's
-own Sign Out & Reset PIN, which keeps the ledger.
+LB_Clean, with the owner's name set to Raahat; for 1.1.82 the sign-up screens were reached by clearing
+the app's data and the sample ledger put back afterwards from a saved copy. Loan cards
+show a placeholder number painted over as 01XXXXXXXXX.
 
 Steps 1 to 3 were re-taken full size, and again for 1.1.67, the release that gave the app
 the wallet icon the site already uses -- the installer shows the icon inside the APK, so
