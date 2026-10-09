@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.14.3';
+const SITE_VERSION = '2.14.4';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -721,6 +721,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (wide && wide.addEventListener) wide.addEventListener('change', onWide);
   else if (wide && wide.addListener) wide.addListener(onWide);
   labelMenu();
+  // Pictures are not offered for saving: the CSS already lets the pointer pass through them,
+  // and this catches anything that still reaches one (an older browser, a keyboard menu key).
+  document.addEventListener('contextmenu', e => { if (e.target.closest('img, .frame, .still')) e.preventDefault(); });
+  document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
   setupLightbox();
   setupGalleries();
   setupCopy();

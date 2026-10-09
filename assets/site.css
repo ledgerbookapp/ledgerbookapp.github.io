@@ -957,6 +957,18 @@ html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }
   display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none;
   font: inherit; color: inherit; text-align: inherit; cursor: zoom-in;
 }
+/* The pictures no longer open full size: the owner chose to show them only at page size.
+   A .still is the same block a .zoom was, without the button or the pointer. */
+:where(div.still) { display: block; width: 100%; }
+:where(div.still.frame) { font: inherit; color: inherit; }
+/* And they are not offered for saving: no drag, no long-press callout, no "Save image" /
+   "Open image in new tab" on a right-click or a long-press -- the pointer passes through the
+   picture to the frame behind it. A deterrent, not a lock: what a browser shows it has
+   already downloaded, and a screenshot or the developer tools still reach it. */
+img {
+  -webkit-user-drag: none; user-select: none; -webkit-user-select: none;
+  -webkit-touch-callout: none; pointer-events: none;
+}
 /* Words for a screen reader that the picture already says to everyone else. */
 .sr-only {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
@@ -1102,7 +1114,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .pic { margin: 0; flex: 1 1 0; min-width: 0; max-width: 360px; }
 /* Bare dialog screenshots only. A drawn phone is also a .zoom, and reaching its pictures
    here showed both of its light and dark pair at once and put a border round each. */
-.pic > img, .pic > button.zoom:not(.frame) > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
+.pic > img, .pic > button.zoom:not(.frame) > img, .pic > div.still:not(.frame) > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
 .pic figcaption { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
 .step-wide .step-pics { margin-top: 36px; }
 .gal-3 .pic { max-width: none; }

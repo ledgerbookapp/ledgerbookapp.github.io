@@ -50,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.14.3". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.14.4". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -79,7 +79,8 @@ three screens — the name, the PIN, the PIN again — so step 4 has three pictu
 themes, taken on LB_Clean at 1080 wide with the status bar cut off (`step4-*-light`,
 `step4-*-dark`). The features page's twenty-four (six screens, two themes, two languages) are the same
 device, cut to 1080×2259,
-so the enlarged view is sharp on a phone. They came from the sample ledger already on
+so they stay sharp on a high-density phone (since 2.14.4 they are not enlarged or offered
+for saving). They came from the sample ledger already on
 LB_Clean, with the owner's name set to Raahat; for 1.1.82 the sign-up screens were reached by clearing
 the app's data and the sample ledger put back afterwards from a saved copy. Loan cards
 show a placeholder number painted over as 01XXXXXXXXX.

@@ -348,7 +348,6 @@ const S = {
   shotsSwipe:   [' Swipe to see them all.', ' সবগুলো দেখতে পাশে সরান।'],
   // The full-size view of a screenshot. Read out by screen readers, as the buttons'
   // labels; the glyphs on them say the same to everyone else.
-  lbOpen:       ['Enlarge', 'বড় করে দেখুন'],
   lbClose:      ['Close', 'বন্ধ করুন'],
   lbPrev:       ['Previous screen', 'আগের পাতা'],
   lbNext:       ['Next screen', 'পরের পাতা'],
