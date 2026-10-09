@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.14.2';
+const SITE_VERSION = '2.14.3';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -81,6 +81,13 @@ function applyLang(lang) {
   });
   document.querySelectorAll('[data-site-version]').forEach(el => {
     el.textContent = S.siteVersion[i].replace('{v}', num(SITE_VERSION));
+  });
+  // Figures written straight into the HTML -- the home page's 0 / 2 / 3, the section and
+  // step badges, the install page's contents -- follow the language like every number the
+  // script writes. The page's own digits are kept as the source to switch back from.
+  document.querySelectorAll('.num-big:not([data-rel]), .num-badge, .toc-n').forEach(el => {
+    if (el.dataset.n === undefined) el.dataset.n = el.textContent;
+    el.textContent = num(el.dataset.n);
   });
   // A control whose face is a glyph still needs words for a screen reader; data-s-label
   // puts them in aria-label instead of in the text, and in the same language.

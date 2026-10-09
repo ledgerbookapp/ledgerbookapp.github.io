@@ -12,7 +12,8 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
-| 2.14.2 | 2026-10-09 | — | Fixes from a review: the backup password is the owner's choice, step 4 names the PIN-entry choice, the Google settings copy on deleting, meta description, internet and PDF wording, sitemap dates |
+| 2.14.3 | 2026-10-09 | — | Pictures follow app 1.1.83 (home, transactions, backup); the share picture retaken; figures written into the pages (0 / 2 / 3, section and step numbers) in Bangla digits when the page is in Bangla |
+| 2.14.2 | 2026-10-09 | a4e4cbe | Fixes from a review: the backup password is the owner's choice, step 4 names the PIN-entry choice, the Google settings copy on deleting, meta description, internet and PDF wording, sitemap dates |
 | 2.14.1 | 2026-10-09 | db0f8d1 | Pictures follow app 1.1.82: all six screens and step 4 retaken on the sample ledger, step 4 now three steps, loan numbers shown as 01XXXXXXXXX |
 | 2.14.0 | 2026-10-09 | 8cbc5b2 | Words follow app 1.1.82: FDR & DPS, the encrypted ledger, auto-lock, loans by mobile number, three permissions (no Contacts), Android backup carries settings only; pictures still 1.1.72 |
 | 2.13.3 | 2026-10-08 | cd24a90 | Privacy: the four-answer summary on a gold ground, dark words in both themes |
