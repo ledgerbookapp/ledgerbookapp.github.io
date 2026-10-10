@@ -12,6 +12,7 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
+| 2.14.5 | 2026-10-10 | — | The Backup & Restore picture follows the app's redesigned page (status card, Automatic and Manual groups, the new-phone note) — all four: light, dark, English, Bangla |
 | 2.14.4 | 2026-10-09 | — | Pictures are shown at page size only: no full-size view, and no save, copy, drag or open-in-new-tab on a right-click or long-press; image search asked not to index them |
 | 2.14.3 | 2026-10-09 | 4f58fd1 | Pictures follow app 1.1.83 (home, transactions, backup); the share picture retaken; figures written into the pages (0 / 2 / 3, section and step numbers) in Bangla digits when the page is in Bangla |
 | 2.14.2 | 2026-10-09 | a4e4cbe | Fixes from a review: the backup password is the owner's choice, step 4 names the PIN-entry choice, the Google settings copy on deleting, meta description, internet and PDF wording, sitemap dates |
