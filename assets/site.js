@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.14.5';
+const SITE_VERSION = '2.15.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -168,7 +168,7 @@ let release = null;
 // know where to send the reader; nothing else needs to.
 let releaseReady = Promise.resolve();
 
-// Bangla text writes its numbers in Bangla digits -- the catalogue's own "৬.০" -- so a
+// Bangla text writes its numbers in Bangla digits -- the catalogue's own "৭.০" -- so a
 // number the script puts into a Bangla sentence is written the same way.
 function num(s) {
   s = String(s);

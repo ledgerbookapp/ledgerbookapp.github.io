@@ -44,8 +44,8 @@ const S = {
                  'কারও কাছে কিছু রিপোর্ট হয় না, আর হিসাব কখনো চুপচাপ বেহিসেব হয়ে যায় না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
   downloadAlt:  ['Open the releases page', 'রিলিজ পাতা খুলুন'],
-  versionLine:  ['Version {v} · {size} · Android 6.0 and up',
-                 'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  versionLine:  ['Version {v} · {size} · Android 7.0 and up',
+                 'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০ বা তার পরে'],
   qrHead:       ['Scan to put it on your phone', 'ফোনে নিতে স্ক্যান করুন'],
   // A printed square cannot point at a file whose name carries the version number --
   // that would be a dead code the day after the next release. It points at get.html,
@@ -80,8 +80,8 @@ const S = {
                  'not, use the button below.',
                  'সর্বশেষ ভার্সন খোঁজা হচ্ছে। ডাউনলোড নিজে থেকেই শুরু হবে — না হলে নিচের ' +
                  'বোতামটা চাপুন।'],
-  versionLineShort:['Version {v} · {size} · Android 6.0+',
-                 'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৬.০+'],
+  versionLineShort:['Version {v} · {size} · Android 7.0+',
+                 'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০+'],
 
   // -- the four numbers under the hero -----------------------------------------
   stat1:        ['servers of ours for an entry to go to',
@@ -89,7 +89,7 @@ const S = {
   stat2:        ['files that touch the internet, both for updates',
                  'ফাইল ইন্টারনেট ছোঁয়, দুটোই আপডেটের জন্য'],
   stat3:        ['permissions, each with a single job', 'অনুমতি, প্রতিটার একটাই কাজ'],
-  stat4:        ['the whole app, Android 6.0 and up', 'পুরো অ্যাপ, অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  stat4:        ['the whole app, Android 7.0 and up', 'পুরো অ্যাপ, অ্যান্ড্রয়েড ৭.০ বা তার পরে'],
   stat4Short:   ['the whole app', 'পুরো অ্যাপ'],
 
   // -- why ---------------------------------------------------------------------
@@ -189,7 +189,7 @@ const S = {
   relVerifiable:['Verifiable', 'মিলিয়ে দেখা যায়'],
   relSize:      ['File size', 'ফাইলের আকার'],
   relRequires:  ['Requires', 'লাগবে'],
-  relAndroid:   ['Android 6.0 and up', 'অ্যান্ড্রয়েড ৬.০ বা তার পরে'],
+  relAndroid:   ['Android 7.0 and up', 'অ্যান্ড্রয়েড ৭.০ বা তার পরে'],
   relHashWait:  ['Listed on the releases page', 'রিলিজ পাতায় দেওয়া আছে'],
 
   // -- install -----------------------------------------------------------------
@@ -323,8 +323,8 @@ const S = {
                  'না। সবকিছু অফলাইনেই চলে। শুধু নতুন ভার্সন এসেছে কিনা দেখতে, আর আপনি রাজি ' +
                  'হলে সেটা নামাতে ইন্টারনেটে যায়।'],
   faqQ5:        ['Is there an iPhone version?', 'আইফোনে চলবে?'],
-  faqA5:        ['No. It is for Android only, version 6.0 and up.',
-                 'না। এটা শুধু অ্যান্ড্রয়েডের জন্য, ভার্সন ৬.০ বা তার পরের।'],
+  faqA5:        ['No. It is for Android only, version 7.0 and up.',
+                 'না। এটা শুধু অ্যান্ড্রয়েডের জন্য, ভার্সন ৭.০ বা তার পরের।'],
   faqQ6:        ['How do I get updates?', 'আপডেট পাব কীভাবে?'],
   faqA6:        ['The app tells you when a new version is out, downloads it when you say yes, ' +
                  'and installs it. You do not need to come back to this page.',
@@ -372,8 +372,8 @@ const S = {
                  'চাওয়া হয় — অর্ধেক ঘর নিষ্ক্রিয় করা কোনো সাধারণ ফর্ম নয়।'],
   f2Head:       ['Bank, wallet, cash and deposits',
                  'ব্যাংক, ওয়ালেট, নগদ আর জমা'],
-  f2Body:       ['Accounts are grouped the way you already think about them, each with a colour you choose — fixed deposits and DPS among them. A monthly FDR’s profit moves to its linked account on its own, a DPS takes its instalments, source tax goes at your TIN rate, and a deposit can be closed early at a reduced rate. Money only moves where that makes sense, so a slip of the thumb cannot invent a transfer.',
-                 'অ্যাকাউন্টগুলো যেভাবে আপনি এমনিতেই ভাবেন সেভাবেই সাজানো, প্রতিটার রং আপনার পছন্দে — FDR আর DPS-ও তার মধ্যে। মাসিক FDR-এর মুনাফা নিজে থেকেই যুক্ত অ্যাকাউন্টে যায়, DPS-এ কিস্তি জমা হয়, উৎসে কর কাটে আপনার TIN-এর হারে, আর মেয়াদের আগে কম হারে জমা বন্ধও করা যায়। যেখানে টাকা যাওয়া যুক্তিসঙ্গত শুধু সেখানেই যায়, তাই আঙুলের ভুলে কোনো ট্রান্সফার তৈরি হয় না।'],
+  f2Body:       ['Accounts are grouped the way you already think about them, each with a colour you choose — fixed deposits and DPS among them. A monthly FDR’s profit moves to its linked account on its own. A DPS takes its instalments, and each year’s profit is added into the deposit itself, so the next year earns on it too. Source tax goes at your TIN rate, and a deposit can be closed early at a reduced rate. Money only moves where that makes sense, so a slip of the thumb cannot invent a transfer.',
+                 'অ্যাকাউন্টগুলো যেভাবে আপনি এমনিতেই ভাবেন সেভাবেই সাজানো, প্রতিটার রং আপনার পছন্দে — FDR আর DPS-ও তার মধ্যে। মাসিক FDR-এর মুনাফা নিজে থেকেই যুক্ত অ্যাকাউন্টে যায়। DPS-এ কিস্তি জমা হয়, আর প্রতি বছরের মুনাফা জমারই সাথে যোগ হয় — তাই পরের বছর তার ওপরেও মুনাফা আসে। উৎসে কর কাটে আপনার TIN-এর হারে, আর মেয়াদের আগে কম হারে জমা বন্ধও করা যায়। যেখানে টাকা যাওয়া যুক্তিসঙ্গত শুধু সেখানেই যায়, তাই আঙুলের ভুলে কোনো ট্রান্সফার তৈরি হয় না।'],
   f3Head:       ['A trial balance that proves itself', 'ট্রায়াল ব্যালেন্স, যা নিজেই প্রমাণ'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
@@ -399,8 +399,8 @@ const S = {
   f6Body:       ['Loans in both directions, each person known by their mobile number, with the date it is due and a reminder when it comes. Record a repayment on the day it actually happened, and fix a mistyped amount later — the books follow.',
                  'দুই দিকেরই ধার, প্রত্যেক মানুষকে চেনা হয় তাঁর মোবাইল নম্বর দিয়ে, ফেরতের তারিখসহ, আর সেই তারিখ এলে মনে করিয়ে দেওয়া। ফেরত যেদিন আসলে এসেছিল সেই তারিখেই লেখা যায়, আর ভুল লেখা অঙ্ক পরে ঠিক করা যায় — হিসাবও সেই অনুযায়ী বদলায়।'],
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
-  f7Body:       ['A backup is one file, written where you choose — by hand, or once a day into a folder. A password is your choice: add one and the file is encrypted with AES-GCM under a key stretched from it, or leave it plain for a place you already trust. No account is needed to make one or to read one back, which also means nobody can restore it for you.',
-                 'ব্যাকআপ মানে একটা ফাইল, আপনি যেখানে বলবেন সেখানে লেখা — হাতে, বা প্রতিদিন একবার একটা ফোল্ডারে। পাসওয়ার্ড দেবেন কিনা সেটা আপনার পছন্দ: দিলে সেটা থেকে বানানো চাবিতে AES-GCM-এ এনক্রিপ্ট হয়, না দিলে সাধারণ ফাইল থাকে — যে জায়গায় আপনি ভরসা করেন সেখানে রাখার জন্য। বানাতে বা ফেরাতে কোনো অ্যাকাউন্ট লাগে না — অর্থাৎ আপনি ছাড়া আর কেউ ওটা ফিরিয়েও দিতে পারবে না।'],
+  f7Body:       ['A backup is one file, written where you choose — by hand, or once a day into a folder. It carries your accounts, your entries, your loans, and your own settings, so a restore puts the app back the way you had it. A password is your choice: add one and the file is encrypted with AES-GCM under a key stretched from it, or leave it plain for a place you already trust. No account is needed to make one or to read one back, which also means nobody can restore it for you.',
+                 'ব্যাকআপ মানে একটা ফাইল, আপনি যেখানে বলবেন সেখানে লেখা — হাতে, বা প্রতিদিন একবার একটা ফোল্ডারে। তাতে থাকে আপনার অ্যাকাউন্ট, এন্ট্রি, ধার আর নিজের সেটিংস — তাই ফেরালে অ্যাপ আগের মতোই ফিরে আসে। পাসওয়ার্ড দেবেন কিনা সেটা আপনার পছন্দ: দিলে সেটা থেকে বানানো চাবিতে AES-GCM-এ এনক্রিপ্ট হয়, না দিলে সাধারণ ফাইল থাকে — যে জায়গায় আপনি ভরসা করেন সেখানে রাখার জন্য। বানাতে বা ফেরাতে কোনো অ্যাকাউন্ট লাগে না — অর্থাৎ আপনি ছাড়া আর কেউ ওটা ফিরিয়েও দিতে পারবে না।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
   f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in, a lock again a minute after you leave, and the PIN asked once more before an export, a restore, a PDF download or signing out. Bangla or English, light or dark — switchable whenever you like.',
                  'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা, আর export, ফেরানো, PDF নামানো বা সাইন আউটের আগে আরেকবার পিন। বাংলা বা ইংরেজি, আলো বা অন্ধকার — যখন খুশি বদলানো যায়।'],
