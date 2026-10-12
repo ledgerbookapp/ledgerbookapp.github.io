@@ -50,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.15.1". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.15.2". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -73,6 +73,12 @@ They are not decoration. Writing the guide from memory had it telling readers to
 "Install anyway", a button that is not on that screen, and to set a PIN on first launch
 without mentioning that it asks for a name first. Both were found by photographing the
 real thing. If a step's wording changes, re-take its picture.
+
+**Which app the pictures show is in `assets/screens/SOURCE`, not here.** This section is
+the history of the question — when the first launch gained a screen, when the icon
+changed, when the six were last redrawn — and a reader could not tell any of those
+numbers from today's answer. One line in one file, read by `check.js`, rewritten in the
+same commit that replaces the pictures.
 
 **Step 4 and the features page are full size.** 1.1.65 split the first launch into
 three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both

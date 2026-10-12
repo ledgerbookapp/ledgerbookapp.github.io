@@ -155,6 +155,50 @@ const js = fs.readFileSync('assets/site.js', 'utf8');
 for (const m of js.matchAll(/\bS\.([A-Za-z][A-Za-z0-9]*)/g))
   if (!S[m[1]]) note(`site.js: reads S.${m[1]}, which the catalogue does not have`);
 
+// -- the releases repository ------------------------------------------------------
+//
+// The site downloads from REPO; the app asks the same repository what the newest release
+// is. They have to name it identically, and for a while they did not: the site said
+// oslraahat long after the repository was transferred to rayhan27bd, and worked only on
+// GitHub's redirect. That redirect holds exactly as long as nothing occupies the old
+// path, and the old account is live. A first install comes from this page, so the page
+// is the half with no safety net -- Android refuses an update signed with another key,
+// but it has nothing to say about the first APK somebody downloads.
+//
+// Checked against the app's own source rather than the network: it is the same answer,
+// it needs no connection, and the two drifting apart is the actual fault. Silent when
+// the app source is not beside us, which is what a clone of the site alone looks like.
+{
+  const appSrc = path.join('..', 'app', 'src', 'main', 'java', 'com', 'ledgerbook', 'app',
+    'data', 'update', 'GitHubReleaseService.kt');
+  const siteOwner = (fs.readFileSync('assets/site.js', 'utf8')
+    .match(/const REPO = '([^/']+)\/([^']+)'/) || []);
+  if (fs.existsSync(appSrc) && siteOwner[1]) {
+    const kt = fs.readFileSync(appSrc, 'utf8');
+    const owner = (kt.match(/defaultOwner:\s*String\s*=\s*"([^"]+)"/) || [])[1];
+    const repo = (kt.match(/defaultRepo:\s*String\s*=\s*"([^"]+)"/) || [])[1];
+    if (owner && owner !== siteOwner[1]) {
+      note(`site.js: downloads from ${siteOwner[1]}, the app updates from ${owner}`);
+    }
+    if (repo && repo !== siteOwner[2]) {
+      note(`site.js: downloads ${siteOwner[2]}, the app updates from ${repo}`);
+    }
+  }
+}
+
+// -- which app the pictures show ----------------------------------------------------
+//
+// assets/screens/SOURCE carries the app version the screenshots were taken on. It exists
+// because the README used to say it in prose, among the versions of every earlier
+// retake, so nothing could tell today's answer from the history of the question.
+{
+  const f = 'assets/screens/SOURCE';
+  if (!fs.existsSync(f)) note(`${f}: missing — it names the app version the screenshots show`);
+  else if (!/^\d+\.\d+\.\d+$/m.test(fs.readFileSync(f, 'utf8'))) {
+    note(`${f}: no version line in it, so nothing records which app the pictures show`);
+  }
+}
+
 // -- the sitemap's dates ---------------------------------------------------------
 //
 // lastmod has fallen behind twice: once fixed in v2.14.2, and again by v2.15.0, which

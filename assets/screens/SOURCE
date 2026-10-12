@@ -1,0 +1,15 @@
+1.1.83
+
+The app version the pictures in this folder were taken on.
+
+One line, in one file, because the README used to carry it in prose beside the version
+of every earlier retake -- 1.1.65 split the first launch into three screens, 1.1.67 gave
+the app its wallet icon, 1.1.82 redrew the six -- and a reader could not tell which of
+those numbers was the answer and which was the history.
+
+check.js reads it. Rewrite it in the same commit that replaces the pictures, never on
+its own: the file is a claim about what is in the folder, and a number nobody re-took
+anything for is worse than no number.
+
+Exception, written down so it does not read as drift: app-backup-*.png were re-taken at
+1.1.88 for the Backup page's redesign (site v2.14.5). The other five screens are 1.1.83.
