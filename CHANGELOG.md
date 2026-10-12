@@ -12,6 +12,7 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
+| 2.15.3 | 2026-10-12 | — | The deposits and backups paragraphs said in long sentences what short ones say: same facts, plainer words, in both languages |
 | 2.15.2 | 2026-10-12 | — | Two more things check.js watches: the releases repository the site downloads from has to be the one the app updates from, and `assets/screens/SOURCE` records which app version the pictures show |
 | 2.15.1 | 2026-10-12 | — | The download links point at the account that owns the releases repo, not the one it was transferred from — eleven places that worked only on GitHub's redirect; sitemap dates brought up to date, and check.js now watches them |
 | 2.15.0 | 2026-10-12 | — | Words follow app 1.1.89: Android 7.0 is now the minimum (it was 6.0 in five places), a DPS's yearly profit is added into the deposit and compounds, and a backup carries your own settings as well as the ledger |
