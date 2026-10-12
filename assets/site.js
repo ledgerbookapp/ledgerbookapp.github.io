@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.15.0';
+const SITE_VERSION = '2.15.1';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -160,7 +160,7 @@ function labelTheme() {
  * site by itself. The repository name is the same constant the app is built with; the
  * two must agree or the site offers a file no phone will ever be told about.
  */
-const REPO = 'oslraahat/ledgerbook-releases';
+const REPO = 'rayhan27bd/ledgerbook-releases';
 const RELEASES_URL = 'https://github.com/' + REPO + '/releases';
 
 let release = null;

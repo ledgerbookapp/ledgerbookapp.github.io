@@ -155,6 +155,36 @@ const js = fs.readFileSync('assets/site.js', 'utf8');
 for (const m of js.matchAll(/\bS\.([A-Za-z][A-Za-z0-9]*)/g))
   if (!S[m[1]]) note(`site.js: reads S.${m[1]}, which the catalogue does not have`);
 
+// -- the sitemap's dates ---------------------------------------------------------
+//
+// lastmod has fallen behind twice: once fixed in v2.14.2, and again by v2.15.0, which
+// rewrote all four pages and left every date reading 2026-10-09. A crawler takes that
+// literally and has no reason to come back for the change. Nothing watched it, because
+// everything above this reads the pages and the catalogue and the sitemap is neither.
+//
+// Against git rather than the file's mtime: a fresh clone writes today's mtime on every
+// file, so mtime would call a year-old sitemap current.
+{
+  const { execFileSync } = require('child_process');
+  const gitDay = (f) => {
+    try {
+      return execFileSync('git', ['log', '-1', '--format=%cs', '--', f], { encoding: 'utf8' }).trim();
+    } catch {
+      return ''; // no git here (a zip, a CI checkout without history): not this check's business
+    }
+  };
+  const map = { '/': 'index.html' };
+  const sitemap = fs.existsSync('sitemap.xml') ? fs.readFileSync('sitemap.xml', 'utf8') : '';
+  for (const m of sitemap.matchAll(/<loc>[^<]*?\/([^/<]*)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)) {
+    const page = map[''] && m[1] === '' ? 'index.html' : (m[1] || 'index.html');
+    if (!fs.existsSync(page)) continue;
+    const changed = gitDay(page);
+    if (changed && m[2] < changed) {
+      note(`sitemap.xml: ${page} says lastmod ${m[2]}, but it last changed ${changed}`);
+    }
+  }
+}
+
 // -- say so ---------------------------------------------------------------------
 if (problems.length) {
   for (const p of problems) console.error('  ' + p);

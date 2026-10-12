@@ -12,6 +12,7 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
+| 2.15.1 | 2026-10-12 | — | The download links point at the account that owns the releases repo, not the one it was transferred from — eleven places that worked only on GitHub's redirect; sitemap dates brought up to date, and check.js now watches them |
 | 2.15.0 | 2026-10-12 | — | Words follow app 1.1.89: Android 7.0 is now the minimum (it was 6.0 in five places), a DPS's yearly profit is added into the deposit and compounds, and a backup carries your own settings as well as the ledger |
 | 2.14.5 | 2026-10-10 | — | The Backup & Restore picture follows the app's redesigned page (status card, Automatic and Manual groups, the new-phone note) — all four: light, dark, English, Bangla |
 | 2.14.4 | 2026-10-09 | — | Pictures are shown at page size only: no full-size view, and no save, copy, drag or open-in-new-tab on a right-click or long-press; image search asked not to index them |
