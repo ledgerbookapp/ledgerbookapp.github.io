@@ -356,8 +356,8 @@ const S = {
   featCta:      ['All of it, on your phone', 'সবকিছু, আপনার ফোনেই'],
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],
   f0Head:       ['What you have, on the first screen', 'কী আছে, প্রথম পাতাতেই'],
-  f0Body:       ['The app opens on one figure — everything you own less everything you owe — with what others owe you and what you owe beside it, and this month’s income, spending and savings underneath. The everyday errand, which is to check the number and write down today, never needs a second page.',
-                 'অ্যাপ খুললেই একটা সংখ্যা — যা আপনার আছে তার থেকে যা আপনি দেন বাদ দিয়ে — পাশে কে আপনার কাছে কত পায় আর আপনি কার কাছে কত দেন, আর নিচে এই মাসের আয়, খরচ আর সঞ্চয়। রোজকার কাজটা, মানে সংখ্যাটা দেখা আর আজকেরটা লিখে রাখা, দ্বিতীয় পাতায় যেতে হয় না।'],
+  f0Body:       ['The app opens on one figure — everything you own less everything you owe — with what others owe you and what you owe beside it, and this month’s income, spending and savings underneath. The daily check never needs a second page.',
+                 'অ্যাপ খুললেই একটা সংখ্যা — যা আপনার আছে তার থেকে যা আপনি দেন বাদ দিয়ে — পাশে কে আপনার কাছে কত পায় আর আপনি কার কাছে কত দেন, আর নিচে এই মাসের আয়, খরচ আর সঞ্চয়। রোজকার দেখাটা এক পাতাতেই হয়ে যায়।'],
   f1Head:       ['Five kinds of entry', 'পাঁচ রকম এন্ট্রি'],
   f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out ' +
                  'of the bank. Each is its own screen asking only what that kind of entry ' +
@@ -367,8 +367,8 @@ const S = {
                  'চাওয়া হয় — অর্ধেক ঘর নিষ্ক্রিয় করা কোনো সাধারণ ফর্ম নয়।'],
   f2Head:       ['Bank, wallet, cash and deposits',
                  'ব্যাংক, ওয়ালেট, নগদ আর জমা'],
-  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose. An FDR pays its profit into the account you link to it. A DPS collects your instalments, and each year’s profit is added to the deposit, so it earns profit too. Tax is taken at your TIN rate. You can close a deposit early at a lower rate. Each entry shows only the accounts that fit it, so a wrong tap cannot send money to the wrong place.',
-                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন। FDR-এর মুনাফা আপনার যুক্ত করা অ্যাকাউন্টে জমা হয়। DPS-এ কিস্তি জমে, আর প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয় — তাই তার ওপরেও মুনাফা আসে। কর কাটা হয় আপনার TIN-এর হারে। চাইলে মেয়াদের আগেই কম হারে জমা বন্ধ করা যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, তাই ভুল চাপে টাকা ভুল জায়গায় যায় না।'],
+  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. Each entry offers only the accounts that fit it, so a wrong tap cannot send money to the wrong place.',
+                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন, প্রতিটা ভাগের মোট আলাদা দেখায়, আর একটা চোখের চিহ্নে সব অঙ্ক লুকানো যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, তাই ভুল চাপে টাকা ভুল জায়গায় যায় না।'],
   f3Head:       ['A trial balance that proves itself', 'ট্রায়াল ব্যালেন্স, যা নিজেই প্রমাণ'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
@@ -376,6 +376,19 @@ const S = {
                  'প্রতিটা টাকা দুবার লেখা হয়, দুই দিকে একবার করে। ট্রায়াল ব্যালেন্স পাতা দুই ' +
                  'দিকের যোগফল মিলিয়ে দেখায় — তাই হিসাব ভুল হলে মাস পরে নয়, ওই পাতাতেই ধরা পড়ে।'],
 
+  featDepTitle: ['Deposits that earn', 'জমা, যা মুনাফা দেয়'],
+  d0Head:       ['FDR profit, on its own schedule', 'FDR-এর মুনাফা, তার নিজের সময়ে'],
+  d0Body:       ['An FDR pays its profit into the account you link — every month, every 2, 3 or 6 months, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.',
+                 'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — প্রতি মাসে, ২, ৩ বা ৬ মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে।'],
+  d1Head:       ['A DPS that grows on itself', 'DPS, যা নিজের ওপর বাড়ে'],
+  d1Body:       ['Pay instalments every month, or every 3 or 6 months — Pay lights up when one is due, and two unpaid ones raise a warning. Each year’s profit joins the deposit, so the next year earns on it too. A matured DPS can be paid back as a monthly pension.',
+                 'কিস্তি দিন প্রতি মাসে, অথবা ৩ বা ৬ মাস পরপর — কিস্তি বাকি হলে Pay বোতাম জ্বলে ওঠে, দুটো বাকি পড়লে সতর্ক করে। প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয়, তাই পরের বছর তার ওপরেও মুনাফা আসে। মেয়াদ শেষে চাইলে মাসিক পেনশন হিসেবে ফেরত নেওয়া যায়।'],
+  d2Head:       ['When the bank sets the rate later', 'হার যখন ব্যাংক পরে জানায়'],
+  d2Body:       ['Some banks declare the final rate afterwards. Keep such a deposit without a rate and take each profit at the amount on your statement; add what the bank pays or takes back once the rate is declared. A wrong figure can be undone and entered again.',
+                 'কিছু ব্যাংক চূড়ান্ত হার পরে ঘোষণা করে। এমন জমা হার ছাড়াই রাখুন, আর প্রতিবারের মুনাফা নিন স্টেটমেন্টে লেখা অঙ্কে; হার ঘোষণার পর ব্যাংক যা বাড়তি দেয় বা ফেরত নেয়, সেটাও যোগ করা যায়। ভুল অঙ্ক দিলে ফিরিয়ে আবার লেখা যায়।'],
+  d3Head:       ['Maturity, renewal, early close', 'মেয়াদ, নবায়ন আর আগেই ভাঙা'],
+  d3Body:       ['A matured FDR can be renewed where it stands, for a term in months or days. A deposit can also be closed early at a lower rate, with the bank’s fee and excise duty on lines of their own, so you can see where each taka went.',
+                 'মেয়াদ পূর্ণ FDR সেখানেই নবায়ন করা যায়, মাস বা দিন হিসেবে। চাইলে মেয়াদের আগেই কম হারে জমা ভাঙা যায় — ব্যাংকের ফি আর আবগারি শুল্ক থাকে আলাদা লাইনে, তাই প্রতিটা টাকা কোথায় গেল তা দেখা যায়।'],
   featSeeTitle: ['Seeing where it went', 'টাকা কোথায় গেল'],
   f4Head:       ['A month at a time', 'এক মাস করে'],
   f4Body:       ['Income against expense, what you saved and what share of what you earned ' +
@@ -394,8 +407,8 @@ const S = {
   f6Body:       ['Loans in both directions, each person known by their mobile number, with the date it is due and a reminder when it comes. Record a repayment on the day it actually happened, and fix a mistyped amount later — the books follow.',
                  'দুই দিকেরই ধার, প্রত্যেক মানুষকে চেনা হয় তাঁর মোবাইল নম্বর দিয়ে, ফেরতের তারিখসহ, আর সেই তারিখ এলে মনে করিয়ে দেওয়া। ফেরত যেদিন আসলে এসেছিল সেই তারিখেই লেখা যায়, আর ভুল লেখা অঙ্ক পরে ঠিক করা যায় — হিসাবও সেই অনুযায়ী বদলায়।'],
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
-  f7Body:       ['A backup is one file, kept where you choose. Save it yourself, or let the app save one every day into a folder. It holds your accounts, entries, loans and settings, so restoring it brings everything back. A password is optional: with one the file is locked, without one anyone who has the file can open it. No sign-up is needed — but that also means nobody can recover a password you forget.',
-                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায়। নিজে সেভ করুন, অথবা অ্যাপকে প্রতিদিন একটা ফোল্ডারে সেভ করতে দিন। এতে আপনার অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস থাকে — তাই ফেরালে সবকিছু আগের মতো ফিরে আসে। পাসওয়ার্ড দেওয়া আপনার ইচ্ছা: দিলে ফাইল তালাবদ্ধ থাকে, না দিলে ফাইলটা যার হাতে যাবে সে-ই খুলতে পারবে। কোনো সাইন-আপ লাগে না — তবে পাসওয়ার্ড ভুলে গেলে সেটা কেউ ফিরিয়ে দিতে পারবে না।'],
+  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder. Restoring it brings back your accounts, entries, loans and settings. A password is optional, and nobody can recover one you forget.',
+                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে। ফেরালে আপনার অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দেওয়া আপনার ইচ্ছা, তবে ভুলে গেলে সেটা কেউ ফিরিয়ে দিতে পারবে না।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
   f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in, a lock again a minute after you leave, and the PIN asked once more before an export, a restore, a PDF download or signing out. Bangla or English, light or dark — switchable whenever you like.',
                  'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা, আর export, ফেরানো, PDF নামানো বা সাইন আউটের আগে আরেকবার পিন। বাংলা বা ইংরেজি, আলো বা অন্ধকার — যখন খুশি বদলানো যায়।'],
