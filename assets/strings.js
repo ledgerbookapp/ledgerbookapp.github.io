@@ -100,18 +100,13 @@ const S = {
                  'আপনার তথ্য কোথায় যায়, যোগফল টেকে কিনা, আর নেটওয়ার্ক আদৌ লাগে কিনা।'],
   why1Head:     ['It has nowhere to send your money data',
                  'আপনার হিসাব পাঠানোর জায়গাই নেই এর'],
-  why1Body:     ['Not a promise — a fact about how it is built. Two files in the whole ' +
-                 'app touch the internet, and both of them are the thing that checks ' +
-                 'whether a new version exists. There is no server of ours for an entry ' +
-                 'to go to. Android’s own backup is a separate matter, and the ',
-                 'এটা প্রতিশ্রুতি নয় — গঠনের সত্য। পুরো অ্যাপে মাত্র দুটো ফাইল ইন্টারনেট ছোঁয়, ' +
-                 'আর দুটোই শুধু দেখে নতুন ভার্সন এসেছে কিনা। আমাদের এমন কোনো সার্ভার নেই ' +
-                 'যেখানে একটা এন্ট্রি যেতে পারে। অ্যান্ড্রয়েডের নিজের ব্যাকআপ আলাদা ব্যাপার, ' +
-                 'আর '],
+  why1Body:     ['The app has no server, so your entries have nowhere to go. It uses the internet for one thing only: checking for a new version and downloading it. Android’s own backup is separate — the ',
+                 'অ্যাপের কোনো সার্ভার নেই, তাই আপনার এন্ট্রি কোথাও যাওয়ার জায়গাই নেই। ইন্টারনেট লাগে শুধু একটা কাজে: নতুন ভার্সন এসেছে কিনা দেখা আর সেটা নামানো। অ্যান্ড্রয়েডের নিজের ব্যাকআপ আলাদা ব্যাপার — সেটা কী কী নেয় তা '],
   // The sentence above carries on through a link to the privacy page and out again. The
   // spaces at the joins belong to the halves, so the link text is only the link.
   why1Link:     ['privacy page', 'গোপনীয়তার পাতায়'],
-  why1End:      [' says exactly what it carries.', ' সেটা কী কী নেয় তা হুবহু লেখা আছে।'],
+  why1End:      [' says what it carries.',
+                 ' লেখা আছে।'],
   why2Head:     ['Every amount is written twice', 'প্রতিটা টাকা দুবার লেখা হয়'],
   why2Body:     ['Real double-entry, the way an accountant keeps books: money leaving one ' +
                  'place always arrives somewhere. The Trial Balance page shows the two ' +

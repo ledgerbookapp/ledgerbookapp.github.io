@@ -12,6 +12,7 @@ Counted back over the history when the number was introduced; repository houseke
 
 | Version | Date | Commit | What |
 |---|---|---|---|
+| 2.15.5 | 2026-10-14 | — | "It has nowhere to send your money data" in plain words: no server, and the one thing the internet is used for — which is checking for a new version and downloading it, where the old text named only the check |
 | 2.15.4 | 2026-10-14 | — | The deposits and backups paragraphs again, simpler: an FDR is no longer called monthly (profit can come on other schedules now), and the backup paragraph says what a forgotten password costs instead of "nobody can restore it for you" |
 | 2.15.3 | 2026-10-12 | — | The deposits and backups paragraphs said in long sentences what short ones say: same facts, plainer words, in both languages |
 | 2.15.2 | 2026-10-12 | — | Two more things check.js watches: the releases repository the site downloads from has to be the one the app updates from, and `assets/screens/SOURCE` records which app version the pictures show |
