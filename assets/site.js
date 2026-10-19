@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.16.1';
+const SITE_VERSION = '2.17.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -676,7 +676,7 @@ function switchLang(lang) {
   requestAnimationFrame(() => { root.style.overflowAnchor = ''; });
 }
 
-// Only the Bengali face ever needs fetching ahead -- Manrope is first in every font
+// Only the Bengali face ever needs fetching ahead -- Roboto is first in every font
 // stack, so it is already there in both languages. And only for a reader who is likely
 // to want it: one whose browser speaks Bangla, or one who reaches for the switch. An
 // English reader who never does no longer downloads a Bengali font on every page.

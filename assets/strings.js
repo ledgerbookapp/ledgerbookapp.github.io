@@ -139,8 +139,8 @@ const S = {
                  'কে কত ধারে, মোবাইল নম্বর ধরে।'],
   g4Head:       ['Due-date reminders',
                  'তারিখ এলে মনে করানো'],
-  g4Body:       ['When a loan falls due or a deposit matures.',
-                 'ধার ফেরতের দিন, বা জমার মেয়াদ পূর্ণ হলে।'],
+  g4Body:       ['When a loan falls due, a DPS instalment is near or a deposit matures.',
+                 'ধার ফেরতের দিন, DPS-এর কিস্তি কাছে এলে, বা জমার মেয়াদ পূর্ণ হলে।'],
   g5Head:       ['Backups, your password',
                  'ব্যাকআপ, আপনার পাসওয়ার্ড'],
   g5Body:       ['Backup files you keep, with a password if you want one.',
@@ -284,8 +284,8 @@ const S = {
   permInternetW: ['Only to check for a newer version, and to download it when you say yes.',
                   'শুধু নতুন ভার্সন খুঁজতে, আর আপনি রাজি হলে সেটা নামাতে।'],
   permNotify:   ['Notifications', 'নোটিফিকেশন'],
-  permNotifyW:  ['To remind you when a loan is due or a deposit matures, and when an update is out.',
-                 'ধার ফেরতের তারিখ, জমার মেয়াদ পূর্ণ হওয়া, আর নতুন ভার্সন এলে জানানোর জন্য।'],
+  permNotifyW:  ['To remind you when a loan is due, a DPS instalment is near or a deposit matures, and to tell you about updates and backups.',
+                 'ধার ফেরতের তারিখ, DPS-এর কিস্তি, জমার মেয়াদ পূর্ণ হওয়া মনে করাতে, আর নতুন ভার্সন ও ব্যাকআপের খবর জানাতে।'],
   // "Optional" is a badge beside the heading wherever this is shown, so the sentence
   // leaves it out.
   permInstall:  ['Install apps', 'অ্যাপ ইনস্টল'],
@@ -356,30 +356,38 @@ const S = {
   featCta:      ['All of it, on your phone', 'সবকিছু, আপনার ফোনেই'],
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],
   f0Head:       ['What you have, on the first screen', 'কী আছে, প্রথম পাতাতেই'],
-  f0Body:       ['The app opens on one figure — everything you own less everything you owe — with what others owe you and what you owe beside it, and this month’s income, spending and savings underneath. The daily check never needs a second page.',
-                 'অ্যাপ খুললেই একটা সংখ্যা — যা আপনার আছে তার থেকে যা আপনি দেন বাদ দিয়ে — পাশে কে আপনার কাছে কত পায় আর আপনি কার কাছে কত দেন, আর নিচে এই মাসের আয়, খরচ আর সঞ্চয়। রোজকার দেখাটা এক পাতাতেই হয়ে যায়।'],
+  f0Body:       ['The app opens on one figure — everything you own less everything you owe — with what others owe you and what you owe beside it, and this month’s income, spending and savings underneath. Income and Expense have their own buttons right there, and every other page is a tile on the same screen.',
+                 'অ্যাপ খুললেই একটা সংখ্যা — যা আপনার আছে তার থেকে যা আপনি দেন বাদ দিয়ে — পাশে কে আপনার কাছে কত পায় আর আপনি কার কাছে কত দেন, আর নিচে এই মাসের আয়, খরচ আর সঞ্চয়। আয় আর খরচের বোতাম সেখানেই, আর বাকি সব পাতা একই স্ক্রিনের একেকটা টাইলে।'],
   f1Head:       ['Five kinds of entry', 'পাঁচ রকম এন্ট্রি'],
-  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out ' +
-                 'of the bank. Each is its own screen asking only what that kind of entry ' +
-                 'needs, so none of them is a general form with half the fields greyed out.',
-                 'আয়, খরচ, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংক থেকে টাকা তোলা বা ' +
-                 'জমা দেওয়া। প্রতিটার আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির জন্য যা লাগে তাই ' +
-                 'চাওয়া হয় — অর্ধেক ঘর নিষ্ক্রিয় করা কোনো সাধারণ ফর্ম নয়।'],
+  // 1.1.97–1.1.99: the amount on its own card with quick adds, the bill calculator on
+  // Expense, and the balance check that stops an account paying more than it holds.
+  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved.',
+                 'আয়, খরচ, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংক থেকে টাকা তোলা বা জমা দেওয়া — প্রতিটার আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির জন্য যা লাগে তাই চাওয়া হয়। অঙ্কটা তার কার্ডেই লিখুন, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; খরচের পাতায় + − × ÷ দিয়ে বিলের যোগফলও করা যায়। অ্যাকাউন্টে যত আছে তার বেশি অঙ্ক সেভ হওয়ার আগেই আটকে যায়।'],
   f2Head:       ['Bank, wallet, cash and deposits',
                  'ব্যাংক, ওয়ালেট, নগদ আর জমা'],
-  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. Each entry offers only the accounts that fit it, so a wrong tap cannot send money to the wrong place.',
-                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন, প্রতিটা ভাগের মোট আলাদা দেখায়, আর একটা চোখের চিহ্নে সব অঙ্ক লুকানো যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, তাই ভুল চাপে টাকা ভুল জায়গায় যায় না।'],
+  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
+                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন, প্রতিটা ভাগের মোট আলাদা দেখায়, আর একটা চোখের চিহ্নে সব অঙ্ক লুকানো যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, আর যে অ্যাকাউন্টে এখনো টাকা আছে সেটা হুট করে মুছে যায় না: মুছতে গেলে আগে টাকাটা সরাতে বলে।'],
   f3Head:       ['A trial balance that proves itself', 'ট্রায়াল ব্যালেন্স, যা নিজেই প্রমাণ'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
                  'you find out on that page instead of months later.',
                  'প্রতিটা টাকা দুবার লেখা হয়, দুই দিকে একবার করে। ট্রায়াল ব্যালেন্স পাতা দুই ' +
                  'দিকের যোগফল মিলিয়ে দেখায় — তাই হিসাব ভুল হলে মাস পরে নয়, ওই পাতাতেই ধরা পড়ে।'],
+  // Two cards added for app 1.1.99. Entries are never deleted -- the Edit page and the
+  // detail dialog both reverse instead, behind the PIN -- and the exports carry every
+  // transaction. The PDF has no password, so this says nothing about one.
+  fRevHead:     ['A mistake is reversed, not erased', 'ভুল মোছা হয় না, ফিরিয়ে নেওয়া হয়'],
+  fRevBody:     ['Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced.',
+                 'খাতা থেকে কিছুই কখনো মোছা হয় না। যেকোনো এন্ট্রি খুলে প্রত্যাহার করুন — পিন দেওয়ার পর অ্যাপ সেটার পাশেই প্রত্যাহারটা লিখে রাখে — বা এডিট করুন; দুই ক্ষেত্রেই যোগফল সেই অনুযায়ী বদলায়। ইতিহাস পুরোটাই থাকে, তাই প্রতিটা অঙ্কের উৎস খুঁজে পাওয়া যায়।'],
+  fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সাথে নিয়ে যাওয়ার মতো'],
+  fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction, not only the ones on screen. Each export asks for your PIN or fingerprint first.',
+                 'লেনদেনগুলো পড়ার মতো একটা PDF রিপোর্ট হিসেবে, বা CSV ফাইল হিসেবে export করুন — CSV এক্সেলে খোলে, বাংলা অক্ষর ঠিক রেখে। স্ক্রিনে যা দেখা যাচ্ছে শুধু তা নয়, সব লেনদেন। প্রতিটা export-এর আগে পিন বা আঙুলের ছাপ চায়।'],
 
   featDepTitle: ['Deposits that earn', 'জমা, যা মুনাফা দেয়'],
   d0Head:       ['FDR profit, on its own schedule', 'FDR-এর মুনাফা, তার নিজের সময়ে'],
-  d0Body:       ['An FDR pays its profit into the account you link — every month, every 2, 3 or 6 months, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.',
-                 'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — প্রতি মাসে, ২, ৩ বা ৬ মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে।'],
+  // 1.1.99: Every 1, 2, 3 or 4 months, or Other for any whole number of months.
+  d0Body:       ['An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.',
+                 'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — ১, ২, ৩ বা ৪ মাস পরপর বা আপনার ঠিক করা যেকোনো মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে।'],
   d1Head:       ['A DPS that grows on itself', 'DPS, যা নিজের ওপর বাড়ে'],
   d1Body:       ['Pay instalments every month, or every 3 or 6 months — Pay lights up when one is due, and two unpaid ones raise a warning. Each year’s profit joins the deposit, so the next year earns on it too. A matured DPS can be paid back as a monthly pension.',
                  'কিস্তি দিন প্রতি মাসে, অথবা ৩ বা ৬ মাস পরপর — কিস্তি বাকি হলে Pay বোতাম জ্বলে ওঠে, দুটো বাকি পড়লে সতর্ক করে। প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয়, তাই পরের বছর তার ওপরেও মুনাফা আসে। মেয়াদ শেষে চাইলে মাসিক পেনশন হিসেবে ফেরত নেওয়া যায়।'],
@@ -391,11 +399,9 @@ const S = {
                  'মেয়াদ পূর্ণ FDR সেখানেই নবায়ন করা যায়, মাস বা দিন হিসেবে। চাইলে মেয়াদের আগেই কম হারে জমা ভাঙা যায় — ব্যাংকের ফি আর আবগারি শুল্ক থাকে আলাদা লাইনে, তাই প্রতিটা টাকা কোথায় গেল তা দেখা যায়।'],
   featSeeTitle: ['Seeing where it went', 'টাকা কোথায় গেল'],
   f4Head:       ['A month at a time', 'এক মাস করে'],
-  f4Body:       ['Income against expense, what you saved and what share of what you earned ' +
-                 'that was, and the categories that took the most — for whichever month ' +
-                 'you pick.',
-                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি ' +
-                 'গেল — আপনি যে মাসটা বাছবেন তার জন্য।'],
+  // 1.1.99: the month's card is gold when it kept something and red when it overspent.
+  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure.',
+                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়।'],
   f5Head:       ['Which account did the work', 'কোন অ্যাকাউন্ট দিয়ে কী হলো'],
   f5Body:       ['Money in and money out for each account side by side, so you can see ' +
                  'which one everything actually runs through and which is just sitting there.',
@@ -404,19 +410,28 @@ const S = {
 
   featKeepTitle:['Keeping it safe', 'নিরাপদে রাখা'],
   f6Head:       ['Who owes you, and whom you owe', 'কে আপনার কাছে ধারে, আপনি কার কাছে'],
-  f6Body:       ['Loans in both directions, each person known by their mobile number, with the date it is due and a reminder when it comes. Record a repayment on the day it actually happened, and fix a mistyped amount later — the books follow.',
-                 'দুই দিকেরই ধার, প্রত্যেক মানুষকে চেনা হয় তাঁর মোবাইল নম্বর দিয়ে, ফেরতের তারিখসহ, আর সেই তারিখ এলে মনে করিয়ে দেওয়া। ফেরত যেদিন আসলে এসেছিল সেই তারিখেই লেখা যায়, আর ভুল লেখা অঙ্ক পরে ঠিক করা যায় — হিসাবও সেই অনুযায়ী বদলায়।'],
+  // 1.1.98–1.1.99: Given and Taken tabs, the name optional with the number standing in,
+  // a day's notice before the return date, and money lent or repaid checked against the
+  // account it comes out of.
+  f6Body:       ['Loans in both directions on Given and Taken tabs, each person known by their mobile number — the name is optional. Set a return date and get a day’s notice before it. Money lent or repaid is checked against the account it comes from, a repayment is dated the day it happened, and a mistyped amount can be fixed later.',
+                 'দুই দিকেরই ধার, দেওয়া আর নেওয়া আলাদা ট্যাবে; প্রত্যেক মানুষকে চেনা হয় তাঁর মোবাইল নম্বর দিয়ে — নাম না দিলেও চলে। ফেরতের তারিখ দিলে তার এক দিন আগে মনে করিয়ে দেয়। ধার দেওয়া বা শোধের টাকা যে অ্যাকাউন্ট থেকে যায় তার ব্যালেন্সের সাথে মিলিয়ে দেখা হয়, ফেরত যেদিন এসেছিল সেই তারিখেই লেখা যায়, আর ভুল লেখা অঙ্ক পরে ঠিক করা যায়।'],
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
-  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder. Restoring it brings back your accounts, entries, loans and settings. A password locks the file; without one, anyone who has it can open it. Nobody can recover a forgotten password.',
-                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে। ফেরালে আপনার অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে; না দিলে ফাইলটা যার হাতে যাবে সে-ই খুলতে পারবে। ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না।'],
+  // 1.1.95–1.1.99: the daily backup keeps every copy of the last seven days, Restore
+  // Latest brings back the newest, and a failed daily backup is said out loud.
+  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings. A password locks the file; without one, anyone who has it can open it, and nobody can recover a forgotten one. If a daily backup fails, the app tells you.',
+                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে, যেখানে শেষ সাত দিনের কপি থাকে। সর্বশেষ কপি রিস্টোর করলে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে; না দিলে যার হাতে যাবে সে-ই খুলতে পারবে, আর ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না। প্রতিদিনের ব্যাকআপ ব্যর্থ হলে অ্যাপ জানিয়ে দেয়।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
-  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in, a lock again a minute after you leave, and the PIN asked once more before an export, a restore, a PDF download or signing out. Bangla or English, light or dark — switchable whenever you like.',
-                 'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা, আর export, ফেরানো, PDF নামানো বা সাইন আউটের আগে আরেকবার পিন। বাংলা বা ইংরেজি, আলো বা অন্ধকার — যখন খুশি বদলানো যায়।'],
+  // 1.1.96: fingerprint for exports and backups; a restore, and reversing an entry,
+  // still take the PIN. Accent and text size are Settings choices.
+  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN. Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like.',
+                 'খাতাটা নিজেই ফোনে এনক্রিপ্ট করা। ঢোকার মুখে পিন বা আঙুলের ছাপ, বেরোনোর এক মিনিট পর আবার তালা; export আর ব্যাকআপের আগে আরেকবার জিজ্ঞেস করে, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে। বাংলা বা ইংরেজি, আলো বা অন্ধকার, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেলের পেছনে একটা তালিকা'],
-  f9Body:       ['App updates, backups saved or restored, loan reminders and deposits reaching maturity, gathered in one list — and reminders can be switched off. It is kept on your phone only, and cleared if you reinstall.',
-                 'অ্যাপের আপডেট, ব্যাকআপ সেভ বা ফেরানো, ধারের রিমাইন্ডার আর মেয়াদ পূর্ণ হওয়া জমা — সব এক তালিকায়, আর রিমাইন্ডার বন্ধও করা যায়। এটা শুধু আপনার ফোনেই থাকে, অ্যাপ আবার ইনস্টল করলে মুছে যায়।'],
+  // 1.1.93–1.1.98: DPS instalments, profit waiting to be taken and failed backups joined
+  // the list; loans show one card per person; Clear All comes with Undo.
+  f9Body:       ['Loan dates, DPS instalments coming up, profit waiting to be taken, deposits reaching maturity, backups saved or failed, and app updates — in one list, with one card per person for loans. Clear it all at once, with Undo. It is kept on your phone only, and reminders can be switched off.',
+                 'ধারের তারিখ, সামনের DPS কিস্তি, তুলে নেওয়ার অপেক্ষায় থাকা মুনাফা, মেয়াদ পূর্ণ হওয়া জমা, ব্যাকআপ সেভ বা ব্যর্থ হওয়া, আর অ্যাপের আপডেট — সব এক তালিকায়, ধারের বেলায় প্রত্যেক মানুষের একটা কার্ড। এক চাপে সব মোছা যায়, Undo-সহ। এটা শুধু আপনার ফোনেই থাকে, আর রিমাইন্ডার বন্ধও করা যায়।'],
 
   // -- privacy -----------------------------------------------------------------
   privLead:     ['The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you write a backup yourself; Android’s own backup carries only the app’s settings, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.',

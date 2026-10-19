@@ -11,13 +11,15 @@
  *   --accent      what you FILL with -- button backgrounds, the logo, a rule.
  *   --accent-ink  what you WRITE with -- links, a figure, anything that is text.
  *
- * On the dark theme they are the same value, because #F2B830 carries 10.24 on a card and
- * the page's near-black on it carries 10.93, so one tone does both jobs. On light paper it cannot: the
- * fill step #F59E0B measures 2.05 against the page, so a link in it fails a reader
- * outright while the same colour behind black text is perfectly sound. The app hit this
- * exact wall and answered it with a separate ink one step deeper -- #A85408, 5.10 on the
- * page -- and the two live two lines apart there with a long comment saying which is
- * which, because twice a commit about the fill took the ink along with it.
+ * The gold is the app's brand #E8B23A in both themes, as the app has drawn it since
+ * 2026-10-16 (it retired the amber #F59E0B that the light theme used to fill with). On the
+ * dark theme fill and ink are the same value, because #E8B23A carries 9.53 on a card and
+ * the dark #1A1408 written on it carries 9.46, so one tone does both jobs. On light paper
+ * it cannot: the fill measures 1.85 against the page, so a link in it fails a reader
+ * outright while the same colour behind dark text is perfectly sound. The app hit this
+ * exact wall and answered it with a separate ink -- #8A5F04, 5.40 on the page -- and the
+ * two live two lines apart there with a long comment saying which is which, because
+ * twice a commit about the fill took the ink along with it.
  *
  * So: filling with --accent-ink looks muddy, and writing in --accent is unreadable. They
  * are not two shades of a preference.
@@ -27,10 +29,10 @@
   --page: #F8FAFC;
   --card: #FFFFFF;
   --edge: #CBD5E1;
-  --accent: #F59E0B;
-  --accent-ink: #A85408;
-  --accent-on-tint: #8A4406;
-  --on-accent: #000000;
+  --accent: #E8B23A;
+  --accent-ink: #8A5F04;
+  --accent-on-tint: #8A5F04;
+  --on-accent: #1A1408;
   --ink: #0F172A;
   --ink-muted: #5A6A80;
   --green: #14713A;
@@ -50,7 +52,7 @@
   --radius-card: 20px;
   --radius-field: 12px;
 
-  --font: "Manrope", "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system,
+  --font: "Roboto", "Noto Sans Bengali", "Hind Siliguri", system-ui, -apple-system,
           "Segoe UI", Roboto, sans-serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Noto Sans Bengali",
           monospace;
@@ -71,10 +73,10 @@
     --rule: #1F1D1A;
     --panel: #0F0E0C;
     --frame: #1B1A17;
-    --accent: #F2B830;
-    --accent-ink: #F2B830;
-    --accent-on-tint: #F2B830;
-    --on-accent: #0C0B0A;
+    --accent: #E8B23A;
+    --accent-ink: #E8B23A;
+    --accent-on-tint: #E8B23A;
+    --on-accent: #1A1408;
     --ink: #F5F2EC;
     --ink-muted: #A29C92;
     --ink-faint: #8A847A;
@@ -93,10 +95,10 @@
   --rule: #1F1D1A;
   --panel: #0F0E0C;
   --frame: #1B1A17;
-  --accent: #F2B830;
-  --accent-ink: #F2B830;
-  --accent-on-tint: #F2B830;
-  --on-accent: #0C0B0A;
+  --accent: #E8B23A;
+  --accent-ink: #E8B23A;
+  --accent-on-tint: #E8B23A;
+  --on-accent: #1A1408;
   --ink: #F5F2EC;
   --ink-muted: #A29C92;
   --ink-faint: #8A847A;
@@ -117,7 +119,7 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--ink);
-  /* Manrope has no Bengali, so a Bangla page falls through to Noto glyph by glyph --
+  /* Roboto has no Bengali, so a Bangla page falls through to Noto glyph by glyph --
      which is the point of listing it second rather than switching fonts by language. */
   font-family: var(--font);
   /* Bengali sits low in its line and runs into the line below at the leading Latin
@@ -854,6 +856,10 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 .fcard h3 { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
 .fcard p { grid-column: 1 / -1; margin-top: 16px; font-size: 15px; line-height: 1.7; }
 @media (max-width: 1199px) { .fcards-4 { grid-template-columns: repeat(2, 1fr); } }
+/* 01 holds six cards since website v2.17.0: three to a row on a wide screen, so the two
+   rows come out level, rather than four and a lone pair; two to a row below that. */
+.fcards-6 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1199px) { .fcards-6 { grid-template-columns: repeat(2, 1fr); } }
 
 /* -- 02: the words beside a phone -------------------------------------------------- */
 .see {
@@ -915,7 +921,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .num-badge { width: 36px; height: 36px; font-size: 14px; }
 
   /* On a phone the cards stack one to a row, a little tighter. */
-  .fcards-4 { grid-template-columns: 1fr; gap: 16px; }
+  .fcards-4, .fcards-6 { grid-template-columns: 1fr; gap: 16px; }
   .fcard { padding: 20px; }
   .fcard h3 { font-size: 17px; }
   .fcard p { margin-top: 12px; line-height: 1.65; }
@@ -1257,7 +1263,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
   /* The same gold in both themes, so the words on it are dark in both too -- the theme's
      ink would turn light on the dark theme and vanish into the yellow. */
   --priv-sum-rule: rgba(26, 20, 5, .16);
-  background: #f2b830; border: 1px solid var(--priv-sum-rule); border-radius: var(--radius-card); overflow: hidden;
+  background: #E8B23A; border: 1px solid var(--priv-sum-rule); border-radius: var(--radius-card); overflow: hidden;
 }
 .priv-sum > div { padding: 22px 24px 24px; border-left: 1px solid var(--priv-sum-rule); }
 .priv-sum > div:first-child { border-left: 0; }

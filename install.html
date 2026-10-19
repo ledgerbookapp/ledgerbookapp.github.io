@@ -26,7 +26,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first. Small enough to stay inline; a
@@ -159,8 +159,9 @@
 
     <!-- -- 4 --------------------------------------------------------------------- -->
     <!-- The three screens are the app as released since 1.1.65: the name on a screen of
-         its own, then the PIN, then the PIN again. Taken on LB_Clean at 1080 wide, in both
-         themes, with the status bar cut off so they sit in the drawn phone as drawn. -->
+         its own, then the PIN, then the PIN again. Since site v2.17.0 they are the design's
+         own boards (0b, 0c, 0f) at 780 wide, in both themes; there is no Bangla board, so
+         the -bn files are the English ones. -->
     <article class="step step-wide" id="step-4">
       <div class="step-head">
         <div>
@@ -172,11 +173,11 @@
       <div class="step-pics gal gal-3 gal-phones" data-gal>
         <div class="gal-track">
           <figure class="pic"><p class="pic-label"><span class="pic-letter">a</span><span data-s="s4a">Tell it your name</span></p>
-            <div class="frame still"><img class="s-light" src="assets/screens/step4-name-light.png" data-bn="assets/screens/step4-name-light-bn.png" alt="" loading="lazy" width="1080" height="2219"><img class="s-dark" src="assets/screens/step4-name-dark.png" data-bn="assets/screens/step4-name-dark-bn.png" alt="" loading="lazy" width="1080" height="2219"></div><figcaption data-s="cap4a">It asks what to call you. You can change this anytime in Settings.</figcaption></figure>
+            <div class="frame still"><img class="s-light" src="assets/screens/step4-name-light.png" data-bn="assets/screens/step4-name-light-bn.png" alt="" loading="lazy" width="780" height="1688"><img class="s-dark" src="assets/screens/step4-name-dark.png" data-bn="assets/screens/step4-name-dark-bn.png" alt="" loading="lazy" width="780" height="1688"></div><figcaption data-s="cap4a">It asks what to call you. You can change this anytime in Settings.</figcaption></figure>
           <figure class="pic"><p class="pic-label"><span class="pic-letter">b</span><span data-s="s4b">Create your PIN</span></p>
-            <div class="frame still"><img class="s-light" src="assets/screens/step4-create-light.png" data-bn="assets/screens/step4-create-light-bn.png" alt="" loading="lazy" width="1080" height="2219"><img class="s-dark" src="assets/screens/step4-create-dark.png" data-bn="assets/screens/step4-create-dark-bn.png" alt="" loading="lazy" width="1080" height="2219"></div><figcaption data-s="cap4b">Four digits. Step 2 of 3.</figcaption></figure>
+            <div class="frame still"><img class="s-light" src="assets/screens/step4-create-light.png" data-bn="assets/screens/step4-create-light-bn.png" alt="" loading="lazy" width="780" height="1688"><img class="s-dark" src="assets/screens/step4-create-dark.png" data-bn="assets/screens/step4-create-dark-bn.png" alt="" loading="lazy" width="780" height="1688"></div><figcaption data-s="cap4b">Four digits. Step 2 of 3.</figcaption></figure>
           <figure class="pic"><p class="pic-label"><span class="pic-letter">c</span><span data-s="s4c">Confirm your PIN</span></p>
-            <div class="frame still"><img class="s-light" src="assets/screens/step4-confirm-light.png" data-bn="assets/screens/step4-confirm-light-bn.png" alt="" loading="lazy" width="1080" height="2219"><img class="s-dark" src="assets/screens/step4-confirm-dark.png" data-bn="assets/screens/step4-confirm-dark-bn.png" alt="" loading="lazy" width="1080" height="2219"></div><figcaption data-s="cap4c">The same four digits again. The PIN is never copied anywhere.</figcaption></figure>
+            <div class="frame still"><img class="s-light" src="assets/screens/step4-confirm-light.png" data-bn="assets/screens/step4-confirm-light-bn.png" alt="" loading="lazy" width="780" height="1688"><img class="s-dark" src="assets/screens/step4-confirm-dark.png" data-bn="assets/screens/step4-confirm-dark-bn.png" alt="" loading="lazy" width="780" height="1688"></div><figcaption data-s="cap4c">The same four digits again. The PIN is never copied anywhere.</figcaption></figure>
         </div>
         <div class="gal-nav">
           <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
@@ -220,7 +221,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.16.1</span>
+      <span class="foot-ver" data-site-version>Website v2.17.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

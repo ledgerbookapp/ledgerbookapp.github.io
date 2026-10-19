@@ -20,7 +20,7 @@ and it works.
 | `assets/site.css` | both themes -- light from the app, dark from the owner's drawing of the site |
 | `assets/site.js` | the language and theme switches, the release lookup, the full-size picture view, the galleries, the copy button, and the note shown once a download starts |
 | `assets/logo.svg` | the mark: a wallet holding the ledger book and a taka note, for 40px and up; `favicon.svg` is its cut for 16–24px, and the PNG icons are drawn from these two |
-| `assets/og-image.png` | the 1200×630 picture a shared link shows in WhatsApp, Messenger and the rest; rendered from HTML with the dark home screenshot, so retake it when that screenshot changes |
+| `assets/og-image.png` | the 1200×630 picture a shared link shows in WhatsApp, Messenger and the rest; rendered from HTML with the dark home picture (`app-home-dark.png`), so render it again when that picture changes |
 | `assets/screens/` | the app's own screens (features page, home page, install step 4) and the phone's install dialogs (steps 1–3), cropped to the dialog |
 | `check.js` | run before publishing — see below |
 
@@ -44,13 +44,13 @@ gives you an English-only page for half your readers, and nothing will tell you.
 
 **There are two accent colours and they are not interchangeable.** `--accent` is what you
 fill with; `--accent-ink` is what you write with. On the dark theme they are the same
-value. On light paper the fill measures 2.05 against the page, so a link in it cannot be
+value. On light paper the fill measures 1.85 against the page, so a link in it cannot be
 read — the ink is a step deeper for exactly that reason. The app hit this same wall and
 `Color.kt` carries a long comment about the two commits that walked into it.
 
 ## The website's version
 
-Every footer says "Website v2.16.1". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.17.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -82,14 +82,16 @@ same commit that replaces the pictures.
 
 **Step 4 and the features page are full size.** 1.1.65 split the first launch into
 three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both
-themes, taken on LB_Clean at 1080 wide with the status bar cut off (`step4-*-light`,
-`step4-*-dark`). The features page's twenty-four (six screens, two themes, two languages) are the same
-device, cut to 1080×2259,
-so they stay sharp on a high-density phone (since 2.14.4 they are not enlarged or offered
-for saving). They came from the sample ledger already on
-LB_Clean, with the owner's name set to Raahat; for 1.1.82 the sign-up screens were reached by clearing
-the app's data and the sample ledger put back afterwards from a saved copy. Loan cards
-show a placeholder number painted over as 01XXXXXXXXX.
+themes (`step4-*-light`, `step4-*-dark`). The features page has twenty-four (six screens,
+two themes, two languages). Since 2.17.0 none of them is a screenshot: they are the
+design canvas's own boards, drawn at 390 and saved at twice that, 780 wide — the six
+screens at 780×1816, step 4 at 780×1688 — sharp on a high-density phone (since 2.14.4
+they are not enlarged or offered for saving). The app was checked against those boards
+before they were used. How each was cut, and which Bangla pictures are English copies
+because the design has no Bangla board, is in `assets/screens/SOURCE`.
+
+Before 2.17.0 they were screenshots from the sample ledger on LB_Clean at 1080×2259, with
+the owner's name set to Raahat and loan numbers painted over as 01XXXXXXXXX.
 
 Steps 1 to 3 were re-taken full size, and again for 1.1.67, the release that gave the app
 the wallet icon the site already uses -- the installer shows the icon inside the APK, so
