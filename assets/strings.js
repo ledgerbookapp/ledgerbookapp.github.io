@@ -154,8 +154,8 @@ const S = {
   g6Short:      ['Locks again when you leave.',
                  'বেরোলে আবার তালা লাগে।'],
   g7Head:       ['In-app updates', 'অ্যাপের ভেতরেই আপডেট'],
-  g7Body:       ['Checks for a new version, downloads and installs it.',
-                 'নতুন ভার্সন খোঁজে, নামায়, তারপর ইনস্টল করে।'],
+  g7Body:       ['Checks for a new version, even when GitHub is busy, then downloads and installs it.',
+                 'নতুন ভার্সন খোঁজে, GitHub ব্যস্ত থাকলেও, তারপর নামায় আর ইনস্টল করে।'],
   g7Short:      ['Checks, downloads, installs.', 'খোঁজে, নামায়, ইনস্টল করে।'],
   g8Head:       ['FDR & DPS',
                  'FDR ও DPS'],
@@ -370,9 +370,11 @@ const S = {
   f3Head:       ['A trial balance that proves itself', 'ট্রায়াল ব্যালেন্স, যা নিজেই প্রমাণ'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
-                 'you find out on that page instead of months later.',
+                 'you find out on that page instead of months later. If a check cannot finish, ' +
+                 'the page says so and offers Retry.',
                  'প্রতিটা টাকা দুবার লেখা হয়, দুই দিকে একবার করে। ট্রায়াল ব্যালেন্স পাতা দুই ' +
-                 'দিকের যোগফল মিলিয়ে দেখায় — তাই হিসাব ভুল হলে মাস পরে নয়, ওই পাতাতেই ধরা পড়ে।'],
+                 'দিকের যোগফল মিলিয়ে দেখায় — তাই হিসাব ভুল হলে মাস পরে নয়, ওই পাতাতেই ধরা পড়ে। ' +
+                 'কোনো যাচাই শেষ না হলে পাতাটা তা জানায়, আবার চেষ্টার বোতামসহ।'],
   // Two cards added for app 1.1.99. Entries are never deleted -- the Edit page and the
   // detail dialog both reverse instead, behind the PIN -- and the exports carry every
   // transaction. The PDF has no password, so this says nothing about one.
@@ -389,8 +391,9 @@ const S = {
   d0Body:       ['An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.',
                  'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — ১, ২, ৩ বা ৪ মাস পরপর বা আপনার ঠিক করা যেকোনো মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে।'],
   d1Head:       ['A DPS that grows on itself', 'DPS, যা নিজের ওপর বাড়ে'],
-  d1Body:       ['Pay instalments every month, or every 3 or 6 months — Pay lights up when one is due, and two unpaid ones raise a warning. Each year’s profit joins the deposit, so the next year earns on it too. A matured DPS can be paid back as a monthly pension.',
-                 'কিস্তি দিন প্রতি মাসে, অথবা ৩ বা ৬ মাস পরপর — কিস্তি বাকি হলে Pay বোতাম জ্বলে ওঠে, দুটো বাকি পড়লে সতর্ক করে। প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয়, তাই পরের বছর তার ওপরেও মুনাফা আসে। মেয়াদ শেষে চাইলে মাসিক পেনশন হিসেবে ফেরত নেওয়া যায়।'],
+  // 2.0.1: a DPS pays every 1, 2, 3 or 4 months, or any other number (it was 1, 3 or 6).
+  d1Body:       ['Pay instalments every 1, 2, 3 or 4 months, or any other number of months you set — Pay lights up when one is due, and two unpaid ones raise a warning. Each year’s profit joins the deposit, so the next year earns on it too. A matured DPS can be paid back as a monthly pension.',
+                 'কিস্তি দিন ১, ২, ৩ বা ৪ মাস পরপর, অথবা আপনার ঠিক করা যেকোনো মাস পরপর — কিস্তি বাকি হলে Pay বোতাম জ্বলে ওঠে, দুটো বাকি পড়লে সতর্ক করে। প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয়, তাই পরের বছর তার ওপরেও মুনাফা আসে। মেয়াদ শেষে চাইলে মাসিক পেনশন হিসেবে ফেরত নেওয়া যায়।'],
   d2Head:       ['When the bank sets the rate later', 'হার যখন ব্যাংক পরে জানায়'],
   d2Body:       ['Some banks declare the final rate afterwards. Keep such a deposit without a rate and take each profit at the amount on your statement; add what the bank pays or takes back once the rate is declared. A wrong figure can be undone and entered again.',
                  'কিছু ব্যাংক চূড়ান্ত হার পরে ঘোষণা করে। এমন জমা হার ছাড়াই রাখুন, আর প্রতিবারের মুনাফা নিন স্টেটমেন্টে লেখা অঙ্কে; হার ঘোষণার পর ব্যাংক যা বাড়তি দেয় বা ফেরত নেয়, সেটাও যোগ করা যায়। ভুল অঙ্ক দিলে ফিরিয়ে আবার লেখা যায়।'],
@@ -400,13 +403,15 @@ const S = {
   featSeeTitle: ['Seeing where it went', 'টাকা কোথায় গেল'],
   f4Head:       ['A month at a time', 'এক মাস করে'],
   // 1.1.99: the month's card is gold when it kept something and red when it overspent.
-  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure.',
-                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়।'],
+  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.',
+                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়। দৈনিক গড় শেষ হওয়া মাসে গোনে পুরো মাসের দিন, আর চলতি মাসে আজ পর্যন্ত দিন।'],
   f5Head:       ['Which account did the work', 'কোন অ্যাকাউন্ট দিয়ে কী হলো'],
-  f5Body:       ['Money in and money out for each account side by side, so you can see ' +
-                 'which one everything actually runs through and which is just sitting there.',
-                 'প্রতিটা অ্যাকাউন্টে কত ঢুকল আর কত বেরোল পাশাপাশি, যাতে বোঝা যায় আসলে কোনটা ' +
-                 'দিয়ে সব চলছে আর কোনটা শুধু পড়ে আছে।'],
+  // 2.0.2: each account marked in its own colour.
+  f5Body:       ['Money in and money out for each account side by side, each marked in its ' +
+                 'own colour, so you can see which one everything actually runs through and ' +
+                 'which is just sitting there.',
+                 'প্রতিটা অ্যাকাউন্টে কত ঢুকল আর কত বেরোল পাশাপাশি, প্রতিটা তার নিজের রঙে, ' +
+                 'যাতে বোঝা যায় আসলে কোনটা দিয়ে সব চলছে আর কোনটা শুধু পড়ে আছে।'],
 
   featKeepTitle:['Keeping it safe', 'নিরাপদে রাখা'],
   f6Head:       ['Who owes you, and whom you owe', 'কে আপনার কাছে ধারে, আপনি কার কাছে'],
@@ -418,8 +423,8 @@ const S = {
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
   // 1.1.95–1.1.99: the daily backup keeps every copy of the last seven days, Restore
   // Latest brings back the newest, and a failed daily backup is said out loud.
-  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings. A password locks the file; without one, anyone who has it can open it, and nobody can recover a forgotten one. If a daily backup fails, the app tells you.',
-                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে, যেখানে শেষ সাত দিনের কপি থাকে। সর্বশেষ কপি রিস্টোর করলে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে; না দিলে যার হাতে যাবে সে-ই খুলতে পারবে, আর ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না। প্রতিদিনের ব্যাকআপ ব্যর্থ হলে অ্যাপ জানিয়ে দেয়।'],
+  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings. A password locks the file — the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, the app tells you.',
+                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে, যেখানে শেষ সাত দিনের কপি থাকে। সর্বশেষ কপি রিস্টোর করলে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে — প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ড মনে রাখে, আর যখন খুশি বদলানো যায়; না দিলে যার হাতে যাবে সে-ই খুলতে পারবে, আর ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না। প্রতিদিনের ব্যাকআপ ব্যর্থ হলে অ্যাপ জানিয়ে দেয়।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
   // 1.1.96: fingerprint for exports and backups; a restore, and reversing an entry,
   // still take the PIN. Accent and text size are Settings choices.

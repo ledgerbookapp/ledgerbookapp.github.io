@@ -50,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.17.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.18.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -83,15 +83,17 @@ same commit that replaces the pictures.
 **Step 4 and the features page are full size.** 1.1.65 split the first launch into
 three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both
 themes (`step4-*-light`, `step4-*-dark`). The features page has twenty-four (six screens,
-two themes, two languages). Since 2.17.0 none of them is a screenshot: they are the
-design canvas's own boards, drawn at 390 and saved at twice that, 780 wide — the six
-screens at 780×1816, step 4 at 780×1688 — sharp on a high-density phone (since 2.14.4
-they are not enlarged or offered for saving). The app was checked against those boards
-before they were used. How each was cut, and which Bangla pictures are English copies
-because the design has no Bangla board, is in `assets/screens/SOURCE`.
+two themes, two languages). Since 2.18.0 they are the app's own gallery: the screens the
+app's GalleryTest draws off the JVM, from the release commit of the version named in
+`assets/screens/SOURCE`, in the Yellow accent, scaled from 1078 to 780 wide (780×1736) —
+sharp on a high-density phone (since 2.14.4 they are not enlarged or offered for saving).
+To retake them, run the gallery on the release commit (its command is at the top of
+`GalleryTest.kt`) and take the scenes SOURCE names. Which Bangla pictures are English
+copies, because the gallery has no Bangla render of that scene, is in SOURCE too.
 
-Before 2.17.0 they were screenshots from the sample ledger on LB_Clean at 1080×2259, with
-the owner's name set to Raahat and loan numbers painted over as 01XXXXXXXXX.
+In 2.17.0 they were the design canvas's own boards; before that, screenshots from the
+sample ledger on LB_Clean at 1080×2259, with the owner's name set to Raahat and loan
+numbers painted over as 01XXXXXXXXX.
 
 Steps 1 to 3 were re-taken full size, and again for 1.1.67, the release that gave the app
 the wallet icon the site already uses -- the installer shows the icon inside the APK, so

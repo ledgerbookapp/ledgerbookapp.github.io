@@ -1,4 +1,4 @@
-1.1.99
+2.0.2
 
 The app version the pictures in this folder show.
 
@@ -11,9 +11,10 @@ check.js reads it. Rewrite it in the same commit that replaces the pictures, nev
 its own: the file is a claim about what is in the folder, and a number nobody re-took
 anything for is worse than no number.
 
-Since site v2.17.0 the pictures are not screenshots: they are the design canvas's own
-boards (render 1792402958), which app 1.1.99 was checked against and matches. Each is
-780 wide; the six app-* pictures are 1816 tall, padded below with the board's own
-background or cut where the board ran longer (Accounts at 1816, Backup at 1570, above
-the new-phone note). Only Home and Accounts have a Bangla board; the other -bn files,
-and all of step4-*-bn, are copies of the English ones.
+Since site v2.18.0 the pictures are the app's own gallery: the screens drawn off the JVM
+by the app's GalleryTest (app/build/reports/contrast) from the v2.0.2 release commit, in
+the Yellow accent, scaled from 1078 to 780 wide (780x1736). Scenes: 03-01-Home,
+05-Transactions, 07-Accounts-All, 09-Loans-Given, 06-Analytics, 11-Backups-On, and for
+step 4 01-02-Welcome-Name-Typed, 01-04-Create-PIN, 01-05-Confirm-PIN. Home, Accounts and
+Loans have Bangla renders; the other -bn files are copies of the English ones. The
+gallery's sample ledger is not the owner's.
