@@ -182,6 +182,10 @@ const S = {
   relTitle:     ['Release {v}', 'রিলিজ {v}'],
   relLatest:    ['Latest release', 'সর্বশেষ রিলিজ'],
   relVerifiable:['Verifiable', 'মিলিয়ে দেখা যায়'],
+  // The release's own notes, as the app's update dialog shows them. They are written once,
+  // in English, so the Bangla page says so rather than passing them off as its own words.
+  relNotes:     ['What’s New', 'নতুন যা এসেছে'],
+  relNotesLang: ['The notes are written in English.', 'রিলিজের বিবরণ ইংরেজিতে লেখা।'],
   relSize:      ['File size', 'ফাইলের আকার'],
   relRequires:  ['Requires', 'লাগবে'],
   relAndroid:   ['Android 7.0 and up', 'অ্যান্ড্রয়েড ৭.০ বা তার পরে'],
@@ -268,11 +272,20 @@ const S = {
 
   verifyTitle:  ['Checking you got the right file', 'ঠিক ফাইলটাই পেয়েছেন কিনা দেখা'],
   verifyBody:   ['Every release publishes the fingerprint of its own file. If the number ' +
-                 'your phone computes matches the one below, the file is byte for byte ' +
+                 'worked out from your copy matches the one below, the file is byte for byte ' +
                  'the one that was published. This is optional — most people skip it.',
-                 'প্রতিটা রিলিজের সাথে তার নিজের ফাইলের ছাপ প্রকাশ করা হয়। আপনার ফোনে হিসাব ' +
+                 'প্রতিটা রিলিজের সাথে তার নিজের ফাইলের ছাপ প্রকাশ করা হয়। আপনার কপি থেকে বের ' +
                  'করা সংখ্যাটা নিচেরটার সাথে মিললে ফাইলটা অক্ষরে অক্ষরে প্রকাশিত ফাইলটাই। ' +
                  'এটা ঐচ্ছিক — বেশিরভাগ মানুষ এই ধাপটা বাদ দেন।'],
+  // How to work the number out. A computer is named, not an app: every one carries the
+  // tool already, and no checksum app is vouched for here.
+  // The words only; the two commands under them are code, the same in both languages, set
+  // on lines of their own that do not wrap -- wrapped, "certutil -" broke at its hyphen and
+  // read as two commands on a phone. The file name in them is filled from the release.
+  verifyHow:    ['To work the number out, copy the file to a computer and run one of these in its folder:',
+                 'সংখ্যাটা বের করতে ফাইলটা কম্পিউটারে নিয়ে সেই ফোল্ডারে এর একটা চালান:'],
+  verifyWin:    ['Windows', 'Windows'],
+  verifyMac:    ['Mac or Linux', 'Mac বা Linux'],
 
   // -- permissions -------------------------------------------------------------
   permEyebrow:  ['Permissions', 'অনুমতি'],
@@ -352,6 +365,7 @@ const S = {
   shotLoans:    ["Who owes whom", "কে কার কাছে ধারে"],
   shotAnalytics:["Where the month went", "মাসটা কোথায় গেল"],
   shotBackup:   ["Backup and restore", "ব্যাকআপ আর ফেরানো"],
+  shotInvest:   ["FDR and DPS together", "FDR আর DPS একসাথে"],
 
   featCta:      ['All of it, on your phone', 'সবকিছু, আপনার ফোনেই'],
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],

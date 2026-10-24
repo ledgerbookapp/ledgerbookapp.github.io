@@ -37,6 +37,26 @@
 <script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}</script>
 
 <link rel="stylesheet" href="assets/site.css">
+
+<!-- For search engines: what the app is, in their vocabulary. No version and no size --
+     the page names none (site.js fills them from the release), and a number written here
+     would be the one place it went stale. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "LedgerBook",
+  "description": "A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Android 7.0 or later",
+  "inLanguage": ["en", "bn"],
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BDT" },
+  "url": "https://ledgerbookapp.github.io/",
+  "downloadUrl": "https://github.com/rayhan27bd/ledgerbook-releases/releases/latest",
+  "image": "https://ledgerbookapp.github.io/assets/og-image.png"
+}
+</script>
 </head>
 <body>
 
@@ -130,8 +150,8 @@
          reader sees the real thing before reading a word about it. It follows the theme
          and the language like the rest of the page. Shown at page size only, not enlarged. -->
     <div class="frame frame-lg still hero-shot" data-cap="shotHome">
-      <img class="s-light" src="assets/screens/app-home-light.png" data-bn="assets/screens/app-home-light-bn.png" width="780" height="1736" loading="lazy" alt="">
-      <img class="s-dark"  src="assets/screens/app-home-dark.png" data-bn="assets/screens/app-home-dark-bn.png"  width="780" height="1736" loading="lazy" alt="">
+      <img class="s-light" src="assets/screens/app-home-light.webp" data-bn="assets/screens/app-home-light-bn.webp" width="780" height="1736" loading="lazy" alt="">
+      <img class="s-dark"  src="assets/screens/app-home-dark.webp" data-bn="assets/screens/app-home-dark-bn.webp"  width="780" height="1736" loading="lazy" alt="">
     </div>
   </section>
 
@@ -229,6 +249,13 @@
           <div><dt data-s="relRequires">Requires</dt><dd data-s="relAndroid">Android 7.0 and up</dd></div>
           <div class="release-hash"><dt>SHA-256</dt><dd><code data-rel="sha"></code></dd></div>
         </dl>
+        <!-- The release's own lines, filled from the body the lookup already reads; hidden
+             until there are some, so a page with no answer shows no empty heading. -->
+        <div class="release-notes" data-rel="notesBox" hidden>
+          <b data-s="relNotes">What’s New</b>
+          <ul data-rel="notes"></ul>
+          <p class="release-notes-lang" data-s="relNotesLang">The notes are written in English.</p>
+        </div>
       </div>
       <!-- The same link again, placed after the card, for the narrow layout where the
            card falls under the paragraph and the link belongs at the very end. -->
@@ -313,7 +340,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.18.0</span>
+      <span class="foot-ver" data-site-version>Website v2.19.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

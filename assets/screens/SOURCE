@@ -1,4 +1,4 @@
-2.0.2
+2.0.3
 
 The app version the pictures in this folder show.
 
@@ -11,10 +11,14 @@ check.js reads it. Rewrite it in the same commit that replaces the pictures, nev
 its own: the file is a claim about what is in the folder, and a number nobody re-took
 anything for is worse than no number.
 
-Since site v2.18.0 the pictures are the app's own gallery: the screens drawn off the JVM
-by the app's GalleryTest (app/build/reports/contrast) from the v2.0.2 release commit, in
-the Yellow accent, scaled from 1078 to 780 wide (780x1736). Scenes: 03-01-Home,
-05-Transactions, 07-Accounts-All, 09-Loans-Given, 06-Analytics, 11-Backups-On, and for
-step 4 01-02-Welcome-Name-Typed, 01-04-Create-PIN, 01-05-Confirm-PIN. Home, Accounts and
-Loans have Bangla renders; the other -bn files are copies of the English ones. The
+The app's pictures are the app's own gallery: screens drawn off the JVM by the app's
+GalleryTest, rendered from the release tag named above (a worktree of v2.0.3, not the
+working tree), in the Yellow accent, scaled from 1078 to 780 wide (780x1736) and saved as
+WebP at quality 0.9 (site v2.19.0; PNG before). Scenes: 03-01-Home, 05-Transactions,
+07-Accounts-All, 07-Accounts-Tab-Invest, 09-Loans-Given, 06-Analytics, 11-Backups-On, and
+for step 4 01-02-Welcome-Name-Typed, 01-04-Create-PIN, 01-05-Confirm-PIN. Home, Accounts
+and Loans have Bangla renders; the other -bn files are copies of the English ones. The
 gallery's sample ledger is not the owner's.
+
+step1-3 are the phone's own install dialogs, photographed on LB_Clean; they are the same
+pictures as before, only re-encoded from PNG to WebP.

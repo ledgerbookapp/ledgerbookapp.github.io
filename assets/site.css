@@ -509,7 +509,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 
 /* Two lines, always: "Your money, your phone," and then "nobody else." in gold -- the
    owner asked for the sentence to break at its comma and nowhere else. The first line
-   is the long one, 11.22em in Manrope at this weight, so the size is whatever makes it
+   is the long one, 10.30em in Roboto at this weight (11.4 leaves a margin), so the size is whatever makes it
    fit the column it is in (cqi is that column's width) and no larger than 72px. Below
    28px it is allowed to wrap rather than shrink further. */
 .hero-copy { container-type: inline-size; }
@@ -644,6 +644,13 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   display: block; font-family: var(--mono); font-weight: 400; font-size: 13px;
   line-height: 1.6; word-break: break-all; color: var(--ink);
 }
+/* What's New under the rows: the release's own lines, each opening with its emoji. */
+.release-notes { padding: 14px 24px 20px; border-top: 1px solid var(--rule); }
+.release-notes > b { display: block; font-size: 14.5px; margin-bottom: 8px; }
+.release-notes ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.release-notes li { font-size: 14.5px; line-height: 1.55; color: var(--ink-muted); overflow-wrap: anywhere; }
+.release-notes-lang { margin: 10px 0 0; font-size: 13px; color: var(--ink-muted); }
+html:not([lang="bn"]) .release-notes-lang { display: none; }
 
 /* -- permissions ------------------------------------------------------------------ */
 .perms {
@@ -677,7 +684,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 .btn-ghost:hover { filter: none; border-color: currentColor; }
 
 /* -- Bangla ------------------------------------------------------------------------
- * The display sizes above are set as tight as Manrope's Latin allows. Bengali hangs its
+ * The display sizes above are set as tight as Roboto's Latin allows. Bengali hangs its
  * matras above the line and its vowel signs below, and at a leading of 1 the second line
  * of a headline cuts through the first -- so it gets room, and none of the negative
  * tracking, which only pulls conjuncts into each other.
@@ -876,6 +883,10 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 .see-item p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
 .frame-lg { padding: 6px; border-radius: 40px; border-width: 3px; }
 .frame-lg img { border-radius: 33px; }
+/* 02 mirrors 03: the phone on the left, so two phone sections in a row do not read as one.
+   Narrower, .see's single column below takes over and the phone sits over the words. */
+.see-rev { grid-template-columns: 292px minmax(0, 1fr); }
+.see-rev .see-phone { order: -1; }
 
 /* -- the band, in a row -------------------------------------------------------------- */
 .band-row {
@@ -947,7 +958,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 }
 
 /* Bangla on this page, for the same reason as on the home page: the tight tracking that
-   suits Manrope pulls conjuncts into one another, and the leading needs room for matras. */
+   suits Roboto's Latin pulls conjuncts into one another, and the leading needs room for matras. */
 html[lang="bn"] .feat-hero h1, html[lang="bn"] .sec-title, html[lang="bn"] .num-title,
 html[lang="bn"] .band-row h2 { letter-spacing: 0; line-height: 1.3; }
 html[lang="bn"] .fcard h3, html[lang="bn"] .see-item h3 { letter-spacing: 0; }
@@ -1159,6 +1170,15 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .pill-quiet { color: var(--ink-muted); }
 .verify .sec-title { margin-top: 2px; }
 .verify-copy > p:not(.pill-eyebrow) { margin: 16px 0 0; color: var(--ink-muted); font-size: 16px; line-height: 1.75; max-width: 460px; }
+/* The two commands: labels over code that never wraps, and scrolls on its own line if a
+   narrow phone cannot fit it, rather than breaking at a hyphen into what reads as two. */
+.verify-cmds { margin: 12px 0 0; max-width: 460px; display: grid; gap: 4px; }
+.verify-cmds dt { color: var(--ink-muted); font-size: 13.5px; margin-top: 6px; }
+.verify-cmds dd { margin: 0; overflow-x: auto; }
+.verify-cmds code {
+  display: inline-block; white-space: nowrap; font-family: var(--mono); font-size: 13.5px;
+  padding: 6px 10px; border-radius: 8px; background: var(--panel); border: 1px solid var(--edge); color: var(--ink);
+}
 .hash-card { padding: 24px; background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-card); }
 .hash-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
 .hash-head b { font-size: 15px; }

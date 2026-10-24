@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.18.0';
+const SITE_VERSION = '2.19.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -239,6 +239,18 @@ function renderRelease() {
   set('[data-rel="hashTitleShort"]', 'SHA-256 · ' + num(release.version));
   // Copy is offered only once there is a fingerprint to copy.
   document.querySelectorAll('[data-copy]').forEach(b => { b.hidden = !release.sha; });
+
+  // The file's own name in the install guide's two commands. Taken from the link, so it is
+  // whatever the release really carries; ASCII digits in both languages, since it is typed.
+  const apk = decodeURIComponent((release.url || '').split('/').pop() || '');
+  if (apk.endsWith('.apk')) document.querySelectorAll('[data-rel="apkName"]').forEach(el => { el.textContent = apk; });
+
+  // What's New: textContent per line, never innerHTML -- the body is someone else's text.
+  const notes = release.notes || [];
+  document.querySelectorAll('[data-rel="notes"]').forEach(ul => {
+    ul.replaceChildren(...notes.map(line => { const li = document.createElement('li'); li.textContent = line; return li; }));
+  });
+  document.querySelectorAll('[data-rel="notesBox"]').forEach(box => { box.hidden = !notes.length; });
 }
 
 /* -- copying the fingerprint --------------------------------------------------
@@ -349,6 +361,19 @@ function restoreRelease() {
   } catch (_) { /* storage blocked or garbled: just wait for the API */ }
 }
 
+/*
+ * The lines a release body opens with, one change to a line, before the "---" that
+ * separates them from the fingerprint -- the same lines the app's update dialog shows.
+ * Eight at most: a card is not a changelog. Plain text only; nothing here is parsed as HTML.
+ */
+function releaseNotesOf(body) {
+  return body.split(/\r?\n---/)[0]
+    .split(/\r?\n/)
+    .map(s => s.trim())
+    .filter(s => s && !/^SHA-?256:/i.test(s))
+    .slice(0, 8);
+}
+
 async function loadRelease() {
   try {
     const r = await fetch('https://api.github.com/repos/' + REPO + '/releases/latest',
@@ -367,7 +392,8 @@ async function loadRelease() {
       version: (j.tag_name || '').replace(/^v/, ''),
       url: apk.browser_download_url,
       size: apk.size,
-      sha: m ? m[1] : null
+      sha: m ? m[1] : null,
+      notes: releaseNotesOf(j.body || '')
     };
     try { localStorage.setItem(RELEASE_KEY, JSON.stringify({ at: Date.now(), release })); } catch (_) { /* private window */ }
     renderRelease();
