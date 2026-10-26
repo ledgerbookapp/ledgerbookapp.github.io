@@ -1,4 +1,4 @@
-2.0.3
+2.0.6
 
 The app version the pictures in this folder show.
 
@@ -12,7 +12,7 @@ its own: the file is a claim about what is in the folder, and a number nobody re
 anything for is worse than no number.
 
 The app's pictures are the app's own gallery: screens drawn off the JVM by the app's
-GalleryTest, rendered from the release tag named above (a worktree of v2.0.3, not the
+GalleryTest, rendered from the release tag named above (a worktree of v2.0.6, not the
 working tree), in the Yellow accent, scaled from 1078 to 780 wide (780x1736) and saved as
 WebP at quality 0.9 (site v2.19.0; PNG before). Scenes: 03-01-Home, 05-Transactions,
 07-Accounts-All, 07-Accounts-Tab-Invest, 09-Loans-Given, 06-Analytics, 11-Backups-On, and
