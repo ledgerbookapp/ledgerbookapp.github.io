@@ -43,7 +43,6 @@ const S = {
                  'দৈনন্দিন টাকার জন্য দুই-তরফা হিসাবের খাতা। অ্যাকাউন্ট খুলতে হয় না, ' +
                  'কারও কাছে কিছু রিপোর্ট হয় না, আর হিসাব কখনো চুপচাপ বেহিসেব হয়ে যায় না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
-  downloadAlt:  ['Open the releases page', 'রিলিজ পাতা খুলুন'],
   versionLine:  ['Version {v} · {size} · Android 7.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০ বা তার পরে'],
   qrHead:       ['Scan to put it on your phone', 'ফোনে নিতে স্ক্যান করুন'],

@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.19.1';
+const SITE_VERSION = '2.20.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -162,6 +162,11 @@ function labelTheme() {
  */
 const REPO = 'rayhan27bd/ledgerbook-releases';
 const RELEASES_URL = 'https://github.com/' + REPO + '/releases';
+// Every release from app 2.0.7 carries the same file under one name, LedgerBook.apk, beside
+// the versioned one; GitHub keeps this address pointed at the newest. So a button is a real
+// download before the API answers, and stays one when the API never does (offline, rate
+// limited, blocked) -- where it used to fall back to the releases page.
+const LATEST_APK = RELEASES_URL + '/latest/download/LedgerBook.apk';
 
 let release = null;
 // Settles once the lookup has answered or given up, whichever. get.html waits on it to
@@ -199,12 +204,12 @@ function renderRelease() {
   const fill = (v) => (s) => s.replace('{v}', num(v)).replace('{size}', fmtSize(release.size));
 
   document.querySelectorAll('#dl, [data-dl]').forEach(a => {
-    a.href = release ? release.url : RELEASES_URL;
+    a.href = release ? release.url : LATEST_APK;
     a.removeAttribute('aria-disabled');
   });
-  // The words say which of the two the link is. A button that says "Download" and opens
-  // a web page would be a small lie; the header pill's single word is true either way.
-  const label = release ? S.download[i] : S.downloadAlt[i];
+  // Both addresses are the file itself, so the button says Download either way. It said
+  // "Open the releases page" while it led there, which was true then and is not now.
+  const label = S.download[i];
   const dl = document.getElementById('dl');
   if (dl && !dl.querySelector('[data-dl-label]')) dl.textContent = label;
   document.querySelectorAll('[data-dl-label]').forEach(el => { el.textContent = label; });
@@ -380,7 +385,11 @@ async function loadRelease() {
       { headers: { Accept: 'application/vnd.github+json' } });
     if (!r.ok) return;
     const j = await r.json();
-    const apk = (j.assets || []).find(a => a.name.endsWith('.apk'));
+    // The stable name first: it is the file a reader ends up with, so the install guide's
+    // two commands name what is in their Downloads folder. The versioned one for a release
+    // made before 2.0.7 began carrying both.
+    const assets = j.assets || [];
+    const apk = assets.find(a => a.name === 'LedgerBook.apk') || assets.find(a => a.name.endsWith('.apk'));
     if (!apk) return;
 
     // The fingerprint is published in the body of the release, which is also what the

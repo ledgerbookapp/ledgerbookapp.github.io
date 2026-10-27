@@ -50,7 +50,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.19.1". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.20.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -60,7 +60,8 @@ has nothing to do with the app's.
 Nothing on this site names a version. `site.js` asks the GitHub releases API what the newest
 one is and fills in the number, the size, the download link and the SHA-256 from the release
 body. Cut a release and the site follows by itself; if the API is unreachable the download
-button still works, it just points at the releases page instead of the file.
+button still downloads: it starts as releases/latest/download/LedgerBook.apk, the one name every
+release carries from app 2.0.7, and the API only narrows it to that release's own copy.
 
 ## The screenshots in the install guide
 

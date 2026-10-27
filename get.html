@@ -13,9 +13,10 @@
   which file is newest and hands the phone straight to it. The code never changes and
   never goes stale.
 
-  If the API does not answer (offline, rate limited, blocked) the reader lands on the
-  releases page, which always has the file; and the links below are there for anyone
-  whose phone does not follow the redirect.
+  If the API does not answer (offline, rate limited, blocked) the reader is sent to
+  releases/latest/download/LedgerBook.apk, which every release from app 2.0.7 carries and
+  GitHub keeps pointed at the newest; and the links below are there for anyone whose phone
+  does not follow the redirect.
 -->
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
@@ -36,7 +37,7 @@
       <h1 data-s="getTitle">Downloading LedgerBook…</h1>
       <p class="lead" data-s="getLead">Finding the newest version. The download starts by itself — if it does not, use the button below.</p>
       <div class="cta">
-        <a class="btn" id="dl" href="https://github.com/rayhan27bd/ledgerbook-releases/releases">Open the releases page</a>
+        <a class="btn" id="dl" href="https://github.com/rayhan27bd/ledgerbook-releases/releases/latest/download/LedgerBook.apk">Download for Android</a>
         <a class="btn btn-quiet" href="install.html" data-s="navInstall">How to install</a>
       </div>
       <p class="meta" id="dl-meta"></p>
@@ -60,12 +61,12 @@
     // at this page for a minute before being sent somewhere useful. If a release is
     // already known from an earlier visit, that is a better place to land than the
     // releases page when the lookup is merely slow.
-    setTimeout(() => go(release ? release.url : RELEASES_URL), 8000);
+    setTimeout(() => go(release ? release.url : LATEST_APK), 8000);
     releaseReady.then(() => {
       // The page stays on screen while the file comes down, so it can say what to
-      // expect at the end of it.
-      if (release) showDownloadNote();
-      go(release ? release.url : RELEASES_URL);
+      // expect at the end of it. Either address is the file now, so the note is always true.
+      showDownloadNote();
+      go(release ? release.url : LATEST_APK);
     });
   });
 </script>
