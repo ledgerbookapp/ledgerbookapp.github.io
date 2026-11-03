@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+tGxFN6VHhkC4jPj6THDv0vCHrGycb4b+BAViimTu3I='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
 <title>What LedgerBook does</title>
 <meta name="description" content="Double-entry books, five kinds of entry, analytics, loans, encrypted backups — on your phone, with no account.">
 
@@ -22,6 +26,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LedgerBook: your money, your phone, nobody else. Free, for Android.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What LedgerBook does">
+<meta name="twitter:description" content="Double-entry books, five kinds of entry, analytics, loans, encrypted backups — on your phone, with no account.">
 
 
 
@@ -39,6 +45,7 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main" data-s="skipLink">Skip to the content</a>
 
 <header>
   <div class="wrap bar">
@@ -77,7 +84,7 @@
   </div>
 </header>
 
-<main class="home feat">
+<main id="main" tabindex="-1" class="home feat">
 
   <!-- -- hero ------------------------------------------------------------------ -->
   <section class="wrap feat-hero">
@@ -98,7 +105,7 @@
     <p class="sec-sub"><span data-s="shotsLead">Six screens, on a sample ledger made up for the purpose.</span><span class="only-narrow" data-s="shotsSwipe"> Swipe to see them all.</span></p>
     <!-- Six in a row on a wide screen; on a phone the row is wider than the screen and
          scrolls sideways, each frame snapping into place. -->
-    <div class="shots-row">
+    <div class="shots-row" tabindex="0" role="region" data-s-label="shotsTitle" aria-label="A look at it">
       <figure class="shot">
         <div class="frame still" aria-describedby="cap-1">
           <img class="s-light" src="assets/screens/app-home-light.webp" data-bn="assets/screens/app-home-light-bn.webp" width="780" height="1736" loading="lazy" alt="">
@@ -156,12 +163,12 @@
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h.01M4 12h.01M4 18h.01"/></svg></span>
         <h3 data-s="f1Head">Five kinds of entry</h3>
-        <p data-s="f1Body">Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved.</p>
+        <p data-s="f1Body">Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3 4 7.5V10h16V7.5z"/><path d="M6.5 10v8M10 10v8M14 10v8M17.5 10v8"/></svg></span>
-        <h3 data-s="f2Head">Bank, wallet, cash and deposits</h3>
-        <p data-s="f2Body">Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.</p>
+        <h3 data-s="f2Head">Bank, cards, wallet, cash and deposits</h3>
+        <p data-s="f2Body">Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
@@ -171,7 +178,7 @@
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg></span>
         <h3 data-s="fRevHead">A mistake is reversed, not erased</h3>
-        <p data-s="fRevBody">Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced.</p>
+        <p data-s="fRevBody">Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced. A change that would take an account below ৳0 is asked first, and the Accounts page names any account that has gone there, so you can check it against the bank.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5"/><path d="M12 11v6M9 14l3 3 3-3"/></svg></span>
@@ -189,7 +196,7 @@
         <div class="see-list">
           <article class="see-item">
             <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9.5c-.6-1-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.2 0 3 6 1.6 6 4.4 0 1.3-1.3 2.4-3 2.4-1.4 0-2.6-.6-3.2-1.6M12 6v2M12 16.5v1.5"/></svg></span>
-            <div><h3 data-s="d0Head">FDR profit, on its own schedule</h3><p data-s="d0Body">An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.</p></div>
+            <div><h3 data-s="d0Head">FDR profit, on its own schedule</h3><p data-s="d0Body">An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for. If the phone’s clock was set ahead and a profit came before its day, one tap takes it back, and it comes again when it is due.</p></div>
           </article>
           <article class="see-item">
             <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M4 20h16"/><rect x="5" y="13" width="3" height="5" rx=".5"/><rect x="10.5" y="9" width="3" height="9" rx=".5"/><rect x="16" y="5" width="3" height="13" rx=".5"/></svg></span>
@@ -206,10 +213,11 @@
         </div>
       </div>
       <!-- The Invest tab: the FDRs and DPSs together, each with its profit, its next date and
-           what it comes to (app 2.0.6, the gallery's 07-Accounts-Tab-Invest). -->
-      <div class="frame frame-lg see-phone still" data-cap="shotInvest">
-        <img class="s-light" src="assets/screens/app-invest-light.webp" data-bn="assets/screens/app-invest-light-bn.webp" width="780" height="1736" loading="lazy" alt="">
-        <img class="s-dark"  src="assets/screens/app-invest-dark.webp" data-bn="assets/screens/app-invest-dark-bn.webp"  width="780" height="1736" loading="lazy" alt="">
+           what it comes to (the gallery's 07-Accounts-Tab-Invest; the app version is in
+           assets/screens/SOURCE). -->
+      <div class="frame frame-lg see-phone still">
+        <img class="s-light" src="assets/screens/app-invest-light.webp" data-bn="assets/screens/app-invest-light-bn.webp" width="780" height="1736" loading="lazy" data-s-alt="shotInvest" alt="FDR and DPS together">
+        <img class="s-dark"  src="assets/screens/app-invest-dark.webp" data-bn="assets/screens/app-invest-dark-bn.webp"  width="780" height="1736" loading="lazy" data-s-alt="shotInvest" alt="FDR and DPS together">
       </div>
     </div>
   </section>
@@ -222,17 +230,19 @@
         <div class="see-list">
           <article class="see-item">
             <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
-            <div><h3 data-s="f4Head">A month at a time</h3><p data-s="f4Body">Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.</p></div>
+            <div><h3 data-s="f4Head">A month at a time</h3><p data-s="f4Body">Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick, the coming one too, with what is already dated in it. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.</p></div>
           </article>
           <article class="see-item">
             <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M4 8h15l-4-4M20 16H5l4 4"/></svg></span>
-            <div><h3 data-s="f5Head">Which account did the work</h3><p data-s="f5Body">Money in and money out for each account side by side, each marked in its own colour, so you can see which one everything actually runs through and which is just sitting there.</p></div>
+            <div><h3 data-s="f5Head">Which account did the work</h3><p data-s="f5Body">Money in and money out for each account side by side, each marked in its own colour, so you can see which one everything actually runs through and which is just sitting there. Tabs pick out the accounts money came into, the ones it left and the ones it did not touch, counted in green, red and blue.</p></div>
           </article>
         </div>
       </div>
-      <div class="frame frame-lg see-phone still" data-cap="shotAnalytics">
-        <img class="s-light" src="assets/screens/app-analytics-light.webp" data-bn="assets/screens/app-analytics-light-bn.webp" width="780" height="1736" loading="lazy" alt="">
-        <img class="s-dark"  src="assets/screens/app-analytics-dark.webp" data-bn="assets/screens/app-analytics-dark-bn.webp"  width="780" height="1736" loading="lazy" alt="">
+      <!-- Money Flow, the page this section's second card describes (the gallery's
+           06-Money-Flow). The month's own page is already the fifth screen above. -->
+      <div class="frame frame-lg see-phone still">
+        <img class="s-light" src="assets/screens/app-flow-light.webp" data-bn="assets/screens/app-flow-light-bn.webp" width="780" height="1736" loading="lazy" data-s-alt="shotFlow" alt="Money in and out, account by account">
+        <img class="s-dark"  src="assets/screens/app-flow-dark.webp" data-bn="assets/screens/app-flow-dark-bn.webp"  width="780" height="1736" loading="lazy" data-s-alt="shotFlow" alt="Money in and out, account by account">
       </div>
     </div>
   </section>
@@ -249,7 +259,7 @@
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <h3 data-s="f7Head">Backups you hold yourself</h3>
-        <p data-s="f7Body">A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings. A password locks the file — the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, the app tells you.</p>
+        <p data-s="f7Body">A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything. A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
@@ -293,7 +303,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.20.0</span>
+      <span class="foot-ver" data-site-version>Website v2.21.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

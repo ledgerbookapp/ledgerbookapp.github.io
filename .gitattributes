@@ -1,0 +1,3 @@
+# The pages hash their inline scripts into the Content-Security-Policy. A checkout that turned
+# LF into CRLF would change those bytes locally (not on GitHub Pages), so keep LF everywhere.
+* text=auto eol=lf

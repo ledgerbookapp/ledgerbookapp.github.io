@@ -35,6 +35,10 @@ gone wrong here before: a header that drifted on one page, a `data-s` with no st
 it, a string with only one of its two languages, two keys holding the same English, an
 `<img>` with no size, a missing file, and English in the HTML that no longer matches the
 catalogue — `node check.js --fix` writes the catalogue's English back into the pages. It caught a duplicate on its first run.
+Since 2.21.0 it also checks that every inline script's hash is in its page's
+Content-Security-Policy (change a byte of the theme script in a head and the browser
+refuses it without a word), and that a picture's `alt` is the catalogue's English for its
+`data-s-alt`.
 
 ## The two rules worth knowing
 
@@ -50,7 +54,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.20.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.21.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -85,14 +89,15 @@ same commit that replaces the pictures.
 three screens — the name, the PIN, the PIN again — so step 4 has three pictures, in both
 themes (`step4-*-light`, `step4-*-dark`). The features page has twenty-eight (seven
 screens — the six in a row and the Invest tab beside the deposits — in two themes and two
-languages). Since 2.18.0 they are the app's own gallery: the screens the app's GalleryTest
+languages), and since 2.21.0 thirty-two: Money Flow beside "Seeing where it went", where the
+Analytics picture stood a second time. Since 2.18.0 they are the app's own gallery: the screens the app's GalleryTest
 draws off the JVM, from the release tag named in `assets/screens/SOURCE`, in the Yellow
 accent, scaled from 1078 to 780 wide (780×1736) — sharp on a high-density phone (since
 2.14.4 they are not enlarged or offered for saving). Since 2.19.0 every picture in
-`assets/screens/` is WebP at quality 0.9: the forty-six weigh about 2.6 MB, where the
+`assets/screens/` is WebP at quality 0.9: the fifty weigh about 2.6 MB, where the
 PNGs weighed 7.7 MB. To retake them, run the gallery in a worktree of the release tag (its
-command is at the top of `GalleryTest.kt`) and take the scenes SOURCE names. Which Bangla
-pictures are English copies, because the gallery has no Bangla render of that scene, is
+command is at the top of `GalleryTest.kt`) and take the scenes SOURCE names. What was changed
+in the gallery before a render -- a fuller current month, a Bangla scene it lacks -- is
 in SOURCE too.
 
 In 2.17.0 they were the design canvas's own boards; before that, screenshots from the

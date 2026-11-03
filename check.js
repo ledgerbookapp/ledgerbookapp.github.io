@@ -55,8 +55,27 @@ for (const page of [...PAGES, ...HEADERLESS]) {
   if (!fs.existsSync(page)) { note(`missing page: ${page}`); continue; }
   const html = fs.readFileSync(page, 'utf8');
 
-  for (const m of html.matchAll(/data-s(-label|-rich)?="([^"]+)"/g))
+  for (const m of html.matchAll(/data-s(-label|-rich|-alt)?="([^"]+)"/g))
     if (!S[m[2]]) note(`${page}: data-s${m[1] || ''}="${m[2]}" has no entry in the catalogue`);
+
+  // A picture's alt in the HTML is what a reader without script hears; it has to be the
+  // catalogue's English, as every data-s element's text is.
+  for (const m of html.matchAll(/<img\b[^>]*\bdata-s-alt="([^"]+)"[^>]*>/g)) {
+    const alt = (m[0].match(/\salt="([^"]*)"/) || [])[1];
+    if (S[m[1]] && alt !== S[m[1]][0]) note(`${page}: an <img data-s-alt="${m[1]}"> says alt="${alt}", the catalogue "${S[m[1]][0]}"`);
+  }
+
+  // The Content-Security-Policy allows each inline script by its hash. Change a byte of the
+  // script and the hash no longer matches: the browser refuses it without a word, and the
+  // theme a reader chose stops applying before first paint.
+  {
+    const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1];
+    if (!csp) note(`${page}: has no Content-Security-Policy`);
+    else for (const m of html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) {
+      const h = 'sha256-' + require('crypto').createHash('sha256').update(m[1], 'utf8').digest('base64');
+      if (!csp.includes(`'${h}'`)) note(`${page}: an inline script is not in the CSP -- add '${h}'`);
+    }
+  }
 
   for (const m of html.matchAll(/(?:src|srcset|href|data-bn)="((?:assets)\/[^"]+)"/g))
     if (!fs.existsSync(m[1])) note(`${page}: ${m[1]} is referenced but not on disk`);
@@ -117,6 +136,11 @@ for (const page of [...PAGES, ...HEADERLESS])
 // file and picture checks -- a renamed logo broke it once without anyone being told.
 {
   const html = fs.readFileSync('404.html', 'utf8');
+  const csp = (html.match(/http-equiv="Content-Security-Policy" content="([^"]+)"/) || [])[1];
+  for (const m of html.matchAll(/<script(?![^>]*\bsrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
+    const h = 'sha256-' + require('crypto').createHash('sha256').update(m[1], 'utf8').digest('base64');
+    if (!csp || !csp.includes(`'${h}'`)) note(`404.html: an inline script is not in the CSP -- add '${h}'`);
+  }
   for (const m of html.matchAll(/(?:src|srcset|href)="\/(assets\/[^"]+)"/g))
     if (!fs.existsSync(m[1])) note(`404.html: /${m[1]} is referenced but not on disk`);
   for (const m of html.matchAll(/<img\b[^>]*>/g))

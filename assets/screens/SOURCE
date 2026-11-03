@@ -1,4 +1,4 @@
-2.0.7
+2.1.3
 
 The app version the pictures in this folder show.
 
@@ -12,14 +12,35 @@ its own: the file is a claim about what is in the folder, and a number nobody re
 anything for is worse than no number.
 
 The app's pictures are the app's own gallery: screens drawn off the JVM by the app's
-GalleryTest, rendered from the release tag named above (a worktree of v2.0.7, not the
+GalleryTest, rendered from the release tag named above (a worktree of the tag, not the
 working tree), in the Yellow accent, scaled from 1078 to 780 wide (780x1736) and saved as
 WebP at quality 0.9 (site v2.19.0; PNG before). Scenes: 03-01-Home, 05-Transactions,
-07-Accounts-All, 07-Accounts-Tab-Invest, 09-Loans-Given, 06-Analytics, 11-Backups-On, and
-for step 4 01-02-Welcome-Name-Typed, 01-04-Create-PIN, 01-05-Confirm-PIN. Every scene has
-its own Bangla render (-bn) since site v2.20.0; before that only Home, Accounts and Loans did
-and the other -bn files were copies of the English ones. The
-gallery's sample ledger is not the owner's.
+07-Accounts-All, 07-Accounts-Tab-Invest, 09-Loans-Given, 06-Analytics, 11-Backups-On,
+06-Money-Flow (app-flow-*, since site v2.21.0), and for step 4 01-02-Welcome-Name-Typed,
+01-04-Create-PIN, 01-05-Confirm-PIN. Every scene has its own Bangla render (-bn) since site
+v2.20.0. The gallery's sample ledger is not the owner's, and it is dated back from the day
+of the render -- so a render early in a month shows that month nearly empty.
+
+For site v2.21.0 (rendered 2026-11-03) the worktree's GalleryTest was changed before the
+render, and the change was not committed to the app: the base sample ledger gained every
+kind of entry between the 1st of the render's month and the render (salary, business
+income, rent, bills, bazar, food, transport, a transfer, a deposit, a withdrawal), so
+Home, Transactions, Analytics, Money Flow and Accounts read a lived-in month; and
+06-Money-Flow gained a Bangla scene, which the app's gallery lacks. 06-Analytics and
+06-Money-Flow were drawn inside MainScreen (Main(AppPage.STATISTICS / MONEY_FLOW), tests
+webAnalytics* and webFlow* in Gallery03HomeTest), because the gallery's own scenes draw
+the page alone, with no title bar, and the picture opened on a card cut at the top.
+Loans, Backups and step 4 do not read the month and are the unchanged v2.1.3 renders.
+Until the app's own gallery does both, do the same again at the next retake.
+
+Since site v2.21.0 the app's pictures have a gap at the top (56px) and the bottom (32px)
+in the screen's own colour, where a phone has its status bar and gesture area: the
+gallery draws neither, so the page's title sat on the frame's top edge and was clipped by
+its rounded corners, and the last row ran into the bottom. The render is scaled to fit
+the 1648 between (741 wide), centred, with the sides in the same colour.
+
+No WebP encoder is installed on this machine; the PNGs were scaled and encoded by headless
+Chrome's canvas (toDataURL('image/webp', 0.9)), one page per picture.
 
 step1-3 are the phone's own install dialogs, photographed on LB_Clean; they are the same
 pictures as before, only re-encoded from PNG to WebP.

@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<!-- What the page may load, said by the page itself: GitHub Pages sends no headers of its own.
+     The two hashes are the inline scripts (the theme one in every head, and get.html's
+     own): change a byte of either and work its hash out again, or it stops running. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+tGxFN6VHhkC4jPj6THDv0vCHrGycb4b+BAViimTu3I='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
 <title>LedgerBook — your money, your phone, nobody else</title>
 <meta name="description" content="A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.">
 
@@ -22,6 +29,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LedgerBook: your money, your phone, nobody else. Free, for Android.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LedgerBook — your money, your phone, nobody else">
+<meta name="twitter:description" content="A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.">
 
 
 
@@ -59,6 +68,7 @@
 </script>
 </head>
 <body>
+<a class="skip" href="#main" data-s="skipLink">Skip to the content</a>
 
 <header>
   <div class="wrap bar">
@@ -97,7 +107,7 @@
   </div>
 </header>
 
-<main class="home">
+<main id="main" tabindex="-1" class="home">
 
   <!-- -- hero ------------------------------------------------------------------ -->
   <section class="wrap hero hero-home">
@@ -126,7 +136,7 @@
       <!-- Hidden on a narrow screen, where the reader is already holding the phone the
            code would send them to; there it folds behind a button below, for a friend. -->
       <aside class="qr">
-        <img src="assets/qr.svg" alt="" width="185" height="185">
+        <img src="assets/qr.svg" data-s-alt="qrAlt" alt="QR code that downloads the newest LedgerBook" width="185" height="185">
         <div>
           <b data-s="qrHead">Scan to put it on your phone</b>
           <p data-s="qrBody">Point a phone camera at it and the newest version downloads straight away. First time? Read how to install first.</p>
@@ -141,17 +151,19 @@
           <span data-s="qrShare">Install it on another phone</span>
           <svg class="ico chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
         </summary>
-        <img src="assets/qr.svg" alt="" width="220" height="220">
+        <img src="assets/qr.svg" data-s-alt="qrAlt" alt="QR code that downloads the newest LedgerBook" width="220" height="220">
         <p data-s="qrShareBody">Hold this screen up to the other phone’s camera. The newest version downloads there straight away.</p>
       </details>
     </div>
 
     <!-- The app's own first screen, the same picture as the features page's first, so a
          reader sees the real thing before reading a word about it. It follows the theme
-         and the language like the rest of the page. Shown at page size only, not enlarged. -->
+         and the language like the rest of the page. Shown at page size only, not enlarged.
+         Lazy so the theme that is hidden never downloads (a hidden lazy picture is not
+         fetched); high priority so the one showing still comes first once it is laid out. -->
     <div class="frame frame-lg still hero-shot" data-cap="shotHome">
-      <img class="s-light" src="assets/screens/app-home-light.webp" data-bn="assets/screens/app-home-light-bn.webp" width="780" height="1736" loading="lazy" alt="">
-      <img class="s-dark"  src="assets/screens/app-home-dark.webp" data-bn="assets/screens/app-home-dark-bn.webp"  width="780" height="1736" loading="lazy" alt="">
+      <img class="s-light" src="assets/screens/app-home-light.webp" data-bn="assets/screens/app-home-light-bn.webp" width="780" height="1736" loading="lazy" fetchpriority="high" data-s-alt="shotHome" alt="The first screen">
+      <img class="s-dark"  src="assets/screens/app-home-dark.webp" data-bn="assets/screens/app-home-dark-bn.webp"  width="780" height="1736" loading="lazy" fetchpriority="high" data-s-alt="shotHome" alt="The first screen">
     </div>
   </section>
 
@@ -160,7 +172,7 @@
     <dl class="stats">
       <div><dt class="num-big">0</dt><dd data-s="stat1">servers of ours for an entry to go to</dd></div>
       <div><dt class="num-big">2</dt><dd data-s="stat2">files that touch the internet, both for updates</dd></div>
-      <div><dt class="num-big">3</dt><dd data-s="stat3">permissions, each with a single job</dd></div>
+      <div><dt class="num-big">4</dt><dd data-s="stat3">permissions, each with a single job</dd></div>
       <!-- The size is overwritten from the release once the API answers; the figure
            written here is only what shows if it never does. -->
       <div><dt class="num-big" data-rel="size">—</dt>
@@ -269,7 +281,7 @@
     <div class="sec-head">
       <p class="eyebrow" data-s="permEyebrow">Permissions</p>
       <h2 data-s="permTitle">What it asks for, and why</h2>
-      <p data-s="permSub">Three permissions. Each one has a single job.</p>
+      <p data-s="permSub">Four permissions. Each one has a single job.</p>
     </div>
     <ul class="perms">
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
@@ -278,6 +290,8 @@
         <div><h3 data-s="permNotify">Notifications</h3><p data-s="permNotifyW">To remind you when a loan is due, a DPS instalment is near or a deposit matures, and to tell you about updates and backups.</p></div></li>
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></span>
         <div><h3 data-s="permInstall">Install apps</h3><p data-s="permInstallW">To install the update it downloaded for you.</p></div></li>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span>
+        <div><h3 data-s="permBattery">Run in the background</h3><p data-s="permBatteryW">So a battery saver does not hold back the daily backup and the reminders. Asked only when you tap Background Work.</p></div></li>
     </ul>
   </section>
 
@@ -340,7 +354,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.20.0</span>
+      <span class="foot-ver" data-site-version>Website v2.21.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

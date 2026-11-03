@@ -26,6 +26,10 @@ const S = {
   navDownload:  ['Download', 'ডাউনলোড'],
   menuOpen:     ['Open the menu', 'মেনু খুলুন'],
   menuClose:    ['Close the menu', 'মেনু বন্ধ করুন'],
+  // The first thing a keyboard reaches on every page, shown only once it has focus.
+  skipLink:     ['Skip to the content', 'মূল লেখায় যান'],
+  // The QR code's own words for a screen reader: what scanning it does.
+  qrAlt:        ['QR code that downloads the newest LedgerBook', 'QR কোড, যা সর্বশেষ LedgerBook নামায়'],
 
   // -- hero --------------------------------------------------------------------
   heroBadge:    ['Free', 'ফ্রি'],
@@ -289,8 +293,10 @@ const S = {
   // -- permissions -------------------------------------------------------------
   permEyebrow:  ['Permissions', 'অনুমতি'],
   permTitle:    ['What it asks for, and why', 'কী কী অনুমতি চায়, আর কেন'],
-  permSub:      ['Three permissions. Each one has a single job.',
-                 'তিনটে অনুমতি। প্রতিটার একটাই কাজ।'],
+  // Four since app 2.0.7, which added the battery one; the home page's stat says the same
+  // figure, so the two change together.
+  permSub:      ['Four permissions. Each one has a single job.',
+                 'চারটে অনুমতি। প্রতিটার একটাই কাজ।'],
   permOptional: ['Optional', 'ঐচ্ছিক'],
   permInternet: ['Internet', 'ইন্টারনেট'],
   permInternetW: ['Only to check for a newer version, and to download it when you say yes.',
@@ -303,6 +309,11 @@ const S = {
   permInstall:  ['Install apps', 'অ্যাপ ইনস্টল'],
   permInstallW: ['To install the update it downloaded for you.',
                  'নিজে নামানো নতুন ভার্সনটা ইনস্টল করার জন্য।'],
+  // REQUEST_IGNORE_BATTERY_OPTIMIZATIONS (app 2.0.7): asked only from Background Work on
+  // the Settings and Backup pages, when a battery saver is holding the app back.
+  permBattery:  ['Run in the background', 'ব্যাকগ্রাউন্ডে চলা'],
+  permBatteryW: ['So a battery saver does not hold back the daily backup and the reminders. Asked only when you tap Background Work.',
+                 'যাতে ব্যাটারি সেভার প্রতিদিনের ব্যাকআপ আর রিমাইন্ডার আটকে না রাখে। শুধু আপনি "ব্যাকগ্রাউন্ড কাজ"-এ চাপলে চায়।'],
 
   // -- questions, on the home page ------------------------------------------------
   // What a first-time reader asks before installing a file from outside the Play Store.
@@ -365,6 +376,8 @@ const S = {
   shotAnalytics:["Where the month went", "মাসটা কোথায় গেল"],
   shotBackup:   ["Backup and restore", "ব্যাকআপ আর ফেরানো"],
   shotInvest:   ["FDR and DPS together", "FDR আর DPS একসাথে"],
+  // Money Flow, beside "Seeing where it went" (the gallery's 06-Money-Flow, app 2.1.3).
+  shotFlow:     ["Money in and out, account by account", "অ্যাকাউন্ট ধরে টাকা আসা-যাওয়া"],
 
   featCta:      ['All of it, on your phone', 'সবকিছু, আপনার ফোনেই'],
   featBooksTitle:['Keeping the books', 'হিসাব রাখা'],
@@ -374,12 +387,13 @@ const S = {
   f1Head:       ['Five kinds of entry', 'পাঁচ রকম এন্ট্রি'],
   // 1.1.97–1.1.99: the amount on its own card with quick adds, the bill calculator on
   // Expense, and the balance check that stops an account paying more than it holds.
-  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved.',
-                 'আয়, খরচ, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংক থেকে টাকা তোলা বা জমা দেওয়া — প্রতিটার আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির জন্য যা লাগে তাই চাওয়া হয়। অঙ্কটা তার কার্ডেই লিখুন, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; খরচের পাতায় + − × ÷ দিয়ে বিলের যোগফলও করা যায়। অ্যাকাউন্টে যত আছে তার বেশি অঙ্ক সেভ হওয়ার আগেই আটকে যায়।'],
-  f2Head:       ['Bank, wallet, cash and deposits',
-                 'ব্যাংক, ওয়ালেট, নগদ আর জমা'],
-  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
-                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন, প্রতিটা ভাগের মোট আলাদা দেখায়, আর একটা চোখের চিহ্নে সব অঙ্ক লুকানো যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, আর যে অ্যাকাউন্টে এখনো টাকা আছে সেটা হুট করে মুছে যায় না: মুছতে গেলে আগে টাকাটা সরাতে বলে।'],
+  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it.',
+                 'আয়, খরচ, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংক থেকে টাকা তোলা বা জমা দেওয়া — প্রতিটার আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির জন্য যা লাগে তাই চাওয়া হয়। অঙ্কটা তার কার্ডেই লিখুন, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; খরচের পাতায় + − × ÷ দিয়ে বিলের যোগফলও করা যায়। অ্যাকাউন্টে যত আছে তার বেশি অঙ্ক সেভ হওয়ার আগেই আটকে যায়। সামনের তারিখে এন্ট্রি দিলে তার দিন না আসা পর্যন্ত সেটা ব্যালেন্সে ঢোকে না, আর তার জন্য যে টাকা লাগবে তা আগলে রাখা হয়।'],
+  // 2.0.9–2.1.1: cards show their network, numbers their last four digits.
+  f2Head:       ['Bank, cards, wallet, cash and deposits',
+                 'ব্যাংক, কার্ড, ওয়ালেট, নগদ আর জমা'],
+  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
+                 'আপনার অ্যাকাউন্ট ভাগ করা থাকে ব্যাংক, নগদ, ওয়ালেট আর জমায় — প্রতিটার রং আপনি বেছে নেন, প্রতিটা ভাগের মোট আলাদা দেখায়, আর একটা চোখের চিহ্নে সব অঙ্ক লুকানো যায়। ক্রেডিট বা ডেবিট কার্ডে তার নেটওয়ার্ক দেখায় — Visa, Mastercard, American Express বা UnionPay — আর নম্বরের শুধু শেষ চার অঙ্ক, যদিও খুঁজলে পুরো নম্বরেই পাওয়া যায়। প্রতিটা এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টই দেখায়, আর যে অ্যাকাউন্টে এখনো টাকা আছে সেটা হুট করে মুছে যায় না: মুছতে গেলে আগে টাকাটা সরাতে বলে।'],
   f3Head:       ['A trial balance that proves itself', 'ট্রায়াল ব্যালেন্স, যা নিজেই প্রমাণ'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
@@ -392,8 +406,8 @@ const S = {
   // detail dialog both reverse instead, behind the PIN -- and the exports carry every
   // transaction. The PDF has no password, so this says nothing about one.
   fRevHead:     ['A mistake is reversed, not erased', 'ভুল মোছা হয় না, ফিরিয়ে নেওয়া হয়'],
-  fRevBody:     ['Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced.',
-                 'খাতা থেকে কিছুই কখনো মোছা হয় না। যেকোনো এন্ট্রি খুলে প্রত্যাহার করুন — পিন দেওয়ার পর অ্যাপ সেটার পাশেই প্রত্যাহারটা লিখে রাখে — বা এডিট করুন; দুই ক্ষেত্রেই যোগফল সেই অনুযায়ী বদলায়। ইতিহাস পুরোটাই থাকে, তাই প্রতিটা অঙ্কের উৎস খুঁজে পাওয়া যায়।'],
+  fRevBody:     ['Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced. A change that would take an account below ৳0 is asked first, and the Accounts page names any account that has gone there, so you can check it against the bank.',
+                 'খাতা থেকে কিছুই কখনো মোছা হয় না। যেকোনো এন্ট্রি খুলে প্রত্যাহার করুন — পিন দেওয়ার পর অ্যাপ সেটার পাশেই প্রত্যাহারটা লিখে রাখে — বা এডিট করুন; দুই ক্ষেত্রেই যোগফল সেই অনুযায়ী বদলায়। ইতিহাস পুরোটাই থাকে, তাই প্রতিটা অঙ্কের উৎস খুঁজে পাওয়া যায়। কোনো বদলে অ্যাকাউন্ট ৳০-এর নিচে নামলে অ্যাপ আগে জিজ্ঞেস করে, আর এমন অ্যাকাউন্টের নাম অ্যাকাউন্টস পাতায় দেখায়, যাতে ব্যাংকের সাথে মিলিয়ে নিতে পারেন।'],
   fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সাথে নিয়ে যাওয়ার মতো'],
   fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction, not only the ones on screen. Each export asks for your PIN or fingerprint first.',
                  'লেনদেনগুলো পড়ার মতো একটা PDF রিপোর্ট হিসেবে, বা CSV ফাইল হিসেবে export করুন — CSV এক্সেলে খোলে, বাংলা অক্ষর ঠিক রেখে। স্ক্রিনে যা দেখা যাচ্ছে শুধু তা নয়, সব লেনদেন। প্রতিটা export-এর আগে পিন বা আঙুলের ছাপ চায়।'],
@@ -401,8 +415,8 @@ const S = {
   featDepTitle: ['Deposits that earn', 'জমা, যা মুনাফা দেয়'],
   d0Head:       ['FDR profit, on its own schedule', 'FDR-এর মুনাফা, তার নিজের সময়ে'],
   // 1.1.99: Every 1, 2, 3 or 4 months, or Other for any whole number of months.
-  d0Body:       ['An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for.',
-                 'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — ১, ২, ৩ বা ৪ মাস পরপর বা আপনার ঠিক করা যেকোনো মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে।'],
+  d0Body:       ['An FDR pays its profit into the account you link — every 1, 2, 3 or 4 months or any other number of months you set, all at maturity, or on the day it opens. Source tax comes off at your TIN rate, and each payment is dated to the period it was earned for. If the phone’s clock was set ahead and a profit came before its day, one tap takes it back, and it comes again when it is due.',
+                 'FDR-এর মুনাফা জমা হয় আপনার যুক্ত করা অ্যাকাউন্টে — ১, ২, ৩ বা ৪ মাস পরপর বা আপনার ঠিক করা যেকোনো মাস পরপর, মেয়াদ শেষে একসাথে, বা খোলার দিনেই। উৎসে কর কাটে আপনার TIN-এর হারে, আর প্রতিটা মুনাফা বসে যে সময়ের জন্য পাওয়া, সেই তারিখে। ফোনের ঘড়ি এগিয়ে থাকায় কোনো মুনাফা তার দিনের আগে বসে গেলে এক চাপে ফেরানো যায়, আর নিজের দিনে সেটা আবার আসে।'],
   d1Head:       ['A DPS that grows on itself', 'DPS, যা নিজের ওপর বাড়ে'],
   // 2.0.1: a DPS pays every 1, 2, 3 or 4 months, or any other number (it was 1, 3 or 6).
   d1Body:       ['Pay instalments every 1, 2, 3 or 4 months, or any other number of months you set — Pay lights up when one is due, and two unpaid ones raise a warning. Each year’s profit joins the deposit, so the next year earns on it too. A matured DPS can be paid back as a monthly pension.',
@@ -416,15 +430,19 @@ const S = {
   featSeeTitle: ['Seeing where it went', 'টাকা কোথায় গেল'],
   f4Head:       ['A month at a time', 'এক মাস করে'],
   // 1.1.99: the month's card is gold when it kept something and red when it overspent.
-  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.',
-                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়। দৈনিক গড় শেষ হওয়া মাসে গোনে পুরো মাসের দিন, আর চলতি মাসে আজ পর্যন্ত দিন।'],
+  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick, the coming one too, with what is already dated in it. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.',
+                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য, সামনের মাসেরও, যেখানে আগে থেকে তারিখ দেওয়া এন্ট্রিগুলো দেখায়। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়। দৈনিক গড় শেষ হওয়া মাসে গোনে পুরো মাসের দিন, আর চলতি মাসে আজ পর্যন্ত দিন।'],
   f5Head:       ['Which account did the work', 'কোন অ্যাকাউন্ট দিয়ে কী হলো'],
-  // 2.0.2: each account marked in its own colour.
+  // 2.0.2: each account marked in its own colour. 2.1.2–2.1.3: the In, Out and No Change
+  // tabs, their counts coloured green, red and blue.
   f5Body:       ['Money in and money out for each account side by side, each marked in its ' +
                  'own colour, so you can see which one everything actually runs through and ' +
-                 'which is just sitting there.',
+                 'which is just sitting there. Tabs pick out the accounts money came into, the ' +
+                 'ones it left and the ones it did not touch, counted in green, red and blue.',
                  'প্রতিটা অ্যাকাউন্টে কত ঢুকল আর কত বেরোল পাশাপাশি, প্রতিটা তার নিজের রঙে, ' +
-                 'যাতে বোঝা যায় আসলে কোনটা দিয়ে সব চলছে আর কোনটা শুধু পড়ে আছে।'],
+                 'যাতে বোঝা যায় আসলে কোনটা দিয়ে সব চলছে আর কোনটা শুধু পড়ে আছে। ট্যাবে আলাদা ' +
+                 'করে দেখা যায় কোন অ্যাকাউন্টে টাকা ঢুকল, কোনটা থেকে বেরোল আর কোনটায় বদল নেই — ' +
+                 'সবুজ, লাল আর নীলে গোনা।'],
 
   featKeepTitle:['Keeping it safe', 'নিরাপদে রাখা'],
   f6Head:       ['Who owes you, and whom you owe', 'কে আপনার কাছে ধারে, আপনি কার কাছে'],
@@ -436,8 +454,10 @@ const S = {
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
   // 1.1.95–1.1.99: the daily backup keeps every copy of the last seven days, Restore
   // Latest brings back the newest, and a failed daily backup is said out loud.
-  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings. A password locks the file — the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, the app tells you.',
-                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে, যেখানে শেষ সাত দিনের কপি থাকে। সর্বশেষ কপি রিস্টোর করলে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে — প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ড মনে রাখে, আর যখন খুশি বদলানো যায়; না দিলে যার হাতে যাবে সে-ই খুলতে পারবে, আর ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না। প্রতিদিনের ব্যাকআপ ব্যর্থ হলে অ্যাপ জানিয়ে দেয়।'],
+  // 2.0.7–2.1.2: Undo Last Restore, retired by the first change after the restore, and
+  // Background Work for a battery saver that holds the daily backup back.
+  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything. A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.',
+                 'ব্যাকআপ একটাই ফাইল, থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করেন, অথবা অ্যাপ প্রতিদিন একটা ফোল্ডারে করে, যেখানে শেষ সাত দিনের কপি থাকে। সর্বশেষ কপি রিস্টোর করলে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরে আসে; ভুল ফাইল রিস্টোর হলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি কিছু বদলান। পাসওয়ার্ড দিলে ফাইল তালাবদ্ধ থাকে, প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ড মনে রাখে, আর যখন খুশি বদলানো যায়; না দিলে যার হাতে যাবে সে-ই খুলতে পারবে, আর ভুলে যাওয়া পাসওয়ার্ড কেউ ফেরাতে পারে না। প্রতিদিনের ব্যাকআপ ব্যর্থ হলে, বা ব্যাটারি সেভার আটকে রাখলে, অ্যাপ জানিয়ে দেয়।'],
   f8Head:       ['Locked, and in your language', 'তালাবদ্ধ, আর আপনার ভাষায়'],
   // 1.1.96: fingerprint for exports and backups; a restore, and reversing an entry,
   // still take the PIN. Accent and text size are Settings choices.
@@ -503,6 +523,13 @@ const S = {
   privBackupTitle:['Backups you make yourself', 'নিজের হাতে বানানো ব্যাকআপ'],
   privBackupBody: ['The backup you make from inside the app is a different thing: one file, written where you point it. Whether it carries a password is your choice — with one, it is encrypted and only that password opens it; without one, it is a plain file for a place you trust. Nobody is sent a copy and no service holds the password — which is the same sentence read the other way: lose the file and the password, and nobody can get it back for you either.',
                    'অ্যাপের ভেতর থেকে আপনি যে ব্যাকআপ বানান সেটা আলাদা জিনিস: একটা ফাইল, আপনি যেখানে দেখাবেন সেখানে লেখা। তাতে পাসওয়ার্ড থাকবে কিনা সেটা আপনার পছন্দ — দিলে এনক্রিপ্ট হয়, শুধু সেই পাসওয়ার্ডেই খোলে; না দিলে সাধারণ ফাইল, ভরসার জায়গায় রাখার জন্য। কারও কাছে কপি পাঠানো হয় না, পাসওয়ার্ড রাখার কোনো সেবাও নেই — উল্টো করে পড়লে কথাটা একই: ফাইল আর পাসওয়ার্ড দুটোই হারালে কেউ সেটা আপনাকে ফিরিয়েও দিতে পারবে না।'],
+
+  // The page itself, not the app: what a visit to it touches. Everything above is about
+  // the app, and a privacy page that left out its own fonts and release lookup was
+  // promising more than it said.
+  privSiteTitle: ['This website', 'এই ওয়েবসাইট'],
+  privSiteBody: ['The site is served by GitHub Pages, has no tracker and sets no cookie. Your browser fetches its fonts from Google Fonts and asks GitHub which release is the newest, so both see your address, as they would for any site that uses them; the download itself comes from GitHub too. The language and theme you choose, and the newest release it last found, are kept in your own browser and nowhere else.',
+                 'সাইটটা চলে GitHub Pages-এ; এতে কোনো ট্র্যাকার নেই, কুকিও রাখে না। ফন্টগুলো আপনার ব্রাউজার আনে Google Fonts থেকে, আর সবচেয়ে নতুন রিলিজ কোনটা তা জিজ্ঞেস করে GitHub-কে — তাই দুটোই আপনার ঠিকানা (IP) দেখতে পায়, যেমন ওদের ব্যবহার করা যেকোনো সাইটে পায়; ডাউনলোডও আসে GitHub থেকে। আপনার বেছে নেওয়া ভাষা আর থিম, আর শেষবার পাওয়া সবচেয়ে নতুন রিলিজের তথ্য থাকে শুধু আপনার নিজের ব্রাউজারে।'],
 
   privDeleteTitle:['Getting rid of it all', 'সব মুছে ফেলা'],
   privDeleteBody: ['Uninstall the app. That is the whole procedure for the ledger — no account to close and no request to send, because it never had a copy anywhere else. The only other copy is Android’s backup of the app’s settings in your Google account; remove it there, or switch that backup off first. Any backup files you wrote are yours to delete.',

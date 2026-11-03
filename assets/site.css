@@ -991,6 +991,17 @@ img {
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap; border: 0;
 }
+/* The first stop for a keyboard on every page: out of sight until it has focus, then over
+   the header's top-left corner, where the eye already is. */
+.skip {
+  position: absolute; left: 12px; top: -60px; z-index: 100;
+  padding: 10px 16px; border-radius: 10px;
+  background: var(--ink); color: var(--page); font-weight: 700; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+main:focus { outline: none; }
+/* The row of six scrolls sideways on a phone, so it takes focus for the arrow keys. */
+.shots-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 12px; }
 button.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 button.zoom:not(.frame) img { transition: transform .2s, box-shadow .2s; }
 button.zoom:not(.frame):hover img { transform: translateY(-3px); box-shadow: var(--shadow); }
@@ -1385,6 +1396,11 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
 }
 
 html[lang="bn"] .priv-hero h1, html[lang="bn"] .pcard h2 { letter-spacing: 0; line-height: 1.35; }
+/* The rest of the headings and labels that tighten or space their letters: in Bengali either
+   one pushes the conjuncts into each other, which the rules above already undo for theirs. */
+html[lang="bn"] .feat-hero h1, html[lang="bn"] .sec-title, html[lang="bn"] .num-title,
+html[lang="bn"] h2, html[lang="bn"] .why-card h3, html[lang="bn"] .glance h3,
+html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plabel { letter-spacing: 0; }
 
 /* -- the note after a download starts ---------------------------------------------- */
 /* Pinned to the foot of the screen, over the page, until it is closed: the reader is

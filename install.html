@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+tGxFN6VHhkC4jPj6THDv0vCHrGycb4b+BAViimTu3I='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
 <title>Installing LedgerBook</title>
 <meta name="description" content="Four steps to install LedgerBook on Android, and what the two warnings along the way mean.">
 
@@ -22,6 +26,8 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="LedgerBook: your money, your phone, nobody else. Free, for Android.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Installing LedgerBook">
+<meta name="twitter:description" content="Four steps to install LedgerBook on Android, and what the two warnings along the way mean.">
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,6 +42,7 @@
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<a class="skip" href="#main" data-s="skipLink">Skip to the content</a>
 
 <header>
   <div class="wrap bar">
@@ -74,7 +81,7 @@
   </div>
 </header>
 
-<main class="home inst">
+<main id="main" tabindex="-1" class="home inst">
 
   <!-- -- hero: the words and the button on the left, the four steps as a list on the right -->
   <section class="wrap inst-hero">
@@ -128,7 +135,7 @@
         </div>
         <div class="gal-nav">
           <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
-          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count" aria-live="polite"></span>
           <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
         </div>
       </div>
@@ -151,7 +158,7 @@
         </div>
         <div class="gal-nav">
           <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
-          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count" aria-live="polite"></span>
           <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
         </div>
       </div>
@@ -181,7 +188,7 @@
         </div>
         <div class="gal-nav">
           <button type="button" class="gal-btn gal-prev"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg><span data-s="galPrev">Prev</span></button>
-          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count"></span>
+          <span class="gal-dots"><i class="gal-dot"></i><i class="gal-dot"></i><i class="gal-dot"></i></span><span class="gal-count" aria-live="polite"></span>
           <button type="button" class="gal-btn gal-next"><span data-s="galNext">Next</span><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
         </div>
       </div>
@@ -226,7 +233,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.20.0</span>
+      <span class="foot-ver" data-site-version>Website v2.21.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

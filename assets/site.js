@@ -28,7 +28,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.20.0';
+const SITE_VERSION = '2.21.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -95,6 +95,13 @@ function applyLang(lang) {
     const pair = S[el.dataset.sLabel];
     if (pair) el.setAttribute('aria-label', pair[i]);
   });
+  // And a picture with no caption beside it -- the big phones, the QR code -- says what it
+  // shows in its alt, in the same language. They were alt="" with a data-cap that only the
+  // full-size view ever read, and 2.14.4 took that view away: three phones said nothing.
+  document.querySelectorAll('img[data-s-alt]').forEach(img => {
+    const pair = S[img.dataset.sAlt];
+    if (pair) img.alt = pair[i];
+  });
 
   // The switch offers the other language, not the current one -- a button labelled with
   // what you are already reading tells you nothing about what pressing it does.
@@ -102,6 +109,9 @@ function applyLang(lang) {
   if (btn) {
     btn.textContent = S.langLabel[i];
     btn.setAttribute('aria-label', i === 0 ? 'বাংলায় দেখুন' : 'Read in English');
+    // Its words are in the other language, so it says which (WCAG 3.1.2): a screen reader
+    // read "বাংলা" with an English voice.
+    btn.lang = i === 0 ? 'bn' : 'en';
   }
 
   try { localStorage.setItem('lb.lang', lang); } catch (_) { /* private window */ }
@@ -312,7 +322,10 @@ function setupGalleries() {
       if (prev) prev.disabled = n === 0;
       if (next) next.disabled = n === items.length - 1;
     }
-    const go = (d) => track.scrollTo({ left: (at() + d) * track.clientWidth, behavior: 'smooth' });
+    // A reader who asked the phone for less motion gets the jump, not the glide -- the
+    // stylesheet already held its own animations to that, and this one was missed.
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const go = (d) => track.scrollTo({ left: (at() + d) * track.clientWidth, behavior: still ? 'auto' : 'smooth' });
     if (prev) prev.addEventListener('click', () => go(-1));
     if (next) next.addEventListener('click', () => go(1));
     track.addEventListener('scroll', () => requestAnimationFrame(paint), { passive: true });
