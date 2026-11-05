@@ -54,7 +54,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.21.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.22.0". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -94,7 +94,7 @@ Analytics picture stood a second time. Since 2.18.0 they are the app's own galle
 draws off the JVM, from the release tag named in `assets/screens/SOURCE`, in the Yellow
 accent, scaled from 1078 to 780 wide (780×1736) — sharp on a high-density phone (since
 2.14.4 they are not enlarged or offered for saving). Since 2.19.0 every picture in
-`assets/screens/` is WebP at quality 0.9: the fifty weigh about 2.6 MB, where the
+`assets/screens/` is WebP at quality 0.9: the fifty weigh about 2.9 MB, where the
 PNGs weighed 7.7 MB. To retake them, run the gallery in a worktree of the release tag (its
 command is at the top of `GalleryTest.kt`) and take the scenes SOURCE names. What was changed
 in the gallery before a render -- a fuller current month, a Bangla scene it lacks -- is

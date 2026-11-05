@@ -1,4 +1,4 @@
-2.1.3
+2.1.6
 
 The app version the pictures in this folder show.
 
@@ -21,8 +21,8 @@ WebP at quality 0.9 (site v2.19.0; PNG before). Scenes: 03-01-Home, 05-Transacti
 v2.20.0. The gallery's sample ledger is not the owner's, and it is dated back from the day
 of the render -- so a render early in a month shows that month nearly empty.
 
-For site v2.21.0 (rendered 2026-11-03) the worktree's GalleryTest was changed before the
-render, and the change was not committed to the app: the base sample ledger gained every
+For site v2.21.0 (rendered 2026-11-03), and again for v2.22.0 (2026-11-05), the worktree's
+GalleryTest was changed before the render, and the change was not committed to the app: the base sample ledger gained every
 kind of entry between the 1st of the render's month and the render (salary, business
 income, rent, bills, bazar, food, transport, a transfer, a deposit, a withdrawal), so
 Home, Transactions, Analytics, Money Flow and Accounts read a lived-in month; and
@@ -30,8 +30,15 @@ Home, Transactions, Analytics, Money Flow and Accounts read a lived-in month; an
 06-Money-Flow were drawn inside MainScreen (Main(AppPage.STATISTICS / MONEY_FLOW), tests
 webAnalytics* and webFlow* in Gallery03HomeTest), because the gallery's own scenes draw
 the page alone, with no title bar, and the picture opened on a card cut at the top.
-Loans, Backups and step 4 do not read the month and are the unchanged v2.1.3 renders.
-Until the app's own gallery does both, do the same again at the next retake.
+For v2.22.0 also: the site's scenes (the test methods GalleryTest lists as webScene) share
+the one base ledger -- Accounts, Transactions and Loans no longer add their own extra
+accounts, entries and reversal, so every picture shows the same net worth (Home's ৳3,06,370
+on the render day) and no reversal heads Transactions; the FDR, the DPS and the hidden bank
+are opened through the journal (postOpeningBalance), not as a balance on the row, which Home
+read as Invest ৳0; two more loans given (one part repaid) fill the Loans page; last month
+gets entries in the same first days as this one, so Analytics has a "vs" figure; and the
+Bangla scenes carry Bangla notes and names (করিম, হাতে নগদ, বাসা ভাড়া).
+Until the app's own gallery does all this, do the same again at the next retake.
 
 Since site v2.21.0 the app's pictures have a gap at the top (56px) and the bottom (32px)
 in the screen's own colour, where a phone has its status bar and gesture area: the
