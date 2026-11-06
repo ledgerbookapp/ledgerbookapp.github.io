@@ -404,13 +404,14 @@ const S = {
                  'কোনো যাচাই শেষ না হলে পাতাটা তা জানায়, আবার চেষ্টার বোতামসহ।'],
   // Two cards added for app 1.1.99. Entries are never deleted -- the Edit page and the
   // detail dialog both reverse instead, behind the PIN -- and the exports carry every
-  // transaction. The PDF has no password, so this says nothing about one.
+  // transaction. The PDF has no password, so this says nothing about one. 2.1.7: the PDF's
+  // heading carries the profile's phone and email under the name.
   fRevHead:     ['A mistake is reversed, not erased', 'ভুল মোছা হয় না, ফিরিয়ে নেওয়া হয়'],
   fRevBody:     ['Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced. A change that would take an account below ৳0 is asked first, and the Accounts page names any account that has gone there, so you can check it against the bank.',
                  'খাতা থেকে কিছুই কখনো মোছা হয় না। যেকোনো এন্ট্রি খুলে প্রত্যাহার করুন — পিন দেওয়ার পর অ্যাপ সেটার পাশেই প্রত্যাহারটা লিখে রাখে — বা এডিট করুন; দুই ক্ষেত্রেই যোগফল সেই অনুযায়ী বদলায়। ইতিহাস পুরোটাই থাকে, তাই প্রতিটা অঙ্কের উৎস খুঁজে পাওয়া যায়। কোনো বদলে অ্যাকাউন্ট ৳০-এর নিচে নামলে অ্যাপ আগে জিজ্ঞেস করে, আর এমন অ্যাকাউন্টের নাম অ্যাকাউন্টস পাতায় দেখায়, যাতে ব্যাংকের সাথে মিলিয়ে নিতে পারেন।'],
   fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সাথে নিয়ে যাওয়ার মতো'],
-  fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction, not only the ones on screen. Each export asks for your PIN or fingerprint first.',
-                 'লেনদেনগুলো পড়ার মতো একটা PDF রিপোর্ট হিসেবে, বা CSV ফাইল হিসেবে export করুন — CSV এক্সেলে খোলে, বাংলা অক্ষর ঠিক রেখে। স্ক্রিনে যা দেখা যাচ্ছে শুধু তা নয়, সব লেনদেন। প্রতিটা export-এর আগে পিন বা আঙুলের ছাপ চায়।'],
+  fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction, not only the ones on screen. The PDF puts your phone and email from your profile under your name. Each export asks for your PIN or fingerprint first.',
+                 'লেনদেনগুলো পড়ার মতো একটা PDF রিপোর্ট হিসেবে, বা CSV ফাইল হিসেবে export করুন — CSV এক্সেলে খোলে, বাংলা অক্ষর ঠিক রেখে। স্ক্রিনে যা দেখা যাচ্ছে শুধু তা নয়, সব লেনদেন। PDF-এ আপনার নামের নিচে থাকে প্রোফাইলের ফোন আর ইমেইল। প্রতিটা export-এর আগে পিন বা আঙুলের ছাপ চায়।'],
 
   featDepTitle: ['Deposits that earn', 'জমা, যা মুনাফা দেয়'],
   d0Head:       ['FDR profit, on its own schedule', 'FDR-এর মুনাফা, তার নিজের সময়ে'],
@@ -425,14 +426,16 @@ const S = {
   d2Head:       ['When the bank sets the rate later', 'হার যখন ব্যাংক পরে জানায়'],
   d2Body:       ['Some banks declare the final rate afterwards. Keep such a deposit without a rate and take each profit at the amount on your statement; add what the bank pays or takes back once the rate is declared — the app says up front the most it can take back. A DPS without a rate shows its Balance: what you paid in and the profit added, together. A wrong figure can be undone and entered again.',
                  'কিছু ব্যাংক চূড়ান্ত হার পরে ঘোষণা করে। এমন জমা হার ছাড়াই রাখুন, আর প্রতিবারের মুনাফা নিন স্টেটমেন্টে লেখা অঙ্কে; হার ঘোষণার পর ব্যাংক যা বাড়তি দেয় বা ফেরত নেয়, সেটাও যোগ করা যায় — সর্বোচ্চ কত ফেরত নিতে পারে, অ্যাপ আগেই বলে দেয়। হার ছাড়া DPS দেখায় তার ব্যালেন্স: আপনার জমা আর যোগ হওয়া মুনাফা, একসাথে। ভুল অঙ্ক দিলে ফিরিয়ে আবার লেখা যায়।'],
+  // 2.1.7: a monthly DPS closed early earns for the months each instalment was held.
   d3Head:       ['Maturity, renewal, early close', 'মেয়াদ, নবায়ন আর আগেই ভাঙা'],
-  d3Body:       ['A matured FDR can be renewed where it stands, for a term in months or days. A deposit can also be closed early at a lower rate, with the bank’s fee and excise duty on lines of their own, so you can see where each taka went.',
-                 'মেয়াদ পূর্ণ FDR সেখানেই নবায়ন করা যায়, মাস বা দিন হিসেবে। চাইলে মেয়াদের আগেই কম হারে জমা ভাঙা যায় — ব্যাংকের ফি আর আবগারি শুল্ক থাকে আলাদা লাইনে, তাই প্রতিটা টাকা কোথায় গেল তা দেখা যায়।'],
+  d3Body:       ['A matured FDR can be renewed where it stands, for a term in months or days. A deposit can also be closed early at a lower rate, with the bank’s fee and excise duty on lines of their own, so you can see where each taka went. A monthly DPS closed early earns on each instalment for the months it was held.',
+                 'মেয়াদ পূর্ণ FDR সেখানেই নবায়ন করা যায়, মাস বা দিন হিসেবে। চাইলে মেয়াদের আগেই কম হারে জমা ভাঙা যায় — ব্যাংকের ফি আর আবগারি শুল্ক থাকে আলাদা লাইনে, তাই প্রতিটা টাকা কোথায় গেল তা দেখা যায়। মাসিক DPS আগে ভাঙলে প্রতিটা কিস্তি যত মাস জমা ছিল, তত মাসের মুনাফা পায়।'],
   featSeeTitle: ['Seeing where it went', 'টাকা কোথায় গেল'],
   f4Head:       ['A month at a time', 'এক মাস করে'],
   // 1.1.99: the month's card is gold when it kept something and red when it overspent.
-  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick, the coming one too, with what is already dated in it. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far.',
-                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য, সামনের মাসেরও, যেখানে আগে থেকে তারিখ দেওয়া এন্ট্রিগুলো দেখায়। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়। দৈনিক গড় শেষ হওয়া মাসে গোনে পুরো মাসের দিন, আর চলতি মাসে আজ পর্যন্ত দিন।'],
+  // 2.1.7: a month not yet begun shows "—" for its daily average.
+  f4Body:       ['Income against expense, what you saved and what share of what you earned that was, and the categories that took the most — for whichever month you pick, the coming one too, with what is already dated in it. The month’s card turns gold when it saved and red when it overspent, so you know before you read a figure. The daily average counts a finished month over all its days, and this one over the days so far; a month not yet begun shows none.',
+                 'আয়ের বিপরীতে খরচ, কত সঞ্চয় হলো আর আয়ের কত অংশ, আর কোন খাতে সবচেয়ে বেশি গেল — আপনি যে মাসটা বাছবেন তার জন্য, সামনের মাসেরও, যেখানে আগে থেকে তারিখ দেওয়া এন্ট্রিগুলো দেখায়। মাসে সঞ্চয় হলে কার্ডটা সোনালি, খরচ বেশি হলে লাল — তাই অঙ্ক পড়ার আগেই বোঝা যায়। দৈনিক গড় শেষ হওয়া মাসে গোনে পুরো মাসের দিন, আর চলতি মাসে আজ পর্যন্ত দিন; যে মাস এখনো শুরু হয়নি, তার গড় দেখায় না।'],
   f5Head:       ['Which account did the work', 'কোন অ্যাকাউন্ট দিয়ে কী হলো'],
   // 2.0.2: each account marked in its own colour. 2.1.2–2.1.3: the In, Out and No Change
   // tabs, their counts coloured green, red and blue.
