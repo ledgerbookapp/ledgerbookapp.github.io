@@ -1,4 +1,4 @@
-2.1.9
+2.2.1
 
 The app version the pictures in this folder show.
 
@@ -22,7 +22,7 @@ v2.20.0. The gallery's sample ledger is not the owner's, and it is dated back fr
 of the render -- so a render early in a month shows that month nearly empty.
 
 For site v2.21.0 (rendered 2026-11-03), and again for v2.22.0 (2026-11-05),
-v2.23.0 (2026-11-06) and v2.23.1 (2026-11-09), the worktree's
+v2.23.0 (2026-11-06), v2.23.1 (2026-11-09) and v2.23.2 (2026-11-10), the worktree's
 GalleryTest was changed before the render, and the change was not committed to the app: the base sample ledger gained every
 kind of entry between the 1st of the render's month and the render (salary, business
 income, rent, bills, bazar, food, transport, a transfer, a deposit, a withdrawal), so
