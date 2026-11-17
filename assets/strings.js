@@ -28,6 +28,22 @@ const S = {
   menuClose:    ['Close the menu', 'মেনু বন্ধ করুন'],
   // The first thing a keyboard reaches on every page, shown only once it has focus.
   skipLink:     ['Skip to the content', 'মূল লেখায় যান'],
+  // Each page's <title> and meta description, in the language on the page: the site opens in
+  // Bangla, and a search engine that runs the script read a Bangla page under an English title.
+  // Link previews (og:, twitter:) are read without script, so they stay in the HTML's English.
+  docHome:      ['LedgerBook — your money, your phone, nobody else',
+                 'LedgerBook — আপনার টাকার হিসাব আপনার ফোনেই'],
+  docFeatures:  ['What LedgerBook does', 'LedgerBook কী কী করে'],
+  docPrivacy:   ['LedgerBook privacy', 'LedgerBook-এর গোপনীয়তা'],
+  docGet:       ['Downloading LedgerBook', 'LedgerBook ডাউনলোড হচ্ছে'],
+  descHome:     ['A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.',
+                 'প্রতিদিনের টাকার হিসাব রাখার দুই-তরফা খাতা। কোনো অ্যাকাউন্ট খুলতে হয় না, আর আপনার খাতা কখনো ফোনের বাইরে যায় না। ফ্রি, অ্যান্ড্রয়েডের জন্য।'],
+  descFeatures: ['Double-entry books, five kinds of entry, analytics, loans, encrypted backups — on your phone, with no account.',
+                 'দুই-তরফা হিসাব, পাঁচ রকম এন্ট্রি, বিশ্লেষণ, ধার, এনক্রিপ্ট করা ব্যাকআপ — আপনার ফোনেই, কোনো অ্যাকাউন্ট ছাড়া।'],
+  descInstall:  ['Four steps to install LedgerBook on Android, and what the two warnings along the way mean.',
+                 'অ্যান্ড্রয়েডে LedgerBook ইনস্টলের চার ধাপ, আর পথে আসা দুটো সতর্কতার মানে।'],
+  descPrivacy:  ['Nothing is collected. Your entries stay in a database on your phone. The only network calls check for a new version.',
+                 'কিছুই সংগ্রহ করা হয় না। আপনার এন্ট্রি থাকে ফোনের একটা ডেটাবেসে। ইন্টারনেট লাগে শুধু নতুন ভার্সন খুঁজতে।'],
   // The QR code's own words for a screen reader: what scanning it does.
   qrAlt:        ['QR code that downloads the newest LedgerBook', 'QR কোড — স্ক্যান করলে সর্বশেষ LedgerBook ডাউনলোড হয়'],
 

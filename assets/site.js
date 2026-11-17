@@ -30,7 +30,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.24.2';
+const SITE_VERSION = '2.24.3';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -62,6 +62,12 @@ function applyLang(lang) {
   document.querySelectorAll('[data-s]').forEach(el => {
     const pair = S[el.dataset.s];
     if (pair) el.textContent = pair[i];
+  });
+  // The <title> is a data-s like any other; the description has no text of its own, only an
+  // attribute, so it is set here.
+  document.querySelectorAll('meta[data-s-content]').forEach(el => {
+    const pair = S[el.dataset.sContent];
+    if (pair) el.setAttribute('content', pair[i]);
   });
   // data-s-rich: the same, but **marked** words come out bold -- the names of buttons the
   // reader is about to see on their phone. Built as text nodes and <b> elements, never

@@ -55,8 +55,15 @@ for (const page of [...PAGES, ...HEADERLESS]) {
   if (!fs.existsSync(page)) { note(`missing page: ${page}`); continue; }
   const html = fs.readFileSync(page, 'utf8');
 
-  for (const m of html.matchAll(/data-s(-label|-rich|-alt)?="([^"]+)"/g))
+  for (const m of html.matchAll(/data-s(-label|-rich|-alt|-content)?="([^"]+)"/g))
     if (!S[m[2]]) note(`${page}: data-s${m[1] || ''}="${m[2]}" has no entry in the catalogue`);
+
+  // A meta description's content in the HTML is what a crawler without script reads; it has to
+  // be the catalogue's English, as an <img>'s alt does.
+  for (const m of html.matchAll(/<meta\b[^>]*\bdata-s-content="([^"]+)"[^>]*>/g)) {
+    const content = (m[0].match(/\scontent="([^"]*)"/) || [])[1];
+    if (S[m[1]] && content !== S[m[1]][0]) note(`${page}: a <meta data-s-content="${m[1]}"> says content="${content}", the catalogue "${S[m[1]][0]}"`);
+  }
 
   // A picture's alt in the HTML is what a reader without script hears; it has to be the
   // catalogue's English, as every data-s element's text is.

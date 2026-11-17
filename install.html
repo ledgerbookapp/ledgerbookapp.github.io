@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-K7uydw42P4JSZ6Ffldyvfl709iFlPxpH8HQLEaeymIc='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-vX/2Z7E1dnbmSs+uZc7Jd2eqAuM7Lo+o7qXit5c6I/0='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
-<title>Installing LedgerBook</title>
-<meta name="description" content="Four steps to install LedgerBook on Android, and what the two warnings along the way mean.">
+<title data-s="installTitle">Installing LedgerBook</title>
+<meta name="description" data-s-content="descInstall" content="Four steps to install LedgerBook on Android, and what the two warnings along the way mean.">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
@@ -38,7 +38,7 @@
      system's never sees the other one flash first -- nor the English the page is written
      in, when it opens in Bangla (lang-wait in site.css). Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js');d.classList.remove('lang-wait')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}var l=null;try{l=localStorage.getItem('lb.lang')}catch(e){}if(l!=='en'){d.lang='bn';d.classList.add('lang-wait')}</script>
+<script>var d=document.documentElement;function lbShow(){if(!window.LB_READY)d.lang='en';d.classList.remove('lang-wait')}d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js');lbShow()});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}var l=null;try{l=localStorage.getItem('lb.lang')}catch(e){}if(l!=='en'){d.lang='bn';d.classList.add('lang-wait');setTimeout(lbShow,3000)}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -234,7 +234,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.24.2</span>
+      <span class="foot-ver" data-site-version>Website v2.24.3</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>
