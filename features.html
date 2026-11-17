@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-vX/2Z7E1dnbmSs+uZc7Jd2eqAuM7Lo+o7qXit5c6I/0='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-YINsEVIltY8kwywLosxWhfq/OS9v4cHQJHI8Og9s/6U='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
@@ -39,9 +39,9 @@
 
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
      system's never sees the other one flash first -- nor the English the page is written
-     in, when it opens in Bangla (lang-wait in site.css). Small enough to stay inline; a
+     in, for a reader who chose Bangla (lang-wait in site.css). Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>var d=document.documentElement;function lbShow(){if(!window.LB_READY)d.lang='en';d.classList.remove('lang-wait')}d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js');lbShow()});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}var l=null;try{l=localStorage.getItem('lb.lang')}catch(e){}if(l!=='en'){d.lang='bn';d.classList.add('lang-wait');setTimeout(lbShow,3000)}</script>
+<script>var d=document.documentElement;function lbShow(){if(!window.LB_READY)d.lang='en';d.classList.remove('lang-wait')}d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js');lbShow()});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}var l=null;try{l=localStorage.getItem('lb.lang')}catch(e){}if(l==='bn'){d.lang='bn';d.classList.add('lang-wait');setTimeout(lbShow,3000)}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 </head>
@@ -96,7 +96,7 @@
       <a href="#books" data-s="featBooksTitle">Keeping the books</a>
       <a href="#deposits" data-s="featDepTitle">Deposits that earn</a>
       <a href="#see" data-s="featSeeTitle">Seeing where it went</a>
-      <a href="#safe" data-s="featKeepTitle">Keeping it safe</a>
+      <a href="#safe" data-s="featKeepTitle">Loans, backups and safety</a>
     </div>
   </section>
 
@@ -169,7 +169,8 @@
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 21h18M4 10h16M12 3 4 7.5V10h16V7.5z"/><path d="M6.5 10v8M10 10v8M14 10v8M17.5 10v8"/></svg></span>
         <h3 data-s="f2Head">Bank, cards, wallet, cash and deposits</h3>
-        <p data-s="f2Body">Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. A credit card says what is Due on it, or the Credit it holds once paid past its debt. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first. A bank account or a wallet shares its details from the panel that opens when you tap it — the name, the number, and a bank’s branch and routing, in English or Bangla. You tick the lines that go and see them before they are sent, and the balance is never among them.</p>
+        <p data-s="f2Body">Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. A credit card says what is Due on it, or the Credit it holds once paid past its debt. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.</p>
+        <p data-s="f2Share">A bank account or a wallet shares its details from the panel that opens when you tap it — the name, the number, and a bank’s branch and routing, in English or Bangla. You tick the lines that go and see them before they are sent, and the balance is never among them.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
@@ -250,7 +251,7 @@
 
   <!-- -- 04 keeping it safe ---------------------------------------------------- -->
   <section class="wrap block" id="safe">
-    <h2 class="num-title"><span class="num-badge">04</span><span data-s="featKeepTitle">Keeping it safe</span></h2>
+    <h2 class="num-title"><span class="num-badge">04</span><span data-s="featKeepTitle">Loans, backups and safety</span></h2>
     <div class="fcards fcards-4">
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M2 21v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/><path d="M16 3.1a4 4 0 0 1 0 7.8M22 21v-1a5 5 0 0 0-3.5-4.8"/></svg></span>
@@ -260,7 +261,8 @@
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <h3 data-s="f7Head">Backups you hold yourself</h3>
-        <p data-s="f7Body">A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything. A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.</p>
+        <p data-s="f7Body">A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything.</p>
+        <p data-s="f7Pass">A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.</p>
       </article>
       <article class="card fcard">
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
@@ -304,7 +306,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.24.4</span>
+      <span class="foot-ver" data-site-version>Website v2.25.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

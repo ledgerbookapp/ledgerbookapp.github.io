@@ -19,9 +19,9 @@ document.documentElement.classList.add('js');
  *
  * Index 0 is English, 1 is Bangla, matching the order in strings.js.
  *
- * The first visit opens in Bangla, whatever the browser speaks -- the owner's choice
- * (2026-11-17); it used to guess from the browser, which put nearly every reader in
- * Bangladesh on English. The choice is remembered after that. A
+ * The first visit opens in English, the language the pages are written in, whatever the
+ * browser speaks -- the owner's choice (2026-11-17, after a day of opening in Bangla, which
+ * itself had replaced a guess from the browser). The choice is remembered after that. A
  * reader who switched to Bangla once did so on purpose, and having to switch again on
  * every page is the kind of small rudeness that makes a site feel careless.
  */
@@ -30,7 +30,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.24.4';
+const SITE_VERSION = '2.25.0';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -48,7 +48,7 @@ function currentLang() {
   try { saved = localStorage.getItem('lb.lang'); } catch (_) { /* storage blocked */ }
   if (saved && saved in LANGS) return saved;
   if (appliedLang) return appliedLang;
-  return 'bn';
+  return 'en';
 }
 
 function applyLang(lang) {

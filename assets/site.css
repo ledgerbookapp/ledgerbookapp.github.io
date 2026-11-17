@@ -862,6 +862,8 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
    lines at any readable size, so the row breaks into two columns there instead. */
 .fcard h3 { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
 .fcard p { grid-column: 1 / -1; margin-top: 16px; font-size: 15px; line-height: 1.7; }
+/* A card in two paragraphs (accounts and sharing; backups and the password): the second sits closer. */
+.fcard p + p { margin-top: 10px; }
 @media (max-width: 1199px) { .fcards-4 { grid-template-columns: repeat(2, 1fr); } }
 /* 01 holds six cards since website v2.17.0: three to a row on a wide screen, so the two
    rows come out level, rather than four and a lone pair; two to a row below that. */
@@ -1443,9 +1445,9 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
 @keyframes dl-spin { to { transform: rotate(360deg); } }
 
 /*
- * The pages are written in English and the first visit opens in Bangla, so for the moment
- * between the HTML arriving and site.js putting the Bangla in, the English showed. The
- * inline script in each head marks the page lang-wait unless the reader chose English;
+ * The pages are written in English, so for a reader who chose Bangla, the moment between the
+ * HTML arriving and site.js putting the Bangla in showed the English first. The inline
+ * script in each head marks the page lang-wait when the saved choice is Bangla;
  * applyLang takes the mark off once the words are in, and the load handler and a three-second
  * timer take it off too, so a page whose script never ran is still shown -- in English -- and
  * not only once every picture has arrived.
