@@ -1441,3 +1441,12 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
 }
 @keyframes dl-note-up { from { opacity: 0; transform: translate(-50%, 12px); } }
 @keyframes dl-spin { to { transform: rotate(360deg); } }
+
+/*
+ * The pages are written in English and the first visit opens in Bangla, so for the moment
+ * between the HTML arriving and site.js putting the Bangla in, the English showed. The
+ * inline script in each head marks the page lang-wait unless the reader chose English;
+ * applyLang takes the mark off once the words are in, and the load handler takes it off
+ * too, so a page whose script never ran is still shown -- in English.
+ */
+.lang-wait body { visibility: hidden; }

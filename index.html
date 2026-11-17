@@ -5,7 +5,7 @@
 <!-- What the page may load, said by the page itself: GitHub Pages sends no headers of its own.
      The two hashes are the inline scripts (the theme one in every head, and get.html's
      own): change a byte of either and work its hash out again, or it stops running. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-+tGxFN6VHhkC4jPj6THDv0vCHrGycb4b+BAViimTu3I='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-K7uydw42P4JSZ6Ffldyvfl709iFlPxpH8HQLEaeymIc='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
@@ -41,9 +41,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
 
 <!-- Before the stylesheet paints, so a reader who chose the theme that is not their
-     system's never sees the other one flash first. Small enough to stay inline; a
+     system's never sees the other one flash first -- nor the English the page is written
+     in, when it opens in Bangla (lang-wait in site.css). Small enough to stay inline; a
      separate file would be a round trip in front of the first paint. -->
-<script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}</script>
+<script>var d=document.documentElement;d.classList.add('js');addEventListener('load',function(){if(!window.LB_READY)d.classList.remove('js');d.classList.remove('lang-wait')});try{var t=localStorage.getItem('lb.theme');if(t==='dark'||t==='light')d.dataset.theme=t}catch(e){}var l=null;try{l=localStorage.getItem('lb.lang')}catch(e){}if(l!=='en'){d.lang='bn';d.classList.add('lang-wait')}</script>
 
 <link rel="stylesheet" href="assets/site.css">
 
@@ -354,7 +355,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.23.2</span>
+      <span class="foot-ver" data-site-version>Website v2.24.0</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>
