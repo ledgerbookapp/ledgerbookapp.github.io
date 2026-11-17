@@ -438,8 +438,8 @@ const S = {
   f8Head:       ['Locked, and in your language', 'তালাবন্ধ, আর আপনার ভাষায়'],
   // 1.1.96: fingerprint for exports and backups; a restore, and reversing an entry,
   // still take the PIN. Accent and text size are Settings choices.
-  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN. Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like. A larger text size set on the phone is followed too, and the small buttons are easier to tap.',
-                 'খাতাটা ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট আর ব্যাকআপের আগে আবার পিন বা আঙুলের ছাপ চায়, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে। বাংলা বা ইংরেজি, লাইট বা ডার্ক, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়। ফোনে লেখা বড় করে রাখলেও অ্যাপ সেভাবেই দেখায়, আর ছোট বোতামগুলোয় চাপ দেওয়া সহজ।'],
+  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN. Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like. Set to System, the text follows the phone’s size, up to Large, and the small buttons are easier to tap.',
+                 'খাতাটা ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট আর ব্যাকআপের আগে আবার পিন বা আঙুলের ছাপ চায়, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে। বাংলা বা ইংরেজি, লাইট বা ডার্ক, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়। ফন্ট সাইজ "সিস্টেম"-এ রাখলে লেখা ফোনের মাপ মেনে চলে, "বড়" পর্যন্ত; আর ছোট বোতামগুলোয় চাপ দেওয়া সহজ।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটা তালিকা'],
