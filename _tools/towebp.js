@@ -1,7 +1,8 @@
 // Turns the gallery's PNGs into the site's 780x1736 WebPs (quality 0.9) through headless Chrome's
-// canvas: a 56px gap at the top and 32px at the bottom in the screen's own colour (a phone's status
-// bar and gesture area), the render scaled into the 1648 between and centred.
-// Usage: node towebp.js <contrast folder> <out folder>. From the site 2.21.0-2.25.1 renders.
+// canvas: a 12px gap at the top and the bottom in the screen's own colour, the render scaled into
+// the 1712 between and centred, about 5px at each side. 56px at the top and 32px at the bottom
+// until site 2.25.2, which left 20px at each side.
+// Usage: node towebp.js <contrast folder> <out folder>. From the site 2.21.0-2.25.2 renders.
 const fs = require('fs'), path = require('path'), { execFileSync } = require('child_process');
 const [src, out] = process.argv.slice(2);
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
@@ -21,7 +22,7 @@ for (const [name, want, fallback] of jobs) {
   const b64 = fs.readFileSync(f).toString('base64');
   fs.writeFileSync(html, `<img id=i src="data:image/png;base64,${b64}"><pre id=o></pre><script>
 addEventListener('load',()=>{const c=document.createElement('canvas');c.width=780;c.height=1736;const x=c.getContext('2d');
-x.imageSmoothingQuality='high';const T=56,B=32,h=1736-T-B,w=Math.round(h*i.naturalWidth/i.naturalHeight),l=Math.round((780-w)/2);
+x.imageSmoothingQuality='high';const T=12,B=12,h=1736-T-B,w=Math.round(h*i.naturalWidth/i.naturalHeight),l=Math.round((780-w)/2);
 const p=document.createElement('canvas');p.width=i.naturalWidth;p.height=i.naturalHeight;const q=p.getContext('2d');q.drawImage(i,0,0);
 const top=q.getImageData(2,2,1,1).data,bot=q.getImageData(2,i.naturalHeight-3,1,1).data;
 x.fillStyle='rgb('+top[0]+','+top[1]+','+top[2]+')';x.fillRect(0,0,780,1736);

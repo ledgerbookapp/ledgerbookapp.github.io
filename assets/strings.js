@@ -99,12 +99,12 @@ const S = {
 
   // -- the four numbers under the hero -----------------------------------------
   stat1:        ['servers of ours for an entry to go to',
-                 'আমাদের সার্ভার, যেখানে আপনার এন্ট্রি যেতে পারে'],
+                 'আমাদের কোনো সার্ভার নেই, আপনার হিসাব আপনার ফোনেই থাকে'],
   stat2:        ['files that touch the internet, both for updates',
-                 'ফাইল ইন্টারনেট ব্যবহার করে, দুটিই আপডেটের জন্য'],
-  stat3:        ['permissions, each with a single job', 'অনুমতি, প্রতিটির কাজ একটিই'],
-  stat4:        ['the whole app, Android 7.0 and up', 'পুরো অ্যাপ, অ্যান্ড্রয়েড ৭.০ বা তার পরের ভার্সন'],
-  stat4Short:   ['the whole app', 'পুরো অ্যাপ'],
+                 'দুটি ফাইল ইন্টারনেট ব্যবহার করে, শুধু আপডেটের জন্য'],
+  stat3:        ['permissions, each with a single job', 'অনুমতি চায় অ্যাপটি, প্রতিটি শুধু একটি কাজের জন্য'],
+  stat4:        ['the whole app, Android 7.0 and up', 'পুরো অ্যাপের আকার, চলে অ্যান্ড্রয়েড ৭.০ বা তার পরের ভার্সনে'],
+  stat4Short:   ['the whole app', 'পুরো অ্যাপের আকার'],
 
   // -- why ---------------------------------------------------------------------
   whyTitle:     ['Why this one', 'কেন LedgerBook'],
@@ -370,18 +370,26 @@ const S = {
   f0Body:       ['The app opens on one figure — everything you own less everything you owe — with what others owe you and what you owe beside it, and this month’s income, spending and savings underneath. Income and Expense have their own buttons right there, and every other page is a tile on the same screen.',
                  'অ্যাপ খুললেই একটি অঙ্ক — আপনার যা আছে, তা থেকে আপনার দেনা বাদ দিয়ে। পাশে থাকে কে আপনাকে কত দেবে আর আপনি কাকে কত দেবেন, আর নিচে এই মাসের আয়, ব্যয় আর সঞ্চয়। আয় আর ব্যয়ের বোতাম সেখানেই, আর বাকি সব পাতায় যাওয়া যায় একই স্ক্রিনের টাইল থেকে।'],
   f1Head:       ['Five kinds of entry', 'পাঁচ রকম এন্ট্রি'],
-  // 1.1.97–1.1.99: the amount on its own card with quick adds, the bill calculator on
-  // Expense, and the balance check that stops an account paying more than it holds.
-  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷. An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it.',
-                 'আয়, ব্যয়, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংকে জমা বা উত্তোলন — প্রতিটির আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির দরকারি তথ্যগুলোই চাওয়া হয়। অঙ্ক লিখুন তার কার্ডে, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; ব্যয়ের পাতায় + − × ÷ দিয়ে বিলের হিসাবও করা যায়। অ্যাকাউন্টে যত টাকা আছে তার বেশি দিলে সেভ হওয়ার আগেই আটকে যায়। সামনের কোনো তারিখে এন্ট্রি দিলে সেই দিন না আসা পর্যন্ত ব্যালেন্সে যোগ হয় না, আর তার জন্য দরকারি টাকা আলাদা করে রাখা হয়।'],
+  // 1.1.97–1.1.99: the amount on its own card with quick adds, and the bill calculator on
+  // Expense. The balance check is in fCheckBody since website 2.25.2.
+  f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs and offering only the accounts that fit it. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷.',
+                 'আয়, ব্যয়, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংকে জমা বা উত্তোলন — প্রতিটির আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির দরকারি তথ্যগুলোই চাওয়া হয়, আর শুধু মানানসই অ্যাকাউন্টগুলোই দেখায়। অঙ্ক লিখুন তার কার্ডে, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; ব্যয়ের পাতায় + − × ÷ দিয়ে বিলের হিসাবও করা যায়।'],
+  // Split from f1Body and f2Body (website 2.25.2): the balance check (1.1.97–1.1.99), entries
+  // dated ahead, and an account that still holds money asking for it to be moved first.
+  fCheckHead:   ['Checked before it is saved or deleted',
+                 'সেভ বা মোছার আগেই যাচাই'],
+  fCheckBody:   ['An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it. An account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
+                 'অ্যাকাউন্টে যত টাকা আছে তার বেশি দিলে সেভ হওয়ার আগেই আটকে যায়। সামনের কোনো তারিখে এন্ট্রি দিলে সেই দিন না আসা পর্যন্ত ব্যালেন্সে যোগ হয় না, আর তার জন্য দরকারি টাকা আলাদা করে রাখা হয়। যে অ্যাকাউন্টে এখনো টাকা আছে, সেটি সরাসরি মুছে ফেলা যায় না: মুছতে গেলে আগে সেই টাকা অন্য অ্যাকাউন্টে সরাতে বলে।'],
   // 2.0.9–2.1.1: cards show their network, numbers their last four digits. 2.1.4: a credit card says Due or Credit.
   // 2.2.4: a bank account or wallet shares its details (AccountShareDialog: ticked lines, a preview, never the balance).
-  // 2.2.3, in fExpBody, f9Body and f8Body: the statement names its period and runs to today; a
+  // 2.2.3, in fExpBody, f9Body and fLookBody: the statement names its period and runs to today; a
   // reminder goes once its loan is paid or its deposit closed; the phone's larger text is followed.
   f2Head:       ['Bank, cards, wallet, cash and deposits',
                  'ব্যাংক, কার্ড, ওয়ালেট, নগদ আর জমা'],
-  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. A credit card says what is Due on it, or the Credit it holds once paid past its debt. Each entry offers only the accounts that fit it, and an account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
-                 'অ্যাকাউন্টগুলো ভাগ করা থাকে — ব্যাংক, নগদ, ওয়ালেট আর জমা; প্রতিটির রং আপনি বেছে নেন, প্রতিটি ভাগের মোট আলাদা দেখায়, আর চোখের চিহ্নে চাপলে সব টাকার অঙ্ক লুকিয়ে যায়। ক্রেডিট বা ডেবিট কার্ডে তার নেটওয়ার্ক দেখায় — Visa, Mastercard, American Express বা UnionPay — আর নম্বরের শুধু শেষ চার অঙ্ক; তবে সার্চে পুরো নম্বর দিয়েও খোঁজা যায়। ক্রেডিট কার্ডে দেখায় কত বকেয়া, আর দেনার চেয়ে বেশি শোধ করলে কত জমা আছে। প্রতিটি এন্ট্রিতে শুধু মানানসই অ্যাকাউন্টগুলোই দেখায়। যে অ্যাকাউন্টে এখনো টাকা আছে, সেটি সরাসরি মুছে ফেলা যায় না: মুছতে গেলে আগে সেই টাকা অন্য অ্যাকাউন্টে সরাতে বলে।'],
+  f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. A credit card says what is Due on it, or the Credit it holds once paid past its debt.',
+                 'অ্যাকাউন্টগুলো ভাগ করা থাকে — ব্যাংক, নগদ, ওয়ালেট আর জমা; প্রতিটির রং আপনি বেছে নেন, প্রতিটি ভাগের মোট আলাদা দেখায়, আর চোখের চিহ্নে চাপলে সব টাকার অঙ্ক লুকিয়ে যায়। ক্রেডিট বা ডেবিট কার্ডে তার নেটওয়ার্ক দেখায় — Visa, Mastercard, American Express বা UnionPay — আর নম্বরের শুধু শেষ চার অঙ্ক; তবে সার্চে পুরো নম্বর দিয়েও খোঁজা যায়। ক্রেডিট কার্ডে দেখায় কত বকেয়া, আর দেনার চেয়ে বেশি শোধ করলে কত জমা আছে।'],
+  fShareHead:   ['Share an account’s details',
+                 'অ্যাকাউন্টের তথ্য শেয়ার'],
   f2Share:      ['A bank account or a wallet shares its details from the panel that opens when you tap it — the name, the number, and a bank’s branch and routing, in English or Bangla. You tick the lines that go and see them before they are sent, and the balance is never among them.',
                  'ব্যাংক অ্যাকাউন্ট বা ওয়ালেটে চাপলে যে প্যানেল খোলে, সেখান থেকেই তার তথ্য শেয়ার করা যায় — নাম, নম্বর, আর ব্যাংকের শাখা ও রাউটিং নম্বর, ইংরেজি বা বাংলায়। কোন লাইন যাবে টিক দিয়ে বাছেন, পাঠানোর আগে দেখে নেন, আর ব্যালেন্স কখনো যায় না।'],
   f3Head:       ['A trial balance that proves itself', 'রেওয়ামিল: হিসাব নিজেই মিলিয়ে দেখায়'],
@@ -446,17 +454,24 @@ const S = {
   f7Head:       ['Backups you hold yourself', 'ব্যাকআপ আপনার নিজের হাতে'],
   // 1.1.95–1.1.99: the daily backup keeps every copy of the last seven days, Restore
   // Latest brings back the newest, and a failed daily backup is said out loud.
-  // 2.0.7–2.1.2: Undo Last Restore, retired by the first change after the restore, and
-  // Background Work for a battery saver that holds the daily backup back.
+  // 2.0.7–2.1.2: Undo Last Restore, retired by the first change after the restore; Background
+  // Work for a battery saver that holds the daily backup back is in f7Pass.
   f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and settings; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything.',
                  'ব্যাকআপ মানে একটি ফাইল, যা থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করতে পারেন, অথবা অ্যাপ প্রতিদিন একটি ফোল্ডারে রাখে, যেখানে শেষ সাত দিনের কপি থাকে। "সর্বশেষ কপি রিস্টোর" সবচেয়ে নতুন কপি থেকে অ্যাকাউন্ট, এন্ট্রি, ধার আর সেটিংস ফিরিয়ে আনে; ভুল ফাইল রিস্টোর হয়ে গেলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি নতুন কিছু বদলান।'],
+  fPassHead:    ['A password for the backup',
+                 'ব্যাকআপের পাসওয়ার্ড'],
   f7Pass:       ['A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.',
                  'পাসওয়ার্ড দিলে ফাইলটি তালাবন্ধ থাকে; প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ডই ব্যবহার করে, আর যখন খুশি সেটি বদলানো যায়। পাসওয়ার্ড না দিলে ফাইলটি যার হাতে যাবে সে-ই খুলতে পারবে, আর পাসওয়ার্ড ভুলে গেলে কেউ সেটি ফিরিয়ে দিতে পারবে না। প্রতিদিনের ব্যাকআপ না হলে, বা ব্যাটারি সেভার আটকে দিলে, অ্যাপ জানিয়ে দেয়।'],
-  f8Head:       ['Locked, and in your language', 'তালাবন্ধ, আর আপনার ভাষায়'],
+  f8Head:       ['Locked on your phone',
+                 'ফোনেই তালাবন্ধ'],
   // 1.1.96: fingerprint for exports and backups; a restore, and reversing an entry,
-  // still take the PIN. Accent and text size are Settings choices.
-  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN. Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like. Set to System, the text follows the phone’s size, up to Large, and the small buttons are easier to tap.',
-                 'খাতাটি ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট আর ব্যাকআপের আগে আবার পিন বা আঙুলের ছাপ চায়, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে। বাংলা বা ইংরেজি, লাইট বা ডার্ক, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়। ফন্ট সাইজ "সিস্টেম"-এ রাখলে লেখা ফোনের মাপ মেনে চলে, "বড়" পর্যন্ত; আর ছোট বোতামগুলোয় চাপ দেওয়া সহজ।'],
+  // still take the PIN. Language, accent and text size are in fLookBody since website 2.25.2.
+  f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN.',
+                 'খাতাটি ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট আর ব্যাকআপের আগে আবার পিন বা আঙুলের ছাপ চায়, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে।'],
+  fLookHead:    ['Your language, your look',
+                 'আপনার ভাষা, আপনার পছন্দের চেহারা'],
+  fLookBody:    ['Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like. Set to System, the text follows the phone’s size, up to Large, and the small buttons are easier to tap.',
+                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়। ফন্ট সাইজ "সিস্টেম"-এ রাখলে লেখা ফোনের মাপ মেনে চলে, "বড়" পর্যন্ত; আর ছোট বোতামগুলোয় চাপ দেওয়া সহজ।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],

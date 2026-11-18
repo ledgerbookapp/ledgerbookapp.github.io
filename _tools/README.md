@@ -29,7 +29,9 @@ node site/_tools/gallery-changes.js "$S/g"
 
 # 2. The scenes, drawn off the JVM
 cd "$S/g" && G=com.ledgerbook.app.gallery
-LB_GALLERY=1 ./gradlew :app:testDebugUnitTest -Proborazzi.test.record=true \
+# --rerun: the build cache knows these inputs from an earlier render, and restores the test
+# task as FROM-CACHE without running it -- BUILD SUCCESSFUL, and not one picture drawn.
+LB_GALLERY=1 ./gradlew :app:testDebugUnitTest --rerun -Proborazzi.test.record=true \
  --tests "$G.Gallery03HomeTest.home" --tests "$G.Gallery03HomeTest.homeBangla" \
  --tests "$G.Gallery03HomeTest.webAnalytics*" --tests "$G.Gallery03HomeTest.webFlow*" \
  --tests "$G.Gallery05TransactionsTest.page" --tests "$G.Gallery05TransactionsTest.pageBangla" \
@@ -48,7 +50,7 @@ node site/_tools/sheet.js "$(cygpath -w "$S/web")" "^app-.*-light\.webp$" "$(cyg
 cp "$S"/web/*.webp site/assets/screens/
 "/c/Program Files/Google/Chrome/Application/chrome.exe" --headless=new --disable-gpu --hide-scrollbars \
   --force-device-scale-factor=1 --allow-file-access-from-files --window-size=1200,630 \
-  --virtual-time-budget=5000 --screenshot="$(cygpath -w "$S/og.png")" "file:///$(cygpath -m site/_tools/og.html)"
+  --virtual-time-budget=5000 --screenshot="$(cygpath -w "$S")\\og.png" "file:///$(cygpath -m "$PWD/site/_tools/og.html")"
 cp "$S/og.png" site/assets/og-image.png
 
 # 5. The worktree away (its paths are too long for git alone on Windows)

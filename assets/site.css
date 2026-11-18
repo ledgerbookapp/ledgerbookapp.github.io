@@ -519,9 +519,12 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 }
 .hero-home h1 span, .hero-home h1 em { display: block; }
 .hero-home h1 em { font-style: normal; color: var(--accent-ink); }
+/* The whole column, as wide as the heading above it: held to 500px it ended well short of
+   the phone and left an empty block beside its lines (the owner's ask, 2026-11-18). `none`,
+   not just no width of its own: `.hero p.lead` holds every other page's lead to 34em. */
 .hero-home p.lead {
   font-size: 18px; line-height: 1.78; color: var(--ink-muted);
-  margin: 28px 0 0; max-width: 500px;
+  margin: 28px 0 0; max-width: none;
 }
 .hero-home .cta { margin-top: 40px; gap: 12px; }
 /* The version under the buttons, at every width. The drawing kept it to the phone layout
@@ -827,8 +830,12 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 }
 
 /* -- the six screenshots, each in a drawn phone ----------------------------------- */
+/* The ring between a phone's edge and its screen is thin -- 2px here, 3px on the large
+   phones -- so the screen fills the phone (5 and 6px until website v2.25.2, which read as
+   a margin beside the app's own). The pictures' corner radius stays as it was: a rounder
+   corner would cut into Home's avatar in the small frames. */
 .frame {
-  position: relative; padding: 5px; border-radius: 26px;
+  position: relative; padding: 2px; border-radius: 26px;
   background: var(--page); border: 2px solid var(--frame);
   box-shadow: var(--shadow);
 }
@@ -848,7 +855,11 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 .shots-row .shot { margin: 0; }
 .shots-row figcaption { margin-top: 16px; text-align: center; color: var(--ink); font-size: 14.5px; }
 
-/* -- the cards of 01 and 03 ------------------------------------------------------- */
+/* -- the cards of 01 and 04 ------------------------------------------------------- */
+/* A card says one thing. When one grew a second subject (sharing beside the accounts, the
+   password beside the backups) it stood twice the height of its row, and the cards beside
+   it were stretched to match, half empty; since website v2.25.2 that subject is a card of
+   its own -- 01 eight cards, four to a row, 04 six, three to a row. */
 .fcards { display: grid; gap: 20px; }
 .fcards-4 { grid-template-columns: repeat(4, 1fr); }
 /* The icon and its heading share a line at every width, the words running full width
@@ -862,17 +873,17 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
    lines at any readable size, so the row breaks into two columns there instead. */
 .fcard h3 { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 700; letter-spacing: -.2px; }
 .fcard p { grid-column: 1 / -1; margin-top: 16px; font-size: 15px; line-height: 1.7; }
-/* A card in two paragraphs (accounts and sharing; backups and the password): the second sits closer. */
-.fcard p + p { margin-top: 10px; }
 @media (max-width: 1199px) { .fcards-4 { grid-template-columns: repeat(2, 1fr); } }
-/* 01 holds six cards since website v2.17.0: three to a row on a wide screen, so the two
-   rows come out level, rather than four and a lone pair; two to a row below that. */
+/* Six cards three to a row on a wide screen, so the two rows come out level, rather than
+   four and a lone pair; two to a row below that. */
 .fcards-6 { grid-template-columns: repeat(3, 1fr); }
 @media (max-width: 1199px) { .fcards-6 { grid-template-columns: repeat(2, 1fr); } }
 
-/* -- 02: the words beside a phone -------------------------------------------------- */
+/* -- 02 and 03: the words beside a phone -------------------------------------------- */
+/* The phone a third of the card, near enough: at 292px with 64px beside it, it stood
+   small in a wide empty margin next to a long column of words (2026-11-18). */
 .see {
-  display: grid; grid-template-columns: minmax(0, 1fr) 292px; gap: 64px; align-items: center;
+  display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 48px; align-items: center;
   padding: 56px; background: var(--card); border: 1px solid var(--edge); border-radius: 28px;
 }
 .see .num-title { margin-bottom: 32px; }
@@ -883,11 +894,11 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 }
 .see-item h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.2px; }
 .see-item p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
-.frame-lg { padding: 6px; border-radius: 40px; border-width: 3px; }
+.frame-lg { padding: 3px; border-radius: 40px; border-width: 3px; }
 .frame-lg img { border-radius: 33px; }
 /* 02 mirrors 03: the phone on the left, so two phone sections in a row do not read as one.
    Narrower, .see's single column below takes over and the phone sits over the words. */
-.see-rev { grid-template-columns: 292px minmax(0, 1fr); }
+.see-rev { grid-template-columns: 340px minmax(0, 1fr); }
 .see-rev .see-phone { order: -1; }
 
 /* -- the band, in a row -------------------------------------------------------------- */
@@ -1155,7 +1166,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 }
 .gal-phones .gal-track { justify-content: center; gap: 24px; }
 .gal-phones .pic { flex: 0 1 290px; }
-.gal-phones .frame { padding: 6px; border-radius: 40px; border-width: 3px; }
+.gal-phones .frame { padding: 3px; border-radius: 40px; border-width: 3px; }
 .gal-phones .frame img { border-radius: 33px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 0; }

@@ -43,11 +43,15 @@ gets entries in the same first days as this one, so Analytics has a "vs" figure;
 Bangla scenes carry Bangla notes and names (করিম, হাতে নগদ, বাসা ভাড়া).
 Until the app's own gallery does all this, do the same again at the next retake.
 
-Since site v2.21.0 the app's pictures have a gap at the top (56px) and the bottom (32px)
-in the screen's own colour, where a phone has its status bar and gesture area: the
-gallery draws neither, so the page's title sat on the frame's top edge and was clipped by
-its rounded corners, and the last row ran into the bottom. The render is scaled to fit
-the 1648 between (741 wide), centred, with the sides in the same colour.
+Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
+own colour: the gallery draws no status bar, so the page's title sat on the frame's top
+edge and was clipped by its rounded corners, and the last row ran into the bottom. The
+render is scaled to fit the height between, centred, with the sides in the same colour.
+The gaps were 56px at the top and 32px at the bottom, which left the render 741 wide and
+20px empty at each side; since site v2.25.2 they are 12px each (1712 between, 770 wide,
+about 5px at each side), at the owner's asking. That still keeps Home's top-left avatar
+inside the roundest corner the site draws (the features gallery's small frames), by a
+few pixels: do not go lower without looking at those frames.
 
 No WebP encoder is installed on this machine; the PNGs were scaled and encoded by headless
 Chrome's canvas (toDataURL('image/webp', 0.9)), one page per picture.
