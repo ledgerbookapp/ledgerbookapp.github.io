@@ -48,10 +48,10 @@ own colour: the gallery draws no status bar, so the page's title sat on the fram
 edge and was clipped by its rounded corners, and the last row ran into the bottom. The
 render is scaled to fit the height between, centred, with the sides in the same colour.
 The gaps were 56px at the top and 32px at the bottom, which left the render 741 wide and
-20px empty at each side; since site v2.25.2 they are 12px each (1712 between, 770 wide,
-about 5px at each side), at the owner's asking. That still keeps Home's top-left avatar
-inside the roundest corner the site draws (the features gallery's small frames), by a
-few pixels: do not go lower without looking at those frames.
+20px empty at each side; site v2.25.2 took them to 12px each, and since v2.25.5 the top is
+24px and the bottom 12px (1700 between, 764 wide, 8px at each side), both at the owner's
+asking. Home's top-left avatar stays inside the roundest corner the site draws (the features
+gallery's small frames): look at those frames before taking the top any lower.
 
 No WebP encoder is installed on this machine; the PNGs were scaled and encoded by headless
 Chrome's canvas (toDataURL('image/webp', 0.9)), one page per picture.

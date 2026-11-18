@@ -31,8 +31,17 @@
   --edge: #CBD5E1;
   --accent: #E8B23A;
   --accent-ink: #8A5F04;
-  --accent-on-tint: #8A5F04;
+  --accent-on-tint: #7A5300;
   --on-accent: #1A1408;
+  /* What an icon sits on, as the app draws it (Color.kt, YellowAccent): solid #FDF0CC under the
+     #8A5F04 icon, 4.98 between them. These were the gold at 9% over whatever lay beneath, which
+     came out nearly white on a card and a muddy grey on the panels of 02 and 03, and the outlined
+     tiles had no tint at all. --accent-on-tint is the app's lightInkOnTint, for words on it. */
+  --tile: #FDF0CC;
+  --tile-line: #FDF0CC;
+  --tile-edge: #F0D58A;
+  --chip: #FDF0CC;
+  --on-green: #FFFFFF;
   --ink: #0F172A;
   --ink-muted: #5A6A80;
   --green: #14713A;
@@ -77,6 +86,11 @@
     --accent-ink: #E8B23A;
     --accent-on-tint: #E8B23A;
     --on-accent: #1A1408;
+    --tile: color-mix(in srgb, #E8B23A 9%, transparent);
+    --tile-line: transparent;
+    --tile-edge: #24221E;
+    --chip: color-mix(in srgb, #E8B23A 12%, transparent);
+    --on-green: #0C0B0A;
     --ink: #F5F2EC;
     --ink-muted: #A29C92;
     --ink-faint: #8A847A;
@@ -99,6 +113,11 @@
   --accent-ink: #E8B23A;
   --accent-on-tint: #E8B23A;
   --on-accent: #1A1408;
+  --tile: color-mix(in srgb, #E8B23A 9%, transparent);
+  --tile-line: transparent;
+  --tile-edge: #24221E;
+  --chip: color-mix(in srgb, #E8B23A 12%, transparent);
+  --on-green: #0C0B0A;
   --ink: #F5F2EC;
   --ink-muted: #A29C92;
   --ink-faint: #8A847A;
@@ -314,7 +333,7 @@ ol.steps li::before {
   position: absolute; left: 20px; top: 18px;
   width: 30px; height: 30px; border-radius: 999px;
   display: grid; place-items: center;
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  background: var(--chip);
   color: var(--accent-on-tint); font-weight: 700; font-size: 15px;
 }
 ol.steps h3 { margin: 0 0 6px; font-size: 17px; }
@@ -477,13 +496,13 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 .tile {
   display: inline-grid; place-items: center; flex: none;
   width: 44px; height: 44px; border-radius: 12px;
-  background: color-mix(in srgb, var(--accent) 9%, transparent);
+  background: var(--tile);
   color: var(--accent-ink);
 }
 .tile .ico { width: 19px; height: 19px; }
 .tile-lg { width: 48px; height: 48px; }
 .tile-lg .ico { width: 20px; height: 20px; }
-.tile-line { width: 46px; height: 46px; background: none; border: 1px solid var(--edge); }
+.tile-line { width: 46px; height: 46px; background: var(--tile-line); border: 1px solid var(--tile-edge); }
 .tile-line .ico { width: 18px; height: 18px; }
 
 /* -- hero ----------------------------------------------------------------------- */
@@ -665,7 +684,7 @@ html:not([lang="bn"]) .release-notes-lang { display: none; }
 .perms p { font-size: 15px; line-height: 1.55; }
 .badge-soft {
   padding: 2px 10px; border-radius: 999px;
-  background: color-mix(in srgb, var(--accent) 12%, transparent); color: var(--accent-on-tint);
+  background: var(--chip); color: var(--accent-on-tint);
   font-size: 12px; font-weight: 700;
 }
 
@@ -1138,7 +1157,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .step-copy b, .step-body b { color: var(--ink); font-weight: 700; }
 .warn-chip {
   display: inline-flex; align-items: center; gap: 8px; margin: 18px 0 0; padding: 6px 12px;
-  border-radius: 999px; background: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-radius: 999px; background: var(--chip);
   color: var(--accent-on-tint); font-size: 13px; font-weight: 700;
 }
 .warn-chip .ico { width: 15px; height: 15px; }
@@ -1182,7 +1201,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 }
 .done-tick {
   display: inline-grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 999px;
-  background: var(--green); color: #0C0B0A;
+  background: var(--green); color: var(--on-green);
 }
 .done-tick .ico { width: 17px; height: 17px; stroke-width: 2.6; }
 
@@ -1464,3 +1483,22 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
  * not only once every picture has arrived.
  */
 .lang-wait body { visibility: hidden; }
+
+/* -- running text, justified ------------------------------------------------------ */
+/* Paragraphs that run to several lines, squared off at both edges (the owner's ask,
+   2026-11-18). Only those: a caption, a centred line or a two-line note has no edge to
+   square. Not where the column is narrow -- a phone, or the four cards to a row of the
+   features page's 01 on a wide screen, some thirty characters across -- because there it
+   opens wide gaps between the words. English may break a long word to keep the gaps even;
+   Bangla has no hyphenation in the browser, so it does not. */
+@media (min-width: 720px) {
+  .hero-home p.lead, .priv-hero p.lead, .inst-hero p.lead,
+  .why-card p, .fcards-6 .fcard p, .see-item p, .trust-copy > p:not(.eyebrow), .faq details p,
+  .step-body, .step-copy > p:not(.warn-chip):not(.chips),
+  .pcard p:not(.chips):not(.plabel):not(.pitem):not(.pnote) {
+    text-align: justify; text-justify: inter-word; hyphens: auto;
+  }
+}
+@media (min-width: 720px) and (max-width: 1199px) {
+  .fcards-4 .fcard p { text-align: justify; text-justify: inter-word; hyphens: auto; }
+}

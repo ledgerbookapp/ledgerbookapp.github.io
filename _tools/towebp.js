@@ -1,8 +1,11 @@
 // Turns the gallery's PNGs into the site's 780x1736 WebPs (quality 0.9) through headless Chrome's
-// canvas: a 12px gap at the top and the bottom in the screen's own colour, the render scaled into
-// the 1712 between and centred, about 5px at each side. 56px at the top and 32px at the bottom
-// until site 2.25.2, which left 20px at each side.
-// Usage: node towebp.js <contrast folder> <out folder>. From the site 2.21.0-2.25.2 renders.
+// canvas: a 24px gap at the top and 12px at the bottom in the screen's own colour, the render scaled
+// into the 1700 between and centred, 8px at each side. 56px at the top and 32px at the bottom until
+// site 2.25.2, which left 20px at each side; 12px at the top in 2.25.2-2.25.4, which sat too tight. A panel that runs off the foot of the screen
+// (the PIN keypad) ends in a border line one colour across the whole width: the gap used to be
+// filled with that line's colour, a pale band under the keypad, so the panel's own row is carried
+// down over the line and the gap instead (site 2.25.5).
+// Usage: node towebp.js <contrast folder> <out folder>. From the site 2.21.0-2.25.5 renders.
 const fs = require('fs'), path = require('path'), { execFileSync } = require('child_process');
 const [src, out] = process.argv.slice(2);
 const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
@@ -22,12 +25,17 @@ for (const [name, want, fallback] of jobs) {
   const b64 = fs.readFileSync(f).toString('base64');
   fs.writeFileSync(html, `<img id=i src="data:image/png;base64,${b64}"><pre id=o></pre><script>
 addEventListener('load',()=>{const c=document.createElement('canvas');c.width=780;c.height=1736;const x=c.getContext('2d');
-x.imageSmoothingQuality='high';const T=12,B=12,h=1736-T-B,w=Math.round(h*i.naturalWidth/i.naturalHeight),l=Math.round((780-w)/2);
+x.imageSmoothingQuality='high';const T=24,B=12,h=1736-T-B,w=Math.round(h*i.naturalWidth/i.naturalHeight),l=Math.round((780-w)/2);
 const p=document.createElement('canvas');p.width=i.naturalWidth;p.height=i.naturalHeight;const q=p.getContext('2d');q.drawImage(i,0,0);
 const top=q.getImageData(2,2,1,1).data,bot=q.getImageData(2,i.naturalHeight-3,1,1).data;
 x.fillStyle='rgb('+top[0]+','+top[1]+','+top[2]+')';x.fillRect(0,0,780,1736);
 x.fillStyle='rgb('+bot[0]+','+bot[1]+','+bot[2]+')';x.fillRect(l,1736-B-40,w,B+40);
-x.drawImage(i,l,T,w,h);o.textContent='@@'+c.toDataURL('image/webp',0.9)+'@@';});</script>`);
+x.drawImage(i,l,T,w,h);
+const W=i.naturalWidth,H=i.naturalHeight,last=q.getImageData(0,H-1,W,1).data,above=q.getImageData(W>>1,H-8,1,1).data;
+let line=above[0]!==last[0]||above[1]!==last[1]||above[2]!==last[2];
+for(let n=4;line&&n<last.length;n+=4)if(last[n]!==last[0]||last[n+1]!==last[1]||last[n+2]!==last[2])line=false;
+if(line){const y=T+Math.floor(h*(H-8)/H);x.imageSmoothingEnabled=false;x.drawImage(p,0,H-8,W,1,l,y,w,1736-y);}
+o.textContent='@@'+c.toDataURL('image/webp',0.9)+'@@';});</script>`);
   const dom = execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--virtual-time-budget=5000', '--dump-dom', 'file:///' + html.split(path.sep).join('/')],
     { encoding: 'utf8', maxBuffer: 64 << 20 });
   const m = dom.match(/@@data:image\/webp;base64,([^@]+)@@/);
