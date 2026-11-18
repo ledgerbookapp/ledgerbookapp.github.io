@@ -15,7 +15,8 @@ const S = {
   // -- chrome ------------------------------------------------------------------
   appName:      ['LedgerBook', 'LedgerBook'],
   navHome:      ['Home', 'হোম'],
-  navInstall:   ['How to install', 'ইনস্টল'],
+  navInstall:   ['How to install',
+                 'ইনস্টলের নিয়ম'],
   navFeatures:  ['Features', 'কী কী আছে'],
   navPrivacy:   ['Privacy', 'গোপনীয়তা'],
   langLabel:    ['বাংলা', 'English'],
@@ -59,7 +60,7 @@ const S = {
   taglineLead:  ['Your money, your phone,', 'আপনার টাকার হিসাব আপনার ফোনেই,'],
   taglineAccent:['nobody else.', 'আর কারও কাছে নয়।'],
   heroLead:     ['Accurate records of your everyday income and spending, in true double-entry. No account to open, your data is sent to nobody, and a mismatch in your books never stays hidden.',
-                 'প্রতিদিনের আয়-ব্যয়ের নিখুঁত হিসাব—প্রকৃত দুতরফা পদ্ধতিতে। অ্যাকাউন্ট খোলার ঝামেলা নেই, কারও কাছে আপনার তথ্য পাঠানো হয় না, আর হিসাবের কোনো অমিল চাপা পড়ে থাকে না।'],
+                 'প্রতিদিনের আয়-ব্যয়ের নিখুঁত হিসাব — প্রকৃত দুতরফা পদ্ধতিতে। অ্যাকাউন্ট খোলার ঝামেলা নেই, কারও কাছে আপনার তথ্য পাঠানো হয় না, আর হিসাবের কোনো অমিল চাপা পড়ে থাকে না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
   versionLine:  ['Version {v} · {size} · Android 7.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০ বা তার পরের ভার্সন'],
@@ -105,7 +106,8 @@ const S = {
                  'অ্যাপের নিজের অনুমতি, প্রতিটির নির্দিষ্ট কাজ রয়েছে।'],
   stat4:        ['the whole app — works on Android 7.0 and later',
                  'পুরো অ্যাপের সাইজ — Android 7.0 বা তার পরবর্তী সংস্করণে ব্যবহারযোগ্য।'],
-  stat4Short:   ['the whole app', 'পুরো অ্যাপের সাইজ'],
+  stat4Short:   ['the whole app',
+                 'পুরো অ্যাপের সাইজ।'],
 
   // -- why ---------------------------------------------------------------------
   whyTitle:     ['Why this one', 'কেন LedgerBook'],
@@ -178,8 +180,9 @@ const S = {
                  'মুনাফা, কর আর মেয়াদপূর্তি।'],
 
   // -- trust -------------------------------------------------------------------
-  trustTitle:   ['Why it is not on the Play Store', 'প্লে স্টোরে নেই কেন'],
-  trustBody:    ['It is published here instead, as a file you download and install yourself. Your phone will warn you about that, because a phone cannot tell one unknown file from another. What it can tell you is whether the file is exactly the one published — every release carries a SHA-256 fingerprint, and the install guide shows how to check it.',
+  trustTitle:   ['Published here, not on the Play Store',
+                 'প্লে স্টোরে নয়, এখানেই পাবেন'],
+  trustBody:    ['It is published here instead, as a file you download and install yourself. Your phone will warn you about that, because a phone cannot tell one unknown file from another. What you can check is whether the file is exactly the one published — every release carries a SHA-256 fingerprint, and the install guide shows how to check it.',
                  'এটি প্লে স্টোরে নয়, এখানে একটি ফাইল হিসেবে দেওয়া হয় — আপনি নিজে ডাউনলোড করে ইনস্টল করবেন। এতে ফোন সতর্ক করবে, কারণ অচেনা ফাইলগুলোর মধ্যে ফোন তফাত করতে পারে না। তবে ফাইলটি হুবহু প্রকাশিত ফাইলটিই কি না, তা মিলিয়ে দেখা যায় — প্রতিটি রিলিজের সঙ্গে একটি SHA-256 ছাপ (ফাইলের নিজস্ব একটি লম্বা সংখ্যা) থাকে, আর ইনস্টলের পাতায় মেলানোর নিয়ম দেওয়া আছে।'],
 
   installLink:  ['Read the install guide', 'ইনস্টলের নিয়ম পড়ুন'],
@@ -190,7 +193,8 @@ const S = {
   relVerifiable:['Verifiable', 'মিলিয়ে দেখা যায়'],
   // The release's own notes, as the app's update dialog shows them. They are written once,
   // in English, so the Bangla page says so rather than passing them off as its own words.
-  relNotes:     ['What’s New', 'নতুন যা আছে'],
+  relNotes:     ['What’s new',
+                 'নতুন যা আছে'],
   relNotesLang: ['The notes are written in English.', 'বিবরণটি ইংরেজিতে লেখা।'],
   relSize:      ['File size', 'ফাইলের আকার'],
   relRequires:  ['Requires', 'যা লাগবে'],
@@ -239,7 +243,7 @@ const S = {
                  'Play Protect এটি আগে দেখেনি। Scan app বেছে নিন।'],
   cap3c:        ['What the scan came back with. Tap Install.',
                  'স্ক্যানের পর এটি দেখায়। Install-এ চাপুন।'],
-  cap4a:        ['It asks what to call you. You can change this anytime in Settings.',
+  cap4a:        ['It asks what to call you. You can change this any time in Settings.',
                  'আপনাকে কী নামে ডাকবে, জানতে চায়। পরে যেকোনো সময় সেটিংস থেকে বদলানো যায়।'],
   cap4b:        ['Four digits. Step 2 of 3.',
                  'চার অঙ্ক। ধাপ ২/৩।'],
@@ -376,13 +380,13 @@ const S = {
   // 1.1.97–1.1.99: the amount on its own card with quick adds, and the bill calculator on
   // Expense. The balance check is in fCheckBody since website 2.25.2.
   f1Body:       ['Income, expense, transfer between your own accounts, and cash in or out of the bank — each its own screen, asking only what that entry needs and offering only the accounts that fit it. Type the amount on its card or add ৳500, ৳1,000 or ৳5,000 in a tap, and add up a bill on Expense with + − × ÷.',
-                 'আয়, ব্যয়, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংকে জমা বা উত্তোলন — প্রতিটির আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির দরকারি তথ্যগুলোই চাওয়া হয়, আর শুধু মানানসই অ্যাকাউন্টগুলোই দেখায়। অঙ্ক লিখুন তার কার্ডে, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; ব্যয়ের পাতায় + − × ÷ দিয়ে বিলের হিসাবও করা যায়।'],
+                 'আয়, ব্যয়, নিজের অ্যাকাউন্টের মধ্যে ট্রান্সফার, আর ব্যাংকে জমা বা ব্যাংক থেকে উত্তোলন — প্রতিটির আলাদা পাতা, যেখানে শুধু ওই এন্ট্রির দরকারি তথ্যগুলোই চাওয়া হয়, আর শুধু মানানসই অ্যাকাউন্টগুলোই দেখায়। অঙ্ক লিখুন তার কার্ডে, বা এক চাপে ৳৫০০, ৳১,০০০ বা ৳৫,০০০ যোগ করুন; ব্যয়ের পাতায় + − × ÷ দিয়ে বিলের হিসাবও করা যায়।'],
   // Split from f1Body and f2Body (website 2.25.2): the balance check (1.1.97–1.1.99), entries
   // dated ahead, and an account that still holds money asking for it to be moved first.
   fCheckHead:   ['Checked before it is saved or deleted',
                  'সেভ বা মোছার আগেই যাচাই'],
-  fCheckBody:   ['An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it. An account that still holds money cannot simply vanish: deleting it asks you to move that money first.',
-                 'অ্যাকাউন্টে যত টাকা আছে তার বেশি দিলে সেভ হওয়ার আগেই আটকে যায়। সামনের কোনো তারিখে এন্ট্রি দিলে সেই দিন না আসা পর্যন্ত ব্যালেন্সে যোগ হয় না, আর তার জন্য দরকারি টাকা আলাদা করে রাখা হয়। যে অ্যাকাউন্টে এখনো টাকা আছে, সেটি সরাসরি মুছে ফেলা যায় না: মুছতে গেলে আগে সেই টাকা অন্য অ্যাকাউন্টে সরাতে বলে।'],
+  fCheckBody:   ['An amount larger than the account holds is stopped before it is saved. Date an entry ahead and it waits out of the balance until its day, and the money it will need is kept for it. An account that still holds money cannot simply vanish: deleting it asks you to move that money first. An account that has gone below ৳0 is named on the Accounts page.',
+                 'অ্যাকাউন্টে যত টাকা আছে তার বেশি দিলে সেভ হওয়ার আগেই আটকে যায়। সামনের কোনো তারিখে এন্ট্রি দিলে সেই দিন না আসা পর্যন্ত ব্যালেন্সে ধরা হয় না, আর তার জন্য দরকারি টাকা আলাদা করে রাখা হয়। যে অ্যাকাউন্টে এখনো টাকা আছে, সেটি সরাসরি মুছে ফেলা যায় না: মুছতে গেলে আগে সেই টাকা অন্য অ্যাকাউন্টে সরাতে বলে। ৳০-এর নিচে নেমে যাওয়া অ্যাকাউন্টের নাম অ্যাকাউন্টস পাতায় দেখায়।'],
   // 2.0.9–2.1.1: cards show their network, numbers their last four digits. 2.1.4: a credit card says Due or Credit.
   // 2.2.4: a bank account or wallet shares its details (AccountShareDialog: ticked lines, a preview, never the balance).
   // 2.2.3, in fExpBody, f9Body and fLookBody: the statement names its period and runs to today; a
@@ -394,7 +398,7 @@ const S = {
   fShareHead:   ['Share bank and wallet details',
                  'ব্যাংক ও ওয়ালেটের তথ্য শেয়ার করুন'],
   f2Share:      ['Tap a bank account or wallet with a saved number and share its details from the panel that opens — such as the name, the account number, and a bank’s branch and routing number. Details can be shared in English or Bangla. Tick what to send and preview it first. Your balance is never shared.',
-                 'নম্বর সেভ করা ব্যাংক অ্যাকাউন্ট বা ওয়ালেটে চাপ দিলে যে প্যানেল খোলে, সেখান থেকেই তথ্য শেয়ার করতে পারবেন—যেমন নাম, অ্যাকাউন্ট নম্বর, ব্যাংকের শাখা ও রাউটিং নম্বর। ইংরেজি বা বাংলায় তথ্য শেয়ার করা যায়। কোন তথ্য পাঠাবেন, তা টিক দিয়ে বেছে নিতে পারবেন এবং পাঠানোর আগে প্রিভিউ দেখতে পারবেন। আপনার ব্যালেন্স কখনোই শেয়ার হবে না।'],
+                 'নম্বর সেভ করা ব্যাংক অ্যাকাউন্ট বা ওয়ালেটে চাপ দিলে যে প্যানেল খোলে, সেখান থেকেই তথ্য শেয়ার করতে পারবেন — যেমন নাম, অ্যাকাউন্ট নম্বর, ব্যাংকের শাখা ও রাউটিং নম্বর। ইংরেজি বা বাংলায় তথ্য শেয়ার করা যায়। কোন তথ্য পাঠাবেন, তা টিক দিয়ে বেছে নিতে পারবেন এবং পাঠানোর আগে প্রিভিউ দেখতে পারবেন। আপনার ব্যালেন্স কখনোই শেয়ার হবে না।'],
   f3Head:       ['A trial balance that proves itself', 'রেওয়ামিল: হিসাব নিজেই মিলিয়ে দেখায়'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
@@ -407,8 +411,8 @@ const S = {
   // heading carries the profile's phone and email under the name.
   fRevHead:     ['Mistakes are reversed, not erased',
                  'ভুল মুছে ফেলা নয়, রিভার্স করে সংশোধন'],
-  fRevBody:     ['Open an entry and Reverse it — after your PIN or fingerprint, the app adds an opposite entry and both stay in the history. Or Edit it to correct the entry itself; its earlier version is not kept. If a reversal or edit takes money back and would leave a balance below ৳0, the app asks first, and such accounts are marked on the Accounts page; an edit that spends more than the account holds is stopped.',
-                 'এন্ট্রি খুলে Reverse করুন—PIN বা আঙুলের ছাপ দেওয়ার পর অ্যাপ বিপরীত একটি এন্ট্রি তৈরি করে, আর দুটি এন্ট্রিই ইতিহাসে থেকে যায়। অথবা Edit করে এন্ট্রিটিই ঠিক করুন; তখন আগের রূপটি আর থাকে না। Reverse বা Edit-এ টাকা ফিরে গিয়ে ব্যালেন্স ৳০-এর নিচে নামার মতো হলে অ্যাপ আগে অনুমতি চায়, আর এমন অ্যাকাউন্ট Accounts পাতায় আলাদাভাবে দেখায়; অ্যাকাউন্টে যত টাকা আছে তার বেশি খরচের Edit সেভ হয় না।'],
+  fRevBody:     ['Open an entry and Reverse it — after your PIN or fingerprint, the app adds an opposite entry and both stay in the history. Edit corrects the entry itself and keeps no earlier version. If taking money back would leave a balance below ৳0, the app asks first; an edit that spends more than the account holds is stopped.',
+                 'এন্ট্রি খুলে Reverse করুন — PIN বা আঙুলের ছাপ দেওয়ার পর অ্যাপ বিপরীত একটি এন্ট্রি তৈরি করে, আর দুটি এন্ট্রিই ইতিহাসে থেকে যায়। Edit করলে এন্ট্রিটিই ঠিক হয়, আগের রূপ থাকে না। টাকা ফিরে গিয়ে ব্যালেন্স ৳০-এর নিচে নামার মতো হলে অ্যাপ আগে অনুমতি চায়; অ্যাকাউন্টে যত টাকা আছে তার বেশি খরচের Edit সেভ হয় না।'],
   fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সঙ্গে নিয়ে যান'],
   fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction your filters keep, not only the ones on screen; a PDF’s table lists the newest 5,000. The PDF puts your phone and email from your profile under your name, and its heading names the month, the dates you chose or All Time; this month’s runs to today. Each export asks for your PIN or fingerprint first.',
                  'লেনদেনগুলো এক্সপোর্ট করুন সহজে পড়ার মতো PDF রিপোর্টে, অথবা CSV ফাইলে — যা Excel-এ খোলে, বাংলা লেখা ঠিক রেখেই। শুধু স্ক্রিনে যা দেখা যাচ্ছে তা নয়, ফিল্টারে থাকা সব লেনদেন যায়; PDF-এর তালিকায় থাকে সবচেয়ে নতুন ৫,০০০টি। PDF-এ আপনার নামের নিচে প্রোফাইলের ফোন নম্বর আর ইমেইল থাকে, আর শিরোনামে লেখা থাকে কোন মাসের, কোন তারিখগুলোর, নাকি শুরু থেকে সব; চলতি মাসের স্টেটমেন্টে আজ পর্যন্ত হিসাব ধরা হয়। প্রতিবার এক্সপোর্টের আগে পিন বা আঙুলের ছাপ চায়।'],
@@ -424,7 +428,7 @@ const S = {
                  'কিস্তি দিন ১, ২, ৩ বা ৪ মাস পরপর, অথবা আপনার ঠিক করা যেকোনো মাস পরপর। কিস্তির সময় হলে "জমা দিন" বোতাম জ্বলে ওঠে, আর দুটি কিস্তি বাকি পড়লে সতর্ক করে। প্রতি বছরের মুনাফা জমার সঙ্গে যোগ হয়, তাই পরের বছর সেটির ওপরেও মুনাফা আসে। মেয়াদ শেষে চাইলে সেই টাকা মাসিক পেনশন হিসেবে নেওয়া যায়।'],
   // 2.1.4: a DPS with no rate shows its Balance; a take-back states its limit first.
   d2Head:       ['When the bank sets the rate later', 'ব্যাংক যখন হার পরে জানায়'],
-  d2Body:       ['Some banks declare the final rate afterwards. Keep such a deposit without a rate and take each profit at the amount on your statement; add what the bank pays or takes back once the rate is declared — the app says up front the most it can take back. A DPS without a rate shows its Balance: what you paid in and the profit added, together. A wrong figure can be undone and entered again. Profit the bank adds to an FDR later first fills back any excise duty the FDR still owes, as a month’s profit does.',
+  d2Body:       ['Some banks declare the final rate afterwards. Keep such a deposit without a rate and take each profit at the amount on your statement; add what the bank pays or takes back once the rate is declared — the app says up front the most it can take back. A DPS without a rate shows its Balance: what you paid in and the profit added, together. A wrong figure can be undone and entered again. Profit the bank adds to an FDR later first covers any excise duty the FDR still owes, as a month’s profit does.',
                  'কিছু ব্যাংক চূড়ান্ত হার পরে ঘোষণা করে। এমন জমা হার ছাড়াই রাখুন, আর প্রতিবারের মুনাফা লিখুন স্টেটমেন্টের অঙ্কে। হার ঘোষণার পর ব্যাংক বাড়তি যা দেয় বা ফেরত নেয়, সেটিও যোগ করা যায় — সবচেয়ে বেশি কত ফেরত নিতে পারে, অ্যাপ আগেই বলে দেয়। হার ছাড়া DPS-এ দেখায় তার ব্যালেন্স: আপনার জমা আর যোগ হওয়া মুনাফা মিলিয়ে। ভুল অঙ্ক দিলে বাতিল করে আবার লেখা যায়। ব্যাংক পরে FDR-এ বাড়তি মুনাফা দিলে, FDR-এর বাকি থাকা আবগারি শুল্ক আগে সেখান থেকে পূরণ হয় — মাসের মুনাফায় যেমন হয়।'],
   // 2.1.7: a monthly DPS closed early earns for the months each instalment was held.
   // 2.2.3: the charges named (f3fc40b2, 5d23922e) and Edit Note on a deposit's entries (cb4e45a2);
@@ -464,7 +468,7 @@ const S = {
                  'ব্যাকআপ মানে একটি ফাইল, যা থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করতে পারেন, অথবা অ্যাপ প্রতিদিন একটি ফোল্ডারে রাখে, যেখানে শেষ সাত দিনের কপি থাকে। "সর্বশেষ কপি রিস্টোর" সবচেয়ে নতুন কপি থেকে অ্যাকাউন্ট, এন্ট্রি, ধার আর আপনার প্রোফাইল ফিরিয়ে আনে; ভুল ফাইল রিস্টোর হয়ে গেলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি নতুন কিছু বদলান।'],
   fPassHead:    ['A password for the backup',
                  'ব্যাকআপের পাসওয়ার্ড'],
-  f7Pass:       ['A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it, and nobody can recover a forgotten one. If a daily backup fails, or a battery saver holds it back, the app tells you.',
+  f7Pass:       ['A password locks the file, the daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it. Nobody can recover a forgotten password. If a daily backup fails, or a battery saver holds it back, the app tells you.',
                  'পাসওয়ার্ড দিলে ফাইলটি তালাবন্ধ থাকে; প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ডই ব্যবহার করে, আর যখন খুশি সেটি বদলানো যায়। পাসওয়ার্ড না দিলে ফাইলটি যার হাতে যাবে সে-ই খুলতে পারবে, আর পাসওয়ার্ড ভুলে গেলে কেউ সেটি ফিরিয়ে দিতে পারবে না। প্রতিদিনের ব্যাকআপ না হলে, বা ব্যাটারি সেভার আটকে দিলে, অ্যাপ জানিয়ে দেয়।'],
   f8Head:       ['Locked on your phone',
                  'ফোনেই তালাবন্ধ'],
@@ -475,17 +479,17 @@ const S = {
   fLookHead:    ['Set it up your way',
                  'আপনার পছন্দমতো সাজিয়ে নিন'],
   fLookBody:    ['Bangla or English, light or dark mode, gold or sky blue, and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
-                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক মোড, সোনালি বা আকাশি থিম এবং পছন্দমতো ফন্ট সাইজ—সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
+                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক মোড, সোনালি বা আকাশি থিম এবং পছন্দমতো ফন্ট সাইজ — সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],
   // 1.1.93–1.1.98: DPS instalments, profit waiting to be taken and failed backups joined
   // the list; loans show one card per person; Clear All comes with Undo.
-  f9Body:       ['Loan dates, DPS instalments coming up, profit waiting to be taken, backups saved or failed, and app updates — in one list, with one card per person for loans. Clear it all at once, with Undo. A reminder goes by itself once its loan is paid or its deposit closed, and a loan’s says who owes whom. It is kept on your phone only, and reminders can be switched off.',
+  f9Body:       ['Loan dates, DPS instalments coming up, profit waiting to be taken, backups saved or failed, and app updates — in one list, with one card per person for loans. Clear it all at once, with Undo. A reminder clears by itself once its loan is paid or its deposit closed, and a loan reminder says who owes whom. It is kept on your phone only, and reminders can be switched off.',
                  'ধারের তারিখ, সামনের DPS কিস্তি, তোলার অপেক্ষায় থাকা মুনাফা, ব্যাকআপ সেভ হওয়া বা না হওয়া, আর অ্যাপের আপডেট — সব এক তালিকায়; ধারের বেলায় প্রত্যেক মানুষের জন্য একটি কার্ড। এক চাপে সব মোছা যায়, চাইলে আবার ফিরিয়েও আনা যায়। ধার শোধ হলে বা জমা বন্ধ হলে তার রিমাইন্ডার নিজেই সরে যায়, আর ধারের রিমাইন্ডারে লেখা থাকে কে কাকে দেবে। তালিকাটি শুধু আপনার ফোনেই থাকে, আর রিমাইন্ডার চাইলে বন্ধ করা যায়।'],
 
   // -- privacy -----------------------------------------------------------------
-  privLead:     ['The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you export a report or make a backup yourself; Android’s own backup carries only the app’s settings and a few housekeeping marks, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.',
+  privLead:     ['The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you export a report or make a backup yourself; Android’s own backup carries only the app’s settings and a few housekeeping marks, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it on trust.',
                  'সংক্ষেপে: কিছুই সংগ্রহ করা হয় না, কোথাও কিছু পাঠানোও হয় না — কারণ পাঠানোর মতো কোনো জায়গাই নেই। আপনার খাতা ফোনেই এনক্রিপ্ট করা থাকে, আর আপনি নিজে রিপোর্ট এক্সপোর্ট বা ব্যাকআপ না করলে ফোনের বাইরে যায় না। অ্যান্ড্রয়েডের নিজের ব্যাকআপ নেয় শুধু অ্যাপের সেটিংস আর অ্যাপ চালানোর কিছু ছোট তথ্য — নিচে সেটির আলাদা অংশ আছে। এই পাতার বাকি অংশ এসবেরই বিস্তারিত, যাতে শুধু বিশ্বাস না করে নিজে মিলিয়ে দেখতে পারেন।'],
 
   // The four answers under the lead: a label and the short answer to it.
@@ -536,14 +540,14 @@ const S = {
                  'অ্যান্ড্রয়েড অ্যাপগুলোর ব্যাকআপ আপনার Google অ্যাকাউন্টে রাখে, আর LedgerBook তা করতে দেয় — তবে শুধু অ্যাপের সেটিংস, আর শেষ এক্সপোর্টের তারিখের মতো অ্যাপ চালানোর কিছু ছোট তথ্য। খাতা ইচ্ছা করেই বাদ রাখা হয়েছে: সেটি এমন চাবিতে এনক্রিপ্ট করা যা এই ফোনের বাইরে যেতে পারে না, তাই অন্য কোথাও কপি গেলেও খোলা যেত না। আপনার পিন আর প্রোফাইলও ফোনেই থেকে যায়। এ কারণেই নতুন ফোনে যেতে নিজের একটি ব্যাকআপ ফাইল লাগে: এই ফোনে এক্সপোর্ট করুন, নতুন ফোনে রিস্টোর করুন। অ্যান্ড্রয়েডের সেটিংসে গিয়ে ব্যাকআপ বন্ধ করলে কিছুই যায় না; অ্যাপের ব্যাকআপ পাতায় সেখানে যাওয়ার লিংক আছে।'],
 
   privBackupTitle:['Backups you make yourself', 'আপনার নিজের নেওয়া ব্যাকআপ'],
-  privBackupBody:['The backup you make from inside the app is a different thing: one file, written where you point it. Whether it carries a password is your choice — with one, it is encrypted and only that password opens it; without one, it is a plain file for a place you trust. Nobody is sent a copy and no service holds the password — which is the same sentence read the other way: lose the file and the password, and nobody can get it back for you either.',
+  privBackupBody:['The backup you make from inside the app is a different thing: one file, written where you point it. Whether it carries a password is your choice — with one, it is encrypted and only that password opens it; without one, it is a plain file for a place you trust. Nobody is sent a copy and no service holds the password — which is the same sentence read the other way: lose the file and the password, and nobody can get them back for you either.',
                  'অ্যাপের ভেতর থেকে আপনি যে ব্যাকআপ নেন, সেটি আলাদা জিনিস: একটি ফাইল, যা সেভ হয় আপনার বেছে নেওয়া জায়গায়। পাসওয়ার্ড দেবেন কি না, তা আপনার ইচ্ছা — দিলে ফাইলটি এনক্রিপ্ট হয়, আর শুধু সেই পাসওয়ার্ডেই খোলে; না দিলে সাধারণ ফাইল, তাই ভরসার জায়গায় রাখুন। কারও কাছে কপি পাঠানো হয় না, কোনো সেবার কাছে পাসওয়ার্ডও জমা থাকে না। তার মানে উলটো কথাটিও সত্যি: ফাইল আর পাসওয়ার্ড হারালে কেউ আপনাকে সেগুলো ফিরিয়ে দিতে পারবে না।'],
 
   // The page itself, not the app: what a visit to it touches. Everything above is about
   // the app, and a privacy page that left out its own fonts and release lookup was
   // promising more than it said.
   privSiteTitle: ['This website', 'এই ওয়েবসাইট'],
-  privSiteBody: ['The site is served by GitHub Pages, has no tracker and sets no cookie. Your browser fetches its fonts from Google Fonts and asks GitHub which release is the newest, so both see your address, as they would for any site that uses them; the download itself comes from GitHub too. The language and theme you choose, and the newest release it last found, are kept in your own browser and nowhere else.',
+  privSiteBody: ['The site is served by GitHub Pages, has no tracker and sets no cookie. Your browser fetches its fonts from Google Fonts and asks GitHub which release is the newest, so both see your IP address, as they would for any site that uses them; the download itself comes from GitHub too. The language and theme you choose, and the newest release it last found, are kept in your own browser and nowhere else.',
                  'সাইটটি চলে GitHub Pages-এ; এতে কোনো ট্র্যাকার নেই, কুকিও নেই। ফন্ট আসে Google Fonts থেকে, আর সবচেয়ে নতুন রিলিজ কোনটি, তা আপনার ব্রাউজার GitHub-এর কাছে জানতে চায় — তাই এই দুই জায়গা আপনার ঠিকানা (IP) দেখতে পায়, যেমন এদের ব্যবহার করা যেকোনো সাইটে দেখে; ডাউনলোডও আসে GitHub থেকে। আপনার বেছে নেওয়া ভাষা ও থিম, আর শেষবার পাওয়া নতুন রিলিজের তথ্য থাকে শুধু আপনার নিজের ব্রাউজারে।'],
 
   privDeleteTitle:['Getting rid of it all', 'সব মুছে ফেলা'],
