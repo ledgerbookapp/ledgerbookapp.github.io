@@ -22,6 +22,7 @@ and it works.
 | `assets/logo.svg` | the mark: a wallet holding the ledger book and a taka note, for 40px and up; `favicon.svg` is its cut for 16–24px, and the PNG icons are drawn from these two |
 | `assets/og-image.png` | the 1200×630 picture a shared link shows in WhatsApp, Messenger and the rest; rendered from HTML with the dark home picture (`app-home-dark.webp`), so render it again when that picture changes |
 | `assets/screens/` | the app's own screens (features page, home page, install step 4) and the phone's install dialogs (steps 1–3), cropped to the dialog |
+| `_tools/` | how those screens and the share picture are made again for a new app release (`_tools/README.md`); left out of the published site, as Jekyll leaves out any folder starting with `_` |
 | `check.js` | run before publishing — see below |
 
 ## Before you publish
