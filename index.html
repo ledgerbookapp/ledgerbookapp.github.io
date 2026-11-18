@@ -12,7 +12,7 @@
 <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
 <title data-s="docHome">LedgerBook — your money, your phone, nobody else</title>
-<meta name="description" data-s-content="descHome" content="A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.">
+<meta name="description" data-s-content="descHome" content="A double-entry ledger for everyday money. No account to open, and your ledger stays on your phone unless you export it. Free, for Android.">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
@@ -22,7 +22,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LedgerBook">
 <meta property="og:title" content="LedgerBook — your money, your phone, nobody else">
-<meta property="og:description" content="A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.">
+<meta property="og:description" content="A double-entry ledger for everyday money. No account to open, and your ledger stays on your phone unless you export it. Free, for Android.">
 <meta property="og:url" content="https://ledgerbookapp.github.io/">
 <meta property="og:image" content="https://ledgerbookapp.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -30,7 +30,7 @@
 <meta property="og:image:alt" content="LedgerBook: your money, your phone, nobody else. Free, for Android.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LedgerBook — your money, your phone, nobody else">
-<meta name="twitter:description" content="A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.">
+<meta name="twitter:description" content="A double-entry ledger for everyday money. No account to open, and your ledger stays on your phone unless you export it. Free, for Android.">
 
 
 
@@ -56,7 +56,7 @@
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   "name": "LedgerBook",
-  "description": "A double-entry ledger for everyday money. No account to open, and your ledger never leaves your phone. Free, for Android.",
+  "description": "A double-entry ledger for everyday money. No account to open, and your ledger stays on your phone unless you export it. Free, for Android.",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Android 7.0 or later",
   "inLanguage": ["en", "bn"],
@@ -171,9 +171,9 @@
   <!-- -- four numbers ---------------------------------------------------------- -->
   <section class="wrap stats-wrap">
     <dl class="stats">
-      <div><dt class="num-big">0</dt><dd data-s="stat1">servers of ours — your books stay on your phone alone</dd></div>
+      <div><dt class="num-big">0</dt><dd data-s="stat1">servers of ours — your books stay on your phone unless you export them</dd></div>
       <div><dt class="num-big">2</dt><dd data-s="stat2">uses of the internet: checking for a new update and downloading it</dd></div>
-      <div><dt class="num-big">4</dt><dd data-s="stat3">necessary permissions, each with a specific job</dd></div>
+      <div><dt class="num-big">4</dt><dd data-s="stat3">permissions of its own, each with a specific job</dd></div>
       <!-- The size is overwritten from the release once the API answers; the figure
            written here is only what shows if it never does. -->
       <div><dt class="num-big" data-rel="size">—</dt>
@@ -282,7 +282,7 @@
     <div class="sec-head">
       <p class="eyebrow" data-s="permEyebrow">Permissions</p>
       <h2 data-s="permTitle">What it asks for, and why</h2>
-      <p data-s="permSub">Four permissions. Each one has a single job.</p>
+      <p data-s="permSub">Four permissions of its own, each with a single job. The Android libraries it is built on add seven routine ones, for the fingerprint lock and for background work such as reminders; none of them gives access to your ledger or to the internet.</p>
     </div>
     <ul class="perms">
       <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
@@ -355,7 +355,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.25.5</span>
+      <span class="foot-ver" data-site-version>Website v2.25.6</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

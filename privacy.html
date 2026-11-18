@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#F8FAFC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0C0B0A" media="(prefers-color-scheme: dark)">
 <title data-s="docPrivacy">LedgerBook privacy</title>
-<meta name="description" data-s-content="descPrivacy" content="Nothing is collected. Your entries stay in a database on your phone. The only network calls check for a new version.">
+<meta name="description" data-s-content="descPrivacy" content="Nothing is collected. Your entries stay in a database on your phone. The only network use is for app updates.">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LedgerBook">
 <meta property="og:title" content="LedgerBook privacy">
-<meta property="og:description" content="Nothing is collected. Your entries stay in a database on your phone. The only network calls check for a new version.">
+<meta property="og:description" content="Nothing is collected. Your entries stay in a database on your phone. The only network use is for app updates.">
 <meta property="og:url" content="https://ledgerbookapp.github.io/privacy.html">
 <meta property="og:image" content="https://ledgerbookapp.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
 <meta property="og:image:alt" content="LedgerBook: your money, your phone, nobody else. Free, for Android.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="LedgerBook privacy">
-<meta name="twitter:description" content="Nothing is collected. Your entries stay in a database on your phone. The only network calls check for a new version.">
+<meta name="twitter:description" content="Nothing is collected. Your entries stay in a database on your phone. The only network use is for app updates.">
 
 
 
@@ -90,11 +90,11 @@
   <!-- -- hero ------------------------------------------------------------------ -->
   <section class="wrap priv-hero">
     <h1 data-s="navPrivacy">Privacy</h1>
-    <p class="lead" data-s="privLead">The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you write a backup yourself; Android’s own backup carries only the app’s settings, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.</p>
+    <p class="lead" data-s="privLead">The short version: nothing is collected and nothing is reported, because there is nobody to report to. Your ledger is encrypted on the phone and never leaves it unless you export a report or make a backup yourself; Android’s own backup carries only the app’s settings and a few housekeeping marks, and has a section to itself below. The rest of this page is all of that spelled out, so you can check it rather than take it.</p>
     <dl class="priv-sum">
       <div><dt data-s="privCollectTitle">What is collected</dt><dd data-s="privSum1V">Nothing</dd></div>
-      <div><dt data-s="privSum2">Network use</dt><dd data-s="privSum2V">Update check only</dd></div>
-      <div><dt data-s="privSum3">Leaves the phone</dt><dd data-s="privSum3V">Settings only</dd></div>
+      <div><dt data-s="privSum2">Network use</dt><dd data-s="privSum2V">Updates only</dd></div>
+      <div><dt data-s="privSum3">Leaves on its own</dt><dd data-s="privSum3V">Settings and app marks</dd></div>
       <div><dt data-s="privSum4">To delete it all</dt><dd data-s="privSum4V">Uninstall</dd></div>
     </dl>
   </section>
@@ -121,7 +121,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
         <div>
           <h2 data-s="privCollectTitle">What is collected</h2>
-          <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, SQLCipher to encrypt the ledger, and one library for reading a release’s version number.</p>
+          <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, SQLCipher to encrypt the ledger, and Moshi, a library that reads and writes the backup file.</p>
           <p class="chips"><span data-s="chipNoAccount">No account</span><span data-s="privNo2">No analytics</span><span data-s="privNo3">No crash reports</span><span data-s="privNo4">No ads</span></p>
         </div>
       </section>
@@ -130,7 +130,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
         <div>
           <h2 data-s="privWhereTitle">Where your entries live</h2>
-          <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of — encrypted with SQLCipher, under a key held in the phone’s Android Keystore that never leaves this device. It is never copied anywhere else unless you write a backup yourself. Uninstalling the app deletes it.</p>
+          <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of — encrypted with SQLCipher, under a key held in the phone’s Android Keystore that never leaves this device. It is never copied anywhere else unless you export it or make a backup yourself. Uninstalling the app deletes it.</p>
         </div>
       </section>
 
@@ -151,7 +151,7 @@
         <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
         <div>
           <h2 data-s="privAutoTitle">What Android’s backup carries</h2>
-          <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it — but only the app’s settings. The ledger is left out on purpose: it is encrypted under a key that cannot leave this phone, so a copy anywhere else could never be opened. Your PIN and your profile stay behind too. That is why moving to a new phone takes a backup file of your own: export it here, restore it there. Turn Android’s backup off in its own Settings and nothing goes at all; the app’s Backup page has the link.</p>
+          <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it — but only the app’s settings, with a few housekeeping marks such as the date of your last export. The ledger is left out on purpose: it is encrypted under a key that cannot leave this phone, so a copy anywhere else could never be opened. Your PIN and your profile stay behind too. That is why moving to a new phone takes a backup file of your own: export it here, restore it there. Turn Android’s backup off in its own Settings and nothing goes at all; the app’s Backup page has the link.</p>
           <div class="pboxes pgo">
             <div class="goes">
               <p class="plabel" data-s="privGoes">What goes</p>
@@ -180,6 +180,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <h2 data-s="permTitle">What it asks for, and why</h2>
+          <p data-s="permSub">Four permissions of its own, each with a single job. The Android libraries it is built on add seven routine ones, for the fingerprint lock and for background work such as reminders; none of them gives access to your ledger or to the internet.</p>
           <dl class="ptable">
             <div><dt data-s="permInternet">Internet</dt><dd data-s="permInternetW">Only to check for a newer version, and to download it when you say yes.</dd></div>
             <div><dt data-s="permNotify">Notifications</dt><dd data-s="permNotifyW">To remind you when a loan is due, a DPS instalment is near or a deposit matures, and to tell you about updates and backups.</dd></div>
@@ -201,7 +202,7 @@
         <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
         <div>
           <h2 data-s="privDeleteTitle">Getting rid of it all</h2>
-          <p data-s="privDeleteBody">Uninstall the app. That is the whole procedure for the ledger — no account to close and no request to send, because it never had a copy anywhere else. The only other copy is Android’s backup of the app’s settings in your Google account; remove it there, or switch that backup off first. Any backup files you wrote are yours to delete.</p>
+          <p data-s="privDeleteBody">Uninstall the app. That is the whole procedure for the ledger — no account to close and no request to send, because the app never sends a copy anywhere. The only thing kept elsewhere on its own is Android’s backup of the app’s settings in your Google account; remove it there, or switch that backup off first. Any backup files you made and reports you exported are yours to delete.</p>
         </div>
       </section>
 
@@ -218,7 +219,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.25.5</span>
+      <span class="foot-ver" data-site-version>Website v2.25.6</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>
