@@ -58,9 +58,8 @@ const S = {
   // change mid-sentence needs an element boundary to hang on.
   taglineLead:  ['Your money, your phone,', 'আপনার টাকার হিসাব আপনার ফোনেই,'],
   taglineAccent:['nobody else.', 'আর কারও কাছে নয়।'],
-  heroLead:     ['A double-entry ledger for everyday money. No account to open, nothing ' +
-                 'reported to anybody, and books that cannot quietly stop balancing.',
-                 'প্রতিদিনের টাকার হিসাব রাখার খাতা, দুতরফা পদ্ধতিতে। কোনো অ্যাকাউন্ট খুলতে হয় না, কারও কাছে কোনো তথ্য যায় না, আর হিসাবে গরমিল হলে তা চুপচাপ চাপা পড়ে থাকে না।'],
+  heroLead:     ['Accurate records of your everyday income and spending, in true double-entry. No account to open, your data is sent to nobody, and a mismatch in your books never stays hidden.',
+                 'প্রতিদিনের আয়-ব্যয়ের নিখুঁত হিসাব—প্রকৃত দুতরফা পদ্ধতিতে। অ্যাকাউন্ট খোলার ঝামেলা নেই, কারও কাছে আপনার তথ্য পাঠানো হয় না, আর হিসাবের কোনো অমিল চাপা পড়ে থাকে না।'],
   download:     ['Download for Android', 'অ্যান্ড্রয়েডের জন্য ডাউনলোড'],
   versionLine:  ['Version {v} · {size} · Android 7.0 and up',
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০ বা তার পরের ভার্সন'],
@@ -98,13 +97,15 @@ const S = {
                  'ভার্সন {v} · {size} · অ্যান্ড্রয়েড ৭.০+'],
 
   // -- the four numbers under the hero -----------------------------------------
-  stat1:        ['servers of ours for an entry to go to',
-                 'আমাদের কোনো সার্ভার নেই, আপনার হিসাব আপনার ফোনেই থাকে'],
-  stat2:        ['files that touch the internet, both for updates',
-                 'দুটি ফাইল ইন্টারনেট ব্যবহার করে, শুধু আপডেটের জন্য'],
-  stat3:        ['permissions, each with a single job', 'অনুমতি চায় অ্যাপটি, প্রতিটি শুধু একটি কাজের জন্য'],
-  stat4:        ['the whole app, Android 7.0 and up', 'পুরো অ্যাপের আকার, চলে অ্যান্ড্রয়েড ৭.০ বা তার পরের ভার্সনে'],
-  stat4Short:   ['the whole app', 'পুরো অ্যাপের আকার'],
+  stat1:        ['servers of ours — your books stay on your phone alone',
+                 'আমাদের কোনো সার্ভার নেই — আপনার হিসাব থাকে শুধুই আপনার ফোনে।'],
+  stat2:        ['uses of the internet: checking for a new update and downloading it',
+                 'ইন্টারনেট লাগে শুধু নতুন আপডেট চেক ও ডাউনলোড করতে।'],
+  stat3:        ['necessary permissions, each with a specific job',
+                 'প্রয়োজনীয় কয়েকটি অনুমতি (Permissions), প্রতিটির নির্দিষ্ট কাজ রয়েছে।'],
+  stat4:        ['the whole app — works on Android 7.0 and later',
+                 'পুরো অ্যাপের সাইজ — Android 7.0 বা তার পরবর্তী সংস্করণে ব্যবহারযোগ্য।'],
+  stat4Short:   ['the whole app', 'পুরো অ্যাপের সাইজ'],
 
   // -- why ---------------------------------------------------------------------
   whyTitle:     ['Why this one', 'কেন LedgerBook'],
@@ -112,21 +113,23 @@ const S = {
   whySub:       ['Where your data goes, whether the totals hold, and whether it needs a ' +
                  'network at all.',
                  'আপনার তথ্য কোথায় যায়, যোগফল ঠিক থাকে কি না, আর ইন্টারনেট আদৌ লাগে কি না।'],
-  why1Head:     ['It has nowhere to send your money data',
-                 'আপনার হিসাব পাঠানোর কোনো জায়গাই নেই'],
-  why1Body:     ['The app has no server, so your entries have nowhere to go. It uses the internet for one thing only: checking for a new version and downloading it. Android’s own backup is separate — the ',
-                 'অ্যাপের কোনো সার্ভার নেই, তাই আপনার এন্ট্রি কোথাও যায় না। ইন্টারনেট লাগে শুধু একটি কাজে: নতুন ভার্সন এসেছে কি না দেখা আর সেটি ডাউনলোড করা। অ্যান্ড্রয়েডের নিজের ব্যাকআপ আলাদা জিনিস — সেটি কী কী নেয়, তা '],
+  why1Head:     ['Your books stay with you',
+                 'আপনার হিসাব আপনার কাছেই থাকে'],
+  why1Body:     ['The app has no server of its own, so your transactions are never sent to us. The internet is used only to check for and download new updates. Android’s own backup is separate — what it stores is set out ',
+                 'অ্যাপটির নিজস্ব কোনো সার্ভার নেই, তাই আপনার লেনদেনের তথ্য আমাদের কাছে পাঠানো হয় না। ইন্টারনেট ব্যবহার করা হয় শুধু নতুন আপডেট চেক ও ডাউনলোড করার জন্য। Android-এর নিজস্ব Backup ব্যবস্থা আলাদা — এতে কী কী তথ্য সংরক্ষিত হয়, তা '],
   // The sentence above carries on through a link to the privacy page and out again. The
   // spaces at the joins belong to the halves, so the link text is only the link.
-  why1Link:     ['privacy page', 'গোপনীয়তার পাতায়'],
-  why1End:      [' says what it carries.',
+  why1Link:     ['on the privacy page',
+                 'গোপনীয়তা পাতায়'],
+  why1End:      ['.',
                  ' লেখা আছে।'],
-  why2Head:     ['Every amount is written twice', 'প্রতিটি অঙ্ক দুবার লেখা হয়'],
-  why2Body:     ['Real double-entry, the way an accountant keeps books: money leaving one place always arrives somewhere. The Trial Balance page shows the two sides agreeing, so a wrong total is caught instead of carried.',
-                 'আসল দুতরফা হিসাব, যেভাবে হিসাবরক্ষক খাতা রাখেন: এক জায়গা থেকে টাকা বেরোলে সেটি অন্য কোথাও অবশ্যই ঢোকে। রেওয়ামিল পাতায় (দুই দিকের যোগফল মেলানোর পাতা) দেখা যায় দুই দিক মিলছে কি না, তাই ভুল যোগফল চুপচাপ চলতে থাকে না, ধরা পড়ে।'],
+  why2Head:     ['Every taka is recorded on two sides',
+                 'প্রতিটি টাকার হিসাব দুই দিকে বসে'],
+  why2Body:     ['True double-entry, the way accountants keep their books. Money leaving one account is written into another. The Trial Balance page compares the totals of both sides, so a mismatch is easy to catch.',
+                 'প্রকৃত দুতরফা হিসাব পদ্ধতি, যেভাবে হিসাবরক্ষকরা খাতা রাখেন। একটি অ্যাকাউন্ট থেকে টাকা বের হলে তা অন্য অ্যাকাউন্টে জমা হিসেবে লেখা হয়। Trial Balance পাতায় দুই দিকের যোগফল মিলিয়ে দেখা যায়, ফলে হিসাবের অমিল সহজেই ধরা পড়ে।'],
   why3Head:     ['It works with the phone in flight mode', 'ফ্লাইট মোডেও পুরোপুরি চলে'],
-  why3Body:     ['Nothing waits on a network. The ledger is encrypted on the phone, backups are files you keep yourself — with a password if you choose one — and the app locks behind a PIN or your fingerprint.',
-                 'কোনো কাজেই ইন্টারনেটের জন্য বসে থাকতে হয় না। খাতা ফোনেই এনক্রিপ্ট (সংকেতে তালাবন্ধ) করা থাকে, ব্যাকআপ ফাইল থাকে আপনার নিজের কাছে — চাইলে পাসওয়ার্ড দিয়ে — আর অ্যাপ খুলতে লাগে পিন বা আঙুলের ছাপ।'],
+  why3Body:     ['No part of your bookkeeping needs the internet. Your ledger is encrypted on the phone. Backup files stay under your control, protected with a password if you choose. And the app opens with your PIN or fingerprint.',
+                 'হিসাবের কোনো কাজেই ইন্টারনেটের প্রয়োজন হয় না। আপনার হিসাবের খাতা ফোনেই এনক্রিপ্ট করা থাকে। ব্যাকআপ ফাইল থাকে আপনার নিয়ন্ত্রণে, চাইলে পাসওয়ার্ড দিয়ে সুরক্ষিত রাখতে পারেন। আর অ্যাপ খুলতে ব্যবহার করতে পারেন PIN অথবা আঙুলের ছাপ।'],
 
   // -- at a glance -------------------------------------------------------------
   // Eight lines, each a heading and a sentence. The narrow screen gets a shorter sentence
@@ -321,8 +324,8 @@ const S = {
   faqA2:        ['No. It is free, with no ads and no account to open.',
                  'না। এটি ফ্রি — কোনো বিজ্ঞাপন নেই, অ্যাকাউন্টও খুলতে হয় না।'],
   faqQ3:        ['What if I change or lose my phone?', 'ফোন বদলালে বা হারালে কী হবে?'],
-  faqA3:        ['Your ledger is encrypted on this phone, so it does not move to a new one on its own. Before you change phones, save a backup file from the app’s Backup page — with a password, if you like. On the new phone, install the app, set a PIN, then restore the file from the Backup page. Keep a copy of that file off the phone too, in case the phone is lost.',
-                 'আপনার খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে যায় না। ফোন বদলানোর আগে অ্যাপের ব্যাকআপ পাতা থেকে একটি ব্যাকআপ ফাইল সেভ করুন — চাইলে পাসওয়ার্ড দিয়ে। নতুন ফোনে অ্যাপ ইনস্টল করে পিন দিন, তারপর ব্যাকআপ পাতা থেকে ফাইলটি রিস্টোর করুন। ফোন হারিয়ে গেলেও যেন হিসাব না হারায়, তাই ফাইলটির একটি কপি ফোনের বাইরেও রাখুন।'],
+  faqA3:        ['Your ledger is encrypted on this phone, so it does not move to a new one by itself. Before changing phones, create a backup file from the app’s Backup page, protected with a password if you like. On the new phone, install the app and set a PIN, then restore that backup file from the Backup page. So that a lost phone does not mean lost books, keep a copy of the backup off the phone too, such as on Google Drive.',
+                 'আপনার হিসাবের খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে স্থানান্তরিত হয় না। ফোন পরিবর্তনের আগে অ্যাপের Backup পাতা থেকে একটি ব্যাকআপ ফাইল তৈরি করুন। চাইলে পাসওয়ার্ড দিয়ে ফাইলটি সুরক্ষিত রাখতে পারেন। নতুন ফোনে অ্যাপ ইনস্টল করে PIN সেট করুন। এরপর Backup পাতা থেকে আগের ব্যাকআপ ফাইলটি Restore করুন। ফোন হারিয়ে গেলেও যেন হিসাব হারিয়ে না যায়, সেজন্য ব্যাকআপ ফাইলের একটি কপি ফোনের বাইরেও, যেমন Google Drive-এ সংরক্ষণ করে রাখুন।'],
   faqQ4:        ['Does it need the internet?', 'ইন্টারনেট লাগে?'],
   faqA4:        ['No. Everything works offline. It goes online only to check for a newer ' +
                  'version, and to download it when you say yes.',
@@ -388,10 +391,10 @@ const S = {
                  'ব্যাংক, কার্ড, ওয়ালেট, নগদ আর জমা'],
   f2Body:       ['Your accounts sit in groups — bank, cash, wallet and deposits — each in a colour you choose, with a total for every group and one eye that hides all the figures. A credit or debit card shows its network — Visa, Mastercard, American Express or UnionPay — and a number shows only its last four digits, though search finds the whole of it. A credit card says what is Due on it, or the Credit it holds once paid past its debt.',
                  'অ্যাকাউন্টগুলো ভাগ করা থাকে — ব্যাংক, নগদ, ওয়ালেট আর জমা; প্রতিটির রং আপনি বেছে নেন, প্রতিটি ভাগের মোট আলাদা দেখায়, আর চোখের চিহ্নে চাপলে সব টাকার অঙ্ক লুকিয়ে যায়। ক্রেডিট বা ডেবিট কার্ডে তার নেটওয়ার্ক দেখায় — Visa, Mastercard, American Express বা UnionPay — আর নম্বরের শুধু শেষ চার অঙ্ক; তবে সার্চে পুরো নম্বর দিয়েও খোঁজা যায়। ক্রেডিট কার্ডে দেখায় কত বকেয়া, আর দেনার চেয়ে বেশি শোধ করলে কত জমা আছে।'],
-  fShareHead:   ['Share an account’s details',
-                 'অ্যাকাউন্টের তথ্য শেয়ার'],
-  f2Share:      ['A bank account or a wallet shares its details from the panel that opens when you tap it — the name, the number, and a bank’s branch and routing, in English or Bangla. You tick the lines that go and see them before they are sent, and the balance is never among them.',
-                 'ব্যাংক অ্যাকাউন্ট বা ওয়ালেটে চাপলে যে প্যানেল খোলে, সেখান থেকেই তার তথ্য শেয়ার করা যায় — নাম, নম্বর, আর ব্যাংকের শাখা ও রাউটিং নম্বর, ইংরেজি বা বাংলায়। কোন লাইন যাবে টিক দিয়ে বাছেন, পাঠানোর আগে দেখে নেন, আর ব্যালেন্স কখনো যায় না।'],
+  fShareHead:   ['Share bank and wallet details',
+                 'ব্যাংক ও ওয়ালেটের তথ্য শেয়ার করুন'],
+  f2Share:      ['Tap a bank account or wallet and share its details from the panel that opens — the name, the account number, and a bank’s branch and routing number. Details can be shared in English or Bangla. Tick what to send and preview it first. Your balance is never shared.',
+                 'ব্যাংক অ্যাকাউন্ট বা ওয়ালেটে চাপ দিলে যে প্যানেল খোলে, সেখান থেকেই তথ্য শেয়ার করতে পারবেন—যেমন নাম, অ্যাকাউন্ট নম্বর, ব্যাংকের শাখা ও রাউটিং নম্বর। ইংরেজি বা বাংলায় তথ্য শেয়ার করা যায়। কোন তথ্য পাঠাবেন, তা টিক দিয়ে বেছে নিতে পারবেন এবং পাঠানোর আগে প্রিভিউ দেখতে পারবেন। আপনার ব্যালেন্স কখনোই শেয়ার হবে না।'],
   f3Head:       ['A trial balance that proves itself', 'রেওয়ামিল: হিসাব নিজেই মিলিয়ে দেখায়'],
   f3Body:       ['Every amount is written twice, once on each side. The Trial Balance page ' +
                  'adds both sides up and shows them agreeing — so if a total is ever wrong, ' +
@@ -402,9 +405,10 @@ const S = {
   // detail dialog both reverse instead, behind the PIN -- and the exports carry every
   // transaction. The PDF has no password, so this says nothing about one. 2.1.7: the PDF's
   // heading carries the profile's phone and email under the name.
-  fRevHead:     ['A mistake is reversed, not erased', 'ভুল মোছা হয় না, প্রত্যাহার করা হয়'],
-  fRevBody:     ['Nothing in the ledger is ever deleted. Open any entry and Reverse it — after your PIN, the app records the reversal beside it — or Edit it, and the totals follow either way. The history stays whole, so every figure can still be traced. A change that would take an account below ৳0 is asked first, and the Accounts page names any account that has gone there, so you can check it against the bank.',
-                 'খাতা থেকে কখনো কিছু মোছা হয় না। যেকোনো এন্ট্রি খুলে প্রত্যাহার করুন — পিন দেওয়ার পর অ্যাপ তার পাশেই প্রত্যাহারটি লিখে রাখে — অথবা এডিট করুন; দুই ক্ষেত্রেই যোগফল নিজে থেকে ঠিক হয়ে যায়। পুরো ইতিহাস থেকে যায়, তাই প্রতিটি অঙ্ক কোথা থেকে এল তা খুঁজে পাওয়া যায়। কোনো বদলে অ্যাকাউন্ট ৳০-এর নিচে নামলে অ্যাপ আগে জিজ্ঞেস করে, আর এমন অ্যাকাউন্টের নাম অ্যাকাউন্টস পাতায় দেখায় — যাতে ব্যাংকের হিসাবের সঙ্গে মিলিয়ে নিতে পারেন।'],
+  fRevHead:     ['Mistakes are reversed, not erased',
+                 'ভুল মুছে ফেলা নয়, রিভার্স করে সংশোধন'],
+  fRevBody:     ['No transaction is ever permanently deleted. Open an entry and Reverse it — after your PIN, the app adds an opposite entry — or Edit it; the totals update and the full history stays. If a change would take a balance below ৳0, the app asks first, and such accounts are marked on the Accounts page.',
+                 'খাতা থেকে কোনো লেনদেন স্থায়ীভাবে মুছে ফেলা হয় না। এন্ট্রি খুলে Reverse করুন—PIN দেওয়ার পর অ্যাপ বিপরীত একটি এন্ট্রি তৈরি করে—অথবা Edit করুন; হিসাব স্বয়ংক্রিয়ভাবে আপডেট হয়, পুরো ইতিহাসও থেকে যায়। ব্যালেন্স ৳০-এর নিচে নামলে অ্যাপ আগে অনুমতি চায়, আর এমন অ্যাকাউন্ট Accounts পাতায় আলাদাভাবে দেখায়।'],
   fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সঙ্গে নিয়ে যান'],
   fExpBody:     ['Export your transactions as a readable PDF report, or as a CSV file that opens in Excel with Bangla intact — every transaction, not only the ones on screen. The PDF puts your phone and email from your profile under your name, and its heading names the month, the dates you chose or All Time; this month’s runs to today. Each export asks for your PIN or fingerprint first.',
                  'লেনদেনগুলো এক্সপোর্ট করুন সহজে পড়ার মতো PDF রিপোর্টে, অথবা CSV ফাইলে — যা Excel-এ খোলে, বাংলা লেখা ঠিক রেখেই। শুধু স্ক্রিনে যা দেখা যাচ্ছে তা নয়, সব লেনদেন যায়। PDF-এ আপনার নামের নিচে প্রোফাইলের ফোন নম্বর আর ইমেইল থাকে, আর শিরোনামে লেখা থাকে কোন মাসের, কোন তারিখগুলোর, নাকি শুরু থেকে সব; চলতি মাসের স্টেটমেন্টে আজ পর্যন্ত হিসাব ধরা হয়। প্রতিবার এক্সপোর্টের আগে পিন বা আঙুলের ছাপ চায়।'],
@@ -468,10 +472,10 @@ const S = {
   // still take the PIN. Language, accent and text size are in fLookBody since website 2.25.2.
   f8Body:       ['The ledger itself is encrypted on the phone. A PIN or your fingerprint on the way in and a lock again a minute after you leave; exports and backups ask once more, and a restore or reversing an entry always takes the PIN.',
                  'খাতাটি ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট আর ব্যাকআপের আগে আবার পিন বা আঙুলের ছাপ চায়, আর রিস্টোর বা এন্ট্রি প্রত্যাহারে সবসময় পিন লাগে।'],
-  fLookHead:    ['Your language, your look',
-                 'আপনার ভাষা, আপনার পছন্দের চেহারা'],
-  fLookBody:    ['Bangla or English, light or dark, gold or sky blue, larger text — switchable whenever you like. Set to System, the text follows the phone’s size, up to Large, and the small buttons are easier to tap.',
-                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক, সোনালি বা আকাশি, বড় লেখা — যখন খুশি বদলানো যায়। ফন্ট সাইজ "সিস্টেম"-এ রাখলে লেখা ফোনের মাপ মেনে চলে, "বড়" পর্যন্ত; আর ছোট বোতামগুলোয় চাপ দেওয়া সহজ।'],
+  fLookHead:    ['Set it up your way',
+                 'আপনার পছন্দমতো সাজিয়ে নিন'],
+  fLookBody:    ['Bangla or English, light or dark mode, gold or sky blue, and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings; you can also choose a larger size. Buttons are made easy to tap.',
+                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক মোড, সোনালি বা আকাশি থিম এবং পছন্দমতো ফন্ট সাইজ—সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে। চাইলে বড় ফন্টও ব্যবহার করতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],
