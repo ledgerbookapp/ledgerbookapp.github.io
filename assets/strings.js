@@ -102,7 +102,7 @@ const S = {
   stat2:        ['uses of the internet: checking for a new update and downloading it',
                  'ইন্টারনেট লাগে শুধু নতুন আপডেট চেক ও ডাউনলোড করতে।'],
   stat3:        ['necessary permissions, each with a specific job',
-                 'প্রয়োজনীয় কয়েকটি অনুমতি (Permissions), প্রতিটির নির্দিষ্ট কাজ রয়েছে।'],
+                 'প্রয়োজনীয় কয়েকটি অনুমতি, প্রতিটির নির্দিষ্ট কাজ রয়েছে।'],
   stat4:        ['the whole app — works on Android 7.0 and later',
                  'পুরো অ্যাপের সাইজ — Android 7.0 বা তার পরবর্তী সংস্করণে ব্যবহারযোগ্য।'],
   stat4Short:   ['the whole app', 'পুরো অ্যাপের সাইজ'],
