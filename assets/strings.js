@@ -105,7 +105,7 @@ const S = {
   stat3:        ['permissions of its own, each with a specific job',
                  'অ্যাপের নিজের অনুমতি, প্রতিটির নির্দিষ্ট কাজ রয়েছে।'],
   stat4:        ['the whole app — works on Android 7.0 and later',
-                 'পুরো অ্যাপের সাইজ — Android 7.0 বা তার পরবর্তী সংস্করণে ব্যবহারযোগ্য।'],
+                 'পুরো অ্যাপের সাইজ — অ্যান্ড্রয়েড ৭.০ বা তার পরবর্তী সংস্করণে ব্যবহারযোগ্য।'],
   stat4Short:   ['the whole app',
                  'পুরো অ্যাপের সাইজ।'],
 
@@ -118,7 +118,7 @@ const S = {
   why1Head:     ['Your books stay with you',
                  'আপনার হিসাব আপনার কাছেই থাকে'],
   why1Body:     ['The app has no server of its own, so your transactions are never sent to us. The internet is used only to check for and download new updates. Android’s own backup is separate — what it stores is set out ',
-                 'অ্যাপটির নিজস্ব কোনো সার্ভার নেই, তাই আপনার লেনদেনের তথ্য আমাদের কাছে পাঠানো হয় না। ইন্টারনেট ব্যবহার করা হয় শুধু নতুন আপডেট চেক ও ডাউনলোড করার জন্য। Android-এর নিজস্ব Backup ব্যবস্থা আলাদা — এতে কী কী তথ্য সংরক্ষিত হয়, তা '],
+                 'অ্যাপটির নিজস্ব কোনো সার্ভার নেই, তাই আপনার লেনদেনের তথ্য আমাদের কাছে পাঠানো হয় না। ইন্টারনেট ব্যবহার করা হয় শুধু নতুন আপডেট চেক ও ডাউনলোড করার জন্য। অ্যান্ড্রয়েডের নিজস্ব ব্যাকআপ ব্যবস্থা আলাদা — এতে কী কী তথ্য সংরক্ষিত হয়, তা '],
   // The sentence above carries on through a link to the privacy page and out again. The
   // spaces at the joins belong to the halves, so the link text is only the link.
   why1Link:     ['on the privacy page',
@@ -131,7 +131,7 @@ const S = {
                  'প্রকৃত দুতরফা হিসাব পদ্ধতি, যেভাবে হিসাবরক্ষকরা খাতা রাখেন। একটি অ্যাকাউন্ট থেকে টাকা বের হলে তা অন্য অ্যাকাউন্টে জমা হিসেবে লেখা হয়। Trial Balance পাতায় দুই দিকের যোগফল মিলিয়ে দেখা যায়, ফলে হিসাবের অমিল সহজেই ধরা পড়ে।'],
   why3Head:     ['It works with the phone in flight mode', 'ফ্লাইট মোডেও পুরোপুরি চলে'],
   why3Body:     ['No part of your bookkeeping needs the internet. Your ledger is encrypted on the phone. Backup files stay under your control, protected with a password if you choose. And the app opens with your PIN or fingerprint.',
-                 'হিসাবের কোনো কাজেই ইন্টারনেটের প্রয়োজন হয় না। আপনার হিসাবের খাতা ফোনেই এনক্রিপ্ট করা থাকে। ব্যাকআপ ফাইল থাকে আপনার নিয়ন্ত্রণে, চাইলে পাসওয়ার্ড দিয়ে সুরক্ষিত রাখতে পারেন। আর অ্যাপ খুলতে ব্যবহার করতে পারেন PIN অথবা আঙুলের ছাপ।'],
+                 'হিসাবের কোনো কাজেই ইন্টারনেটের প্রয়োজন হয় না। আপনার হিসাবের খাতা ফোনেই এনক্রিপ্ট করা থাকে। ব্যাকআপ ফাইল থাকে আপনার নিয়ন্ত্রণে, চাইলে পাসওয়ার্ড দিয়ে সুরক্ষিত রাখতে পারেন। আর অ্যাপ খুলতে ব্যবহার করতে পারেন পিন অথবা আঙুলের ছাপ।'],
 
   // -- at a glance -------------------------------------------------------------
   // Eight lines, each a heading and a sentence. The narrow screen gets a shorter sentence
@@ -329,7 +329,7 @@ const S = {
                  'না। এটি ফ্রি — কোনো বিজ্ঞাপন নেই, অ্যাকাউন্টও খুলতে হয় না।'],
   faqQ3:        ['What if I change or lose my phone?', 'ফোন বদলালে বা হারালে কী হবে?'],
   faqA3:        ['Your ledger is encrypted on this phone, so it does not move to a new one by itself. Before changing phones, create a backup file from the app’s Backup page, protected with a password if you like. On the new phone, install the app and set a PIN, then restore that backup file from the Backup page. So that a lost phone does not mean lost books, keep a copy of the backup off the phone too, such as on Google Drive.',
-                 'আপনার হিসাবের খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে স্থানান্তরিত হয় না। ফোন পরিবর্তনের আগে অ্যাপের Backup পাতা থেকে একটি ব্যাকআপ ফাইল তৈরি করুন। চাইলে পাসওয়ার্ড দিয়ে ফাইলটি সুরক্ষিত রাখতে পারেন। নতুন ফোনে অ্যাপ ইনস্টল করে PIN সেট করুন। এরপর Backup পাতা থেকে আগের ব্যাকআপ ফাইলটি Restore করুন। ফোন হারিয়ে গেলেও যেন হিসাব হারিয়ে না যায়, সেজন্য ব্যাকআপ ফাইলের একটি কপি ফোনের বাইরেও, যেমন Google Drive-এ সংরক্ষণ করে রাখুন।'],
+                 'আপনার হিসাবের খাতা এই ফোনেই এনক্রিপ্ট করা থাকে, তাই নিজে থেকে নতুন ফোনে স্থানান্তরিত হয় না। ফোন পরিবর্তনের আগে অ্যাপের ব্যাকআপ পাতা থেকে একটি ব্যাকআপ ফাইল তৈরি করুন। চাইলে পাসওয়ার্ড দিয়ে ফাইলটি সুরক্ষিত রাখতে পারেন। নতুন ফোনে অ্যাপ ইনস্টল করে পিন সেট করুন। এরপর ব্যাকআপ পাতা থেকে আগের ব্যাকআপ ফাইলটি Restore করুন। ফোন হারিয়ে গেলেও যেন হিসাব হারিয়ে না যায়, সেজন্য ব্যাকআপ ফাইলের একটি কপি ফোনের বাইরেও, যেমন Google Drive-এ সংরক্ষণ করে রাখুন।'],
   faqQ4:        ['Does it need the internet?', 'ইন্টারনেট লাগে?'],
   faqA4:        ['No. Everything works offline. It goes online only to check for a newer ' +
                  'version, and to download it when you say yes.',
@@ -359,8 +359,6 @@ const S = {
   // The full-size view of a screenshot. Read out by screen readers, as the buttons'
   // labels; the glyphs on them say the same to everyone else.
   lbClose:      ['Close', 'বন্ধ করুন'],
-  lbPrev:       ['Previous screen', 'আগের পাতা'],
-  lbNext:       ['Next screen', 'পরের পাতা'],
   shotHome:     ["The first screen", "প্রথম পাতা"],
   shotTxn:      ["Every entry, filtered", 'সব এন্ট্রি, বাছাই করে দেখা'],
   shotAccounts: ["The accounts", "অ্যাকাউন্টগুলো"],
@@ -412,7 +410,7 @@ const S = {
   fRevHead:     ['Mistakes are reversed, not erased',
                  'ভুল মুছে ফেলা নয়, রিভার্স করে সংশোধন'],
   fRevBody:     ['Open an entry and Reverse it — after your PIN or fingerprint, the app adds an opposite entry and both stay in the history. Edit corrects the entry itself and keeps no earlier version. If taking money back would leave a balance below ৳0, the app asks first; an edit that spends more than the account holds is stopped.',
-                 'এন্ট্রি খুলে Reverse করুন — PIN বা আঙুলের ছাপ দেওয়ার পর অ্যাপ বিপরীত একটি এন্ট্রি তৈরি করে, আর দুটি এন্ট্রিই ইতিহাসে থেকে যায়। Edit করলে এন্ট্রিটিই ঠিক হয়, আগের রূপ থাকে না। টাকা ফিরে গিয়ে ব্যালেন্স ৳০-এর নিচে নামার মতো হলে অ্যাপ আগে অনুমতি চায়; অ্যাকাউন্টে যত টাকা আছে তার বেশি খরচের Edit সেভ হয় না।'],
+                 'এন্ট্রি খুলে Reverse করুন — পিন বা আঙুলের ছাপ দেওয়ার পর অ্যাপ বিপরীত একটি এন্ট্রি তৈরি করে, আর দুটি এন্ট্রিই ইতিহাসে থেকে যায়। Edit করলে এন্ট্রিটিই ঠিক হয়, আগের রূপ থাকে না। টাকা ফিরে গিয়ে ব্যালেন্স ৳০-এর নিচে নামার মতো হলে অ্যাপ আগে অনুমতি চায়; অ্যাকাউন্টে যত টাকা আছে তার বেশি খরচের Edit সেভ হয় না।'],
   fExpHead:     ['Your books, to take away', 'আপনার হিসাব, সঙ্গে নিয়ে যান'],
   fExpBody:     ['Export a readable PDF report, or a CSV file that opens in Excel with Bangla intact — every transaction your filters keep, not only those on screen; a PDF’s table lists the newest 5,000. Your profile’s phone and email sit under your name, and the heading names the month, the dates or All Time; this month’s runs to today. Each export asks for your PIN or fingerprint first.',
                  'লেনদেন এক্সপোর্ট করুন সহজে পড়ার মতো PDF রিপোর্টে, অথবা CSV ফাইলে — যা Excel-এ খোলে, বাংলা লেখা ঠিক রেখেই। ফিল্টারে থাকা সব লেনদেনই যায়, শুধু স্ক্রিনেরগুলো নয়; PDF-এর তালিকায় থাকে সবচেয়ে নতুন ৫,০০০টি। নামের নিচে থাকে প্রোফাইলের ফোন নম্বর ও ইমেইল, শিরোনামে থাকে মাস, তারিখ, নাকি শুরু থেকে সব; চলতি মাসের হিসাব ধরা হয় আজ পর্যন্ত। প্রতিবার এক্সপোর্টের আগে পিন বা আঙুলের ছাপ চায়।'],

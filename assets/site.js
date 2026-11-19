@@ -30,7 +30,7 @@ document.documentElement.classList.add('js');
  * number for a fix to what is there, the middle one for a new page, section or feature.
  * The app's version is a separate thing and comes from the releases API.
  */
-const SITE_VERSION = '2.25.21';
+const SITE_VERSION = '2.25.22';
 
 const LANGS = { en: 0, bn: 1 };
 // The language actually on the page. Where storage is blocked the saved choice cannot
@@ -469,8 +469,10 @@ function showDownloadNote() {
       // the page at /install as well as /install.html.
       (document.querySelector('.inst-steps') ? '' :
         '<a class="dl-note-guide" href="install.html" data-s="dlNoteGuide"></a>');
-    note.querySelector('.dl-note-x').addEventListener('click', () => note.remove());
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') note.remove(); });
+    const onKey = e => { if (e.key === 'Escape') close(); };
+    const close = () => { note.remove(); document.removeEventListener('keydown', onKey); };
+    note.querySelector('.dl-note-x').addEventListener('click', close);
+    document.addEventListener('keydown', onKey);
     document.body.append(note);
     applyLang(currentLang());
   }
@@ -480,150 +482,14 @@ function showDownloadNote() {
   note.classList.add('dl-note-in');
 }
 
-// Only a link that is the file itself: one still pointing at the releases page opens a
-// web page, and the note would describe a download that is not happening.
+// Only a link that is the file itself: the newest release's own file, or the fallback
+// LATEST_APK, which is the file too (every release since app 2.0.7 carries LedgerBook.apk).
+// The fallback used to be the releases page, a web page, and the note would have described a
+// download that was not happening; a press before the release answers now gets the note.
 document.addEventListener('click', e => {
   const a = e.target.closest && e.target.closest('#dl, [data-dl]');
-  if (a && release && a.href === release.url) showDownloadNote();
+  if (a && (a.href === LATEST_APK || (release && a.href === release.url))) showDownloadNote();
 });
-
-/* -- the screenshots, full size ------------------------------------------------
- *
- * A screenshot in a page is a few hundred pixels wide at most -- 170 on the features page
- * -- which shows that a screen exists and not what is on it. Every picture of the app or
- * of a phone dialog is a .zoom button; pressing one opens it at the height of the
- * window in a <dialog>,
- * which brings Escape, focus trapping and the dimmed page behind for nothing.
- *
- * The picture is whichever of the pair the page is showing -- light or dark, by the
- * theme -- read off the frame at the moment it opens, so the big one is always the one
- * the reader just pressed. Arrows, the arrow keys and a swipe step through every
- * picture on the page, in page order.
- */
-// The dialog is built here rather than written into each page: every page with a
-// pressable picture gets the same one, and a page without any gets none. Its buttons'
-// words come from the catalogue through data-s-label, like everything else.
-const LB_ICONS = {
-  close: '<path d="M6 6l12 12M18 6 6 18"/>',
-  prev: '<path d="m15 5-7 7 7 7"/>',
-  next: '<path d="m9 5 7 7-7 7"/>'
-};
-function buildLightbox() {
-  const box = document.createElement('dialog');
-  box.className = 'lightbox';
-  box.id = 'lightbox';
-  box.setAttribute('aria-labelledby', 'lb-cap');
-  const btn = (kind, key) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'lb-btn lb-' + kind;
-    b.dataset.sLabel = key;
-    b.innerHTML = '<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">' + LB_ICONS[kind] + '</svg>';
-    return b;
-  };
-  const fig = document.createElement('figure');
-  fig.className = 'lb-figure';
-  const img = document.createElement('img');
-  img.id = 'lb-img';
-  img.alt = '';
-  const cap = document.createElement('figcaption');
-  const text = document.createElement('span');
-  text.id = 'lb-cap';
-  const count = document.createElement('span');
-  count.className = 'lb-count';
-  count.id = 'lb-count';
-  cap.append(text, ' ', count);
-  fig.append(img, cap);
-  box.append(btn('close', 'lbClose'), btn('prev', 'lbPrev'), fig, btn('next', 'lbNext'));
-  document.body.append(box);
-  return box;
-}
-
-function setupLightbox() {
-  const frames = [...document.querySelectorAll('.zoom')];
-  if (!frames.length) return;
-  const probe = document.createElement('dialog');
-  if (typeof probe.showModal !== 'function') return;
-  const box = buildLightbox();
-  const img = document.getElementById('lb-img');
-  const cap = document.getElementById('lb-cap');
-  const count = document.getElementById('lb-count');
-  // Every one of these buttons is labelled "Enlarge"; what makes each one different is
-  // the picture it opens, so each is described by its caption. The features page's six
-  // were written that way by hand; the rest had nine buttons a screen reader could not
-  // tell apart. A picture with no caption -- the big phone -- gets a hidden one from the
-  // catalogue, which the language switch keeps up to date like any other data-s.
-  frames.forEach((f, k) => {
-    if (f.hasAttribute('aria-describedby')) return;
-    let fc = f.closest('figure') && f.closest('figure').querySelector('figcaption');
-    if (!fc && f.dataset.cap && S[f.dataset.cap]) {
-      fc = document.createElement('span');
-      fc.className = 'sr-only';
-      fc.dataset.s = f.dataset.cap;
-      fc.textContent = S[f.dataset.cap][LANGS[currentLang()]];
-      f.append(fc);
-    }
-    if (!fc) return;
-    if (!fc.id) fc.id = 'zoom-cap-' + k;
-    f.setAttribute('aria-describedby', fc.id);
-  });
-  // The new buttons need their words, in whichever language is showing.
-  box.querySelectorAll('[data-s-label]').forEach(el => {
-    el.setAttribute('aria-label', S[el.dataset.sLabel][LANGS[currentLang()]]);
-  });
-  // A picture with no caption of its own -- the big phone beside "Seeing where it went"
-  // -- names one from the catalogue.
-  const caption = (frame) => {
-    const fc = frame.closest('figure') && frame.closest('figure').querySelector('figcaption');
-    if (fc) return fc.textContent;
-    const key = frame.dataset.cap;
-    return key && S[key] ? S[key][LANGS[currentLang()]] : '';
-  };
-  let at = 0;
-
-  const shown = (frame) =>
-    [...frame.querySelectorAll('img')].find(im => getComputedStyle(im).display !== 'none')
-    || frame.querySelector('img');
-
-  function show(n) {
-    at = (n + frames.length) % frames.length;
-    const frame = frames[at];
-    img.src = shown(frame).currentSrc || shown(frame).src;
-    cap.textContent = caption(frame);
-    count.textContent = num(at + 1) + ' / ' + num(frames.length);
-  }
-  function close() { box.close(); }
-
-  frames.forEach((frame, n) => frame.addEventListener('click', () => {
-    show(n);
-    document.documentElement.classList.add('lb-open');
-    box.showModal();
-  }));
-  box.addEventListener('close', () => {
-    document.documentElement.classList.remove('lb-open');
-    frames[at].focus();
-  });
-  box.querySelector('.lb-close').addEventListener('click', close);
-  box.querySelector('.lb-prev').addEventListener('click', () => show(at - 1));
-  box.querySelector('.lb-next').addEventListener('click', () => show(at + 1));
-  // A click on the dimmed space around the picture closes it; one on the picture or a
-  // button does not.
-  box.addEventListener('click', e => { if (e.target === box || e.target.classList.contains('lb-figure')) close(); });
-  box.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft') show(at - 1);
-    else if (e.key === 'ArrowRight') show(at + 1);
-  });
-
-  // A sideways swipe of more than 50 pixels steps; anything shorter is a tap or a wobble.
-  let x0 = null;
-  box.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
-  box.addEventListener('touchend', e => {
-    if (x0 === null) return;
-    const dx = e.changedTouches[0].clientX - x0;
-    x0 = null;
-    if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
-  });
-}
 
 /* -- the privacy page's list of sections ---------------------------------------
  *
@@ -774,7 +640,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
   // addEventListener on a media query arrived in Safari 14; older ones have only
   // addListener, and calling the missing one threw here and stopped everything after it
-  // -- the galleries, the lightbox and the release lookup, which get.html depends on.
+  // -- the galleries and the release lookup, which get.html depends on.
   const wide = window.matchMedia ? window.matchMedia('(min-width: 880px)') : null;
   const onWide = e => { if (e.matches) setMenu(false); };
   if (wide && wide.addEventListener) wide.addEventListener('change', onWide);
@@ -784,7 +650,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // and this catches anything that still reaches one (an older browser, a keyboard menu key).
   document.addEventListener('contextmenu', e => { if (e.target.closest('img, .frame, .still')) e.preventDefault(); });
   document.addEventListener('dragstart', e => { if (e.target.tagName === 'IMG') e.preventDefault(); });
-  setupLightbox();
   setupGalleries();
   setupCopy();
   setupToc();

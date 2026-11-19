@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <!-- What the page may load, said by the page itself: GitHub Pages sends no headers of its own.
-     The two hashes are the inline scripts (the theme one in every head, and get.html's
-     own): change a byte of either and work its hash out again, or it stops running. -->
+     The hash is the inline script in every head (get.html carries a second, for its own):
+     change a byte of it and work its hash out again, or it stops running. -->
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-YINsEVIltY8kwywLosxWhfq/OS9v4cHQJHI8Og9s/6U='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.github.com; base-uri 'none'; form-action 'none'; object-src 'none'">
 <meta name="robots" content="noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -162,7 +162,7 @@
          and the language like the rest of the page. Shown at page size only, not enlarged.
          Lazy so the theme that is hidden never downloads (a hidden lazy picture is not
          fetched); high priority so the one showing still comes first once it is laid out. -->
-    <div class="frame frame-lg still hero-shot" data-cap="shotHome">
+    <div class="frame frame-lg still hero-shot">
       <img class="s-light" src="assets/screens/app-home-light.webp" data-bn="assets/screens/app-home-light-bn.webp" width="780" height="1736" loading="lazy" fetchpriority="high" data-s-alt="shotHome" alt="The first screen">
       <img class="s-dark"  src="assets/screens/app-home-dark.webp" data-bn="assets/screens/app-home-dark-bn.webp"  width="780" height="1736" loading="lazy" fetchpriority="high" data-s-alt="shotHome" alt="The first screen">
     </div>
@@ -191,17 +191,17 @@
     </div>
     <div class="why">
       <article class="card why-card">
-        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <h3 data-s="why1Head">Your books stay with you</h3>
         <p><span data-s="why1Body">The app has no server of its own, so your transactions are never sent to us. The internet is used only to check for and download new updates. Android’s own backup is separate — what it stores is set out </span><a href="privacy.html" data-s="why1Link">on the privacy page</a><span data-s="why1End">.</span></p>
       </article>
       <article class="card why-card">
-        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
         <h3 data-s="why2Head">Every taka is recorded on two sides</h3>
         <p data-s="why2Body">True double-entry, the way accountants keep their books. Money leaving one account is written into another. The Trial Balance page compares the totals of both sides, so a mismatch is easy to catch.</p>
       </article>
       <article class="card why-card">
-        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3c.8 0 1.5.7 1.5 1.5V9l7 4v2l-7-2v4.5l2 1.5v1.5l-3.5-1-3.5 1V19l2-1.5V13l-7 2v-2l7-4V4.5C10.5 3.7 11.2 3 12 3z"/></svg></span>
+        <span class="tile tile-lg"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c.8 0 1.5.7 1.5 1.5V9l7 4v2l-7-2v4.5l2 1.5v1.5l-3.5-1-3.5 1V19l2-1.5V13l-7 2v-2l7-4V4.5C10.5 3.7 11.2 3 12 3z"/></svg></span>
         <h3 data-s="why3Head">It works with the phone in flight mode</h3>
         <p data-s="why3Body">No part of your bookkeeping needs the internet. Your ledger is encrypted on the phone. Backup files stay under your control, protected with a password if you choose. And the app opens with your PIN or fingerprint.</p>
       </article>
@@ -215,28 +215,28 @@
       <h2 data-s="featH2">Everything it does, at a glance</h2>
     </div>
     <ul class="glance">
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M12 10v10"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M12 10v10"/></svg></span>
         <h3 data-s="g1Head">Double-entry journal</h3>
         <p><span class="only-wide" data-s="g1Body">Every entry has a debit and a matching credit.</span><span class="only-narrow" data-s="g1Short">A debit and a matching credit, every time.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M7 21h10M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/><path d="m16 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/><path d="m2 16 3-8 3 8c-.9.7-1.9 1-3 1s-2.1-.3-3-1z"/></svg></span>
         <h3 data-s="g2Head">Trial Balance</h3>
         <p><span class="only-wide" data-s="g2Body">See both sides agree, so a wrong total is caught.</span><span class="only-narrow" data-s="g2Short">Both sides agree, or you see it.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><circle cx="9" cy="8" r="4"/><path d="M16 21v-1a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v1"/><path d="M19 8v6M22 11h-6"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="4"/><path d="M16 21v-1a5 5 0 0 0-5-5H7a5 5 0 0 0-5 5v1"/><path d="M19 8v6M22 11h-6"/></svg></span>
         <h3 data-s="g3Head">Loan tracking</h3>
         <p><span class="only-wide" data-s="g3Body">Who owes what, one card for each mobile number.</span><span class="only-narrow" data-s="g3Short">Who owes what, by mobile number.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
         <h3 data-s="g4Head">Due-date reminders</h3>
         <p data-s="g4Body">When a loan falls due, a DPS instalment is near or a deposit matures.</p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <h3 data-s="g5Head">Backups, your password</h3>
         <p><span class="only-wide" data-s="g5Body">Backup files you keep, with a password if you want one.</span><span class="only-narrow" data-s="g5Short">Your files, your password.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
         <h3><span class="only-wide" data-s="g6Head">PIN &amp; fingerprint lock</span><span class="only-narrow" data-s="g6HeadShort">PIN &amp; fingerprint</span></h3>
         <p><span class="only-wide" data-s="g6Body">A PIN or your fingerprint, locking again a minute after you leave.</span><span class="only-narrow" data-s="g6Short">Locks again when you leave.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.9 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.9 1 6.7 2.7L21 8"/><path d="M21 3v5h-5"/></svg></span>
         <h3 data-s="g7Head">In-app updates</h3>
         <p><span class="only-wide" data-s="g7Body">Checks for a new version, even when GitHub is busy, then downloads and installs it.</span><span class="only-narrow" data-s="g7Short">Checks, downloads, installs.</span></p></li>
-      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
+      <li><span class="tile tile-line"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
         <h3 data-s="g8Head">FDR &amp; DPS</h3>
         <p><span class="only-wide" data-s="g8Body">Term deposits with profit, tax and maturity worked out.</span><span class="only-narrow" data-s="g8Short">Profit, tax and maturity.</span></p></li>
     </ul>
@@ -285,13 +285,13 @@
       <p data-s="permSub">Four permissions of its own, each with a single job. The Android libraries it is built on add seven routine ones, for the fingerprint lock and for background work such as reminders; none of them gives access to your ledger or to the internet.</p>
     </div>
     <ul class="perms">
-      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
         <div><h3 data-s="permInternet">Internet</h3><p data-s="permInternetW">Only to check for a newer version, and to download it when you say yes.</p></div></li>
-      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a2 2 0 0 0 3.4 0"/></svg></span>
         <div><h3 data-s="permNotify">Notifications</h3><p data-s="permNotifyW">To remind you when a loan is due, a DPS instalment is near or a deposit matures, and to tell you about updates and backups.</p></div></li>
-      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></span>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M12 7v7M9 11l3 3 3-3"/></svg></span>
         <div><h3 data-s="permInstall">Install apps</h3><p data-s="permInstallW">To install the update it downloaded for you.</p></div></li>
-      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span>
+      <li class="card"><span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span>
         <div><h3 data-s="permBattery">Run in the background</h3><p data-s="permBatteryW">So a battery saver does not hold back the daily backup and the reminders. Asked only when you tap Background Work.</p></div></li>
     </ul>
   </section>
@@ -355,7 +355,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.25.21</span>
+      <span class="foot-ver" data-site-version>Website v2.25.22</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>

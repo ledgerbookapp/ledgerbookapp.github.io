@@ -118,7 +118,7 @@
     <div class="priv-cards">
 
       <section class="pcard" id="collected">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/></svg></span>
         <div>
           <h2 data-s="privCollectTitle">What is collected</h2>
           <p data-s-rich="privCollectBody"><b>Nothing.</b> No account, no sign-in, no email address, no device identifier, no usage statistics, no crash reports, no advertising. There is no analytics library and no ad library in the app — the whole dependency list is Android’s own components, Kotlin, SQLCipher to encrypt the ledger, and Moshi, a library that reads and writes the backup file.</p>
@@ -127,7 +127,7 @@
       </section>
 
       <section class="pcard" id="where">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
         <div>
           <h2 data-s="privWhereTitle">Where your entries live</h2>
           <p data-s="privWhereBody">In a database inside the app’s own storage on your phone, which Android keeps other apps out of — encrypted with SQLCipher, under a key held in the phone’s Android Keystore that never leaves this device. It is never copied anywhere else unless you export it or make a backup yourself. Uninstalling the app deletes it.</p>
@@ -135,7 +135,7 @@
       </section>
 
       <section class="pcard" id="network">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a13.5 13.5 0 0 0 0 18 13.5 13.5 0 0 0 0-18M3 12h18"/></svg></span>
         <div>
           <h2 data-s="privNetTitle">Every time it uses the network</h2>
           <p data-s="privNetBody">Twice, and both for the same errand: it asks GitHub what the newest release is, and if you say yes it downloads that file. Two files in the whole app can open a connection and both of them are that errand — so no entry of yours travels on a connection the app opens. Android’s backup does not use them either; it is the system copying the app’s settings, and it is the next section.</p>
@@ -148,7 +148,7 @@
 
       <!-- The one section where something does leave, so it is the one set apart. -->
       <section class="pcard pcard-hi" id="copy">
-        <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
+        <span class="tile tile-fill"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 1 0-1.4-8.8A6 6 0 0 0 4.5 12 3.5 3.5 0 0 0 6 19z"/><path d="M12 16v-5M9.5 13.5 12 11l2.5 2.5"/></svg></span>
         <div>
           <h2 data-s="privAutoTitle">What Android’s backup carries</h2>
           <p data-s="privAutoBody">Android backs up apps to your Google account, and LedgerBook lets it — but only the app’s settings, with a few housekeeping marks such as the date of your last export. The ledger is left out on purpose: it is encrypted under a key that cannot leave this phone, so a copy anywhere else could never be opened. Your PIN and your profile stay behind too. That is why moving to a new phone takes a backup file of your own: export it here, restore it there. Turn Android’s backup off in its own Settings and nothing goes at all; the app’s Backup page has the link.</p>
@@ -169,7 +169,7 @@
       </section>
 
       <section class="pcard" id="backups">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><rect x="9" y="13" width="6" height="5" rx="1"/><path d="M10 13v-1.5a2 2 0 0 1 4 0V13"/></svg></span>
         <div>
           <h2 data-s="privBackupTitle">Backups you make yourself</h2>
           <p data-s="privBackupBody">The backup you make from inside the app is a different thing: one file, written where you point it. Whether it carries a password is your choice — with one, it is encrypted and only that password opens it; without one, it is a plain file for a place you trust. Nobody is sent a copy and no service holds the password — which is the same sentence read the other way: lose the file and the password, and nobody can get them back for you either.</p>
@@ -177,7 +177,7 @@
       </section>
 
       <section class="pcard" id="asks">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <div>
           <h2 data-s="permTitle">What it asks for, and why</h2>
           <p data-s="permSub">Four permissions of its own, each with a single job. The Android libraries it is built on add seven routine ones, for the fingerprint lock and for background work such as reminders; none of them gives access to your ledger or to the internet.</p>
@@ -191,7 +191,7 @@
       </section>
 
       <section class="pcard" id="site">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
         <div>
           <h2 data-s="privSiteTitle">This website</h2>
           <p data-s="privSiteBody">The site is served by GitHub Pages, has no tracker and sets no cookie. Your browser fetches its fonts from Google Fonts and asks GitHub which release is the newest, so both see your IP address, as they would for any site that uses them; the download itself comes from GitHub too. The language and theme you choose, and the newest release it last found, are kept in your own browser and nowhere else.</p>
@@ -199,7 +199,7 @@
       </section>
 
       <section class="pcard" id="delete">
-        <span class="tile"><svg class="ico" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
+        <span class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
         <div>
           <h2 data-s="privDeleteTitle">Getting rid of it all</h2>
           <p data-s="privDeleteBody">Uninstall the app. That is the whole procedure for the ledger — no account to close and no request to send, because the app never sends a copy anywhere. The only thing kept elsewhere on its own is Android’s backup of the app’s settings in your Google account; remove it there, or switch that backup off first. Any backup files you made and reports you exported are yours to delete.</p>
@@ -219,7 +219,7 @@
       <p data-s="footerNote">Built for keeping one household’s books. No trackers on this page.</p>
     </div>
     <p class="foot-links">
-      <span class="foot-ver" data-site-version>Website v2.25.21</span>
+      <span class="foot-ver" data-site-version>Website v2.25.22</span>
       <a href="privacy.html" data-s="navPrivacy">Privacy</a>
       <a href="install.html" data-s="navInstall">How to install</a>
     </p>
