@@ -5,6 +5,9 @@
 // (the PIN keypad) ends in a border line one colour across the whole width: the gap used to be
 // filled with that line's colour, a pale band under the keypad, so the panel's own row is carried
 // down over the line and the gap instead (site 2.25.5).
+// A list that runs off the foot of the screen (Transactions, Accounts, Money Flow) was cut through
+// a card and then the gap, which read as a broken picture; since site 2.25.20 its last 140px fade
+// into the screen's colour, the owner's choice from three endings.
 // Usage: node towebp.js <contrast folder> <out folder>. From the site 2.21.0-2.25.5 renders.
 const fs = require('fs'), path = require('path'), { execFileSync } = require('child_process');
 const [src, out] = process.argv.slice(2);
@@ -12,13 +15,14 @@ const CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
 const scenes = { home: '03-01-Home', txn: '05-Transactions', accounts: '07-Accounts-All', loans: '09-Loans-Given',
   analytics: '06-Analytics', backup: '11-Backups-On', invest: '07-Accounts-Tab-Invest', flow: '06-Money-Flow' };
 const steps = { name: '01-02-Welcome-Name-Typed', create: '01-04-Create-PIN', confirm: '01-05-Confirm-PIN' };
+const fades = new Set(['txn', 'accounts', 'flow']);
 const jobs = [];
 for (const [k, s] of Object.entries(scenes)) for (const t of ['light', 'dark']) for (const bn of [false, true])
-  jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`]);
+  jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`, fades.has(k)]);
 for (const [k, s] of Object.entries(steps)) for (const t of ['light', 'dark']) for (const bn of [false, true])
   jobs.push([`step4-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`]);
 const html = path.join(out, 'job.html');
-for (const [name, want, fallback] of jobs) {
+for (const [name, want, fallback, fade] of jobs) {
   if (!fs.existsSync(path.join(src, fallback))) { console.log(name, 'MISSING', fallback); continue; }
   let f = path.join(src, want), copy = false;
   if (!fs.existsSync(f)) { f = path.join(src, fallback); copy = true; }
@@ -35,6 +39,7 @@ const W=i.naturalWidth,H=i.naturalHeight,last=q.getImageData(0,H-1,W,1).data,abo
 let line=above[0]!==last[0]||above[1]!==last[1]||above[2]!==last[2];
 for(let n=4;line&&n<last.length;n+=4)if(last[n]!==last[0]||last[n+1]!==last[1]||last[n+2]!==last[2])line=false;
 if(line){const y=T+Math.floor(h*(H-8)/H);x.imageSmoothingEnabled=false;x.drawImage(p,0,H-8,W,1,l,y,w,1736-y);}
+if(${fade}){const F=140,y=1736-B-F,c0='rgba('+bot[0]+','+bot[1]+','+bot[2]+',';const g=x.createLinearGradient(0,y,0,1736-B);g.addColorStop(0,c0+'0)');g.addColorStop(1,c0+'1)');x.fillStyle=g;x.fillRect(0,y,780,F);}
 o.textContent='@@'+c.toDataURL('image/webp',0.9)+'@@';});</script>`);
   const dom = execFileSync(CHROME, ['--headless=new', '--disable-gpu', '--virtual-time-budget=5000', '--dump-dom', 'file:///' + html.split(path.sep).join('/')],
     { encoding: 'utf8', maxBuffer: 64 << 20 });

@@ -55,7 +55,7 @@ read — the ink is a step deeper for exactly that reason. The app hit this same
 
 ## The website's version
 
-Every footer says "Website v2.25.19". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
+Every footer says "Website v2.25.20". `CHANGELOG.md` lists every version and what it was. The number lives once, as SITE_VERSION at the top of
 `assets/site.js`, and is raised on every publish: the last part for a fix to what is
 there, the middle part for a new page, section or feature. It is the site's own version and
 has nothing to do with the app's.
@@ -112,3 +112,9 @@ data was copied off with run-as, the app uninstalled, the release downloaded thr
 site's own get.html in the emulator's Chrome and walked up to Play Protect's "This app looks
 safe", then declined; the debug build went back on and the data was restored, and the
 ledger reads as it did (net 1,96,170). Do the same next time -- back the data up first.
+
+Step 1 alone was taken again for app 2.2.6 (site 2.25.20), when it still showed
+LedgerBook_v1.1.72.apk at 2.79 MB: Chrome's warning needs no install, so get.html was opened
+in Pixel_10's Chrome, the dialog captured with the system set to light for the moment
+(`cmd uimode night no`, then `yes` again) and cancelled. The dialog is cut with an 18px margin
+filled in the dimmed page's grey. Chrome no longer draws the warning triangle.

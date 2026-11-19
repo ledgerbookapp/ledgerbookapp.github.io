@@ -84,6 +84,11 @@ edit('GalleryTest.kt', [
     val prevStart = java.util.Calendar.getInstance().apply { timeInMillis = monthStart; add(java.util.Calendar.MONTH, -1) }.timeInMillis
     fun pt(f: Double) = prevStart + ((now - monthStart) * f).toLong()
     j.postIncome("Salary", "", "Salary", pt(0.05), null, 0L, acc(dbbl), takaToPaisa(50000.0))
+    // Website render only (site 2.25.20): cash and bKash funded from the salary before last
+    // month's spending, which they paid out of nothing until then -- Money Flow opened October
+    // on Cash in Hand at -৳4,050 and bKash at -৳2,100.
+    j.postMove("Withdrawal", "", pt(0.07), acc(dbbl), acc(cash), takaToPaisa(6000.0), sourceType = st.WITHDRAWAL)
+    j.postMove("Transfer", "", pt(0.08), acc(dbbl), acc(bkash), takaToPaisa(3000.0), sourceType = st.TRANSFER)
     j.postExpense("Rent", "", "Rent", pt(0.1), acc(dbbl), takaToPaisa(18000.0))
     j.postExpense("Bills", "", "Bills", pt(0.35), acc(bkash), takaToPaisa(2100.0))
     j.postExpense("Bazar", "", "Bazar", pt(0.6), acc(cash), takaToPaisa(3100.0))

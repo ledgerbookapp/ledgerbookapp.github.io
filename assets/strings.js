@@ -210,9 +210,9 @@ const S = {
                  'come from the Play Store, not because of anything about this one.',
                  'চার ধাপ, মোটামুটি দুই মিনিট। মাঝে ফোন দুবার সতর্ক করবে — দুটিই স্বাভাবিক। প্লে স্টোরের বাইরের যেকোনো অ্যাপেই এমন বার্তা আসে, এই অ্যাপের কোনো সমস্যার কারণে নয়।'],
   step1Head:    ['Download the file', 'ফাইলটি ডাউনলোড করুন'],
-  step1Body:    ['Tap the download button. Chrome may say the file "may be harmful" — ' +
+  step1Body:    ['Tap the download button. Chrome may say the file "might be harmful" — ' +
                  'it says that about every APK. Choose Download anyway.',
-                 'ডাউনলোড বোতামে চাপুন। ক্রোম হয়তো বলবে ফাইলটি "may be harmful" — যেকোনো APK-তেই সে এটি বলে। Download anyway বেছে নিন।'],
+                 'ডাউনলোড বোতামে চাপুন। ক্রোম হয়তো বলবে ফাইলটি "might be harmful" — যেকোনো APK-তেই সে এটি বলে। Download anyway বেছে নিন।'],
   step2Head:    ['Open it', 'ফাইলটি খুলুন'],
   step2Body:    ['Open the downloaded file. Android says this source is not allowed to ' +
                  'install apps yet. Tap **Settings** — not Cancel — and turn on **Allow from ' +
