@@ -36,21 +36,23 @@
   --page: #F8FAFC;
   --card: #FFFFFF;
   --edge: #CBD5E1;
+  /* The gold, written once (site 2.25.27): every other gold on the site, the dark blocks'
+     included, is var(--accent), so following the app's gold is this one line. */
   --accent: #E8B23A;
   --accent-ink: var(--ink);
   --accent-icon: #8A5F04;
   /* The keyboard's focus ring (site 2.25.21): the gold measured 1.85 on the light page, under
      the 3 a ring needs, so it takes the icons' deeper gold there (5.40) and the gold on dark. */
   --focus: var(--accent-icon);
-  --link-line: #E8B23A;
+  --link-line: var(--accent);
   --link-thick: 2px;
-  --hover-line: #E8B23A;
+  --hover-line: var(--accent);
   /* The install page's warnings: filled with the gold on light, where gold words on the pale
      chip measured 1.7 (the owner's choice, 2026-11-19, site 2.25.15); on dark the gold words
      on the tinted chip read at 9 and stay. */
-  --warn-bg: #E8B23A;
+  --warn-bg: var(--accent);
   --warn-ink: #1A1408;
-  --warn-label-bg: #E8B23A;
+  --warn-label-bg: var(--accent);
   /* The install page's SHA-256: read one character at a time against the phone's own, so on
      light it takes the page's ink (gold on its pale panel measured 1.75); gold on dark. */
   --hash-ink: #0F172A;
@@ -109,21 +111,20 @@
     --rule: #1F1D1A;
     --panel: #0F0E0C;
     --frame: #1B1A17;
-    --accent: #E8B23A;
-    --accent-ink: #E8B23A;
-    --accent-icon: #E8B23A;
+    --accent-ink: var(--accent);
+    --accent-icon: var(--accent);
     --link-line: currentColor;
     --link-thick: auto;
     --hover-line: transparent;
-    --warn-bg: color-mix(in srgb, #E8B23A 12%, transparent);
-    --warn-ink: #E8B23A;
+    --warn-bg: color-mix(in srgb, var(--accent) 12%, transparent);
+    --warn-ink: var(--accent);
     --warn-label-bg: transparent;
-    --hash-ink: #E8B23A;
+    --hash-ink: var(--accent);
     --on-accent: #1A1408;
-    --tile: color-mix(in srgb, #E8B23A 9%, transparent);
+    --tile: color-mix(in srgb, var(--accent) 9%, transparent);
     --tile-line: transparent;
     --tile-edge: #24221E;
-    --chip: color-mix(in srgb, #E8B23A 12%, transparent);
+    --chip: color-mix(in srgb, var(--accent) 12%, transparent);
     --on-green: #0C0B0A;
     --ink: #F5F2EC;
     --ink-muted: #A29C92;
@@ -143,21 +144,20 @@
   --rule: #1F1D1A;
   --panel: #0F0E0C;
   --frame: #1B1A17;
-  --accent: #E8B23A;
-  --accent-ink: #E8B23A;
-  --accent-icon: #E8B23A;
+  --accent-ink: var(--accent);
+  --accent-icon: var(--accent);
   --link-line: currentColor;
   --link-thick: auto;
   --hover-line: transparent;
-  --warn-bg: color-mix(in srgb, #E8B23A 12%, transparent);
-  --warn-ink: #E8B23A;
+  --warn-bg: color-mix(in srgb, var(--accent) 12%, transparent);
+  --warn-ink: var(--accent);
   --warn-label-bg: transparent;
-  --hash-ink: #E8B23A;
+  --hash-ink: var(--accent);
   --on-accent: #1A1408;
-  --tile: color-mix(in srgb, #E8B23A 9%, transparent);
+  --tile: color-mix(in srgb, var(--accent) 9%, transparent);
   --tile-line: transparent;
   --tile-edge: #24221E;
-  --chip: color-mix(in srgb, #E8B23A 12%, transparent);
+  --chip: color-mix(in srgb, var(--accent) 12%, transparent);
   --on-green: #0C0B0A;
   --ink: #F5F2EC;
   --ink-muted: #A29C92;
@@ -517,7 +517,7 @@ footer {
   letter-spacing: -.035em; margin: 0;
 }
 .hero-home h1 span, .hero-home h1 em { display: block; }
-.hero-home h1 em { font-style: normal; color: #E8B23A; }
+.hero-home h1 em { font-style: normal; color: var(--accent); }
 /* The whole column, as wide as the heading above it: held to 500px it ended well short of
    the phone and left an empty block beside its lines (the owner's ask, 2026-11-18). `none`,
    not just no width of its own: `.hero p.lead` holds every other page's lead to 34em. */
@@ -1230,7 +1230,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
   /* The same gold in both themes, so the words on it are dark in both too -- the theme's
      ink would turn light on the dark theme and vanish into the yellow. */
   --priv-sum-rule: rgba(26, 20, 5, .16);
-  background: #E8B23A; border: 1px solid var(--priv-sum-rule); border-radius: var(--radius-card); overflow: hidden;
+  background: var(--accent); border: 1px solid var(--priv-sum-rule); border-radius: var(--radius-card); overflow: hidden;
 }
 .priv-sum > div { padding: 22px 24px 24px; border-left: 1px solid var(--priv-sum-rule); }
 .priv-sum > div:first-child { border-left: 0; }
