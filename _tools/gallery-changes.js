@@ -37,6 +37,14 @@ edit('GalleryTest.kt', [
    'val fdr = repository.insertAccountReturningId(BankAccount(accountName = "PRBL FDR", accountType = "FDR", accountNumberSuffix = "", balance = 0.0,'],
   ['repository.insertAccount(BankAccount(accountName = "AIBL DPS", accountType = "DPS", accountNumberSuffix = "", balance = 15000.0,',
    'val dps = repository.insertAccountReturningId(BankAccount(accountName = "AIBL DPS", accountType = "DPS", accountNumberSuffix = "", balance = 0.0,'],
+  // Website render only (site 2.25.9): the other kinds of deposit, a monthly-profit FDR and a DPS
+  // paying its pension, in the same ledger as every scene, so Invest fills the screen.
+  [`    val accounts = repository.accountsOnce()
+    fun acc(id: Int) = accounts.first { it.id == id }`,
+`    val mtb = repository.insertAccountReturningId(BankAccount(accountName = w("MTB Monthly FDR", "MTB মাসিক FDR"), accountType = "FDR", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#E8B23A", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 12, interestRate = 9.0, startDate = now - 70 * day, maturityDate = now + 295 * day, payoutMode = "MONTHLY", profitCollectedCount = 2, preLedgerMonths = 0, schemeStatus = "ACTIVE"))
+    val sibl = repository.insertAccountReturningId(BankAccount(accountName = "SIBL DPS", accountType = "DPS", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#E8B23A", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 36, monthlyInstallmentPaisa = takaToPaisa(3000.0), interestRate = 8.0, startDate = now - 1125 * day, maturityDate = now - 30 * day, pensionMonthlyPaisa = takaToPaisa(2500.0), pensionMonths = 60, pensionPaidCount = 0, pensionStartDate = now - 5 * day, schemeStatus = "ACTIVE"))
+    val accounts = repository.accountsOnce()
+    fun acc(id: Int) = accounts.first { it.id == id }`],
   [`    val j = repository.journal
     j.postIncome("Salary", "", "Salary", now - 12 * day`,
 `    val j = repository.journal
@@ -45,6 +53,8 @@ edit('GalleryTest.kt', [
     j.postOpeningBalance(acc(city), takaToPaisa(68250.0), now - 40 * day)
     j.postOpeningBalance(acc(fdr), takaToPaisa(100000.0), now - 18 * day)
     j.postOpeningBalance(acc(dps), takaToPaisa(15000.0), now - 75 * day)
+    j.postOpeningBalance(acc(mtb), takaToPaisa(200000.0), now - 70 * day)
+    j.postOpeningBalance(acc(sibl), takaToPaisa(120000.0), now - 95 * day)
     j.postIncome("Salary", "", "Salary", now - 12 * day`],
   ['"October rent"', 'w("October rent", "অক্টোবরের ভাড়া")'],
   ['"Lunch"', 'w("Lunch", "দুপুরের খাবার")'],
