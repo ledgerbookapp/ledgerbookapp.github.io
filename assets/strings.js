@@ -255,6 +255,10 @@ const S = {
   warn1:        ['Expected warning 1 of 2', 'স্বাভাবিক সতর্কতা ১/২'],
   warn2:        ['Expected warning 2 of 2', 'স্বাভাবিক সতর্কতা ২/২'],
   // The small labels over each picture in steps 3 and 4, in the order they happen.
+  // The letters of a step's pictures, in the reader's alphabet (site 2.25.26).
+  letA:         ['a', 'ক'],
+  letB:         ['b', 'খ'],
+  letC:         ['c', 'গ'],
   s3a:          ['Tap Install', 'Install-এ চাপুন'],
   s3b:          ['Choose Scan app', 'Scan app বেছে নিন'],
   s3c:          ['Tap Install again', 'আবার Install-এ চাপুন'],

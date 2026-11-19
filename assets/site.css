@@ -1198,7 +1198,8 @@ main:focus { outline: none; }
   .gal-dots { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; }
   .gal-dot { width: 8px; height: 8px; border-radius: 999px; background: var(--edge); transition: width .2s; }
   .gal-dot.on { width: 22px; background: var(--accent); }
-  .gal-count { color: var(--ink-muted); font-size: 14px; font-variant-numeric: tabular-nums; }
+  /* One line: with three dots the row ran out of room and "১ / ৩" broke after the slash. */
+  .gal-count { color: var(--ink-muted); font-size: 14px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   .done { margin-top: 20px; padding: 14px; gap: 10px; font-size: 14.5px; }
   .done-tick { width: 28px; height: 28px; }
