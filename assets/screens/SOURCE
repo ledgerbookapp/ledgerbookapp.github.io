@@ -1,4 +1,4 @@
-2.2.5
+2.2.6
 
 The app version the pictures in this folder show.
 
@@ -51,6 +51,15 @@ at -৳2,100. Net worth is unchanged; Bank, Cash and Mobile now read ৳1,34,250
 ৳14,430. And the three lists that run off the foot of the screen (Transactions, Accounts,
 Money Flow) fade into the screen's colour over their last 140px instead of ending through a
 card (towebp.js).
+For v2.25.21 every scene was rendered again from app 2.2.6, which the pictures had lagged: the
+Yellow accent's gold is #F6BD3D (the site's own gold stays #E8B23A), Money Flow's filter bar
+stands lower under its note, and the gallery's sample dates its salary 16 days back and Karim's
+loan 14 (in the month, so Money Flow's Out is ৳85,730 and its growth +16%). gallery-changes.js
+follows those lines, and gives its MTB and SIBL deposits the new gold. Net worth is unchanged.
+Money Flow's filter bar is drawn 12dp under its note, not the tag's 10: the owner asked for
+12 the same day, after the 2.2.6 tag; the app had it in its working tree, not yet committed or
+released, and gallery-changes.js makes that one change in the worktree's MoneyFlowScreen.kt
+until a release carries it. Nothing else of that unreleased work is in the pictures.
 Until the app's own gallery does all this, do the same again at the next retake.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's

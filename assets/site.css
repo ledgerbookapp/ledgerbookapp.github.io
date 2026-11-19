@@ -41,6 +41,9 @@
   --accent-ink: var(--ink);
   --accent-on-tint: #E8B23A;
   --accent-icon: #8A5F04;
+  /* The keyboard's focus ring (site 2.25.21): the gold measured 1.85 on the light page, under
+     the 3 a ring needs, so it takes the icons' deeper gold there (5.40) and the gold on dark. */
+  --focus: var(--accent-icon);
   --link-line: #E8B23A;
   --link-thick: 2px;
   --hover-line: #E8B23A;
@@ -222,7 +225,13 @@ body > header {
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
   column-gap: 24px; min-height: 76px;
 }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); position: relative; }
+/* Links that stand alone get 44px to press without growing (site 2.25.21): the area is a
+   transparent layer over the link, so the header, the gold rule under the current page and
+   the install link look as they did. Not for links stacked in a list, whose layers would
+   overlap -- those are made 44 tall instead (.priv-toc a). */
+.brand::before, nav a::before, .arrow-link::before { content: ""; position: absolute; inset: -6px -4px; }
+.arrow-link::before { inset: -9px -4px; }
 .brand b { font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
 /* The mark is a file, with its own gold tile drawn in: logo.svg where there are 40 device
    pixels or more to draw it in -- the header on a 2x screen -- and favicon.svg, the
@@ -235,7 +244,7 @@ body > header {
 nav { display: flex; align-items: center; gap: 36px; }
 nav a {
   color: var(--ink-muted); text-decoration: none; font-size: 15px; font-weight: 500;
-  padding: 6px 0;
+  padding: 6px 0; position: relative;
 }
 nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 
@@ -249,14 +258,14 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
    does not shove the theme switch and the download pill sideways. */
 #lang {
   font: inherit; font-size: 15px; font-weight: 600; cursor: pointer;
-  color: var(--ink); background: none; border: 0; padding: 6px 0;
+  color: var(--ink); background: none; border: 0; padding: 6px 0; min-height: 44px;
   width: 64px; text-align: center; flex: none;
 }
 #lang:hover { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 #menu {
   display: none; place-items: center; cursor: pointer;
-  width: 40px; height: 40px; padding: 0; margin-right: -8px;
+  width: 44px; height: 44px; padding: 0; margin: -2px -10px -2px -2px;
   color: var(--ink); background: none; border: 0;
 }
 #menu svg { width: 24px; height: 24px; }
@@ -324,7 +333,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 .qr-share summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); }
 .qr-share summary .chev { margin-left: auto; transition: transform .2s; }
 .qr-share[open] summary .chev { transform: rotate(180deg); }
-.qr-share summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 16px; }
+.qr-share summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 16px; }
 /* White behind the code in both themes: a camera reads dark squares on light. */
 .qr-share img {
   display: block; margin: 4px auto 0; width: min(240px, 70%); height: auto;
@@ -414,7 +423,7 @@ footer {
    thing on a long scroll and the header is a long way back up. */
 .foot-name { display: none; color: var(--ink); font-size: 19px; font-weight: 800; letter-spacing: -.3px; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin: 0; font-weight: 600; }
-.foot-links a { color: var(--ink-muted); text-decoration: none; }
+.foot-links a { color: var(--ink-muted); text-decoration: none; display: inline-flex; align-items: center; min-height: 44px; margin-block: -10px; }
 .foot-links a:hover { color: var(--ink); }
 .foot-ver { color: var(--ink-muted); font-weight: 500; }
 .foot-ver:empty { display: none; }
@@ -461,7 +470,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
  */
 #theme {
   display: inline-grid; place-items: center;
-  width: 36px; height: 36px; padding: 0; cursor: pointer;
+  width: 44px; height: 44px; margin: -4px; padding: 0; cursor: pointer;
   color: var(--ink); background: none; border: 0; border-radius: 999px;
 }
 #theme:hover { color: var(--accent-icon); }
@@ -508,6 +517,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   }
   .js .menu-open nav { display: flex; }
   .js nav a { font-size: 17px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .js nav a::before { content: none; }
   .js nav a:last-child { border-bottom: 0; }
 }
 /* Brand, language, theme and menu need about 372px at the sizes above; on a narrower
@@ -670,7 +680,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 .faq summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); transition: transform .2s; }
 .faq details[open] summary .ico { transform: rotate(180deg); }
 .faq summary:hover { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 16px; }
+.faq summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 16px; }
 .faq details p { margin: 0; padding: 0 24px 22px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.7; }
 @media (max-width: 719px) {
   .faq summary { padding: 18px 20px; font-size: 16px; }
@@ -685,7 +695,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 .trust h2 { font-size: clamp(34px, 1.6vw + 16px, 40px); margin-bottom: 24px; }
 .trust-copy > p:not(.eyebrow) { margin: 0; color: var(--ink-muted); font-size: 16px; line-height: 1.75; }
 .arrow-link {
-  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px;
+  display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; position: relative;
   color: var(--accent-icon); font-weight: 700; font-size: 16px; text-decoration: none;
 }
 .arrow-link .ico { width: 17px; height: 17px; transition: transform .15s; }
@@ -747,6 +757,8 @@ html:not([lang="bn"]) .release-notes-lang { display: none; }
 .band {
   text-align: center; padding: 72px 56px;
   background: var(--accent); color: var(--on-accent); border-radius: 28px;
+  /* The focus ring in the band's own dark ink (9.46 on the gold), on both themes. */
+  --focus: var(--on-accent);
 }
 .band-meta { margin: 16px 0 32px; font-size: 17px; opacity: .72; min-height: 1.6em; }
 .band-cta { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
@@ -839,7 +851,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   /* On a phone the second choice is a line of text, not a second button the same size
      as the first -- two equal buttons stacked read as "which one?". */
   .btn-ghost {
-    border: 0; min-height: auto; padding: 8px 0;
+    border: 0; min-height: 44px; padding: 8px 0;
     text-decoration: underline; text-underline-offset: 4px;
   }
 }
@@ -883,7 +895,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 }
 .jump { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 32px; }
 .jump a {
-  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
   border: 1px solid var(--edge); border-radius: 999px;
   color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
 }
@@ -1003,7 +1015,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .feat-hero h1 { font-size: 44px; }
   .feat-hero p.lead { margin: 16px 0 0; font-size: 17px; line-height: 1.6; }
   .jump { justify-content: flex-start; margin-top: 20px; }
-  .jump a { min-height: 36px; padding: 0 14px; }
+  .jump a { min-height: 44px; padding: 0 14px; }
   .shots-block { padding-top: 64px; }
 
   /* The six become a row wider than the screen that scrolls sideways, each frame
@@ -1089,9 +1101,12 @@ img {
 }
 .skip:focus { top: 12px; }
 main:focus { outline: none; }
+/* One ring for every control; the per-control rings (some above this, some below) only change
+   its offset or corners, and the gold band and the lightbox change its colour. */
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 /* The row of six scrolls sideways on a phone, so it takes focus for the arrow keys. */
-.shots-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 12px; }
-button.zoom:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.shots-row:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 12px; }
+button.zoom:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 button.zoom:not(.frame) img { transition: transform .2s, box-shadow .2s; }
 button.zoom:not(.frame):hover img { transform: translateY(-3px); box-shadow: var(--shadow); }
 
@@ -1103,10 +1118,11 @@ button.zoom:not(.frame):hover img { transform: translateY(-3px); box-shadow: var
   transition: transform .2s, border-color .2s;
 }
 button.frame:hover { transform: translateY(-4px); border-color: var(--edge); }
-button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+button.frame:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
 
 /* -- the full-size view ------------------------------------------------------------ */
 .lightbox {
+  --focus: var(--accent);
   /* vh before each dvh: dvh is Chrome 108 and up, and without it the picture had no cap. */
   width: 100vw; height: 100vh; height: 100dvh; max-width: none; max-height: none;
   margin: 0; padding: 0; border: 0; background: transparent; color: #F5F2EC;
@@ -1139,7 +1155,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
   transition: background-color .15s;
 }
 .lb-btn:hover { background: rgba(255, 255, 255, .16); }
-.lb-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.lb-btn:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .lb-btn .ico { width: 22px; height: 22px; }
 .lb-prev { grid-column: 1; }
 .lb-next { grid-column: 3; }
@@ -1283,7 +1299,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
 .hash-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
 .hash-head b { font-size: 15px; }
 .copy-btn {
-  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer; min-height: 44px;
   padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 14px; font-weight: 600;
   color: var(--ink); background: var(--panel); border: 1px solid var(--edge);
 }
@@ -1401,6 +1417,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
   letter-spacing: 1.2px; text-transform: uppercase;
 }
 .priv-toc a {
+  display: flex; align-items: center; min-height: 44px;
   padding: 8px 12px; border-left: 2px solid var(--edge);
   color: var(--ink-muted); font-size: 14px; line-height: 1.45; text-decoration: none;
 }
@@ -1498,7 +1515,7 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
   /* Under the sticky header (z-index 10), so the opened menu is never covered. */
   position: fixed; z-index: 9; left: 50%; bottom: 16px; transform: translateX(-50%);
   width: min(440px, calc(100% - 2 * var(--gutter)));
-  padding: 18px 48px 18px 20px;
+  padding: 18px 50px 18px 20px;
   background: var(--card); border: 1px solid var(--edge); border-radius: 18px;
   box-shadow: 0 20px 50px -12px rgba(0, 0, 0, .55);
   font-size: 14.5px; line-height: 1.5; color: var(--ink);
@@ -1516,12 +1533,12 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
   font-weight: 700; text-underline-offset: 3px; text-decoration-color: var(--link-line); text-decoration-thickness: var(--link-thick);
 }
 .dl-note-x {
-  position: absolute; top: 10px; right: 10px; width: 36px; height: 36px;
+  position: absolute; top: 6px; right: 6px; width: 44px; height: 44px;
   display: grid; place-items: center; padding: 0; cursor: pointer;
   background: none; border: 0; border-radius: 10px; color: var(--ink-muted);
 }
 .dl-note-x:hover { color: var(--ink); background: var(--panel); }
-.dl-note-x:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.dl-note-x:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
 .dl-note-x .ico { width: 18px; height: 18px; }
 @media (prefers-reduced-motion: no-preference) {
   .dl-note-in { animation: dl-note-up .25s ease-out; }

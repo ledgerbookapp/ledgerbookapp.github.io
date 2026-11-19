@@ -1,5 +1,5 @@
 // Website render only, never committed to the app: the site's changes to the gallery, applied
-// to a worktree of the release tag. Usage: node gallery-changes.js <worktree>. Built for site
+// to a worktree of the release tag (v2.2.6 since site 2.25.21). Usage: node gallery-changes.js <worktree>. Built for site
 // 2.21.0-2.23.2; the month counted from the gallery's held clock (25 Oct 2026) since 2.25.1.
 const fs = require('fs');
 const root = process.argv[2] + '/app/src/test/java/com/ledgerbook/app/gallery/';
@@ -41,12 +41,13 @@ edit('GalleryTest.kt', [
   // paying its pension, in the same ledger as every scene, so Invest fills the screen.
   [`    val accounts = repository.accountsOnce()
     fun acc(id: Int) = accounts.first { it.id == id }`,
-`    val mtb = repository.insertAccountReturningId(BankAccount(accountName = w("MTB Monthly FDR", "MTB মাসিক FDR"), accountType = "FDR", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#E8B23A", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 12, interestRate = 9.0, startDate = now - 70 * day, maturityDate = now + 295 * day, payoutMode = "MONTHLY", profitCollectedCount = 2, preLedgerMonths = 0, schemeStatus = "ACTIVE"))
-    val sibl = repository.insertAccountReturningId(BankAccount(accountName = "SIBL DPS", accountType = "DPS", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#E8B23A", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 36, monthlyInstallmentPaisa = takaToPaisa(3000.0), interestRate = 8.0, startDate = now - 1125 * day, maturityDate = now - 30 * day, pensionMonthlyPaisa = takaToPaisa(2500.0), pensionMonths = 60, pensionPaidCount = 0, pensionStartDate = now - 5 * day, schemeStatus = "ACTIVE"))
+`    val mtb = repository.insertAccountReturningId(BankAccount(accountName = w("MTB Monthly FDR", "MTB মাসিক FDR"), accountType = "FDR", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#F6BD3D", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 12, interestRate = 9.0, startDate = now - 70 * day, maturityDate = now + 295 * day, payoutMode = "MONTHLY", profitCollectedCount = 2, preLedgerMonths = 0, schemeStatus = "ACTIVE"))
+    val sibl = repository.insertAccountReturningId(BankAccount(accountName = "SIBL DPS", accountType = "DPS", accountNumberSuffix = "", balance = 0.0, accentColorHex = "#F6BD3D", holderName = "Raahat", linkedAccountId = dbbl, tenureMonths = 36, monthlyInstallmentPaisa = takaToPaisa(3000.0), interestRate = 8.0, startDate = now - 1125 * day, maturityDate = now - 30 * day, pensionMonthlyPaisa = takaToPaisa(2500.0), pensionMonths = 60, pensionPaidCount = 0, pensionStartDate = now - 5 * day, schemeStatus = "ACTIVE"))
     val accounts = repository.accountsOnce()
     fun acc(id: Int) = accounts.first { it.id == id }`],
   [`    val j = repository.journal
-    j.postIncome("Salary", "", "Salary", now - 12 * day`,
+    // The salary first: the rent and Karim's loan below are paid out of it.
+    j.postIncome("Salary", "", "Salary", now - 16 * day`,
 `    val j = repository.journal
     // Website render only: opened through the journal, so Home's Invest and the hidden bank hold
     // what their rows say (a balance put straight on the row read ৳0 on Home).
@@ -55,7 +56,8 @@ edit('GalleryTest.kt', [
     j.postOpeningBalance(acc(dps), takaToPaisa(15000.0), now - 75 * day)
     j.postOpeningBalance(acc(mtb), takaToPaisa(200000.0), now - 70 * day)
     j.postOpeningBalance(acc(sibl), takaToPaisa(120000.0), now - 95 * day)
-    j.postIncome("Salary", "", "Salary", now - 12 * day`],
+    // The salary first: the rent and Karim's loan below are paid out of it.
+    j.postIncome("Salary", "", "Salary", now - 16 * day`],
   ['"October rent"', 'w("October rent", "অক্টোবরের ভাড়া")'],
   ['"Lunch"', 'w("Lunch", "দুপুরের খাবার")'],
   ['    j.postExpense("Transport", "", "Transport", now - day, acc(bkash), takaToPaisa(250.0))\n',
@@ -95,9 +97,9 @@ edit('GalleryTest.kt', [
     j.postExpense("Food", "", "Food", pt(0.85), acc(cash), takaToPaisa(950.0))
 `],
   [`personName = "Karim", phone = "01711111111", type = "GIVEN", totalPaisa = takaToPaisa(12000.0), paidPaisa = 0L, dueDate = now - 5 * day, note = "Short loan"),
-      acc(dbbl), takaToPaisa(12000.0), now - 30 * day, "Short loan"`,
+      acc(dbbl), takaToPaisa(12000.0), now - 14 * day, "Short loan"`,
 `personName = w("Karim", "করিম"), phone = "01711111111", type = "GIVEN", totalPaisa = takaToPaisa(12000.0), paidPaisa = 0L, dueDate = now - 5 * day, note = w("Short loan", "অল্প দিনের ধার")),
-      acc(dbbl), takaToPaisa(12000.0), now - 30 * day, w("Short loan", "অল্প দিনের ধার")`],
+      acc(dbbl), takaToPaisa(12000.0), now - 14 * day, w("Short loan", "অল্প দিনের ধার")`],
   [`personName = "Salam", phone = "01933333333", type = "TAKEN", totalPaisa = takaToPaisa(8000.0), paidPaisa = 0L, dueDate = now + 9 * day, note = "Rent"),
       acc(cash), takaToPaisa(8000.0), now - 10 * day, "Rent"
     )`,
@@ -134,4 +136,16 @@ edit('Gallery03HomeTest.kt', [
   @Test fun webFlowBangla() = scene("06-Money-Flow", english = false) { Main(AppPage.MONEY_FLOW) }
 `],
 ]);
+// Website render only (site 2.25.21): Money Flow's filter bar 12 under its note, the owner's ask of
+// 2026-11-19, made in the app's working tree but not yet committed or released -- the 2.2.6 tag
+// draws it at 10. Drop this block once a release carries the 12.
+{
+  const p = process.argv[2] + '/app/src/main/java/com/ledgerbook/app/ui/MoneyFlowScreen.kt';
+  let s = fs.readFileSync(p, 'utf8');
+  const a = 'modifier = Modifier.padding(top = 10.dp)\n                )\n            }\n        }';
+  const crlf = s.includes('\r\n'); s = s.replace(/\r\n/g, '\n');
+  if (s.split(a).length !== 2) throw new Error('MoneyFlowScreen.kt: the filter bar\'s 10.dp');
+  s = s.replace(a, () => a.replace('10.dp', '12.dp'));
+  fs.writeFileSync(p, crlf ? s.replace(/\n/g, '\r\n') : s);
+}
 console.log('ok');
