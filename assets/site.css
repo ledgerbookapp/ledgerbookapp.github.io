@@ -13,9 +13,9 @@
  *
  * The gold is the app's brand #E8B23A in both themes, as the app has drawn it since
  * 2026-10-16 (it retired the amber #F59E0B that the light theme used to fill with). On the
- * dark theme the words are a step brighter than the fill, #F6BD3D, at the owner's asking
- * (site 2.25.11). On light paper
- * the gold cannot write: the fill measures 1.85 against the page, so a link in it fails a reader
+ * dark theme fill and ink are the same value, because #E8B23A carries 9.53 on a card and
+ * the dark #1A1408 written on it carries 9.46, so one tone does both jobs. On light paper
+ * it cannot: the fill measures 1.85 against the page, so a link in it fails a reader
  * outright while the same colour behind dark text is perfectly sound. The app hit this
  * exact wall and answered it with a separate ink -- #8A5F04, 5.40 on the page -- and the
  * two live two lines apart there with a long comment saying which is which, because
@@ -83,8 +83,8 @@
     --panel: #0F0E0C;
     --frame: #1B1A17;
     --accent: #E8B23A;
-    --accent-ink: #F6BD3D;
-    --accent-on-tint: #F6BD3D;
+    --accent-ink: #E8B23A;
+    --accent-on-tint: #E8B23A;
     --on-accent: #1A1408;
     --tile: color-mix(in srgb, #E8B23A 9%, transparent);
     --tile-line: transparent;
@@ -110,8 +110,8 @@
   --panel: #0F0E0C;
   --frame: #1B1A17;
   --accent: #E8B23A;
-  --accent-ink: #F6BD3D;
-  --accent-on-tint: #F6BD3D;
+  --accent-ink: #E8B23A;
+  --accent-on-tint: #E8B23A;
   --on-accent: #1A1408;
   --tile: color-mix(in srgb, #E8B23A 9%, transparent);
   --tile-line: transparent;
@@ -537,7 +537,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   letter-spacing: -.035em; margin: 0;
 }
 .hero-home h1 span, .hero-home h1 em { display: block; }
-.hero-home h1 em { font-style: normal; color: #F6BD3D; }
+.hero-home h1 em { font-style: normal; color: #E8B23A; }
 /* The whole column, as wide as the heading above it: held to 500px it ended well short of
    the phone and left an empty block beside its lines (the owner's ask, 2026-11-18). `none`,
    not just no width of its own: `.hero p.lead` holds every other page's lead to 34em. */
@@ -570,7 +570,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 /* -- sections --------------------------------------------------------------------- */
 .home .block { padding: 120px var(--gutter) 0; }
 .sec-head { text-align: center; max-width: 700px; margin: 0 auto 56px; }
-.eyebrow { margin: 0 0 14px; color: var(--accent-ink); font-size: 14px; font-weight: 700; }
+.eyebrow { margin: 0 0 14px; color: var(--accent-ink); font-size: 16px; font-weight: 700; }
 .sec-head h2, .trust h2, .band h2 {
   font-size: clamp(31px, 2.6vw + 12px, 48px); line-height: 1.2; font-weight: 800;
   letter-spacing: -.035em; margin: 0;
