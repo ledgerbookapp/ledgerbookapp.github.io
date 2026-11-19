@@ -13,9 +13,9 @@
  *
  * The gold is the app's brand #E8B23A in both themes, as the app has drawn it since
  * 2026-10-16 (it retired the amber #F59E0B that the light theme used to fill with). On the
- * dark theme fill and ink are the same value, because #E8B23A carries 9.53 on a card and
- * the dark #1A1408 written on it carries 9.46, so one tone does both jobs. On light paper
- * it cannot: the fill measures 1.85 against the page, so a link in it fails a reader
+ * dark theme the words are a step brighter than the fill, #F6BD3D, at the owner's asking
+ * (site 2.25.11). On light paper
+ * the gold cannot write: the fill measures 1.85 against the page, so a link in it fails a reader
  * outright while the same colour behind dark text is perfectly sound. The app hit this
  * exact wall and answered it with a separate ink -- #8A5F04, 5.40 on the page -- and the
  * two live two lines apart there with a long comment saying which is which, because
@@ -83,8 +83,8 @@
     --panel: #0F0E0C;
     --frame: #1B1A17;
     --accent: #E8B23A;
-    --accent-ink: #E8B23A;
-    --accent-on-tint: #E8B23A;
+    --accent-ink: #F6BD3D;
+    --accent-on-tint: #F6BD3D;
     --on-accent: #1A1408;
     --tile: color-mix(in srgb, #E8B23A 9%, transparent);
     --tile-line: transparent;
@@ -110,8 +110,8 @@
   --panel: #0F0E0C;
   --frame: #1B1A17;
   --accent: #E8B23A;
-  --accent-ink: #E8B23A;
-  --accent-on-tint: #E8B23A;
+  --accent-ink: #F6BD3D;
+  --accent-on-tint: #F6BD3D;
   --on-accent: #1A1408;
   --tile: color-mix(in srgb, #E8B23A 9%, transparent);
   --tile-line: transparent;
