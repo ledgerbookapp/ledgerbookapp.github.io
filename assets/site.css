@@ -15,19 +15,22 @@
  * 2026-10-16 (it retired the amber #F59E0B that the light theme used to fill with). On the
  * dark theme fill and ink are the same value, because #E8B23A carries 9.53 on a card and
  * the dark #1A1408 written on it carries 9.46, so one tone does both jobs. On light paper
- * it cannot: the fill measures 1.85 against the page, so a link in it fails a reader
+ * it cannot: the fill measures 1.85 against the page (1.93 on a white card), so a link in it fails a reader
  * outright while the same colour behind dark text is perfectly sound. The app hit this
  * exact wall and answered it with a separate ink -- #8A5F04, 5.40 on the page -- and the
  * two live two lines apart there with a long comment saying which is which, because
  * twice a commit about the fill took the ink along with it.
  *
- * So: filling with --accent-ink looks muddy, and writing in --accent is unreadable. They
- * are not two shades of a preference.
+ * So: never fill with --accent-ink (on light it is the page's ink, below), and writing in
+ * --accent is unreadable. They are not two shades of a preference.
  *
- * Since 2026-11-19 (site 2.25.14) the owner has every gold word in #E8B23A on the light
- * theme as well, knowing it measures 1.85 there: --accent-ink and --accent-on-tint are the
- * gold on both themes. Icons are not words, and keep the deeper ink on light through
- * --accent-icon (#8A5F04), so a tile's icon still stands out from its pale tile.
+ * Since 2026-11-19 (site 2.25.19) a gold word on light is the page's ink with the gold
+ * under it: links keep a gold underline (--link-line) and a word under the pointer gains
+ * one (--hover-line) -- the owner's choice from three designs, after the gold written on
+ * white measured 1.93. On dark the gold is still the word itself, and those two lines keep
+ * what dark had: the link's own underline, and no line on hover. Icons are not words, and
+ * keep the deeper ink on light through --accent-icon (#8A5F04). --accent-on-tint is still
+ * the gold on both themes; only .badge-soft and ol.steps use it, and no page has either.
  */
 :root {
   /* Light — PaperBackground, PaperSurface, PaperOutline, InkText, InkTextMuted. */
@@ -35,9 +38,12 @@
   --card: #FFFFFF;
   --edge: #CBD5E1;
   --accent: #E8B23A;
-  --accent-ink: #E8B23A;
+  --accent-ink: var(--ink);
   --accent-on-tint: #E8B23A;
   --accent-icon: #8A5F04;
+  --link-line: #E8B23A;
+  --link-thick: 2px;
+  --hover-line: #E8B23A;
   /* The install page's warnings: filled with the gold on light, where gold words on the pale
      chip measured 1.7 (the owner's choice, 2026-11-19, site 2.25.15); on dark the gold words
      on the tinted chip read at 9 and stay. */
@@ -105,6 +111,9 @@
     --accent-ink: #E8B23A;
     --accent-on-tint: #E8B23A;
     --accent-icon: #E8B23A;
+    --link-line: currentColor;
+    --link-thick: auto;
+    --hover-line: transparent;
     --warn-bg: color-mix(in srgb, #E8B23A 12%, transparent);
     --warn-ink: #E8B23A;
     --warn-label-bg: transparent;
@@ -140,6 +149,9 @@
   --accent-ink: #E8B23A;
   --accent-on-tint: #E8B23A;
   --accent-icon: #E8B23A;
+  --link-line: currentColor;
+  --link-thick: auto;
+  --hover-line: transparent;
   --warn-bg: color-mix(in srgb, #E8B23A 12%, transparent);
   --warn-ink: #E8B23A;
   --warn-label-bg: transparent;
@@ -240,7 +252,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   color: var(--ink); background: none; border: 0; padding: 6px 0;
   width: 64px; text-align: center; flex: none;
 }
-#lang:hover { color: var(--accent-ink); }
+#lang:hover { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
 #menu {
   display: none; place-items: center; cursor: pointer;
@@ -344,7 +356,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   stroke-linecap: round; stroke-linejoin: round;
 }
 .meta { color: var(--ink-muted); font-size: 14px; margin: 14px 0 0; }
-.meta a { color: var(--accent-ink); }
+.meta a { color: var(--accent-ink); text-decoration-color: var(--link-line); text-decoration-thickness: var(--link-thick); }
 
 /* -- cards -------------------------------------------------------------------- */
 section { padding: 44px 0; }
@@ -452,7 +464,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   width: 36px; height: 36px; padding: 0; cursor: pointer;
   color: var(--ink); background: none; border: 0; border-radius: 999px;
 }
-#theme:hover { color: var(--accent-ink); }
+#theme:hover { color: var(--accent-icon); }
 #theme svg { width: 19px; height: 19px; grid-area: 1 / 1; }
 
 /* Light is the default, so the moon shows and the sun is put away. */
@@ -630,7 +642,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 }
 .why-card h3 { margin: 0; font-size: 18px; line-height: 1.4; font-weight: 700; letter-spacing: -.3px; }
 .why-card p { grid-column: 1 / -1; margin-top: 18px; font-size: 15px; line-height: 1.72; }
-.why-card a { color: var(--accent-ink); text-underline-offset: 3px; }
+.why-card a { color: var(--accent-ink); text-underline-offset: 3px; text-decoration-color: var(--link-line); text-decoration-thickness: var(--link-thick); }
 
 /* -- at a glance ------------------------------------------------------------------ */
 .glance {
@@ -657,7 +669,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); transition: transform .2s; }
 .faq details[open] summary .ico { transform: rotate(180deg); }
-.faq summary:hover { color: var(--accent-ink); }
+.faq summary:hover { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 16px; }
 .faq details p { margin: 0; padding: 0 24px 22px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.7; }
 @media (max-width: 719px) {
@@ -875,7 +887,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   border: 1px solid var(--edge); border-radius: 999px;
   color: var(--ink); font-size: 14px; font-weight: 600; text-decoration: none;
 }
-.jump a:hover { border-color: var(--accent-ink); color: var(--accent-ink); }
+.jump a:hover { border-color: var(--accent); color: var(--accent-ink); }
 /* A jump lands the heading under the sticky header, not behind it. */
 .feat [id] { scroll-margin-top: 96px; }
 
@@ -1181,7 +1193,7 @@ button.frame:focus-visible { outline: 2px solid var(--accent); outline-offset: 4
   display: flex; align-items: center; gap: 14px; padding: 14px 0;
   color: var(--ink); text-decoration: none; font-size: 15px; font-weight: 600;
 }
-.toc a:hover > span:nth-child(2) { color: var(--accent-ink); }
+.toc a:hover > span:nth-child(2) { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 .toc-n {
   display: inline-grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 999px;
   background: var(--accent); color: var(--on-accent); font-size: 13px; font-weight: 800;
@@ -1501,7 +1513,7 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
 .dl-note b { color: var(--ink); }
 .dl-note-guide {
   display: inline-block; margin: 12px 0 0 32px; color: var(--accent-ink);
-  font-weight: 700; text-underline-offset: 3px;
+  font-weight: 700; text-underline-offset: 3px; text-decoration-color: var(--link-line); text-decoration-thickness: var(--link-thick);
 }
 .dl-note-x {
   position: absolute; top: 10px; right: 10px; width: 36px; height: 36px;
