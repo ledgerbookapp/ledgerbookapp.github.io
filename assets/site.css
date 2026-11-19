@@ -321,7 +321,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 .btn[aria-disabled="true"] { opacity: .6; pointer-events: none; }
 .btn-quiet {
   background: transparent; color: var(--ink);
-  border: 1px solid var(--edge); font-weight: 600;
+  border: 1px solid var(--edge); font-weight: 700;
 }
 .btn-quiet:hover { border-color: var(--ink-faint); filter: none; }
 .btn-lg { min-height: 56px; padding: 0 28px; }
@@ -682,7 +682,7 @@ html:not([lang="bn"]) .release-notes-lang { display: none; }
 .btn-dark { background: #0C0B0A; color: #F5F2EC; }
 .btn-ghost {
   background: transparent; color: inherit; font-weight: 700;
-  border: 1.5px solid color-mix(in srgb, currentColor 28%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
 }
 .btn-ghost:hover { filter: none; border-color: currentColor; }
 
@@ -968,7 +968,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .band-row .band-cta { flex-direction: column; align-items: stretch; flex-wrap: wrap; width: 100%; gap: 14px; }
   /* Here the second choice stays a button, as drawn -- unlike the home page's band. */
   .band-row .btn-ghost {
-    border: 1.5px solid color-mix(in srgb, currentColor 28%, transparent);
+    border: 1px solid color-mix(in srgb, currentColor 40%, transparent);
     min-height: 56px; padding: 0 28px; text-decoration: none;
   }
 }
@@ -1133,8 +1133,8 @@ main:focus { outline: none; }
 .hash-head b { font-size: 15px; }
 .copy-btn {
   display: inline-flex; align-items: center; gap: 8px; cursor: pointer; min-height: 44px;
-  padding: 8px 14px; border-radius: 10px; font: inherit; font-size: 14px; font-weight: 600;
-  color: var(--ink); background: var(--panel); border: 1px solid var(--edge);
+  padding: 8px 14px; border-radius: var(--radius-field); font: inherit; font-size: 15px; font-weight: 700;
+  color: var(--ink); background: transparent; border: 1px solid var(--edge);
 }
 .copy-btn[hidden] { display: none; }
 .copy-btn .ico { width: 16px; height: 16px; }
