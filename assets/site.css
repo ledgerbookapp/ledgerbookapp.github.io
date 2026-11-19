@@ -816,6 +816,9 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   background: var(--card); border: 1px solid var(--edge); border-radius: 999px;
   color: var(--accent-ink); font-size: 13px; font-weight: 600; line-height: 1.5;
 }
+/* The pill over a page's title is the size of the home page's labels (the owner's ask,
+   2026-11-19); the grey "Optional" pill lower on the install page keeps 13px. */
+.feat-hero .pill-eyebrow, .inst-hero .pill-eyebrow { font-size: 16px; }
 .feat-hero h1 {
   font-size: clamp(44px, 3.4vw + 16px, 64px); line-height: 1.08; font-weight: 800;
   letter-spacing: -.035em; margin: 0;
