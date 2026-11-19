@@ -23,6 +23,11 @@
  *
  * So: filling with --accent-ink looks muddy, and writing in --accent is unreadable. They
  * are not two shades of a preference.
+ *
+ * Since 2026-11-19 (site 2.25.14) the owner has every gold word in #E8B23A on the light
+ * theme as well, knowing it measures 1.85 there: --accent-ink and --accent-on-tint are the
+ * gold on both themes. Icons are not words, and keep the deeper ink on light through
+ * --accent-icon (#8A5F04), so a tile's icon still stands out from its pale tile.
  */
 :root {
   /* Light — PaperBackground, PaperSurface, PaperOutline, InkText, InkTextMuted. */
@@ -30,8 +35,9 @@
   --card: #FFFFFF;
   --edge: #CBD5E1;
   --accent: #E8B23A;
-  --accent-ink: #8A5F04;
-  --accent-on-tint: #7A5300;
+  --accent-ink: #E8B23A;
+  --accent-on-tint: #E8B23A;
+  --accent-icon: #8A5F04;
   --on-accent: #1A1408;
   /* What an icon sits on, as the app draws it (Color.kt, YellowAccent): solid #FDF0CC under the
      #8A5F04 icon, 4.98 between them. These were the gold at 9% over whatever lay beneath, which
@@ -85,6 +91,7 @@
     --accent: #E8B23A;
     --accent-ink: #E8B23A;
     --accent-on-tint: #E8B23A;
+    --accent-icon: #E8B23A;
     --on-accent: #1A1408;
     --tile: color-mix(in srgb, #E8B23A 9%, transparent);
     --tile-line: transparent;
@@ -112,6 +119,7 @@
   --accent: #E8B23A;
   --accent-ink: #E8B23A;
   --accent-on-tint: #E8B23A;
+  --accent-icon: #E8B23A;
   --on-accent: #1A1408;
   --tile: color-mix(in srgb, #E8B23A 9%, transparent);
   --tile-line: transparent;
@@ -274,7 +282,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   cursor: pointer; list-style: none; font-size: 15px; font-weight: 600; color: var(--ink);
 }
 .qr-share summary::-webkit-details-marker { display: none; }
-.qr-share summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-ink); }
+.qr-share summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); }
 .qr-share summary .chev { margin-left: auto; transition: transform .2s; }
 .qr-share[open] summary .chev { transform: rotate(180deg); }
 .qr-share summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 16px; }
@@ -497,7 +505,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   display: inline-grid; place-items: center; flex: none;
   width: 44px; height: 44px; border-radius: 12px;
   background: var(--tile);
-  color: var(--accent-ink);
+  color: var(--accent-icon);
 }
 .tile .ico { width: 19px; height: 19px; }
 .tile-lg { width: 48px; height: 48px; }
@@ -615,7 +623,7 @@ ol.steps figcaption { color: var(--ink-muted); font-size: 13px; margin-top: 8px;
   font-size: 17px; font-weight: 700; line-height: 1.4; color: var(--ink);
 }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-ink); transition: transform .2s; }
+.faq summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); transition: transform .2s; }
 .faq details[open] summary .ico { transform: rotate(180deg); }
 .faq summary:hover { color: var(--accent-ink); }
 .faq summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 16px; }
@@ -1452,8 +1460,8 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
 .dl-note ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .dl-note li { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; }
 .dl-note li .ico { width: 20px; height: 20px; margin-top: 1px; }
-.dl-note .dl-done .ico { color: var(--accent-ink); }
-.dl-note .dl-wait .ico { color: var(--accent-ink); }
+.dl-note .dl-done .ico { color: var(--accent-icon); }
+.dl-note .dl-wait .ico { color: var(--accent-icon); }
 .dl-note .dl-wait span, .dl-note .dl-next span { color: var(--ink-muted); }
 .dl-note .dl-next .ico { color: var(--ink-faint); }
 .dl-note b { color: var(--ink); }
