@@ -83,6 +83,9 @@
   --gutter: 20px;
   --max: 1120px;
   --radius-card: 20px;
+  /* A panel inside a card or a page: the FAQ rows, the release card, the privacy boxes, a step's
+     picture, the download note (14, 16 and 18 until site 2.25.28). */
+  --radius-panel: 16px;
   --radius-field: 12px;
 
   /* Noto Sans Bengali is loaded at 400, 600 and 700 only, so a heading set at 800 draws its
@@ -278,7 +281,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
   display: none;
   margin: 28px 0 0; padding: 16px; gap: 20px; align-items: center;
   background: var(--card); border: 1px solid var(--edge);
-  border-radius: 16px; max-width: 600px;
+  border-radius: var(--radius-panel); max-width: 600px;
 }
 /* The square is drawn in black on white and has to stay that way to scan, so it keeps
    its own white behind it on the dark theme rather than inheriting the card. */
@@ -293,7 +296,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 
 /* On a phone the code waits behind a button, for showing to somebody else's camera. */
 .qr-share {
-  margin: 20px 0 0; background: var(--card); border: 1px solid var(--edge); border-radius: 16px;
+  margin: 20px 0 0; background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-panel);
 }
 .qr-share summary {
   display: flex; align-items: center; gap: 12px; padding: 14px 18px;
@@ -303,7 +306,7 @@ nav a:hover, nav a[aria-current="page"] { color: var(--ink); }
 .qr-share summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); }
 .qr-share summary .chev { margin-left: auto; transition: transform .2s; }
 .qr-share[open] summary .chev { transform: rotate(180deg); }
-.qr-share summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 16px; }
+.qr-share summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-panel); }
 /* White behind the code in both themes: a camera reads dark squares on light. */
 .qr-share img {
   display: block; margin: 4px auto 0; width: min(240px, 70%); height: auto;
@@ -594,7 +597,7 @@ footer {
 /* Closed until asked: six answers open at once would be a page of their own. Plain
    <details>, so it opens with the keyboard and with no script at all. */
 .faq { max-width: 820px; margin: 0 auto; display: grid; gap: 12px; }
-.faq details { background: var(--card); border: 1px solid var(--edge); border-radius: 16px; }
+.faq details { background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-panel); }
 .faq summary {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 20px 24px; cursor: pointer; list-style: none;
@@ -604,7 +607,7 @@ footer {
 .faq summary .ico { flex: none; width: 20px; height: 20px; color: var(--accent-icon); transition: transform .2s; }
 .faq details[open] summary .ico { transform: rotate(180deg); }
 .faq summary:hover { color: var(--accent-ink); text-decoration: underline; text-decoration-color: var(--hover-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
-.faq summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 16px; }
+.faq summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-panel); }
 .faq details p { margin: 0; padding: 0 24px 22px; color: var(--ink-muted); font-size: 15.5px; line-height: 1.7; }
 @media (max-width: 719px) {
   .faq summary { padding: 18px 20px; font-size: 16px; }
@@ -626,7 +629,7 @@ footer {
 .arrow-link:hover .ico { transform: translateX(3px); }
 .trust-link-narrow { display: none; }
 
-.release { background: var(--panel); border: 1px solid var(--edge); border-radius: 16px; }
+.release { background: var(--panel); border: 1px solid var(--edge); border-radius: var(--radius-panel); }
 .release-head {
   display: flex; justify-content: space-between; align-items: center; gap: 12px;
   padding: 16px 24px; border-bottom: 1px solid var(--edge);
@@ -721,7 +724,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .hero-meta { display: block; text-align: center; margin-top: 12px; }
 
   .stats-wrap { padding-top: 24px; }
-  .stats { grid-template-columns: 1fr 1fr; border-radius: 22px; }
+  .stats { grid-template-columns: 1fr 1fr; border-radius: var(--radius-card); }
   .stats > div { padding: 18px 20px 20px; border-left: 0; }
   .stats > div:nth-child(even) { border-left: 1px solid var(--edge); }
   .stats > div:nth-child(n+3) { border-top: 1px solid var(--edge); }
@@ -735,7 +738,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .sec-head p:not(.eyebrow) { margin-top: 12px; font-size: 16px; line-height: 1.55; }
 
   .why { gap: 16px; }
-  .why-card { padding: 25px; border-radius: 22px; }
+  .why-card { padding: 25px; border-radius: var(--radius-card); }
   .why-card p { margin-top: 14px; line-height: 1.66; }
 
   .glance { gap: 24px 20px; }
@@ -746,7 +749,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
      phones; a point smaller keeps "In-app updates" in Bangla to two lines. */
   @media (max-width: 389px) { .glance h3 { font-size: 15px; } }
 
-  .trust { padding: 22px 25px 32px; border-radius: 22px; gap: 16px; }
+  .trust { padding: 22px 25px 32px; border-radius: var(--radius-card); gap: 16px; }
   .trust-link-narrow { margin-top: 12px; }
   .trust h2 { font-size: 30px; line-height: 1.08; margin-bottom: 20px; }
   .trust-copy > p:not(.eyebrow) { font-size: 15px; line-height: 1.7; }
@@ -760,7 +763,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .perms h3 { font-size: 16px; margin-bottom: 4px; }
   .perms p { font-size: 14.5px; line-height: 1.5; }
 
-  .band { padding: 40px 24px 36px; border-radius: 22px; }
+  .band { padding: 40px 24px 36px; border-radius: var(--radius-card); }
   .band h2 { font-size: 32px; line-height: 1.15; }
   .band-meta { margin: 12px 0 20px; font-size: 14px; }
   .band-cta { flex-direction: column; align-items: stretch; gap: 18px; }
@@ -892,7 +895,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
 .see-list { display: grid; gap: 16px; }
 .see-item {
   display: flex; align-items: flex-start; gap: 18px; padding: 24px;
-  background: var(--panel); border: 1px solid var(--edge); border-radius: 16px;
+  background: var(--panel); border: 1px solid var(--edge); border-radius: var(--radius-panel);
 }
 .see-item h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: -.2px; }
 .see-item p { margin: 0; color: var(--ink-muted); font-size: 15px; line-height: 1.7; }
@@ -952,7 +955,7 @@ html[lang="bn"] .num-big { letter-spacing: 0; }
   .fcard h3 { font-size: 17px; }
   .fcard p { margin-top: 12px; line-height: 1.65; }
 
-  .see { padding: 20px; border-radius: 22px; gap: 24px; }
+  .see { padding: 20px; border-radius: var(--radius-card); gap: 24px; }
   .see .num-title { margin-top: 4px; }
   .see-phone { width: 230px; }
   .see-item { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0 16px; padding: 20px; }
@@ -1032,7 +1035,7 @@ main:focus { outline: none; }
 
 .toc {
   list-style: none; margin: 0; padding: 12px 24px;
-  background: var(--card); border: 1px solid var(--edge); border-radius: 16px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-panel);
 }
 .toc li + li { border-top: 1px solid var(--rule); }
 .toc a {
@@ -1077,7 +1080,7 @@ main:focus { outline: none; }
 .pic { margin: 0; flex: 1 1 0; min-width: 0; max-width: 360px; }
 /* Bare dialog screenshots only. A drawn phone is a .still.frame, and reaching its pictures
    here showed both of its light and dark pair at once and put a border round each. */
-.pic > img, .pic > div.still:not(.frame) > img { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--edge); }
+.pic > img, .pic > div.still:not(.frame) > img { display: block; width: 100%; height: auto; border-radius: var(--radius-panel); border: 1px solid var(--edge); }
 .pic figcaption { margin-top: 10px; color: var(--ink-muted); font-size: 13.5px; line-height: 1.5; }
 .step-wide .step-pics { margin-top: 36px; }
 .gal-3 .pic { max-width: none; }
@@ -1099,7 +1102,7 @@ main:focus { outline: none; }
 
 .done {
   display: flex; align-items: center; gap: 16px; margin: 32px 0 0; padding: 20px 22px;
-  border-radius: 14px; background: color-mix(in srgb, var(--green) 13%, var(--card));
+  border-radius: var(--radius-panel); background: color-mix(in srgb, var(--green) 13%, var(--card));
   font-size: 16px; font-weight: 600; color: var(--ink);
 }
 .done-tick {
@@ -1160,7 +1163,7 @@ main:focus { outline: none; }
   .toc a { padding: 12px 0; }
 
   .inst-steps { gap: 20px; padding-top: 48px; }
-  .step { padding: 20px; border-radius: 22px; }
+  .step { padding: 20px; border-radius: var(--radius-card); }
   .step .num-title { font-size: 24px; }
   .step-copy > p:not(.warn-chip), .step-body { font-size: 15.5px; line-height: 1.6; }
   .step .chips { display: none; }
@@ -1273,7 +1276,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
 .tile-fill { background: var(--accent); color: var(--on-accent); }
 
 .pboxes { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.pboxes > * { padding: 16px 18px; background: var(--panel); border: 1px solid var(--edge); border-radius: 14px; }
+.pboxes > * { padding: 16px 18px; background: var(--panel); border: 1px solid var(--edge); border-radius: var(--radius-panel); }
 .pnet li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; color: var(--ink); }
 .plabel { font-size: 12px !important; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px !important; }
 .goes .plabel { color: var(--green) !important; }
@@ -1284,7 +1287,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
 .stays .ico { color: var(--red); }
 .pnote { margin-top: 6px !important; font-size: 13px !important; line-height: 1.5 !important; }
 
-.ptable { margin: 4px 0 0; background: var(--panel); border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; }
+.ptable { margin: 4px 0 0; background: var(--panel); border: 1px solid var(--edge); border-radius: var(--radius-panel); overflow: hidden; }
 .ptable > div { display: grid; grid-template-columns: 180px 1fr; gap: 16px; padding: 16px 18px; border-top: 1px solid var(--edge); align-items: center; }
 .ptable > div:first-child { border-top: 0; }
 .ptable dt { font-weight: 700; font-size: 15px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
@@ -1309,7 +1312,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
   .priv-cards { gap: 16px; }
 
   /* The icon moves up beside the heading and the words take the full width under both. */
-  .pcard { display: grid; grid-template-columns: auto 1fr; gap: 0 14px; padding: 20px 18px; border-radius: 22px; align-items: center; }
+  .pcard { display: grid; grid-template-columns: auto 1fr; gap: 0 14px; padding: 20px 18px; border-radius: var(--radius-card); align-items: center; }
   .pcard > div { display: contents; }
   .pcard h2 { margin: 0; font-size: 18.5px; line-height: 1.25; }
   .pcard > div > :not(h2) { grid-column: 1 / -1; }
@@ -1323,7 +1326,7 @@ html[lang="bn"] .inst-hero h1, html[lang="bn"] .step .num-title { letter-spacing
   .pboxes { grid-template-columns: 1fr; }
   .pgo { gap: 0; padding: 0; }
   .pgo > div { border-radius: 0; border: 0; }
-  .pgo { border: 1px solid var(--edge); border-radius: 14px; overflow: hidden; background: var(--panel); }
+  .pgo { border: 1px solid var(--edge); border-radius: var(--radius-panel); overflow: hidden; background: var(--panel); }
   .pgo .stays { padding-top: 4px; }
   .pnote { display: none; }
 
@@ -1345,7 +1348,7 @@ html[lang="bn"] .priv-sum dd, html[lang="bn"] .priv-toc p, html[lang="bn"] .plab
   position: fixed; z-index: 9; left: 50%; bottom: 16px; transform: translateX(-50%);
   width: min(440px, calc(100% - 2 * var(--gutter)));
   padding: 18px 50px 18px 20px;
-  background: var(--card); border: 1px solid var(--edge); border-radius: 18px;
+  background: var(--card); border: 1px solid var(--edge); border-radius: var(--radius-panel);
   box-shadow: 0 20px 50px -12px rgba(0, 0, 0, .55);
   font-size: 14.5px; line-height: 1.5; color: var(--ink);
 }
