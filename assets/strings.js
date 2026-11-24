@@ -480,8 +480,8 @@ const S = {
                  'খাতাটি ফোনেই এনক্রিপ্ট করা। ঢুকতে লাগে পিন বা আঙুলের ছাপ, আর বেরোনোর এক মিনিট পর আবার তালা লাগে; এক্সপোর্ট, ব্যাকআপ, এন্ট্রি প্রত্যাহার আর ফাইল থেকে রিস্টোরের আগে আবার পিন বা আঙুলের ছাপ চায়; "সর্বশেষ কপি রিস্টোর" আর "শেষ রিস্টোর ফিরিয়ে নিন"-এ লাগে শুধু পিন।'],
   fLookHead:    ['Set it up your way',
                  'আপনার পছন্দমতো সাজিয়ে নিন'],
-  fLookBody:    ['Bangla or English, light or dark mode, gold or sky blue, and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
-                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক মোড, সোনালি বা আকাশি থিম এবং পছন্দমতো ফন্ট সাইজ — সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
+  fLookBody:    ['Bangla or English, light or dark mode, gold, sky blue or rainbow, and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
+                 'বাংলা বা ইংরেজি, লাইট বা ডার্ক মোড, সোনালি, আকাশি বা রংধনু থিম এবং পছন্দমতো ফন্ট সাইজ — সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],

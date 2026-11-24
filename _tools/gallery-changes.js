@@ -1,5 +1,5 @@
 // Website render only, never committed to the app: the site's changes to the gallery, applied
-// to a worktree of the release tag (v2.2.6 since site 2.25.21). Usage: node gallery-changes.js <worktree>. Built for site
+// to a worktree of the release tag (v2.2.9 since site 2.25.29). Usage: node gallery-changes.js <worktree>. Built for site
 // 2.21.0-2.23.2; the month counted from the gallery's held clock (25 Oct 2026) since 2.25.1.
 const fs = require('fs');
 const root = process.argv[2] + '/app/src/test/java/com/ledgerbook/app/gallery/';
@@ -29,6 +29,10 @@ edit('GalleryTest.kt', [
   private val bnNotes: Boolean get() = webScene && sceneName.methodName.let { it.contains("Bangla") || it == "bangla" }
   private fun w(en: String, bn: String) = if (bnNotes) bn else en
 `],
+  // Website render only (site 2.25.29): a fifth look, Rainbow on the light theme, which the light
+  // pictures show -- the gallery draws only Yellow and Sky.
+  ['    LightSky(false, ThemeColorMode.SKY, "light-sky")\n',
+   '    LightSky(false, ThemeColorMode.SKY, "light-sky"),\n    LightRainbow(false, ThemeColorMode.RAINBOW, "light-rainbow")\n'],
   ['repository.insertAccount(BankAccount(accountName = "CITY BANK A/C", accountType = "Savings", accountNumberSuffix = "9032", balance = 68250.0,',
    'val city = repository.insertAccountReturningId(BankAccount(accountName = "CITY BANK A/C", accountType = "Savings", accountNumberSuffix = "9032", balance = 0.0,'],
   ['val cash = repository.insertAccountReturningId(BankAccount(accountName = "Cash in Hand",',
@@ -136,16 +140,4 @@ edit('Gallery03HomeTest.kt', [
   @Test fun webFlowBangla() = scene("06-Money-Flow", english = false) { Main(AppPage.MONEY_FLOW) }
 `],
 ]);
-// Website render only (site 2.25.21): Money Flow's filter bar 12 under its note, the owner's ask of
-// 2026-11-19, made in the app's working tree but not yet committed or released -- the 2.2.6 tag
-// draws it at 10. Drop this block once a release carries the 12.
-{
-  const p = process.argv[2] + '/app/src/main/java/com/ledgerbook/app/ui/MoneyFlowScreen.kt';
-  let s = fs.readFileSync(p, 'utf8');
-  const a = 'modifier = Modifier.padding(top = 10.dp)\n                )\n            }\n        }';
-  const crlf = s.includes('\r\n'); s = s.replace(/\r\n/g, '\n');
-  if (s.split(a).length !== 2) throw new Error('MoneyFlowScreen.kt: the filter bar\'s 10.dp');
-  s = s.replace(a, () => a.replace('10.dp', '12.dp'));
-  fs.writeFileSync(p, crlf ? s.replace(/\n/g, '\r\n') : s);
-}
 console.log('ok');

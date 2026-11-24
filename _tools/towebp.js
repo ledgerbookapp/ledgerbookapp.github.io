@@ -16,9 +16,12 @@ const scenes = { home: '03-01-Home', txn: '05-Transactions', accounts: '07-Accou
   analytics: '06-Analytics', backup: '11-Backups-On', invest: '07-Accounts-Tab-Invest', flow: '06-Money-Flow' };
 const steps = { name: '01-02-Welcome-Name-Typed', create: '01-04-Create-PIN', confirm: '01-05-Confirm-PIN' };
 const fades = new Set(['txn', 'accounts', 'flow']);
+// The app's own screens show Rainbow on the light theme and Yellow after dark (site 2.25.29); the
+// first-launch steps stay Yellow, the accent a new install starts in.
+const look = t => t === 'light' ? 'light-rainbow' : 'dark-yellow';
 const jobs = [];
 for (const [k, s] of Object.entries(scenes)) for (const t of ['light', 'dark']) for (const bn of [false, true])
-  jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`, fades.has(k)]);
+  jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${look(t)}.png`, `${s}-${look(t)}.png`, fades.has(k)]);
 for (const [k, s] of Object.entries(steps)) for (const t of ['light', 'dark']) for (const bn of [false, true])
   jobs.push([`step4-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`]);
 const html = path.join(out, 'job.html');

@@ -1,4 +1,4 @@
-2.2.6
+2.2.9
 
 The app version the pictures in this folder show.
 
@@ -13,7 +13,8 @@ anything for is worse than no number.
 
 The app's pictures are the app's own gallery: screens drawn off the JVM by the app's
 GalleryTest, rendered from the release tag named above (a worktree of the tag, not the
-working tree), in the Yellow accent, scaled from 1078 to 780 wide (780x1736) and saved as
+working tree), the light pictures in the Rainbow accent and the dark ones in Yellow (since
+site v2.25.29; Yellow in both before), scaled from 1078 to 780 wide (780x1736) and saved as
 WebP at quality 0.9 (site v2.19.0; PNG before). Scenes: 03-01-Home, 05-Transactions,
 07-Accounts-All, 07-Accounts-Tab-Invest, 09-Loans-Given, 06-Analytics, 11-Backups-On,
 06-Money-Flow (app-flow-*, since site v2.21.0), and for step 4 01-02-Welcome-Name-Typed,
@@ -56,10 +57,15 @@ Yellow accent's gold is #F6BD3D (the site's own gold stays #E8B23A), Money Flow'
 stands lower under its note, and the gallery's sample dates its salary 16 days back and Karim's
 loan 14 (in the month, so Money Flow's Out is ৳85,730 and its growth +16%). gallery-changes.js
 follows those lines, and gives its MTB and SIBL deposits the new gold. Net worth is unchanged.
-Money Flow's filter bar is drawn 12dp under its note, not the tag's 10: the owner asked for
-12 the same day, after the 2.2.6 tag; the app had it in its working tree, not yet committed or
-released, and gallery-changes.js makes that one change in the worktree's MoneyFlowScreen.kt
-until a release carries it. Nothing else of that unreleased work is in the pictures.
+Money Flow's filter bar was drawn 12dp under its note, not that tag's 10, by a change
+gallery-changes.js made in the worktree's MoneyFlowScreen.kt; app 2.2.7 released the 12 and
+the change went with site v2.25.29.
+For v2.25.29 every scene was rendered again from app 2.2.9. The light pictures of the app's
+screens show the Rainbow accent, the owner's choice (2026-11-24): the gallery draws only Yellow
+and Sky, so gallery-changes.js adds a fifth look, LightRainbow, to the worktree's GalleryTest,
+and towebp.js takes the -light-rainbow renders for the light pictures and -dark-yellow for the
+dark (Rainbow after dark is Yellow outright). The first-launch steps (step4-*) stay Yellow in
+both themes: a new install starts in Yellow, and Rainbow is chosen later in Settings.
 Until the app's own gallery does all this, do the same again at the next retake.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
