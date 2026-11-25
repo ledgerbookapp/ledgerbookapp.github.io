@@ -16,14 +16,15 @@ const scenes = { home: '03-01-Home', txn: '05-Transactions', accounts: '07-Accou
   analytics: '06-Analytics', backup: '11-Backups-On', invest: '07-Accounts-Tab-Invest', flow: '06-Money-Flow' };
 const steps = { name: '01-02-Welcome-Name-Typed', create: '01-04-Create-PIN', confirm: '01-05-Confirm-PIN' };
 const fades = new Set(['txn', 'accounts', 'flow']);
-// The app's own screens show Rainbow on the light theme and Yellow after dark (site 2.25.29); the
-// first-launch steps stay Yellow, the accent a new install starts in.
+// The app's own screens show Rainbow on the light theme and Yellow after dark (site 2.25.29). The
+// first-launch steps the same since site 2.26.0: from app 2.3.0 a new install on the light theme
+// opens in Rainbow (2.25.29 kept them Yellow, as a new install then started).
 const look = t => t === 'light' ? 'light-rainbow' : 'dark-yellow';
 const jobs = [];
 for (const [k, s] of Object.entries(scenes)) for (const t of ['light', 'dark']) for (const bn of [false, true])
   jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${look(t)}.png`, `${s}-${look(t)}.png`, fades.has(k)]);
 for (const [k, s] of Object.entries(steps)) for (const t of ['light', 'dark']) for (const bn of [false, true])
-  jobs.push([`step4-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${t}-yellow.png`, `${s}-${t}-yellow.png`]);
+  jobs.push([`step4-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${look(t)}.png`, `${s}-${look(t)}.png`]);
 const html = path.join(out, 'job.html');
 for (const [name, want, fallback, fade] of jobs) {
   if (!fs.existsSync(path.join(src, fallback))) { console.log(name, 'MISSING', fallback); continue; }

@@ -1,4 +1,4 @@
-2.2.9
+2.3.0
 
 The app version the pictures in this folder show.
 
@@ -64,9 +64,18 @@ For v2.25.29 every scene was rendered again from app 2.2.9. The light pictures o
 screens show the Rainbow accent, the owner's choice (2026-11-24): the gallery draws only Yellow
 and Sky, so gallery-changes.js adds a fifth look, LightRainbow, to the worktree's GalleryTest,
 and towebp.js takes the -light-rainbow renders for the light pictures and -dark-yellow for the
-dark (Rainbow after dark is Yellow outright). The first-launch steps (step4-*) stay Yellow in
+dark (in 2.2.9 Rainbow after dark was Yellow outright). The first-launch steps (step4-*) stay Yellow in
 both themes: a new install starts in Yellow, and Rainbow is chosen later in Settings.
 Until the app's own gallery does all this, do the same again at the next retake.
+For v2.26.0 every scene was rendered again from app 2.3.0, the same way. From 2.3.0 a new
+install on the light theme opens in Rainbow, so the first-launch steps' light pictures
+(step4-*-light*) are -light-rainbow too; the dark ones stay -dark-yellow, as a new install
+after dark still opens in Yellow. (2.3.0 also gives Rainbow its own look after dark; the dark
+pictures keep Yellow, the dark theme's first accent.) Of the 44, ten came out different and went
+in: the six light first-launch steps, Home's light pair (the calendar mark beside the date is
+back under Rainbow) and Backups' light pair (Rainbow's deeper green on the switch). The other
+34 were byte for byte the same and were left as they were, as was the share picture, made from
+the unchanged dark Home.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
 own colour: the gallery draws no status bar, so the page's title sat on the frame's top
