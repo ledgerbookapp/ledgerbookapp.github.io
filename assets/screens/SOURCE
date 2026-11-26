@@ -83,6 +83,12 @@ Home's two head cards on a soft shadow), and the dark pairs of Analytics and Mon
 rules stop 16 short of the card's edges, and Money Flow's net-movement chip is drawn as
 Analytics' change chip). The other 30 were byte for byte the same, as was the share picture,
 made from the unchanged dark Home.
+For v2.26.2 the light pictures show Graphite in place of Rainbow, the owner's choice
+(2026-11-26): every one of them, the first-launch steps (step4-*-light*) among them, though a
+new install on the light theme opens in Rainbow. Graphite is the app's Slate, stored as SKY; the
+gallery draws it as its own LightSky look, which gallery-changes.js renames LightSlate,
+"light-slate", and towebp.js takes the -light-slate renders. All 22 light pictures came out
+different and went in; the 22 dark ones, still -dark-yellow, and the share picture were the same.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
 own colour: the gallery draws no status bar, so the page's title sat on the frame's top

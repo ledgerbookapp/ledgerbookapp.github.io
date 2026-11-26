@@ -29,10 +29,12 @@ edit('GalleryTest.kt', [
   private val bnNotes: Boolean get() = webScene && sceneName.methodName.let { it.contains("Bangla") || it == "bangla" }
   private fun w(en: String, bn: String) = if (bnNotes) bn else en
 `],
-  // Website render only (site 2.25.29): a fifth look, Rainbow on the light theme, which the light
-  // pictures show -- the gallery draws only Yellow and Sky.
+  // Website render only (site 2.25.29): a fifth look, Rainbow on the light theme -- the gallery
+  // draws only Yellow and Sky. And since site 2.26.2 the light Sky look is named for what the app
+  // has called it since 2.3.0, Slate (Graphite on its pages; SKY in storage): LightSlate,
+  // "light-slate", which the light pictures show (owner, 2026-11-26).
   ['    LightSky(false, ThemeColorMode.SKY, "light-sky")\n',
-   '    LightSky(false, ThemeColorMode.SKY, "light-sky"),\n    LightRainbow(false, ThemeColorMode.RAINBOW, "light-rainbow")\n'],
+   '    LightSlate(false, ThemeColorMode.SKY, "light-slate"),\n    LightRainbow(false, ThemeColorMode.RAINBOW, "light-rainbow")\n'],
   ['repository.insertAccount(BankAccount(accountName = "CITY BANK A/C", accountType = "Savings", accountNumberSuffix = "9032", balance = 68250.0,',
    'val city = repository.insertAccountReturningId(BankAccount(accountName = "CITY BANK A/C", accountType = "Savings", accountNumberSuffix = "9032", balance = 0.0,'],
   ['val cash = repository.insertAccountReturningId(BankAccount(accountName = "Cash in Hand",',

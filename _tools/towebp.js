@@ -19,7 +19,10 @@ const fades = new Set(['txn', 'accounts', 'flow']);
 // The app's own screens show Rainbow on the light theme and Yellow after dark (site 2.25.29). The
 // first-launch steps the same since site 2.26.0: from app 2.3.0 a new install on the light theme
 // opens in Rainbow (2.25.29 kept them Yellow, as a new install then started).
-const look = t => t === 'light' ? 'light-rainbow' : 'dark-yellow';
+// Since site 2.26.2 every light picture, the first-launch steps among them, shows Graphite (the
+// app's Slate, stored as SKY; the gallery's light-sky look, renamed light-slate by
+// gallery-changes.js) -- the owner's choice (2026-11-26). Dark stays Yellow.
+const look = t => t === 'light' ? 'light-slate' : 'dark-yellow';
 const jobs = [];
 for (const [k, s] of Object.entries(scenes)) for (const t of ['light', 'dark']) for (const bn of [false, true])
   jobs.push([`app-${k}-${t}${bn ? '-bn' : ''}.webp`, `${s}${bn ? '-bn' : ''}-${look(t)}.png`, `${s}-${look(t)}.png`, fades.has(k)]);
