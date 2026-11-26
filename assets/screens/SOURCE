@@ -1,4 +1,4 @@
-2.3.1
+2.3.2
 
 The app version the pictures in this folder show.
 
@@ -89,6 +89,13 @@ new install on the light theme opens in Rainbow. Graphite is the app's Slate, st
 gallery draws it as its own LightSky look, which gallery-changes.js renames LightSlate,
 "light-slate", and towebp.js takes the -light-slate renders. All 22 light pictures came out
 different and went in; the 22 dark ones, still -dark-yellow, and the share picture were the same.
+For v2.26.3 every scene was rendered again from app 2.3.2, the same way. From 2.3.2 a new
+install on the light theme opens in Graphite, so the first-launch steps' light pictures now show
+what a new install does. Of the 44, twelve came out different and went in: the light pairs of
+Accounts, Investments, Analytics, Money Flow, Loans and Transactions (2.3.2 softens the summary
+cards' edges, edges the change chips, and draws a chosen filter chip one way under Graphite).
+The other 32, Home's and Backups' light pairs and the first-launch steps among them, were byte
+for byte the same, as was the share picture.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
 own colour: the gallery draws no status bar, so the page's title sat on the frame's top

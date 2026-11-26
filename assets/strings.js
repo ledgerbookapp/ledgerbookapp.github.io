@@ -470,8 +470,10 @@ const S = {
   // Latest brings back the newest, and a failed daily backup is said out loud.
   // 2.0.7–2.1.2: Undo Last Restore, retired by the first change after the restore; Background
   // Work for a battery saver that holds the daily backup back is in f7Pass.
-  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and your profile; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything.',
-                 'ব্যাকআপ মানে একটি ফাইল, যা থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করতে পারেন, অথবা অ্যাপ প্রতিদিন একটি ফোল্ডারে রাখে, যেখানে শেষ সাত দিনের কপি থাকে। "সর্বশেষ কপি রিস্টোর" সবচেয়ে নতুন কপি থেকে অ্যাকাউন্ট, এন্ট্রি, ধার আর আপনার প্রোফাইল ফিরিয়ে আনে; ভুল ফাইল রিস্টোর হয়ে গেলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি নতুন কিছু বদলান।'],
+  // 2.3.2: a restore replaces nothing unless the undo copy is kept, and a file changed after it
+  // was checked is caught (restoreReasonUndoCopyFailed, restoreReasonFileChanged).
+  f7Body:       ['A backup is one file, kept where you choose — saved by you, or by the app every day into a folder that keeps the last seven days. Restore Latest brings back the newest copy: accounts, entries, loans and your profile; if it was the wrong file, Undo Last Restore puts back the ledger from before, until you change anything. A restore replaces nothing unless that undo copy is kept first, and a file that changed after it was checked is caught.',
+                 'ব্যাকআপ মানে একটি ফাইল, যা থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করতে পারেন, অথবা অ্যাপ প্রতিদিন একটি ফোল্ডারে রাখে, যেখানে শেষ সাত দিনের কপি থাকে। "সর্বশেষ কপি রিস্টোর" সবচেয়ে নতুন কপি থেকে অ্যাকাউন্ট, এন্ট্রি, ধার আর আপনার প্রোফাইল ফিরিয়ে আনে; ভুল ফাইল রিস্টোর হয়ে গেলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি নতুন কিছু বদলান। আগের খাতার এই কপি রাখা না গেলে রিস্টোর কিছুই বদলায় না, আর যাচাইয়ের পরে ফাইল বদলে গেলে অ্যাপ তা ধরে ফেলে।'],
   fPassHead:    ['A password for the backup',
                  'ব্যাকআপের পাসওয়ার্ড'],
   // 2.3.1: a password is at least 8 characters with a letter in it (2.3.0 said "not only
@@ -490,8 +492,9 @@ const S = {
                  'আপনার পছন্দমতো সাজিয়ে নিন'],
   // 2.3.0: the light theme offers Slate and Rainbow, the dark theme gold (Yellow) and Rainbow.
   // 2.3.1: the app calls Slate "Graphite" (গ্র্যাফাইট).
-  fLookBody:    ['Bangla or English; light mode in graphite or rainbow, dark mode in gold or rainbow; and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
-                 'বাংলা বা ইংরেজি; লাইট মোডে গ্র্যাফাইট বা রংধনু, ডার্ক মোডে সোনালি বা রংধনু থিম; আর পছন্দমতো ফন্ট সাইজ —সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
+  // 2.3.2: the light theme opens in Graphite unless an accent was chosen.
+  fLookBody:    ['Bangla or English; light mode in graphite (the default) or rainbow, dark mode in gold or rainbow; and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
+                 'বাংলা বা ইংরেজি; লাইট মোডে গ্র্যাফাইট (শুরুতে এটাই) বা রংধনু, ডার্ক মোডে সোনালি বা রংধনু থিম; আর পছন্দমতো ফন্ট সাইজ —সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],

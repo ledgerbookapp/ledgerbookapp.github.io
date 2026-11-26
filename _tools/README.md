@@ -17,13 +17,13 @@ in `assets/screens/SOURCE`.
 
 ## Steps
 
-The tag is the app release the pictures should show (`v2.3.1` below); `$S` is any scratch
+The tag is the app release the pictures should show (`v2.3.2` below); `$S` is any scratch
 folder. One Gradle run at a time on this machine; never `connectedAndroidTest`.
 
 ```sh
 # 1. A worktree of the release, with the site's changes
 cd /e/Projects/LedgerBook
-git -c core.longpaths=true worktree add --detach "$S/g" v2.3.1
+git -c core.longpaths=true worktree add --detach "$S/g" v2.3.2
 cp local.properties "$S/g/"
 node site/_tools/gallery-changes.js "$S/g"
 
