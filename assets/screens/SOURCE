@@ -1,4 +1,4 @@
-2.3.0
+2.3.1
 
 The app version the pictures in this folder show.
 
@@ -76,6 +76,13 @@ in: the six light first-launch steps, Home's light pair (the calendar mark besid
 back under Rainbow) and Backups' light pair (Rainbow's deeper green on the switch). The other
 34 were byte for byte the same and were left as they were, as was the share picture, made from
 the unchanged dark Home.
+For v2.26.1 every scene was rendered again from app 2.3.1, the same way. Of the 44, fourteen
+came out different and went in: the light pairs of Home, Accounts, Investments, Analytics and
+Money Flow (2.3.1 tints the summary card at the head of each in violet under Rainbow, and lays
+Home's two head cards on a soft shadow), and the dark pairs of Analytics and Money Flow (their
+rules stop 16 short of the card's edges, and Money Flow's net-movement chip is drawn as
+Analytics' change chip). The other 30 were byte for byte the same, as was the share picture,
+made from the unchanged dark Home.
 
 Since site v2.21.0 the app's pictures have a gap at the top and the bottom in the screen's
 own colour: the gallery draws no status bar, so the page's title sat on the frame's top

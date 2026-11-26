@@ -474,10 +474,11 @@ const S = {
                  'ব্যাকআপ মানে একটি ফাইল, যা থাকে আপনার বেছে নেওয়া জায়গায় — আপনি নিজে সেভ করতে পারেন, অথবা অ্যাপ প্রতিদিন একটি ফোল্ডারে রাখে, যেখানে শেষ সাত দিনের কপি থাকে। "সর্বশেষ কপি রিস্টোর" সবচেয়ে নতুন কপি থেকে অ্যাকাউন্ট, এন্ট্রি, ধার আর আপনার প্রোফাইল ফিরিয়ে আনে; ভুল ফাইল রিস্টোর হয়ে গেলে "শেষ রিস্টোর ফিরিয়ে নিন" আগের খাতা ফিরিয়ে দেয়, যতক্ষণ না আপনি নতুন কিছু বদলান।'],
   fPassHead:    ['A password for the backup',
                  'ব্যাকআপের পাসওয়ার্ড'],
-  // 2.3.0: a password is at least 8 characters, not only numbers, and the bell says when the
-  // daily backup's saved one is weaker than that.
-  f7Pass:       ['A password locks the file — at least 8 characters, not only numbers. The daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it. Nobody can recover a forgotten password. If a daily backup fails, a battery saver holds it back, or its saved password is weaker than that, the app tells you.',
-                 'পাসওয়ার্ড দিলে ফাইলটি তালাবন্ধ থাকে — কমপক্ষে ৮টি অক্ষর, শুধু সংখ্যা নয়। প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ডই ব্যবহার করে, আর যখন খুশি সেটি বদলানো যায়। পাসওয়ার্ড না দিলে ফাইলটি যার হাতে যাবে সে-ই খুলতে পারবে, আর পাসওয়ার্ড ভুলে গেলে কেউ সেটি ফিরিয়ে দিতে পারবে না। প্রতিদিনের ব্যাকআপ না হলে, ব্যাটারি সেভার আটকে দিলে, বা সেভ করা পাসওয়ার্ড এর চেয়ে দুর্বল হলে, অ্যাপ জানিয়ে দেয়।'],
+  // 2.3.1: a password is at least 8 characters with a letter in it (2.3.0 said "not only
+  // numbers", which let a date or phone number with a slash or dash through), and the bell says
+  // when the daily backup's saved one is weaker than that.
+  f7Pass:       ['A password locks the file — at least 8 characters, with a letter. The daily backup keeps the one you saved, and you can change it any time; without one, anyone who has the file can open it. Nobody can recover a forgotten password. If a daily backup fails, a battery saver holds it back, or its saved password is weaker than that, the app tells you.',
+                 'পাসওয়ার্ড দিলে ফাইলটি তালাবন্ধ থাকে — কমপক্ষে ৮টি অক্ষর, অন্তত একটি বর্ণসহ। প্রতিদিনের ব্যাকআপ আপনার সেভ করা পাসওয়ার্ডই ব্যবহার করে, আর যখন খুশি সেটি বদলানো যায়। পাসওয়ার্ড না দিলে ফাইলটি যার হাতে যাবে সে-ই খুলতে পারবে, আর পাসওয়ার্ড ভুলে গেলে কেউ সেটি ফিরিয়ে দিতে পারবে না। প্রতিদিনের ব্যাকআপ না হলে, ব্যাটারি সেভার আটকে দিলে, বা সেভ করা পাসওয়ার্ড এর চেয়ে দুর্বল হলে, অ্যাপ জানিয়ে দেয়।'],
   f8Head:       ['Locked on your phone',
                  'ফোনেই তালাবন্ধ'],
   // 2.3.0: five wrong PINs lock for 30 s, doubling each time to 4 h (AuthManager).
@@ -488,8 +489,9 @@ const S = {
   fLookHead:    ['Set it up your way',
                  'আপনার পছন্দমতো সাজিয়ে নিন'],
   // 2.3.0: the light theme offers Slate and Rainbow, the dark theme gold (Yellow) and Rainbow.
-  fLookBody:    ['Bangla or English; light mode in slate or rainbow, dark mode in gold or rainbow; and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
-                 'বাংলা বা ইংরেজি; লাইট মোডে স্লেট বা রংধনু, ডার্ক মোডে সোনালি বা রংধনু থিম; আর পছন্দমতো ফন্ট সাইজ —সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
+  // 2.3.1: the app calls Slate "Graphite" (গ্র্যাফাইট).
+  fLookBody:    ['Bangla or English; light mode in graphite or rainbow, dark mode in gold or rainbow; and the text size you like — change any of them whenever you want. Set to System, the text follows your phone’s settings, up to the app’s Large size; you can also pick Compact, Standard or Large yourself. Buttons are made easy to tap.',
+                 'বাংলা বা ইংরেজি; লাইট মোডে গ্র্যাফাইট বা রংধনু, ডার্ক মোডে সোনালি বা রংধনু থিম; আর পছন্দমতো ফন্ট সাইজ —সবকিছুই পরিবর্তন করতে পারবেন যখন খুশি। ফন্ট সাইজ System-এ রাখলে লেখা ফোনের সেটিংস অনুযায়ী দেখাবে, তবে অ্যাপের "বড়" সাইজের চেয়ে বড় হবে না। চাইলে কমপ্যাক্ট, স্ট্যান্ডার্ড বা বড় সাইজও বেছে নিতে পারবেন। বোতামগুলোও সহজে ট্যাপ করার মতো করে তৈরি।'],
   // 1.1.69. Said as the release notes say it: what goes in the list, and that the list
   // is the phone's alone -- the privacy page's promise has to hold for it too.
   f9Head:       ['A list behind the bell', 'বেল আইকনে একটি তালিকা'],

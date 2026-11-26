@@ -1,5 +1,5 @@
 // Website render only, never committed to the app: the site's changes to the gallery, applied
-// to a worktree of the release tag (v2.3.0 since site 2.26.0). Usage: node gallery-changes.js <worktree>. Built for site
+// to a worktree of the release tag (v2.3.1 since site 2.26.1). Usage: node gallery-changes.js <worktree>. Built for site
 // 2.21.0-2.23.2; the month counted from the gallery's held clock (25 Oct 2026) since 2.25.1.
 const fs = require('fs');
 const root = process.argv[2] + '/app/src/test/java/com/ledgerbook/app/gallery/';
